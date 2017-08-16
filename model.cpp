@@ -13,6 +13,8 @@ Model::Model()
 	this->shield = new Shield(this->player);
 	this->radShield = new RadShield(this->player);
 
+	this->story = new Story(this->enemySet);
+
 	this->gamemode = MODE_MENU_SCREEN;
 }
 
@@ -67,7 +69,7 @@ void Model::updateChoas(sf::Time& delta_time)
 	{
 		choas_timer -= choas_max;
 		boss_chance++;
-		if (choas_max > 800)
+		if (choas_max > 1000)
 			choas_max -= 30;
 
 		this->enemySet->spawn(rand() % 11, rand() % SCREEN_WIDTH);

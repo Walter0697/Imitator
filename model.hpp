@@ -8,6 +8,7 @@
 #include "toolSet.hpp"
 #include "Tools/shield.hpp"
 #include "Tools/radShield.hpp"
+#include "Mode/story.hpp"
 
 #include "collision.hpp"
 
@@ -35,6 +36,8 @@ public:
 	RadShield* radShield;
 
 	Collision coll;
+
+	Story* story;
 
 	int gamemode;
 	bool pause = false;

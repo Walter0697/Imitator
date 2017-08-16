@@ -1,0 +1,8 @@
+TOTALLINE
+CUTSCENE      string       font           background_r     g        b        6
+DIALOG        string       string(name)   font          background_r   g   b   a   text_r    g    b   11
+ENEMY         type         x_position     targetx       targety      5    <----- save an enemy
+SPAWN         type         number     3
+WAIT          delta_time         2
+OBJECTIVE     string(type)      rewards   x_position   y_position     5
+PICTURE       string(name) x_position     y_position  4

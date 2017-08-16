@@ -18,6 +18,7 @@
 11/8 : developing plane (boss) added
 12/8 : adding choas, custom mode
 13/8 : adding second boss, pause function
+14/8 : finally set up the github repository
 
 assets:
 	ship:

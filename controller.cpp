@@ -84,7 +84,8 @@ void Controller::inputs(sf::Time delta_time)
 	//player shooting
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
-		this->model->shoot();
+		if (!this->model->pause)
+			this->model->shoot();
 	}
 
 	//position changing

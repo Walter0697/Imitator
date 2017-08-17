@@ -33,6 +33,8 @@ public:
 	sf::RenderWindow window;
 	std::vector<Renderable *> renderables;
 	std::vector<Renderable *> foreground;
+
+	void renderStory();
 	void renderMenu();
 	void render();
 

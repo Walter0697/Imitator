@@ -62,6 +62,11 @@ void Model::update(sf::Time& delta_time)
 	}	
 }
 
+void Model::updateStory(sf::Time& delta_time)
+{
+	story->update(delta_time);
+}
+
 void Model::updateChoas(sf::Time& delta_time)
 {
 	choas_timer += delta_time.asMilliseconds();

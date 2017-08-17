@@ -16,6 +16,10 @@ View::View(Model* model)
 	if (!this->menu->font2.loadFromFile("Assets/Crom_v1.ttf")) cout << "failed to load font Crom_v1.ttf" << endl;
 	this->menu->setup();
 
+	//loading story font
+	if (!this->model->story->fontFriend.loadFromFile("Assets/huxtable.ttf")) cout << "failed to load font huxtable.ttf" << endl;
+	if (!this->model->story->fontEnemy.loadFromFile("Assets/Quikhand.ttf")) cout << "failed to load Quickhand.ttf" << endl;
+
 	//loading hud
 	//player hud
 	this->hud = new Hud(this->model->player);
@@ -145,6 +149,11 @@ View::View(Model* model)
 }
 
 View::~View() {}
+
+void View::renderStory()
+{
+	this->model->story->render(window);
+}
 
 void View::renderMenu()
 {

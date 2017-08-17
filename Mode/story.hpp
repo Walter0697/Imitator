@@ -19,18 +19,25 @@ public:
 	Story(EnemySet* enemySet);
 	~Story();
 
-	void setup();
+	//mode related
+	int currentStory = 1;
+	int processing = 0;
+	bool isStory = false;
+
+	void setup(int);
 	void update(sf::Time&);
 	void render(sf::RenderWindow&);
 
+	//file related
 	void clearFile();
 	void readFile(std::string);
-	void action(std::string);
 	
+	//action related
+	void targetEnemy(int, int);
+	void setFont(int);
+
 	//countdown related
 	float countdown;
-	bool isStory = false;
-	int processing = 0;
 
 	//map information
 	int dataCols;
@@ -54,9 +61,17 @@ public:
 	//Sprite information
 	sf::Sprite sprite;
 
+	//font related
+	sf::Font fontFriend;
+	sf::Font fontEnemy;
+
 	//text related
-	sf::Font font;
-	sf::Text text;
+	sf::Text textDialog;
+	sf::Text textName;
+
+	//text number related
+	int textNum;
+	int textNow;
 
 	//objective related
 	int objective;

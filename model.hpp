@@ -46,6 +46,7 @@ public:
 	float choas_max;
 	int boss_chance;
 
+	void updateStory(sf::Time&);
 	void updateChoas(sf::Time&);
 	void update(sf::Time&);
 	void shoot();

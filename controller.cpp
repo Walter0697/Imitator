@@ -10,6 +10,25 @@ Controller::Controller(Model* model, View* view)
 
 Controller::~Controller() {}
 
+void Controller::storyinput(sf::Time delta_time)
+{
+	while (this->view->window.pollEvent(event))
+	{
+		switch (event.type)
+		{
+		case sf::Event::Closed:
+			this->view->window.close();
+			break;
+		case sf::Event::KeyPressed:
+			switch (event.key.code)
+			{
+			case sf::Keyboard::Space:
+				break;
+			}
+		}
+	}
+}
+
 void Controller::menuinput(sf::Time delta_time, sf::RenderWindow& window)
 {
 	while (this->view->window.pollEvent(event))

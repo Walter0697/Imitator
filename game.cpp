@@ -49,6 +49,9 @@ void Game::loop()
 
 		switch (model->gamemode)
 		{
+		case MODE_STORY_MODE:
+			break;
+
 		case MODE_MENU_SCREEN:
 			this->controller->menuinput(delta_time, this->view->window);
 			this->view->renderMenu();

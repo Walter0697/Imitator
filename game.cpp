@@ -47,9 +47,22 @@ void Game::loop()
 		//get the time since the last time clokc was consulted
 		delta_time = this->clock.restart();
 
+		//clear the window before it started
+		this->view->window.clear(sf::Color::Black);
+
 		switch (model->gamemode)
 		{
 		case MODE_STORY_MODE:
+			if (this->model->story->isStory)
+				this->controller->storyinput(delta_time);
+			this->controller->inputs(delta_time);
+			if (!this->model->pause)
+			{
+				this->model->update(delta_time);
+				this->model->updateStory(delta_time);
+			}
+			this->view->render();
+			this->view->renderStory();
 			break;
 
 		case MODE_MENU_SCREEN:
@@ -81,6 +94,9 @@ void Game::loop()
 			this->view->renderMenu();
 			break;
 		}	
+
+		//display the game
+		this->view->window.display();
 	}
 
 	this->view->window.close();

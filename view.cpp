@@ -19,6 +19,7 @@ View::View(Model* model)
 	//loading story font
 	if (!this->model->story->fontFriend.loadFromFile("Assets/huxtable.ttf")) cout << "failed to load font huxtable.ttf" << endl;
 	if (!this->model->story->fontEnemy.loadFromFile("Assets/Quikhand.ttf")) cout << "failed to load Quickhand.ttf" << endl;
+	this->model->story->setup();
 
 	//loading hud
 	//player hud
@@ -157,20 +158,14 @@ void View::renderStory()
 
 void View::renderMenu()
 {
-	this->window.clear(sf::Color::Black);
-
 	if (this->model->gamemode == MODE_MENU_SCREEN)
 		menu->render(this->window);
 	else if (this->model->gamemode == MODE_GAME_OVER)
 		menu->renderGameOver(this->window);
-
-	this->window.display();
 }
 
 void View::render()
 {
-	this->window.clear(sf::Color::Black);
-
 	for (int i = 0; i < this->renderables.size(); i++)
 	{
 		renderables[i]->render(this->window);
@@ -196,6 +191,4 @@ void View::render()
 
 	if (this->model->pause)
 		this->window.draw(sprite_pause);
-
-	this->window.display();
 }

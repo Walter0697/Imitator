@@ -14,6 +14,9 @@ ToolSet::ToolSet()
 	this->hb_healthPack.hitbox_r = 11.f;
 	this->hb_healthPack.generateHitboxCir();
 
+	this->hb_imumium.hitbox_r = 8.f;
+	this->hb_imumium.generateHitboxCir();
+
 	initTool();
 }
 
@@ -36,6 +39,10 @@ void ToolSet::render(sf::RenderWindow& window)
 	for (int i = 0; i < MAX_HEALTH_PACK; i++)
 		if (!checkOutOfBound(healthpack[i]))
 			healthpack[i].render(window, sprite_healthPack);
+
+	for (int i = 0; i < MAX_IMUMIUM; i++)
+		if (!checkOutOfBound(imumium[i]))
+			imumium[i].render(window, sprite_imumium);
 } 
 
 void ToolSet::renderHitBox(sf::RenderWindow& window)
@@ -72,6 +79,14 @@ void ToolSet::renderHitBox(sf::RenderWindow& window)
 			window.draw(hb_healthPack.cir);
 		}
 	}
+	for (int i = 0; i < MAX_IMUMIUM; i++)
+	{
+		if (!checkOutOfBound(imumium[i]))
+		{
+			hb_imumium.cir.setPosition(imumium[i].position);
+			window.draw(hb_imumium.cir);
+		}
+	}
 }
 
 void ToolSet::update(sf::Time delta_time)
@@ -87,6 +102,9 @@ void ToolSet::update(sf::Time delta_time)
 
 	for (int i = 0; i < MAX_HEALTH_PACK; i++)
 		healthpack[i].update(delta_time);
+
+	for (int i = 0; i < MAX_IMUMIUM; i++)
+		imumium[i].update(delta_time);
 }
 
 int ToolSet::availableTool(int type)
@@ -113,6 +131,11 @@ int ToolSet::availableTool(int type)
 			if (checkOutOfBound(healthpack[i]))
 				return i;
 		return 0;
+	case 5:
+		for (int i = 0; i < MAX_IMUMIUM; i++)
+			if (checkOutOfBound(imumium[i]))
+				return i;
+		return 0;
 	}
 	return 0;
 }
@@ -137,6 +160,9 @@ void ToolSet::drop(Enemy& enemy, int type)
 		healthpack[availableTool(type)].velocity = sf::Vector2f(0, healthpack[0].speed);
 		healthpack[availableTool(type)].position = enemy.position;
 		break;
+	case 5:
+		imumium[availableTool(type)].velocity = sf::Vector2f(0, imumium[0].speed);
+		imumium[availableTool(type)].position = enemy.position;
 	}
 }
 
@@ -153,6 +179,9 @@ void ToolSet::initTool()
 
 	for (int i = 0; i < MAX_HEALTH_PACK; i++)
 		healthpack[i].position = sf::Vector2f(0, -700);
+
+	for (int i = 0; i < MAX_IMUMIUM; i++)
+		imumium[i].position = sf::Vector2f(0, -700);
 }
 
 bool ToolSet::checkOutOfBound(Tool& tool)

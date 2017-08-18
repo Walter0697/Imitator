@@ -7,6 +7,7 @@
 #include "Tools/BlueShield.hpp"
 #include "Tools/YellowShield.hpp"
 #include "Tools/healthPack.hpp"
+#include "Tools/imumium.hpp"
 #include "Enemy/enemy.hpp"
 
 #include "hitbox.hpp"
@@ -33,14 +34,17 @@ public:
 	BlueShield bshieldTool[MAX_BLUE_SHIELD];
 	YellowShield yshieldTool[MAX_YELLOW_SHIELD];
 	HealthPack healthpack[MAX_HEALTH_PACK];
+	Imumium imumium[MAX_IMUMIUM];
 
 	Hitbox hb_greenShield;
 	Hitbox hb_blueShield;
 	Hitbox hb_yellowShield;
 	Hitbox hb_healthPack;
+	Hitbox hb_imumium;
 
 	sf::Sprite sprite_greenShield;
 	sf::Sprite sprite_blueShield;
 	sf::Sprite sprite_yellowShield;
 	sf::Sprite sprite_healthPack;
+	sf::Sprite sprite_imumium;
 };

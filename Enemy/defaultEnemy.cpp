@@ -7,7 +7,7 @@ DefaultEnemy::DefaultEnemy() {
 	shoot_count = 0;
 
 	speed = 50;
-	maxhp = 30;
+	maxhp = 80;
 	hp = maxhp;
 }
 

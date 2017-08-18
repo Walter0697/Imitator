@@ -65,6 +65,10 @@ void Controller::menuinput(sf::Time delta_time, sf::RenderWindow& window)
 				if (this->selecting == MENU_OPTION + 1)
 					this->selecting = 1;
 				break;
+			case sf::Keyboard::R:
+				if (this->model->gamemode == MODE_GAME_OVER)
+					this->model->gamemode = MODE_MENU_SCREEN;
+				break;
 			}
 			this->view->menu->changeSelect(this->selecting);
 		}
@@ -85,18 +89,13 @@ void Controller::menuinput(sf::Time delta_time, sf::RenderWindow& window)
 			break;
 		case 3:
 			this->model->initAll();
+			test = 0;
 			this->model->gamemode = MODE_CUSTOM_MODE;
 			break;
 		case 5:
 			this->view->window.close();
 			break;
 		}
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
-	{
-		if (this->model->gamemode == MODE_GAME_OVER)
-			this->model->gamemode = MODE_MENU_SCREEN;
 	}
 }
 
@@ -230,6 +229,14 @@ void Controller::testerinputs(sf::Time delta_time)
 						this->model->player->CURRENT_HOLD_BULLET--;
 						this->model->player->holdbuff = HOLD_FOREVER;
 					}
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+					this->model->droprate->unlock(test++);
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+					if (this->model->droprate->multiplier == 1)
+						this->model->droprate->multiplier = 2;
+					else
+						this->model->droprate->multiplier = 1;
+
 				break;
 		}
 	}

@@ -13,8 +13,9 @@ Model::Model()
 	this->shield = new Shield(this->player);
 	this->radShield = new RadShield(this->player);
 
-	this->story = new Story(this->enemySet, this->toolSet);
-
+	this->droprate = new DropRate();
+	this->story = new Story(this->enemySet, this->toolSet, this->droprate);
+	
 	this->gamemode = MODE_MENU_SCREEN;
 }
 
@@ -54,15 +55,19 @@ void Model::update(sf::Time& delta_time)
 
 		enemyShootCount();
 		bossShootCount();
-		checkHit();
-		elementHit(delta_time);
+	}
+}
 
-		if (this->player->hp < 0)
-		{
-			this->player->position = sf::Vector2f(99999, 99999);
-			this->gamemode = MODE_GAME_OVER;
-		}
-	}	
+void Model::updateGame(sf::Time& delta_time)
+{
+	checkHit();
+	elementHit(delta_time);
+
+	if (this->player->hp < 0)
+	{
+		this->player->position = sf::Vector2f(99999, 99999);
+		this->gamemode = MODE_GAME_OVER;
+	}
 }
 
 void Model::updateStory(sf::Time& delta_time)
@@ -98,6 +103,7 @@ void Model::initAll()
 	enemyBulletSet->initBullet();
 	toolSet->initTool();
 	story->init();
+	droprate->multiplier = 1;
 	shield->level = 0;
 	radShield->health = 0;
 	boss_chance = 0;
@@ -1206,15 +1212,15 @@ void Model::checkDie(Enemy& enemy, int type)
 void Model::enemyDie(Enemy& enemy, Bullet& bullet, int bullet_type, int score_add, int shield_add)
 {
 	//dropping 
-	if (rand() % 100 > 75)
+	if (rand() % 100 < droprate->getToolChance(1))
 		this->toolSet->drop(enemy, 1);
-	else if (rand() % 100 > 75)
+	else if (rand() % 100 < droprate->getToolChance(2))
 		this->toolSet->drop(enemy, 2);
-	else if (rand() % 100 > 75)
+	else if (rand() % 100 < droprate->getToolChance(3))
 		this->toolSet->drop(enemy, 3);
-	else if (rand() % 100 > 75)
+	else if (rand() % 100 < droprate->getToolChance(4))
 		this->toolSet->drop(enemy, 4);
-	else if (rand() % 100 > 10)
+	else if (rand() % 100 < droprate->getToolChance(5))
 		this->toolSet->drop(enemy, 5);
 
 	//enemy reset

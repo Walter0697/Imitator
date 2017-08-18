@@ -11,6 +11,7 @@ public:
 	View* view;
 
 	sf::Event event;
+	int test = 0;
 
 	int selecting;
 	Controller(Model* model, View* view);

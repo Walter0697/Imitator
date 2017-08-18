@@ -59,7 +59,10 @@ void Game::loop()
 			if (!this->model->pause)
 			{
 				if (!this->model->story->isStory)
+				{
 					this->model->update(delta_time);
+					this->model->updateGame(delta_time);
+				}
 				this->model->updateStory(delta_time);
 			}
 			this->view->render();
@@ -77,6 +80,7 @@ void Game::loop()
 			{
 				this->model->updateChoas(delta_time);
 				this->model->update(delta_time);
+				this->model->updateGame(delta_time);
 			}
 			this->view->render();
 			break;
@@ -85,7 +89,10 @@ void Game::loop()
 			this->controller->testerinputs(delta_time);
 			this->controller->inputs(delta_time);
 			if (!this->model->pause)
+			{
 				this->model->update(delta_time);
+				this->model->updateGame(delta_time);
+			}
 			this->view->render(); 
 			break;
 

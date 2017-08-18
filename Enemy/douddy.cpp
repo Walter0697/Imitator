@@ -7,7 +7,7 @@ Douddy::Douddy() {
 	shoot_count = 0;
 
 	speed = 40;
-	maxhp = 50;
+	maxhp = 150;
 	hp = maxhp;
 }
 

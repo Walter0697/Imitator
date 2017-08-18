@@ -22,6 +22,8 @@
 18/8 : god help me, almost finish the setup for story mode 
        also, yellow shield is too weak, let give it 75% damage resist
 	   you can see the enemies movement after you die now!
+	   adding new type of tool -- imumium
+	   setup dropRate
 
 assets:
 	ship:
@@ -35,6 +37,7 @@ assets:
 		https://fontmeme.com/salsa-tequila-font/
 		http://www.1001fonts.com/text-fonts.html
 		https://opengameart.org/content/fireflame
+		https://opengameart.org/content/simple-shooter-icons
 		
 	tool:
 		https://opengameart.org/content/32x32-fantasy-tileset

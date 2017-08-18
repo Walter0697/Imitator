@@ -2,10 +2,11 @@
 using namespace std;
 
 
-Story::Story(EnemySet* enemySet, ToolSet* toolSet)
+Story::Story(EnemySet* enemySet, ToolSet* toolSet, DropRate* droprate)
 {
 	this->enemySet = enemySet;
 	this->toolSet = toolSet;
+	this->droprate = droprate;
 
 	//initialization
 	background = sf::Color(0, 0, 0, 50);
@@ -284,6 +285,12 @@ void Story::update(sf::Time& delta_time)
 					processing++;
 				}
 			}
+		}
+		//to unlock a tool
+		else if (mapData[processing][0] == "UNLOCK")
+		{
+			this->droprate->unlock(atoi(mapData[processing][1].c_str()));
+			processing++;
 		}
 		else if (mapData[processing][0] == "PICTURE")
 		{

@@ -9,6 +9,7 @@
 #include "Tools/shield.hpp"
 #include "Tools/radShield.hpp"
 #include "Mode/story.hpp"
+#include "Mode/dropRate.hpp"
 
 #include "collision.hpp"
 
@@ -36,6 +37,7 @@ public:
 	RadShield* radShield;
 
 	Collision coll;
+	DropRate* droprate;
 
 	Story* story;
 
@@ -48,7 +50,9 @@ public:
 
 	void updateStory(sf::Time&);
 	void updateChoas(sf::Time&);
+	void updateGame(sf::Time&);
 	void update(sf::Time&);
+
 	void shoot();
 
 	void initAll();

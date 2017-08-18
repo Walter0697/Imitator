@@ -6,6 +6,7 @@
 #include "../Enemy/enemy.hpp"
 #include "../toolSet.hpp"
 #include "../Tools/tool.hpp"
+#include "dropRate.hpp"
 
 #include "../defs.h"
 #include <fstream>
@@ -20,7 +21,8 @@ public:
 
 	EnemySet* enemySet;
 	ToolSet* toolSet;
-	Story(EnemySet* enemySet, ToolSet* toolSet);
+	DropRate* droprate;
+	Story(EnemySet* enemySet, ToolSet* toolSet, DropRate* droprate);
 	~Story();
 
 	//mode related

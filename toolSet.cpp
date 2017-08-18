@@ -17,6 +17,9 @@ ToolSet::ToolSet()
 	this->hb_imumium.hitbox_r = 8.f;
 	this->hb_imumium.generateHitboxCir();
 
+	this->hb_stone.hitbox_r = 8.f;
+	this->hb_stone.generateHitboxCir();
+
 	initTool();
 }
 
@@ -43,6 +46,10 @@ void ToolSet::render(sf::RenderWindow& window)
 	for (int i = 0; i < MAX_IMUMIUM; i++)
 		if (!checkOutOfBound(imumium[i]))
 			imumium[i].render(window, sprite_imumium);
+
+	for (int i = 0; i < MAX_STONE; i++)
+		if (!checkOutOfBound(stoneTool[i]))
+			stoneTool[i].render(window, sprite_stone);
 } 
 
 void ToolSet::renderHitBox(sf::RenderWindow& window)
@@ -87,6 +94,14 @@ void ToolSet::renderHitBox(sf::RenderWindow& window)
 			window.draw(hb_imumium.cir);
 		}
 	}
+	for (int i = 0; i < MAX_STONE; i++)
+	{
+		if (!checkOutOfBound(stoneTool[i]))
+		{
+			hb_stone.cir.setPosition(stoneTool[i].position);
+			window.draw(hb_stone.cir);
+		}
+	}
 }
 
 void ToolSet::update(sf::Time delta_time)
@@ -105,6 +120,9 @@ void ToolSet::update(sf::Time delta_time)
 
 	for (int i = 0; i < MAX_IMUMIUM; i++)
 		imumium[i].update(delta_time);
+
+	for (int i = 0; i < MAX_STONE; i++)
+		stoneTool[i].update(delta_time);
 }
 
 int ToolSet::availableTool(int type)
@@ -136,6 +154,11 @@ int ToolSet::availableTool(int type)
 			if (checkOutOfBound(imumium[i]))
 				return i;
 		return 0;
+	case 6:
+		for (int i = 0; i < MAX_STONE; i++)
+			if (checkOutOfBound(stoneTool[i]))
+				return i;
+		return 0;
 	}
 	return 0;
 }
@@ -163,6 +186,11 @@ void ToolSet::drop(Enemy& enemy, int type)
 	case 5:
 		imumium[availableTool(type)].velocity = sf::Vector2f(0, imumium[0].speed);
 		imumium[availableTool(type)].position = enemy.position;
+		break;
+	case 6:
+		stoneTool[availableTool(type)].velocity = sf::Vector2f(0, stoneTool[0].speed);
+		stoneTool[availableTool(type)].position = enemy.position;
+		break;
 	}
 }
 
@@ -182,6 +210,9 @@ void ToolSet::initTool()
 
 	for (int i = 0; i < MAX_IMUMIUM; i++)
 		imumium[i].position = sf::Vector2f(0, -700);
+
+	for (int i = 0; i < MAX_STONE; i++)
+		stoneTool[i].position = sf::Vector2f(0, -700);
 }
 
 bool ToolSet::checkOutOfBound(Tool& tool)

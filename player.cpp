@@ -101,6 +101,7 @@ void Player::initialize()
 
 	this->onFire = 0;
 	this->holdbuff = 0;
+	this->onLuck = 0;
 
 	this->score = 0;
 	CURRENT_HOLD_BULLET = 5;

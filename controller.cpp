@@ -320,13 +320,8 @@ void Controller::testerinputs(sf::Time delta_time)
 						this->model->player->CURRENT_HOLD_BULLET--;
 						this->model->player->holdbuff = HOLD_FOREVER;
 					}
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F8))
 					this->model->droprate->unlock(test++);
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-					if (this->model->droprate->multiplier == 1)
-						this->model->droprate->multiplier = 2;
-					else
-						this->model->droprate->multiplier = 1;
 
 				break;
 		}

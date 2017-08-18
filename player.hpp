@@ -36,6 +36,7 @@ public:
 	float shield, maxshield;
 	int score;
 	float onFire = 0;
+	float onLuck = 0;
 
 	int CURRENT_HOLD_BULLET = 5;
 	float holdbuff = 0;

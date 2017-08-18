@@ -27,6 +27,7 @@
 	   setup menu unlock function
 	   menu support mouse(finally!!!!)
 	   mouse cursor added
+	   adding new type of tool -- lucky stone
 
 assets:
 	ship:

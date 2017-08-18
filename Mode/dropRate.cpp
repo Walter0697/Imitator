@@ -2,7 +2,7 @@
 
 DropRate::DropRate() 
 {
-	for (int i = 0; i < 5; i++) 
+	for (int i = 0; i < NUM_OF_TOOLS; i++) 
 	{
 		tools_chance[i] = 0;
 	}

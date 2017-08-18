@@ -8,6 +8,7 @@
 #include "Tools/YellowShield.hpp"
 #include "Tools/healthPack.hpp"
 #include "Tools/imumium.hpp"
+#include "Tools/ausStone.hpp"
 #include "Enemy/enemy.hpp"
 
 #include "hitbox.hpp"
@@ -35,16 +36,19 @@ public:
 	YellowShield yshieldTool[MAX_YELLOW_SHIELD];
 	HealthPack healthpack[MAX_HEALTH_PACK];
 	Imumium imumium[MAX_IMUMIUM];
+	AusStone stoneTool[MAX_STONE];
 
 	Hitbox hb_greenShield;
 	Hitbox hb_blueShield;
 	Hitbox hb_yellowShield;
 	Hitbox hb_healthPack;
 	Hitbox hb_imumium;
+	Hitbox hb_stone;
 
 	sf::Sprite sprite_greenShield;
 	sf::Sprite sprite_blueShield;
 	sf::Sprite sprite_yellowShield;
 	sf::Sprite sprite_healthPack;
 	sf::Sprite sprite_imumium;
+	sf::Sprite sprite_stone;
 };

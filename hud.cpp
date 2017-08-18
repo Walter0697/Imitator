@@ -28,10 +28,10 @@ void Hud::render(sf::RenderWindow& window)
 	text.setString(std::to_string(player->score));
 	text.setPosition(SCREEN_WIDTH / 2 - text.getLocalBounds().width / 2, SCREEN_HEIGHT - text.getLocalBounds().height * 1.5);
 	window.draw(text);
-		
+
 	//health bar
-	this->health.setTextureRect(sf::IntRect(0, 0, player->hp * healthSize.x / player->maxhp , healthSize.y / 2));
-	this->shield.setTextureRect(sf::IntRect(0, 0, player->shield * healthSize.x / player->maxshield , healthSize.y / 2));
+	this->health.setTextureRect(sf::IntRect(0, 0, player->hp * healthSize.x / player->maxhp, healthSize.y / 2));
+	this->shield.setTextureRect(sf::IntRect(0, 0, player->shield * healthSize.x / player->maxshield, healthSize.y / 2));
 	window.draw(healthBar);
 	window.draw(health);
 	window.draw(shield);
@@ -49,6 +49,12 @@ void Hud::render(sf::RenderWindow& window)
 		status_sprite[1].setPosition(SCREEN_WIDTH - 30, current_position);
 		current_position -= 40;
 		window.draw(status_sprite[1]);
+	}
+	if (player->onLuck > 0)
+	{
+		status_sprite[2].setPosition(SCREEN_WIDTH - 30, current_position);
+		current_position -= 40;
+		window.draw(status_sprite[2]);
 	}
 
 	//bullet type

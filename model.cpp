@@ -29,6 +29,12 @@ void Model::update(sf::Time& delta_time)
 		{
 			updateables[i]->update(delta_time);
 		}
+
+		//update onLuck
+		if (this->player->onLuck > 0)
+			this->player->onLuck -= delta_time.asMilliseconds();
+		else
+			this->droprate->multiplier = 1;
 		
 		//special type of bullet >> lazer
 		for (int i = 0; i < MAX_LAZER; i++)
@@ -1141,7 +1147,7 @@ void Model::checkHit()
 		}
 	}
 
-	//imumium
+	//imumium vs player 
 	for (int i = 0; i < MAX_IMUMIUM; i++)
 	{
 		if (!this->toolSet->checkOutOfBound(this->toolSet->imumium[i]))
@@ -1153,6 +1159,22 @@ void Model::checkHit()
 				this->toolSet->imumium[i].velocity = sf::Vector2f(0, 0);
 				this->player->holdbuff += 5000;
 				this->player->CURRENT_HOLD_BULLET = MAX_HOLD_BULLET;
+			}
+		}
+	}
+
+	//stone vs player
+	for (int i = 0; i < MAX_STONE; i++)
+	{
+		if (!this->toolSet->checkOutOfBound(this->toolSet->stoneTool[i]))
+		{
+			if (coll.RectangleCircleCollision(sf::Vector2f(this->player->position + this->player->hb.hitbox_tl), sf::Vector2f(this->player->position + this->player->hb.hitbox_br),
+				this->toolSet->stoneTool[i].position, this->toolSet->hb_stone.hitbox_r))
+			{
+				this->toolSet->stoneTool[i].position = sf::Vector2f(0, -700);
+				this->toolSet->stoneTool[i].velocity = sf::Vector2f(0, 0);
+				this->player->onLuck += 8000;
+				this->droprate->multiplier = 2;
 			}
 		}
 	}
@@ -1222,6 +1244,8 @@ void Model::enemyDie(Enemy& enemy, Bullet& bullet, int bullet_type, int score_ad
 		this->toolSet->drop(enemy, 4);
 	else if (rand() % 100 < droprate->getToolChance(5))
 		this->toolSet->drop(enemy, 5);
+	else if (rand() % 100 < droprate->getToolChance(6))
+		this->toolSet->drop(enemy, 6);
 
 	//enemy reset
 	Boss* isBoss = dynamic_cast<Boss*>(&enemy);

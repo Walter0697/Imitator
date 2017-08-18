@@ -293,12 +293,14 @@ void Story::update(sf::Time& delta_time)
 			this->droprate->unlock(atoi(mapData[processing][1].c_str()));
 			processing++;
 		}
+		//show picture
 		else if (mapData[processing][0] == "PICTURE")
 		{
 			spriteAppear(atoi(mapData[processing][1].c_str()),
 						atoi(mapData[processing][2].c_str()), atoi(mapData[processing][3].c_str()) );
 			processing++;
 		}
+		//show picture ended
 		else if (mapData[processing][0] == "PICTUREEND")
 		{
 			spriteAppear(atoi(mapData[processing][1].c_str()), -300, -300);
@@ -336,6 +338,14 @@ void Story::dropTool(int type, int positionx, int positiony)
 	case 4:
 		toolSet->healthpack[toolSet->availableTool(4)].velocity.y = toolSet->healthpack[0].speed;
 		toolSet->healthpack[toolSet->availableTool(4)].position = sf::Vector2f(positionx, positiony);
+		break;
+	case 5:
+		toolSet->imumium[toolSet->availableTool(5)].velocity.y = toolSet->imumium[0].speed;
+		toolSet->imumium[toolSet->availableTool(5)].position = sf::Vector2f(positionx, positiony);
+		break;
+	case 6:
+		toolSet->stoneTool[toolSet->availableTool(6)].velocity.y = toolSet->stoneTool[0].speed;
+		toolSet->stoneTool[toolSet->availableTool(6)].position = sf::Vector2f(positionx, positiony);
 		break;
 	}
 }

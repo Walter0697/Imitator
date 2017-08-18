@@ -31,6 +31,9 @@
 #define MAX_YELLOW_SHIELD 8
 #define MAX_HEALTH_PACK 8
 #define MAX_IMUMIUM 8
+#define MAX_STONE 8
+
+#define NUM_OF_TOOLS 6
 
 #define SHOT_GUN_NUMBERS 20
 #define BLAST_SHOT_NUMBERS 11

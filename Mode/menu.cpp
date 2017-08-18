@@ -26,9 +26,10 @@ void Menu::setup()
 
 	selectBar[0] = "STORY MODE";
 	selectBar[1] = "SETTING";
-	selectBar[2] = "EXIT";
-	selectBar[3] = " ";
+	selectBar[2] = "SCOREBOARD";
+	selectBar[3] = "EXIT";
 	selectBar[4] = " ";
+	selectBar[5] = " ";
 
 	for (int i = 0; i < MENU_OPTION; i++)
 		unselectedText[i].setString(selectBar[i]);
@@ -60,8 +61,9 @@ void Menu::unlock()
 	selectBar[0] = "STORY MODE";
 	selectBar[1] = "CHAOS MODE";
 	selectBar[2] = "CUSTOM MODE";
-	selectBar[3] = "SETTING";
-	selectBar[4] = "EXIT";
+	selectBar[3] = "SCOREBOARD";
+	selectBar[4] = "SETTING";
+	selectBar[5] = "EXIT";
 
 	for (int i = 0; i < MENU_OPTION; i++)
 		unselectedText[i].setString(selectBar[i]);
@@ -91,6 +93,10 @@ void Menu::changeSelect(int num)
 		selectedText.setPosition(SCREEN_WIDTH - title.getLocalBounds().width + 10, 630);
 		selectedText.setString(selectBar[4]);
 		break;
+	case 6:
+		selectedText.setPosition(SCREEN_WIDTH - title.getLocalBounds().width + 10, 710);
+		selectedText.setString(selectBar[5]);
+		break;
 	}
 }
 
@@ -116,7 +122,7 @@ void Menu::render(sf::RenderWindow& window)
 		for (int i = 0; i < MENU_OPTION; i++)
 			window.draw(unselectedText[i]);
 	else
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 4; i++)
 			window.draw(unselectedText[i]);
 	
 }

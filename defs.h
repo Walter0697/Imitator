@@ -43,5 +43,6 @@
 #define MODE_CUSTOM_MODE 96
 #define MODE_GAME_OVER 95
 #define MODE_SETTING 94
+#define MODE_SCORE_BOARD 93
 
-#define MENU_OPTION 5
+#define MENU_OPTION 6

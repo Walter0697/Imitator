@@ -89,6 +89,7 @@ void Story::init()
 {
 	enemyInfo = 0;
 	canContin = true;
+	isStory = false;
 }
 
 void Story::setup(int current)

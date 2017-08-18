@@ -22,4 +22,7 @@ public:
 	void menuinput(sf::Time, sf::RenderWindow&);
 	void testerinputs(sf::Time);
 	void inputs(sf::Time);
+
+	void enter();
+	int inOption(float, float);
 };

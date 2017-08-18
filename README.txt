@@ -25,6 +25,7 @@
 	   adding new type of tool -- imumium
 	   setup dropRate
 	   setup menu unlock function
+	   menu support mouse(finally!!!!)
 
 assets:
 	ship:

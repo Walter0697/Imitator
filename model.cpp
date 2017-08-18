@@ -1134,6 +1134,22 @@ void Model::checkHit()
 			}
 		}
 	}
+
+	//imumium
+	for (int i = 0; i < MAX_IMUMIUM; i++)
+	{
+		if (!this->toolSet->checkOutOfBound(this->toolSet->imumium[i]))
+		{
+			if (coll.RectangleCircleCollision(sf::Vector2f(this->player->position + this->player->hb.hitbox_tl), sf::Vector2f(this->player->position + this->player->hb.hitbox_br),
+				this->toolSet->imumium[i].position, this->toolSet->hb_imumium.hitbox_r))
+			{
+				this->toolSet->imumium[i].position = sf::Vector2f(0, -700);
+				this->toolSet->imumium[i].velocity = sf::Vector2f(0, 0);
+				this->player->holdbuff += 5000;
+				this->player->CURRENT_HOLD_BULLET = MAX_HOLD_BULLET;
+			}
+		}
+	}
 }
 
 void Model::checkDie(Enemy& enemy, int type)
@@ -1198,6 +1214,8 @@ void Model::enemyDie(Enemy& enemy, Bullet& bullet, int bullet_type, int score_ad
 		this->toolSet->drop(enemy, 3);
 	else if (rand() % 100 > 75)
 		this->toolSet->drop(enemy, 4);
+	else if (rand() % 100 > 10)
+		this->toolSet->drop(enemy, 5);
 
 	//enemy reset
 	Boss* isBoss = dynamic_cast<Boss*>(&enemy);

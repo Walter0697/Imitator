@@ -135,7 +135,7 @@ void Player::update(sf::Time deltaTime)
 
 	if (holdbuff != HOLD_FOREVER)
 		if (holdbuff > 0)
-			holdbuff -= deltaTime.asSeconds();
+			holdbuff -= deltaTime.asMilliseconds();
 		else
 			CURRENT_HOLD_BULLET = 5;
 

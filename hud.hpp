@@ -29,5 +29,5 @@ public:
 	//bullet type
 	sf::Sprite bullet_sprite[12];
 	//status type
-	sf::Sprite status_sprite[1];
+	sf::Sprite status_sprite[2];
 };

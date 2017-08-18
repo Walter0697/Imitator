@@ -62,6 +62,7 @@ View::View(Model* model)
 	
 	//setting up the status_type in hud
 	this->hud->status_sprite[0].setTexture(manager.get_texture("Assets/onFire.png", sf::Color(165, 165, 165)), true);
+	this->hud->status_sprite[1].setTexture(manager.get_texture("Assets/onBuff.png", sf::Color::White), true);
 
 	//inserting texture
 	//player texture
@@ -147,6 +148,8 @@ View::View(Model* model)
 	this->model->toolSet->sprite_yellowShield.setOrigin(sf::Vector2f(11, 13));
 	this->model->toolSet->sprite_healthPack.setTexture(manager.get_texture("Assets/healthPack.png", sf::Color::White), true);
 	this->model->toolSet->sprite_healthPack.setOrigin(sf::Vector2f(11, 13)); 
+	this->model->toolSet->sprite_imumium.setTexture(manager.get_texture("Assets/holdbullet.png", sf::Color::White), true);
+	this->model->toolSet->sprite_imumium.setOrigin(sf::Vector2f(12, 13));
 }
 
 View::~View() {}

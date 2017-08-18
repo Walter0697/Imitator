@@ -44,6 +44,12 @@ void Hud::render(sf::RenderWindow& window)
 		current_position -= 40;
 		window.draw(status_sprite[0]);
 	}
+	if (player->holdbuff > 0)
+	{
+		status_sprite[1].setPosition(SCREEN_WIDTH - 30, current_position);
+		current_position -= 40;
+		window.draw(status_sprite[1]);
+	}
 
 	//bullet type
 	for (int i = 0; i < player->CURRENT_HOLD_BULLET; i++)

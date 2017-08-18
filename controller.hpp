@@ -11,6 +11,7 @@ public:
 	View* view;
 
 	sf::Event event;
+	//only for testerinputs
 	int test = 0;
 
 	int selecting;

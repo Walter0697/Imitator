@@ -14,9 +14,15 @@ public:
 
 	void renderGameOver(sf::RenderWindow&);
 	void render(sf::RenderWindow&);
+
 	void setup();
 	void changeSelect(int);
 	void changeScore(int);
+
+	void unlock();
+
+	bool newModeUnlock = false;
+	std::string selectBar[MENU_OPTION];
 
 	sf::Font font;
 	sf::Font font2;

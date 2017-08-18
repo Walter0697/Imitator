@@ -23,11 +23,15 @@ void Menu::setup()
 		unselectedText[i].setCharacterSize(40);
 		unselectedText[i].setPosition(SCREEN_WIDTH - title.getLocalBounds().width, 300 + (80) * i);
 	}
-	unselectedText[0].setString("STORY MODE");
-	unselectedText[1].setString("CHAOS MODE");
-	unselectedText[2].setString("CUSTOM MODE");
-	unselectedText[3].setString("SETTING");
-	unselectedText[4].setString("EXIT");
+
+	selectBar[0] = "STORY MODE";
+	selectBar[1] = "SETTING";
+	selectBar[2] = "EXIT";
+	selectBar[3] = " ";
+	selectBar[4] = " ";
+
+	for (int i = 0; i < MENU_OPTION; i++)
+		unselectedText[i].setString(selectBar[i]);
 
 	selectedText = unselectedText[0];
 	selectedText.setColor(sf::Color::Cyan);
@@ -50,29 +54,42 @@ void Menu::setup()
 	menuplayer.setPosition(500, 500);
 }
 
+void Menu::unlock()
+{
+	newModeUnlock = true;
+	selectBar[0] = "STORY MODE";
+	selectBar[1] = "CHAOS MODE";
+	selectBar[2] = "CUSTOM MODE";
+	selectBar[3] = "SETTING";
+	selectBar[4] = "EXIT";
+
+	for (int i = 0; i < MENU_OPTION; i++)
+		unselectedText[i].setString(selectBar[i]);
+}
+
 void Menu::changeSelect(int num)
 {
 	switch (num)
 	{
 	case 1:
 		selectedText.setPosition(SCREEN_WIDTH - title.getLocalBounds().width + 10, 310);
-		selectedText.setString("STORY MODE");
+		selectedText.setString(selectBar[0]);
 		break;
 	case 2:
 		selectedText.setPosition(SCREEN_WIDTH - title.getLocalBounds().width + 10, 390);
-		selectedText.setString("CHOAS MODE");
+		selectedText.setString(selectBar[1]);
 		break;
 	case 3:
 		selectedText.setPosition(SCREEN_WIDTH - title.getLocalBounds().width + 10, 470);
-		selectedText.setString("CUSTOM MODE");
+		selectedText.setString(selectBar[2]);
 		break;
 	case 4:
 		selectedText.setPosition(SCREEN_WIDTH - title.getLocalBounds().width + 10, 550);
-		selectedText.setString("SETTING");
+		selectedText.setString(selectBar[3]);
 		break;
 	case 5:
 		selectedText.setPosition(SCREEN_WIDTH - title.getLocalBounds().width + 10, 630);
-		selectedText.setString("EXIT");
+		selectedText.setString(selectBar[4]);
 		break;
 	}
 }
@@ -95,7 +112,11 @@ void Menu::render(sf::RenderWindow& window)
 	window.draw(menuplayer);
 	window.draw(title);
 	window.draw(selectedText);
-	for (int i = 0; i < MENU_OPTION; i++)
-		window.draw(unselectedText[i]);
+	if (this->newModeUnlock)
+		for (int i = 0; i < MENU_OPTION; i++)
+			window.draw(unselectedText[i]);
+	else
+		for (int i = 0; i < 3; i++)
+			window.draw(unselectedText[i]);
 	
 }

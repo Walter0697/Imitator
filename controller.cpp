@@ -62,12 +62,27 @@ void Controller::menuinput(sf::Time delta_time, sf::RenderWindow& window)
 				break;
 			case sf::Keyboard::S:
 				this->selecting++;
-				if (this->selecting == MENU_OPTION + 1)
-					this->selecting = 1;
+				if (this->view->menu->newModeUnlock)
+				{
+					if (this->selecting == MENU_OPTION + 1)
+						this->selecting = 1;
+				}
+				else
+				{
+					if (this->selecting == 4)
+						this->selecting = 1;
+				}
 				break;
 			case sf::Keyboard::R:
 				if (this->model->gamemode == MODE_GAME_OVER)
+				{	
+					this->selecting = 1;
 					this->model->gamemode = MODE_MENU_SCREEN;
+				}
+				break;
+			case sf::Keyboard::F12:
+				this->view->menu->unlock();
+				selecting = 1;
 				break;
 			}
 			this->view->menu->changeSelect(this->selecting);
@@ -76,25 +91,44 @@ void Controller::menuinput(sf::Time delta_time, sf::RenderWindow& window)
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
 	{
-		switch (this->selecting)
+		this->model->initAll();
+		if (this->view->menu->newModeUnlock)
 		{
-		case 1:
-			this->model->initAll();
-			this->model->story->setup(this->model->story->currentStory);
-			this->model->gamemode = MODE_STORY_MODE;
-			break;
-		case 2:
-			this->model->initAll();
-			this->model->gamemode = MODE_CHAOS_MODE;
-			break;
-		case 3:
-			this->model->initAll();
-			test = 0;
-			this->model->gamemode = MODE_CUSTOM_MODE;
-			break;
-		case 5:
-			this->view->window.close();
-			break;
+			switch (this->selecting)
+			{
+			case 1:
+				this->model->story->setup(this->model->story->currentStory);
+				this->model->gamemode = MODE_STORY_MODE;
+				break;
+			case 2:
+				this->model->gamemode = MODE_CHAOS_MODE;
+				break;
+			case 3:
+				test = 0;
+				this->model->gamemode = MODE_CUSTOM_MODE;
+				break;
+			//case 4:
+				//setting
+			case 5:
+				this->view->window.close();
+				break;
+			}
+		}
+		//haven't unlock the new mode
+		else
+		{
+			switch (this->selecting)
+			{
+			case 1:
+				this->model->story->setup(this->model->story->currentStory);
+				this->model->gamemode = MODE_STORY_MODE;
+				break;
+			//case 2:
+				//setting
+			case 3:
+				this->view->window.close();
+				break;
+			}
 		}
 	}
 }

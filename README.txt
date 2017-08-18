@@ -24,6 +24,7 @@
 	   you can see the enemies movement after you die now!
 	   adding new type of tool -- imumium
 	   setup dropRate
+	   setup menu unlock function
 
 assets:
 	ship:

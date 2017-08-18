@@ -7,5 +7,6 @@ TOTALLINE
 4   PICTURE       type         x_position     y_position 
 2   PICTUREEND    type
 2   UNLOCK        type(99->new mode)
-2/5 OBJECTIVE     rewards     (ifTool->type)     x_position   y_position  
-                TOOL/DIALOG
+5   OBJECTIVE     TOOL    (ifTool->type)     x_position   y_position  
+2   OBJECTIVE     DIALOG
+2   OBJECTIVE     VICTORY   

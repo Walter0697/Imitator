@@ -53,8 +53,8 @@ View::View(Model* model)
 	this->sprite_mouse.setPosition(mouse_position);
 
 	//loading story sprite
-	this->model->story->sprite.setTexture(manager.get_texture("Assets/pointer.png", sf::Color(237, 28, 36)), true);
-	this->model->story->sprite.setPosition(-300, -300);
+	this->model->story->sprite[0].setTexture(manager.get_texture("Assets/pointer.png", sf::Color(237, 28, 36)), true);
+	this->model->story->sprite[0].setPosition(-300, -300);
 
 	//setting up the bullet_type in hud
 	this->hud->bullet_sprite[0].setTexture(manager.get_texture("Assets/default.png", sf::Color::White), true);

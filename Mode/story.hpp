@@ -24,6 +24,7 @@ public:
 	int processing = 0;
 	bool isStory = false;
 
+	void setup();
 	void setup(int);
 	void update(sf::Time&);
 	void render(sf::RenderWindow&);
@@ -47,8 +48,7 @@ public:
 	//Variable to render
 	//color to render
 	sf::Color background;
-	sf::Color textColorOne;
-	sf::Color textColorTwo;
+	sf::Color textColor;
 
 	//text to render
 	std::string dialog;
@@ -66,16 +66,18 @@ public:
 	sf::Font fontEnemy;
 
 	//text related
-	sf::Text textDialog;
 	sf::Text textName;
+	sf::Text textDialog;
+	sf::Text textDialog2;
+
+	//text box related
+	sf::RectangleShape textBox;
+	sf::VertexArray cutscene;
 
 	//text number related
 	int textNum;
 	int textNow;
 
-	//textBox related
-	sf::RectangleShape textBox;
-
-	//objective related
-	int objective;
+	//sprite related
+	sf::Sprite arrow;
 };

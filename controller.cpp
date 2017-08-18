@@ -40,6 +40,8 @@ void Controller::storyinput(sf::Time delta_time)
 			}
 		}
 	}
+	if (this->model->story->currentStory == LAST_STORY)
+		this->view->menu->unlock();
 }
 
 void Controller::menuinput(sf::Time delta_time, sf::RenderWindow& window)
@@ -88,6 +90,7 @@ void Controller::menuinput(sf::Time delta_time, sf::RenderWindow& window)
 			this->view->menu->changeSelect(this->selecting);
 			break;
 		case sf::Event::MouseMoved:
+			this->view->mouse_position = sf::Vector2f(event.mouseMove.x, event.mouseMove.y);
 			if (this->view->menu->newModeUnlock)
 			{
 				if (inOption(event.mouseMove.x, event.mouseMove.y) != -1)

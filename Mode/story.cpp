@@ -295,8 +295,25 @@ void Story::update(sf::Time& delta_time)
 		}
 		else if (mapData[processing][0] == "PICTURE")
 		{
+			spriteAppear(atoi(mapData[processing][1].c_str()),
+						atoi(mapData[processing][2].c_str()), atoi(mapData[processing][3].c_str()) );
 			processing++;
 		}
+		else if (mapData[processing][0] == "PICTUREEND")
+		{
+			spriteAppear(atoi(mapData[processing][1].c_str()), -300, -300);
+			processing++;
+		}
+	}
+}
+
+void Story::spriteAppear(int type, int positionx, int positiony)
+{
+	switch (type)
+	{
+	case 1:
+		sprite.setPosition(positionx, positiony);
+		break;
 	}
 }
 
@@ -325,6 +342,7 @@ void Story::dropTool(int type, int positionx, int positiony)
 
 void Story::render(sf::RenderWindow& window)
 {
+	window.draw(sprite);
 	if (processing < dataCols)
 	{
 		if (mapData[processing][0] == "CUTSCENE" && isStory)

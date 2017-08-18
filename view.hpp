@@ -29,6 +29,9 @@ public:
 	Menu* menu;
 	sf::Sprite sprite_pause;
 
+	sf::Sprite sprite_mouse;
+	sf::Vector2f mouse_position;
+
 	Manager manager;
 	sf::RenderWindow window;
 	std::vector<Renderable *> renderables;

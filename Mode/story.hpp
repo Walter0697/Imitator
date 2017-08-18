@@ -45,6 +45,7 @@ public:
 	void dropTool(int, int, int);
 	void targetEnemy(int, int);
 	void setFont(int);
+	void spriteAppear(int, int, int);
 
 	//countdown related
 	float countdown;

@@ -26,6 +26,7 @@
 	   setup dropRate
 	   setup menu unlock function
 	   menu support mouse(finally!!!!)
+	   mouse cursor added
 
 assets:
 	ship:
@@ -50,5 +51,8 @@ assets:
 		https://opengameart.org/content/retro-shmup-boss-2
 		https://opengameart.org/content/retro-shmup-boss-1
 		
+	Others:
+		http://www.rw-designer.com/cursor-set/hand-cursors
+		http://www.rw-designer.com/cursor-set/team-fortress-2-cursors
 	Used:
 		https://processing.org/examples/flocking.html

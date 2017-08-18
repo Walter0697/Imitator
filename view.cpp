@@ -8,6 +8,7 @@ View::View(Model* model)
 
 	this->window.create(sf::VideoMode(WIDTH, HEIGHT), "Imitator(DEMO)");
 	this->window.setFramerateLimit(60);
+	this->window.setMouseCursorVisible(false);
 
 	//loading menu
 	this->menu = new Menu();
@@ -46,6 +47,15 @@ View::View(Model* model)
 	this->sprite_pause.setPosition(SCREEN_WIDTH / 2 - manager.get_texture("Assets/pause.png").getSize().x / 2,
 		SCREEN_HEIGHT / 2 - manager.get_texture("Assets/pause.png").getSize().y / 2);
 
+	//loading mouse texture
+	this->mouse_position = sf::Vector2f(0, 0);
+	this->sprite_mouse.setTexture(manager.get_texture("Assets/cursor.png"), true);
+	this->sprite_mouse.setPosition(mouse_position);
+
+	//loading story sprite
+	this->model->story->sprite.setTexture(manager.get_texture("Assets/pointer.png", sf::Color(237, 28, 36)), true);
+	this->model->story->sprite.setPosition(-300, -300);
+
 	//setting up the bullet_type in hud
 	this->hud->bullet_sprite[0].setTexture(manager.get_texture("Assets/default.png", sf::Color::White), true);
 	this->hud->bullet_sprite[1].setTexture(manager.get_texture("Assets/two-way.png", sf::Color::White), true);
@@ -64,7 +74,6 @@ View::View(Model* model)
 	this->hud->status_sprite[0].setTexture(manager.get_texture("Assets/onFire.png", sf::Color(165, 165, 165)), true);
 	this->hud->status_sprite[1].setTexture(manager.get_texture("Assets/onBuff.png", sf::Color::White), true);
 
-	//inserting texture
 	//player texture
 	this->model->player->sprite.setTexture(manager.get_texture("Assets/player.png", sf::Color(0, 128, 192)), true);
 	this->model->player->size = manager.get_texture("Assets/player.png").getSize();
@@ -165,6 +174,8 @@ void View::renderMenu()
 		menu->render(this->window);
 	else if (this->model->gamemode == MODE_GAME_OVER)
 		menu->renderGameOver(this->window);
+	sprite_mouse.setPosition(mouse_position);
+	window.draw(sprite_mouse);
 }
 
 void View::render()

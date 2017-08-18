@@ -46,7 +46,7 @@ void Hud::render(sf::RenderWindow& window)
 	}
 
 	//bullet type
-	for (int i = 0; i < MAX_HOLD_BULLET; i++)
+	for (int i = 0; i < player->CURRENT_HOLD_BULLET; i++)
 	{
 		if (player->shoot_type[i] != 0)
 		{

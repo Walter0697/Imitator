@@ -37,6 +37,9 @@ public:
 	int score;
 	float onFire = 0;
 
+	int CURRENT_HOLD_BULLET = 5;
+	float holdbuff = 0;
+
 	sf::Vector2u size;
 	sf::Sprite sprite;
 };

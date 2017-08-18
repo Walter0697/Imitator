@@ -22,7 +22,8 @@
 #define MAX_DENEMY 30
 
 //define hold bullet
-#define MAX_HOLD_BULLET 5
+#define MAX_HOLD_BULLET 10
+#define HOLD_FOREVER 999999
 
 //define tool information
 #define MAX_GREEN_SHIELD 5

@@ -13,7 +13,7 @@ Model::Model()
 	this->shield = new Shield(this->player);
 	this->radShield = new RadShield(this->player);
 
-	this->story = new Story(this->enemySet);
+	this->story = new Story(this->enemySet, this->toolSet);
 
 	this->gamemode = MODE_MENU_SCREEN;
 }
@@ -58,7 +58,10 @@ void Model::update(sf::Time& delta_time)
 		elementHit(delta_time);
 
 		if (this->player->hp < 0)
+		{
+			this->player->position = sf::Vector2f(99999, 99999);
 			this->gamemode = MODE_GAME_OVER;
+		}
 	}	
 }
 
@@ -94,6 +97,7 @@ void Model::initAll()
 	playerSet->initBullet();
 	enemyBulletSet->initBullet();
 	toolSet->initTool();
+	story->init();
 	shield->level = 0;
 	radShield->health = 0;
 	boss_chance = 0;
@@ -275,7 +279,7 @@ void Model::bossShootCount()
 
 void Model::shoot()
 {
-	for (int i = 0; i < MAX_HOLD_BULLET; i++)
+	for (int i = 0; i < player->CURRENT_HOLD_BULLET; i++)
 	{
 		if (this->player->shoot_type[i] != 0)
 		{
@@ -1233,7 +1237,7 @@ int Model::playerDamage(Bullet& bullet, Hitbox& hitbox)
 			if (coll.ShieldBulletCollision(this->player, this->radShield->hitbox.hitbox_r, bullet, hitbox))
 			{
 				//shield is being damaged
-				this->radShield->addShield(-bullet.damage);
+				this->radShield->addShield(-bullet.damage * 0.75f);
 				return 2;
 			}
 		}

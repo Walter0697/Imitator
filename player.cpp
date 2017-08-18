@@ -18,7 +18,7 @@ Player::~Player() {}
 void Player::addBullet(int type, int rate)
 {
 	int empty = -1;
-	for (int i = 0; i < MAX_HOLD_BULLET; i++)
+	for (int i = 0; i < CURRENT_HOLD_BULLET; i++)
 	{
 		if (shoot_type[i] == 0)
 		{
@@ -54,34 +54,34 @@ void Player::addBullet(int type, int rate)
 	}
 	else
 	{
-		for (int i = 0; i < MAX_HOLD_BULLET - 1; i++)
+		for (int i = 0; i < CURRENT_HOLD_BULLET - 1; i++)
 		{
 			shoot_type[i] = shoot_type[i + 1];
 			shoot_count[i] = shoot_count[i + 1];
 			shoot_rate[i] = shoot_rate[i + 1];
 			shoot_type_s[i] = shoot_type_s[i + 1];
 		}
-		shoot_type[MAX_HOLD_BULLET - 1] = type;
-		shoot_count[MAX_HOLD_BULLET - 1] = 0;
+		shoot_type[CURRENT_HOLD_BULLET - 1] = type;
+		shoot_count[CURRENT_HOLD_BULLET - 1] = 0;
 		if (rate == -1)
 		{
-			shoot_rate[MAX_HOLD_BULLET - 1] = rand() % 600 + 200;
-			shoot_type_s[MAX_HOLD_BULLET - 1] = -1;
+			shoot_rate[CURRENT_HOLD_BULLET - 1] = rand() % 600 + 200;
+			shoot_type_s[CURRENT_HOLD_BULLET - 1] = -1;
 		}
 		else if (rate == 7)
 		{
-			shoot_rate[MAX_HOLD_BULLET - 1] = 4000 * 0.7;
-			shoot_type_s[MAX_HOLD_BULLET - 1] = 7;
+			shoot_rate[CURRENT_HOLD_BULLET - 1] = 4000 * 0.7;
+			shoot_type_s[CURRENT_HOLD_BULLET - 1] = 7;
 		}
 		else if (rate == 10)
 		{
-			shoot_rate[MAX_HOLD_BULLET - 1] = 1000 * 0.7;
-			shoot_type_s[MAX_HOLD_BULLET - 1] = 10;
+			shoot_rate[CURRENT_HOLD_BULLET - 1] = 1000 * 0.7;
+			shoot_type_s[CURRENT_HOLD_BULLET - 1] = 10;
 		}
 		else
 		{
-			shoot_rate[MAX_HOLD_BULLET - 1] = rate * 0.7;
-			shoot_type_s[MAX_HOLD_BULLET - 1] = 0;
+			shoot_rate[CURRENT_HOLD_BULLET - 1] = rate * 0.7;
+			shoot_type_s[CURRENT_HOLD_BULLET - 1] = 0;
 		}
 	}
 }
@@ -98,9 +98,12 @@ void Player::initialize()
 	this->hp = this->maxhp;
 	this->maxshield = 500;
 	this->shield = 0;
+
 	this->onFire = 0;
+	this->holdbuff = 0;
 
 	this->score = 0;
+	CURRENT_HOLD_BULLET = 5;
 
 	//initialize bullets
 	for (int i = 0; i < MAX_HOLD_BULLET; i++)
@@ -130,7 +133,13 @@ void Player::update(sf::Time deltaTime)
 	if (this->shield > 0) this->shield -= deltaTime.asSeconds() * 10;
 	if (this->shield < 0) this->shield = 0;
 
-	for (int i = 0; i < MAX_HOLD_BULLET; i++)
+	if (holdbuff != HOLD_FOREVER)
+		if (holdbuff > 0)
+			holdbuff -= deltaTime.asSeconds();
+		else
+			CURRENT_HOLD_BULLET = 5;
+
+	for (int i = 0; i < CURRENT_HOLD_BULLET; i++)
 	{
 		if (shoot_count[i] < shoot_rate[i])
 			shoot_count[i] += deltaTime.asMilliseconds();

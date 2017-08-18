@@ -58,7 +58,8 @@ void Game::loop()
 			this->controller->inputs(delta_time);
 			if (!this->model->pause)
 			{
-				this->model->update(delta_time);
+				if (!this->model->story->isStory)
+					this->model->update(delta_time);
 				this->model->updateStory(delta_time);
 			}
 			this->view->render();
@@ -90,6 +91,8 @@ void Game::loop()
 
 		case MODE_GAME_OVER:
 			this->controller->menuinput(delta_time, this->view->window);
+			this->model->update(delta_time);
+			this->view->render();
 			this->view->menu->changeScore(this->model->player->score);
 			this->view->renderMenu();
 			break;

@@ -23,6 +23,19 @@ void Controller::storyinput(sf::Time delta_time)
 			switch (event.key.code)
 			{
 			case sf::Keyboard::Space:
+				if (this->model->story->processing < this->model->story->dataCols)
+				{
+					if (this->model->story->mapData[this->model->story->processing][0] == "DIALOG")
+					{
+						if (this->model->story->canContin == false)
+							this->model->story->countdown -= 75;
+						else
+						{
+							this->model->story->isStory = false;
+							this->model->story->processing++;
+						}
+					}
+				}
 				break;
 			}
 		}
@@ -61,6 +74,11 @@ void Controller::menuinput(sf::Time delta_time, sf::RenderWindow& window)
 	{
 		switch (this->selecting)
 		{
+		case 1:
+			this->model->initAll();
+			this->model->story->setup(this->model->story->currentStory);
+			this->model->gamemode = MODE_STORY_MODE;
+			break;
 		case 2:
 			this->model->initAll();
 			this->model->gamemode = MODE_CHAOS_MODE;
@@ -192,12 +210,26 @@ void Controller::testerinputs(sf::Time delta_time)
 					this->model->player->addBullet(11, 10);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
 					this->model->player->addBullet(12, 5000);
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::V))
+					this->model->player->hp = this->model->player->maxhp;
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::B))
 					this->model->shield->addShield(1);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::G))
 					this->model->enemySet->spawn(rand() % 2 + 1);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F2))
 					this->model->pause = !this->model->pause;
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+					if (this->model->player->CURRENT_HOLD_BULLET + 1 != MAX_HOLD_BULLET)
+					{
+						this->model->player->CURRENT_HOLD_BULLET++;
+						this->model->player->holdbuff = HOLD_FOREVER;
+					}
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+					if (this->model->player->CURRENT_HOLD_BULLET != 5)
+					{
+						this->model->player->CURRENT_HOLD_BULLET--;
+						this->model->player->holdbuff = HOLD_FOREVER;
+					}
 				break;
 		}
 	}

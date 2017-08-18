@@ -43,6 +43,10 @@ void Menu::setup()
 	scoreText.setString("SCORE : ");
 	scoreText.setCharacterSize(20);
 	
+	restartText = scoreText;
+	restartText.setString("Press R to go back to menu");
+	restartText.setPosition(SCREEN_WIDTH / 2 - restartText.getLocalBounds().width / 2, 600);
+
 	menuplayer.setPosition(500, 500);
 }
 
@@ -83,6 +87,7 @@ void Menu::renderGameOver(sf::RenderWindow& window)
 {
 	window.draw(gameOverText);
 	window.draw(scoreText);
+	window.draw(restartText);
 }
 
 void Menu::render(sf::RenderWindow& window) 

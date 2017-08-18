@@ -25,6 +25,7 @@ public:
 	sf::Text unselectedText[MENU_OPTION];
 	sf::Text selectedText;
 	sf::Text gameOverText;
+	sf::Text restartText;
 	sf::Text scoreText;
 
 	sf::Sprite menuplayer;

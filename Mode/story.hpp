@@ -4,11 +4,14 @@
 
 #include "../enemyset.hpp"
 #include "../Enemy/enemy.hpp"
+#include "../toolSet.hpp"
+#include "../Tools/tool.hpp"
 
 #include "../defs.h"
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <algorithm>
 
 class Story : public Renderable
 {
@@ -16,14 +19,17 @@ class Story : public Renderable
 public:
 
 	EnemySet* enemySet;
-	Story(EnemySet* enemySet);
+	ToolSet* toolSet;
+	Story(EnemySet* enemySet, ToolSet* toolSet);
 	~Story();
 
 	//mode related
 	int currentStory = 1;
 	int processing = 0;
 	bool isStory = false;
+	bool canContin = false;
 
+	void init();
 	void setup();
 	void setup(int);
 	void update(sf::Time&);
@@ -34,6 +40,7 @@ public:
 	void readFile(std::string);
 	
 	//action related
+	void dropTool(int, int, int);
 	void targetEnemy(int, int);
 	void setFont(int);
 
@@ -52,6 +59,7 @@ public:
 
 	//text to render
 	std::string dialog;
+	std::string dialog2;
 	std::string name;
 
 	//Enemy information
@@ -69,14 +77,16 @@ public:
 	sf::Text textName;
 	sf::Text textDialog;
 	sf::Text textDialog2;
+	sf::Text textCutScene;
 
 	//text box related
 	sf::RectangleShape textBox;
-	sf::VertexArray cutscene;
+	sf::RectangleShape cutBox;
 
 	//text number related
 	int textNum;
 	int textNow;
+	int line;
 
 	//sprite related
 	sf::Sprite arrow;

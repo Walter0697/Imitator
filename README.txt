@@ -19,6 +19,9 @@
 12/8 : adding choas, custom mode
 13/8 : adding second boss, pause function
 14/8 : finally set up the github repository
+18/8 : god help me, almost finish the setup for story mode 
+       also, yellow shield is too weak, let give it 75% damage resist
+	   you can see the enemies movement after you die now!
 
 assets:
 	ship:

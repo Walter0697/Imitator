@@ -1,6 +1,6 @@
 TOTALLINE
 CUTSCENE      string       font           background_r     g        b        6
-DIALOG        string       string(name)   font          background_r   g   b    text_r    g    b   10
+DIALOG        string_1     string_2       string(name)     font     background_r   g   b    text_r    g    b   11
 ENEMY         type         x_position     targetx       targety      5    <----- save an enemy
 SPAWN         type         number     3
 WAIT          delta_time         2

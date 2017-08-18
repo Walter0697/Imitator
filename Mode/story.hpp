@@ -73,6 +73,9 @@ public:
 	int textNum;
 	int textNow;
 
+	//textBox related
+	sf::RectangleShape textBox;
+
 	//objective related
 	int objective;
 };

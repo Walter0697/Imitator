@@ -1,3 +1,7 @@
 2
-6        CUTSCENE    testing   1          0    0    0   
-5        ENEMY       1         300        400  300
+11       DIALOG      This_is_just_a_testing    sounds_cool_right?    Aname    1      255     255    255   255   255   255
+3        SPAWN       1         3
+2        WAIT        10000
+6        CUTSCENE    testing   1          0    0    0 
+5        ENEMY       1         100        100  100
+  

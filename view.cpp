@@ -55,7 +55,15 @@ View::View(Model* model)
 
 	//loading story sprite
 	this->model->story->sprite[0].setTexture(manager.get_texture("Assets/pointer.png", sf::Color(237, 28, 36)), true);
-	this->model->story->sprite[0].setPosition(-300, -300);
+	this->model->story->sprite[0].setPosition(99999, 99999);
+	this->model->story->sprite[1].setTexture(manager.get_texture("Assets/shieldUnlock.png", sf::Color::White), true);
+	this->model->story->sprite[1].setPosition(99999, 99999);
+	this->model->story->sprite[2].setTexture(manager.get_texture("Assets/healthUnlock.png", sf::Color::White), true);
+	this->model->story->sprite[2].setPosition(99999, 99999);
+	this->model->story->sprite[3].setTexture(manager.get_texture("Assets/imumiumUnlock.png", sf::Color::White), true);
+	this->model->story->sprite[3].setPosition(99999, 99999);
+	this->model->story->sprite[4].setTexture(manager.get_texture("Assets/stoneUnlock.png", sf::Color::White), true);
+	this->model->story->sprite[4].setPosition(99999, 99999);
 
 	//setting up the bullet_type in hud
 	this->hud->bullet_sprite[0].setTexture(manager.get_texture("Assets/default.png", sf::Color::White), true);

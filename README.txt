@@ -42,6 +42,7 @@ assets:
 		http://www.1001fonts.com/text-fonts.html
 		https://opengameart.org/content/fireflame
 		https://opengameart.org/content/simple-shooter-icons
+		https://opengameart.org/content/rpg-frame
 		
 	tool:
 		https://opengameart.org/content/32x32-fantasy-tileset

@@ -375,7 +375,7 @@ void Story::update(sf::Time& delta_time)
 		//show picture ended
 		else if (mapData[processing][0] == "PICTUREEND")
 		{
-			spriteAppear(atoi(mapData[processing][1].c_str()), -300, -300);
+			spriteAppear(atoi(mapData[processing][1].c_str()), 99999, 99999);
 			processing++;
 		}
 	}
@@ -419,7 +419,7 @@ void Story::dropTool(int type, int positionx, int positiony)
 
 void Story::render(sf::RenderWindow& window)
 {
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 5; i++)
 		window.draw(sprite[i]);
 
 	if (processing < dataCols)

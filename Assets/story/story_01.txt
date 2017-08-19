@@ -1,7 +1,12 @@
-5
+10
 11       DIALOG      This_is_just_a_testing    sounds_cool_right?    Aname    1      255     255    255   255   255   255
 3        SPAWN       1         4
-2        WAIT        5000
+2        WAIT        10000
+3        SPAWN       3         5
+2        WAIT        10000
+4        PICTURE     2         168       -30
+11       DIALOG      This_is_testing            is_it_working??      Me       1      255     255    255   255   255   255
+2        PICTUREEND  2
 4        ENEMY       1         400        400
 2        OBJECTIVE   VICTORY
 

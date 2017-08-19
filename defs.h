@@ -49,4 +49,4 @@
 #define MODE_SCORE_BOARD 93
 
 #define MENU_OPTION 6
-#define LAST_STORY 10
+#define LAST_STORY 2

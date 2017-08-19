@@ -14,15 +14,6 @@ Story::Story(EnemySet* enemySet, ToolSet* toolSet, DropRate* droprate, Player* p
 	textColor = sf::Color(0, 0, 0, 255);
 
 	setup(1);
-
-	for (int i = 0; i < dataCols; i++)
-	{
-		for (int j = 0; j < dataRows[i]; j++)
-		{
-			cout << mapData[i][j] << "  ";
-		}
-		cout << endl;
-	} 
 }
 
 Story::~Story() {}
@@ -94,8 +85,16 @@ void Story::readFile(std::string filename)
 			fileHndl >> mapData[i][j];
 		}
 	}
-
 	fileHndl.close();
+
+	for (int i = 0; i < dataCols; i++)
+	{
+		for (int j = 0; j < dataRows[i]; j++)
+		{
+			cout << mapData[i][j] << "  ";
+		}
+		cout << endl;
+	}
 
 	init();
 	enemySet->initEnemy();
@@ -205,36 +204,32 @@ void Story::update(sf::Time& delta_time)
 			textCutScene.setColor(textColor);
 		}
 		//rendering victory
-		else if (mapData[processing][0] == "OBJECTIVE")
+		else if ((mapData[processing][0] == "OBJECTIVE" && mapData[processing][1] == "VICTORY") || mapData[processing][0] == "VICTORY")
 		{
-			if (mapData[processing][1] == "VICTORY")
+			while (countdown <= 0 && line == 1)
 			{
-				while (countdown <= 0 && line == 1)
-				{
-					textMission.setPosition(textMission.getPosition().x, textMission.getPosition().y + 5);
-					countdown += 10;
-				}
-				while (countdown <= 0 && line == 2)
-				{
-					textComplete.setPosition(textComplete.getPosition().x, textComplete.getPosition().y + 5);
-					countdown += 10;
-				}
-				while (countdown <= 0 && line == 3)
-				{
-					textScore.setPosition(textScore.getPosition().x,  textScore.getPosition().y + 5);
-					countdown += 5;
-				}
+				textMission.setPosition(textMission.getPosition().x, textMission.getPosition().y + 5);
+				countdown += 10;
+			}
+			while (countdown <= 0 && line == 2)
+			{
+				textComplete.setPosition(textComplete.getPosition().x, textComplete.getPosition().y + 5);
+				countdown += 10;
+			}
+			while (countdown <= 0 && line == 3)
+			{
+				textScore.setPosition(textScore.getPosition().x,  textScore.getPosition().y + 5);
+				countdown += 5;
+			}
 
-				if (textMission.getPosition().y >= 350 && line == 1)
-					line = 2;
-				else if (textComplete.getPosition().y >= 350 && line == 2)
-					line = 3;
-				else if (textScore.getPosition().y >= SCREEN_HEIGHT / 2 && line == 3)
-				{
-					line = 4;
-					canContin = true;
-				}
-
+			if (textMission.getPosition().y >= 350 && line == 1)
+				line = 2;
+			else if (textComplete.getPosition().y >= 350 && line == 2)
+				line = 3;
+			else if (textScore.getPosition().y >= SCREEN_HEIGHT / 2 && line == 3)
+			{
+				line = 4;
+				canContin = true;
 			}
 		}
 	}
@@ -377,6 +372,19 @@ void Story::update(sf::Time& delta_time)
 		{
 			spriteAppear(atoi(mapData[processing][1].c_str()), 99999, 99999);
 			processing++;
+		}
+		//just victory
+		else if (mapData[processing][0] == "VICTORY")
+		{
+			textMission.setPosition(textMission.getPosition().x, -100);
+			textComplete.setPosition(textComplete.getPosition().x, -100);
+			textScore.setString("CURRENT SCORE:" + std::to_string(player->score));
+			textScore.setPosition(SCREEN_WIDTH / 2 - textScore.getLocalBounds().width / 2, -100);
+
+			isStory = true;
+			canContin = false;
+			countdown = 0;
+			line = 1;
 		}
 	}
 }

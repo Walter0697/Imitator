@@ -25,8 +25,8 @@ void Menu::setup()
 	}
 
 	selectBar[0] = "STORY MODE";
-	selectBar[1] = "SETTING";
-	selectBar[2] = "SCOREBOARD";
+	selectBar[1] = "SCOREBOARD";
+	selectBar[2] = "HOW TO PLAY";
 	selectBar[3] = "EXIT";
 	selectBar[4] = " ";
 	selectBar[5] = " ";
@@ -75,7 +75,7 @@ void Menu::unlock()
 	selectBar[1] = "CHAOS MODE";
 	selectBar[2] = "CUSTOM MODE";
 	selectBar[3] = "SCOREBOARD";
-	selectBar[4] = "SETTING";
+	selectBar[4] = "HOW TO PLAY";
 	selectBar[5] = "EXIT";
 
 	for (int i = 0; i < MENU_OPTION; i++)

@@ -40,8 +40,9 @@ void Controller::storyinput(sf::Time delta_time)
 						if (this->model->story->canContin == false)
 							this->model->story->countdown -= 25;
 					}
-					else if (this->model->story->mapData[this->model->story->processing][0] == "OBJECTIVE" &&
-						this->model->story->mapData[this->model->story->processing][1] == "VICTORY")
+					else if ((this->model->story->mapData[this->model->story->processing][0] == "OBJECTIVE" &&
+						this->model->story->mapData[this->model->story->processing][1] == "VICTORY") ||
+						this->model->story->mapData[this->model->story->processing][0] == "VICTORY")
 					{
 						if (this->model->story->canContin)
 						{
@@ -58,7 +59,11 @@ void Controller::storyinput(sf::Time delta_time)
 		}
 	}
 	if (this->model->story->currentStory == LAST_STORY)
+	{
 		this->view->menu->unlock();
+		this->model->gamemode = MODE_MENU_SCREEN;
+		this->selecting = 1;
+	}
 }
 
 void Controller::menuinput(sf::Time delta_time, sf::RenderWindow& window)

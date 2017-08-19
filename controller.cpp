@@ -76,12 +76,27 @@ void Controller::menuinput(sf::Time delta_time, sf::RenderWindow& window)
 			{
 			case sf::Keyboard::W:
 				this->selecting--;
-				if (this->selecting == 0)
-					this->selecting = MENU_OPTION;
+				if (this->view->menu->storyClicked)
+				{
+					if (this->selecting == 6)
+						this->selecting = 9;
+				}
+				else if (!this->view->menu->newModeUnlock)
+				{
+					if (this->selecting == 0)
+						this->selecting = 4;
+				}
+				else if (this->selecting == 0)
+						this->selecting = MENU_OPTION;
 				break;
 			case sf::Keyboard::S:
 				this->selecting++;
-				if (this->view->menu->newModeUnlock)
+				if (this->view->menu->storyClicked)
+				{
+					if (this->selecting == 10)
+						this->selecting = 7;
+				}
+				else if (this->view->menu->newModeUnlock)
 				{
 					if (this->selecting == MENU_OPTION + 1)
 						this->selecting = 1;
@@ -109,6 +124,16 @@ void Controller::menuinput(sf::Time delta_time, sf::RenderWindow& window)
 
 		case sf::Event::MouseMoved:
 			this->view->mouse_position = sf::Vector2f(event.mouseMove.x, event.mouseMove.y);
+			if (this->view->menu->storyClicked)
+			{
+				if ((inOption(event.mouseMove.x, event.mouseMove.y) >= 7 &&
+					inOption(event.mouseMove.x, event.mouseMove.y) <= 9) ||
+					inOption(event.mouseMove.x, event.mouseMove.y) == 1)
+				{
+					selecting = inOption(event.mouseMove.x, event.mouseMove.y);
+					this->view->menu->changeSelect(this->selecting);
+				}
+			}
 			if (this->view->menu->newModeUnlock)
 			{
 				if (inOption(event.mouseMove.x, event.mouseMove.y) != -1)
@@ -132,13 +157,23 @@ void Controller::menuinput(sf::Time delta_time, sf::RenderWindow& window)
 	//mouse clicking or pressing return
 	if (this->model->gamemode == MODE_MENU_SCREEN)
 	{
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+		if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Return && keyboardClick == false)
+		{
 			enter();
+			keyboardClick = true;
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+			keyboardClick = false;
 
-		if (event.type == sf::Event::MouseButtonPressed)
+		if (event.type == sf::Event::MouseButtonReleased && isClick == false)
 			if (inOption(event.mouseButton.x, event.mouseButton.y) == selecting)
 				if (event.mouseButton.button == sf::Mouse::Left)
+				{
 					enter();
+					isClick = true;
+				}
+		if (event.type == sf::Event::MouseButtonPressed)
+			isClick = false;
 	}
 
 }
@@ -151,8 +186,15 @@ void Controller::enter()
 		switch (this->selecting)
 		{
 		case 1:
-			this->model->story->setup(this->model->story->currentStory);
-			this->model->gamemode = MODE_STORY_MODE;
+			//this->model->story->setup(this->model->story->currentStory);
+			//this->model->gamemode = MODE_STORY_MODE;
+			this->view->menu->storyClicked = !this->view->menu->storyClicked;
+			if (this->view->menu->storyClicked)
+				this->selecting = 7;
+			else
+				this->selecting = 1;
+
+			this->view->menu->changeSelect(this->selecting);
 			break;
 		case 2:
 			this->model->gamemode = MODE_CHAOS_MODE;
@@ -168,6 +210,20 @@ void Controller::enter()
 		case 6:
 			this->view->window.close();
 			break;
+		case 7:
+			this->model->story->setup(this->model->story->currentStory);
+			this->model->gamemode = MODE_STORY_MODE;
+			break;
+		case 8:
+			this->model->story->currentStory = 1;
+			this->model->story->setup(this->model->story->currentStory);
+			this->model->gamemode = MODE_STORY_MODE;
+			break;
+		case 9:
+			this->view->menu->storyClicked = false;
+			this->selecting = 1;
+			this->view->menu->changeSelect(this->selecting);
+			break;
 		}
 	}
 	//haven't unlock the new mode
@@ -176,8 +232,13 @@ void Controller::enter()
 		switch (this->selecting)
 		{
 		case 1:
-			this->model->story->setup(this->model->story->currentStory);
-			this->model->gamemode = MODE_STORY_MODE;
+			this->view->menu->storyClicked = !this->view->menu->storyClicked;
+			if (this->view->menu->storyClicked)
+				this->selecting = 7;
+			else
+				this->selecting = 1;
+
+			this->view->menu->changeSelect(this->selecting);
 			break;
 			//case 2:
 			//setting
@@ -185,6 +246,20 @@ void Controller::enter()
 			//scoreboard
 		case 4:
 			this->view->window.close();
+			break;
+		case 7:
+			this->model->story->setup(this->model->story->currentStory);
+			this->model->gamemode = MODE_STORY_MODE;
+			break;
+		case 8:
+			this->model->story->currentStory = 1;
+			this->model->story->setup(this->model->story->currentStory);
+			this->model->gamemode = MODE_STORY_MODE;
+			break;
+		case 9:
+			this->view->menu->storyClicked = false;
+			this->selecting = 1;
+			this->view->menu->changeSelect(this->selecting);
 			break;
 		}
 	}
@@ -206,6 +281,15 @@ int Controller::inOption(float positionx, float positiony)
 			return 5;
 		else if (positiony >= 710 && positiony <= 760)
 			return 6;
+	}
+	else if (positionx >= 450 && positionx <= 780)
+	{
+		if (positiony >= 340 && positiony <= 380)
+			return 7;
+		else if (positiony >= 400 && positiony <= 440)
+			return 8;
+		else if (positiony >= 460 && positiony <= 500)
+			return 9;
 	}
 	return -1;
 }

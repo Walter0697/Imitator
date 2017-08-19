@@ -14,6 +14,9 @@ public:
 	//only for testerinputs
 	int test = 0;
 
+	bool isClick = false;
+	bool keyboardClick = false;
+
 	int selecting;
 	Controller(Model* model, View* view);
 	~Controller();

@@ -34,6 +34,19 @@ void Menu::setup()
 	for (int i = 0; i < MENU_OPTION; i++)
 		unselectedText[i].setString(selectBar[i]);
 
+	for (int i = 0; i < 3; i++)
+	{
+		storyText[i] = unselectedText[0];
+		storyText[i].setCharacterSize(35);
+	}
+
+	storyText[0].setString("CONTINUE");
+	storyText[0].setPosition(450, 340);
+	storyText[1].setString("NEW GAME");
+	storyText[1].setPosition(450, 400);
+	storyText[2].setString("BACK");
+	storyText[2].setPosition(450, 460);
+
 	selectedText = unselectedText[0];
 	selectedText.setColor(sf::Color::Cyan);
 	selectedText.setPosition(SCREEN_WIDTH - title.getLocalBounds().width + 10, 310);
@@ -97,6 +110,18 @@ void Menu::changeSelect(int num)
 		selectedText.setPosition(SCREEN_WIDTH - title.getLocalBounds().width + 10, 710);
 		selectedText.setString(selectBar[5]);
 		break;
+	case 7:
+		selectedText.setPosition(460, 350);
+		selectedText.setString("CONTINUE");
+		break;
+	case 8:
+		selectedText.setPosition(460, 410);
+		selectedText.setString("NEW GAME");
+		break;
+	case 9:
+		selectedText.setPosition(460, 470);
+		selectedText.setString("BACK");
+		break;
 	}
 }
 
@@ -124,5 +149,9 @@ void Menu::render(sf::RenderWindow& window)
 	else
 		for (int i = 0; i < 4; i++)
 			window.draw(unselectedText[i]);
+
+	if (storyClicked)
+		for (int i = 0; i < 3; i++)
+			window.draw(storyText[i]);
 	
 }

@@ -14,7 +14,7 @@ Model::Model()
 	this->radShield = new RadShield(this->player);
 
 	this->droprate = new DropRate();
-	this->story = new Story(this->enemySet, this->toolSet, this->droprate);
+	this->story = new Story(this->enemySet, this->toolSet, this->droprate, this->player);
 	
 	this->gamemode = MODE_MENU_SCREEN;
 }
@@ -1157,7 +1157,7 @@ void Model::checkHit()
 			{
 				this->toolSet->imumium[i].position = sf::Vector2f(0, -700);
 				this->toolSet->imumium[i].velocity = sf::Vector2f(0, 0);
-				this->player->holdbuff += 5000;
+				this->player->holdbuff += 10000;
 				this->player->CURRENT_HOLD_BULLET = MAX_HOLD_BULLET;
 			}
 		}
@@ -1173,7 +1173,7 @@ void Model::checkHit()
 			{
 				this->toolSet->stoneTool[i].position = sf::Vector2f(0, -700);
 				this->toolSet->stoneTool[i].velocity = sf::Vector2f(0, 0);
-				this->player->onLuck += 8000;
+				this->player->onLuck += 15000;
 				this->droprate->multiplier = 2;
 			}
 		}

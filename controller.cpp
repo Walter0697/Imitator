@@ -35,6 +35,23 @@ void Controller::storyinput(sf::Time delta_time)
 							this->model->story->processing++;
 						}
 					}
+					else if (this->model->story->mapData[this->model->story->processing][0] == "CUTSCENE")
+					{
+						if (this->model->story->canContin == false)
+							this->model->story->countdown -= 25;
+					}
+					else if (this->model->story->mapData[this->model->story->processing][0] == "OBJECTIVE" &&
+						this->model->story->mapData[this->model->story->processing][1] == "VICTORY")
+					{
+						if (this->model->story->canContin)
+						{
+							this->model->story->currentStory++;
+							this->model->story->setup(this->model->story->currentStory);
+							//initialize bulles
+							this->model->playerSet->initBullet();
+							this->model->enemyBulletSet->initBullet();
+						}
+					}
 				}
 				break;
 			}
@@ -82,13 +99,14 @@ void Controller::menuinput(sf::Time delta_time, sf::RenderWindow& window)
 					this->model->gamemode = MODE_MENU_SCREEN;
 				}
 				break;
-			case sf::Keyboard::F12:
+			case sf::Keyboard::F10:
 				this->view->menu->unlock();
 				selecting = 1;
 				break;
 			}
 			this->view->menu->changeSelect(this->selecting);
 			break;
+
 		case sf::Event::MouseMoved:
 			this->view->mouse_position = sf::Vector2f(event.mouseMove.x, event.mouseMove.y);
 			if (this->view->menu->newModeUnlock)
@@ -112,13 +130,16 @@ void Controller::menuinput(sf::Time delta_time, sf::RenderWindow& window)
 	}
 
 	//mouse clicking or pressing return
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
-		enter();
+	if (this->model->gamemode == MODE_MENU_SCREEN)
+	{
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+			enter();
 
-	if (event.type == sf::Event::MouseButtonPressed)
-		if (inOption(event.mouseButton.x, event.mouseButton.y) == selecting)
-			if (event.mouseButton.button == sf::Mouse::Left)
-				enter();
+		if (event.type == sf::Event::MouseButtonPressed)
+			if (inOption(event.mouseButton.x, event.mouseButton.y) == selecting)
+				if (event.mouseButton.button == sf::Mouse::Left)
+					enter();
+	}
 
 }
 
@@ -321,7 +342,7 @@ void Controller::testerinputs(sf::Time delta_time)
 						this->model->player->holdbuff = HOLD_FOREVER;
 					}
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F8))
-					this->model->droprate->unlock(test++);
+					this->model->droprate->unlock(test++); 
 
 				break;
 		}

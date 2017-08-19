@@ -20,6 +20,7 @@ View::View(Model* model)
 	//loading story font
 	if (!this->model->story->fontFriend.loadFromFile("Assets/huxtable.ttf")) cout << "failed to load font huxtable.ttf" << endl;
 	if (!this->model->story->fontEnemy.loadFromFile("Assets/Quikhand.ttf")) cout << "failed to load Quickhand.ttf" << endl;
+	if (!this->model->story->fontVictory.loadFromFile("Assets/neuropolitical rg.ttf")) cout << "failed to load font neuropolitical rg.ttf" << endl;
 	this->model->story->setup();
 
 	//loading hud

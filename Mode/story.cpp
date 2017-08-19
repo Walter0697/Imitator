@@ -2,11 +2,12 @@
 using namespace std;
 
 
-Story::Story(EnemySet* enemySet, ToolSet* toolSet, DropRate* droprate)
+Story::Story(EnemySet* enemySet, ToolSet* toolSet, DropRate* droprate, Player* player)
 {
 	this->enemySet = enemySet;
 	this->toolSet = toolSet;
 	this->droprate = droprate;
+	this->player = player;
 
 	//initialization
 	background = sf::Color(0, 0, 0, 50);
@@ -54,6 +55,22 @@ void Story::setup()
 	cutBox.setPosition(0, 0);
 	cutBox.setSize(sf::Vector2f(SCREEN_WIDTH, SCREEN_HEIGHT));
 	cutBox.setFillColor(sf::Color(255, 255, 255, 255));
+
+	textMission.setFont(fontVictory);
+	textMission.setCharacterSize(40);
+	textMission.setColor(sf::Color::Yellow);
+	textMission.setStyle(sf::Text::Bold);
+	textMission.setString("MISSION");
+	textMission.setPosition(SCREEN_WIDTH / 2 - textMission.getLocalBounds().width - 25, -100);
+
+	textComplete = textMission;
+	textComplete.setString("COMPLETE");
+	textComplete.setPosition(SCREEN_WIDTH / 2 + 15, -100);
+
+	textScore = textComplete;
+	textScore.setCharacterSize(30);
+	textScore.setString("SCORE:");
+	textScore.setPosition(-300, SCREEN_HEIGHT / 2);	
 }
 
 void Story::readFile(std::string filename)
@@ -80,16 +97,21 @@ void Story::readFile(std::string filename)
 
 	fileHndl.close();
 
-	processing = 0;
-	countdown = 0;
-	isStory = false;
+	init();
+	enemySet->initEnemy();
 }
 
 void Story::init()
 {
+	processing = 0;
+	countdown = 0;
 	enemyInfo = 0;
 	canContin = true;
 	isStory = false;
+
+	textMission.setPosition(SCREEN_WIDTH / 2 - textMission.getLocalBounds().width - 25, -100);
+	textComplete.setPosition(SCREEN_WIDTH / 2 + 15, -100);
+	textScore.setPosition(-900, SCREEN_HEIGHT / 2);
 }
 
 void Story::setup(int current)
@@ -100,6 +122,9 @@ void Story::setup(int current)
 	switch (current)
 	{
 	case 1:
+		readFile("Assets/story/story_01.txt");
+		break;
+	case 2:
 		readFile("Assets/story/story_01.txt");
 		break;
 	default:
@@ -124,6 +149,7 @@ void Story::update(sf::Time& delta_time)
 	//after data read
 	if (isStory)
 	{
+		//rendering dialog
 		if (mapData[processing][0] == "DIALOG")
 		{
 			while (countdown <= 0 && textNow != textNum+1)
@@ -147,6 +173,7 @@ void Story::update(sf::Time& delta_time)
 			else
 				textDialog2.setString(dialog2.substr(0, textNow));
 		}
+		//rendering cutscene
 		else if (mapData[processing][0] == "CUTSCENE")
 		{
 			while (countdown <= 0 && line == 1)
@@ -176,6 +203,39 @@ void Story::update(sf::Time& delta_time)
 			}
 			cutBox.setFillColor(background);
 			textCutScene.setColor(textColor);
+		}
+		//rendering victory
+		else if (mapData[processing][0] == "OBJECTIVE")
+		{
+			if (mapData[processing][1] == "VICTORY")
+			{
+				while (countdown <= 0 && line == 1)
+				{
+					textMission.setPosition(textMission.getPosition().x, textMission.getPosition().y + 5);
+					countdown += 10;
+				}
+				while (countdown <= 0 && line == 2)
+				{
+					textComplete.setPosition(textComplete.getPosition().x, textComplete.getPosition().y + 5);
+					countdown += 10;
+				}
+				while (countdown <= 0 && line == 3)
+				{
+					textScore.setPosition(textScore.getPosition().x,  textScore.getPosition().y + 5);
+					countdown += 5;
+				}
+
+				if (textMission.getPosition().y >= 350 && line == 1)
+					line = 2;
+				else if (textComplete.getPosition().y >= 350 && line == 2)
+					line = 3;
+				else if (textScore.getPosition().y >= SCREEN_HEIGHT / 2 && line == 3)
+				{
+					line = 4;
+					canContin = true;
+				}
+
+			}
 		}
 	}
 
@@ -275,7 +335,7 @@ void Story::update(sf::Time& delta_time)
 		//rewards after killing target
 		else if (mapData[processing][0] == "OBJECTIVE")
 		{
-			if (enemySet->checkOutOfBound(*enemyInfo))
+			if (enemySet->checkOutOfBound(*enemyInfo) && enemyInfo != 0)
 			{
 				enemyInfo = 0;
 				if (mapData[processing][1] == "DIALOG")
@@ -284,6 +344,18 @@ void Story::update(sf::Time& delta_time)
 				{
 					dropTool(atoi(mapData[processing][2].c_str()), atoi(mapData[processing][3].c_str()), atoi(mapData[processing][4].c_str()));
 					processing++;
+				}
+				else if (mapData[processing][1] == "VICTORY")
+				{
+					textMission.setPosition(textMission.getPosition().x, -100);
+					textComplete.setPosition(textComplete.getPosition().x, -100);
+					textScore.setString("CURRENT SCORE:" + std::to_string(player->score));
+					textScore.setPosition(SCREEN_WIDTH / 2 - textScore.getLocalBounds().width / 2, -100);
+
+					isStory = true;
+					canContin = false;
+					countdown = 0;
+					line = 1;
 				}
 			}
 		}
@@ -311,12 +383,7 @@ void Story::update(sf::Time& delta_time)
 
 void Story::spriteAppear(int type, int positionx, int positiony)
 {
-	switch (type)
-	{
-	case 1:
-		sprite.setPosition(positionx, positiony);
-		break;
-	}
+	sprite[type - 1].setPosition(positionx, positiony);
 }
 
 void Story::dropTool(int type, int positionx, int positiony)
@@ -352,7 +419,9 @@ void Story::dropTool(int type, int positionx, int positiony)
 
 void Story::render(sf::RenderWindow& window)
 {
-	window.draw(sprite);
+	for (int i = 0; i < 2; i++)
+		window.draw(sprite[i]);
+
 	if (processing < dataCols)
 	{
 		if (mapData[processing][0] == "CUTSCENE" && isStory)
@@ -367,6 +436,12 @@ void Story::render(sf::RenderWindow& window)
 			window.draw(textName);
 			window.draw(textDialog);
 			window.draw(textDialog2);
+		}
+		else if (mapData[processing][0] == "OBJECTIVE" && mapData[processing][1] == "VICTORY")
+		{
+			window.draw(textMission);
+			window.draw(textComplete);
+			window.draw(textScore);
 		}
 	}
 }

@@ -1,9 +1,9 @@
 TOTALLINE
-9   CUTSCENE()      string       font           background_r     g        b              text_r    g     b 
-11  DIALOG()        string_1     string_2       string(name)     font     background_r   g   b    text_r    g    b 
-4   ENEMY()        type         x_position     targety   <----- save an enemy
-3   SPAWN()         type         number   
-2   WAIT()          delta_time   
+9   CUTSCENE      string       font           background_r     g        b              text_r    g     b 
+11  DIALOG        string_1     string_2       string(name)     font     background_r   g   b    text_r    g    b 
+4   ENEMY         type         x_position     targety   <----- save an enemy
+3   SPAWN         type         number   
+2   WAIT          delta_time   
 4   PICTURE       type         x_position     y_position 
 2   PICTUREEND    type
 2   UNLOCK        type(99->new mode)

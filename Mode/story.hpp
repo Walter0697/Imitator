@@ -6,6 +6,7 @@
 #include "../Enemy/enemy.hpp"
 #include "../toolSet.hpp"
 #include "../Tools/tool.hpp"
+#include "../player.hpp"
 #include "dropRate.hpp"
 
 #include "../defs.h"
@@ -22,7 +23,8 @@ public:
 	EnemySet* enemySet;
 	ToolSet* toolSet;
 	DropRate* droprate;
-	Story(EnemySet* enemySet, ToolSet* toolSet, DropRate* droprate);
+	Player* player;
+	Story(EnemySet* enemySet, ToolSet* toolSet, DropRate* droprate, Player* player);
 	~Story();
 
 	//mode related
@@ -70,9 +72,10 @@ public:
 	sf::Vector2f target;
 
 	//Sprite information
-	sf::Sprite sprite;
+	sf::Sprite sprite[2];
 
 	//font related
+	sf::Font fontVictory;
 	sf::Font fontFriend;
 	sf::Font fontEnemy;
 
@@ -81,6 +84,10 @@ public:
 	sf::Text textDialog;
 	sf::Text textDialog2;
 	sf::Text textCutScene;
+
+	sf::Text textMission;
+	sf::Text textComplete;
+	sf::Text textScore;
 
 	//text box related
 	sf::RectangleShape textBox;

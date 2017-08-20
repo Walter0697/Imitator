@@ -38,7 +38,13 @@ void Record::setup()
 	recordText.setCharacterSize(20);
 	recordText.setStyle(sf::Text::Bold);
 
-	currentRank = -1;
+	recBox.setSize(sf::Vector2f(730, 60));
+	recBox.setPosition(30, 0);
+	recBox.setFillColor(sf::Color(255, 0, 0, 100));
+	recBox.setOutlineColor(sf::Color(255, 0, 0));
+	recBox.setOutlineThickness(3);
+
+	currentRank = -1; 
 	currentType = -1;
 }
 
@@ -219,8 +225,8 @@ void Record::render(std::string title, int num, std::string** recordInfo, sf::Re
 	currentx = 565;
 	renderString(currentx, currenty, "BULLET TYPE", window);
 
-	currenty = 200;
-	for (int i = 0; i < shouldRender; i++)
+	currenty = 205;
+	for (int i = startPosition; i < startPosition + shouldRender; i++)
 	{
 		currentx = 35;
 		renderString(currentx, currenty, std::to_string(i + 1), window);
@@ -253,7 +259,7 @@ void Record::render(std::string title, int num, std::string** recordInfo, sf::Re
 			currentx += 35;
 			currenty += 4;
 		}
-		currenty += 50;
+		currenty += 70;
 	}
 
 	if (currentRank != -1 && currentType == num)
@@ -290,6 +296,8 @@ void Record::render(std::string title, int num, std::string** recordInfo, sf::Re
 			currenty += 4;
 		}
 	}
+
+	window.draw(recBox);
 }
 
 void Record::renderString(int positionx, int positiony, std::string text, sf::RenderWindow& window)

@@ -204,6 +204,32 @@ void Controller::scoreinput()
 			this->view->window.close();
 			break;
 		case sf::Event::KeyPressed:
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+			{
+				if (this->model->record->startPosition != 0)
+					this->model->record->startPosition--;
+			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+			{
+				switch (this->view->scoreboard)
+				{
+				case 1:
+					if (10 <= this->model->record->numStory)
+					{
+						if (this->model->record->startPosition != this->model->record->numStory - 10)
+							this->model->record->startPosition++;
+					}
+					break;
+				case 2:
+					if (10 <= this->model->record->numChaos)
+					{
+						if (this->model->record->startPosition != this->model->record->numChaos - 10)
+							this->model->record->startPosition++;
+					}
+					break;
+				}
+			}
+
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 			{
 				if (this->view->scoreboard == 1) this->view->scoreboard = 2;
@@ -250,6 +276,7 @@ void Controller::enter()
 			this->model->gamemode = MODE_CUSTOM_MODE;
 			break;
 		case 4:
+			this->model->record->startPosition = 0;
 			this->view->scoreboard = 1;
 			this->model->gamemode = MODE_SCORE_BOARD;
 			break;
@@ -291,6 +318,8 @@ void Controller::enter()
 			this->view->menu->changeSelect(this->selecting);
 			break;
 		case 2:
+			this->model->record->startPosition = 0;
+			this->view->scoreboard = 1;
 			this->model->gamemode = MODE_SCORE_BOARD;
 			break;
 		//case 3:

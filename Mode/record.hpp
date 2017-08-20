@@ -30,6 +30,7 @@ public:
 	int toolsPicked[6];
 	int currentRank = -1;
 	int currentType = 0;
+	int startPosition = 0;
 
 	int currentx, currenty;
 	int shouldRender = 10;
@@ -46,6 +47,8 @@ public:
 
 	sf::Sprite scoreBoard;
 	sf::Sprite bullet_sprite[NUM_OF_BULLET];
+
+	sf::RectangleShape recBox;
 
 private:
 	void renderString(int, int, std::string, sf::RenderWindow&);

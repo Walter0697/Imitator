@@ -197,22 +197,40 @@ void ToolSet::drop(Enemy& enemy, int type)
 void ToolSet::initTool()
 {
 	for (int i = 0; i < MAX_GREEN_SHIELD; i++)
+	{
 		shieldTool[i].position = sf::Vector2f(0, -700);
+		shieldTool[i].velocity = sf::Vector2f(0, 0);
+	}
 
 	for (int i = 0; i < MAX_BLUE_SHIELD; i++)
+	{
 		bshieldTool[i].position = sf::Vector2f(0, -700);
+		bshieldTool[i].velocity = sf::Vector2f(0, 0);
+	}
 
 	for (int i = 0; i < MAX_YELLOW_SHIELD; i++)
+	{
 		yshieldTool[i].position = sf::Vector2f(0, -700);
+		yshieldTool[i].velocity = sf::Vector2f(0, 0);
+	}
 
 	for (int i = 0; i < MAX_HEALTH_PACK; i++)
+	{
 		healthpack[i].position = sf::Vector2f(0, -700);
+		healthpack[i].velocity = sf::Vector2f(0, 0);
+	}
 
 	for (int i = 0; i < MAX_IMUMIUM; i++)
+	{
 		imumium[i].position = sf::Vector2f(0, -700);
+		imumium[i].velocity = sf::Vector2f(0, 0);
+	}
 
 	for (int i = 0; i < MAX_STONE; i++)
+	{
 		stoneTool[i].position = sf::Vector2f(0, -700);
+		stoneTool[i].velocity = sf::Vector2f(0, 0);
+	}
 }
 
 bool ToolSet::checkOutOfBound(Tool& tool)

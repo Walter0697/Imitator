@@ -73,7 +73,19 @@ void Model::updateGame(sf::Time& delta_time)
 	if (this->player->hp < 0)
 	{
 		this->player->position = sf::Vector2f(99999, 99999);
-		this->gamemode = MODE_GAME_OVER;
+		if (this->gamemode != MODE_CUSTOM_MODE)
+		{
+			switch (this->gamemode)
+			{
+			case MODE_STORY_MODE:
+				record->addRecord(1, "NONAME");
+				break;
+			case MODE_CHAOS_MODE:
+				record->addRecord(2, "NONAME");
+				break;
+			}
+			this->gamemode = MODE_GAME_OVER;
+		}
 	}
 }
 
@@ -110,6 +122,7 @@ void Model::initAll()
 	enemyBulletSet->initBullet();
 	toolSet->initTool();
 	story->init();
+	record->init();
 	droprate->multiplier = 1;
 	shield->level = 0;
 	radShield->health = 0;
@@ -1096,6 +1109,7 @@ void Model::checkHit()
 			if (coll.RectangleCircleCollision(sf::Vector2f(this->player->position + this->player->hb.hitbox_tl), sf::Vector2f(this->player->position + this->player->hb.hitbox_br),
 				this->toolSet->shieldTool[i].position, this->toolSet->hb_greenShield.hitbox_r))
 			{
+				this->record->toolsPicked[0]++;
 				this->toolSet->shieldTool[i].position = sf::Vector2f(0, -700);
 				this->toolSet->shieldTool[i].velocity = sf::Vector2f(0, 0);
 				this->shield->addShield(1);
@@ -1110,6 +1124,7 @@ void Model::checkHit()
 			if (coll.RectangleCircleCollision(sf::Vector2f(this->player->position + this->player->hb.hitbox_tl), sf::Vector2f(this->player->position + this->player->hb.hitbox_br),
 				this->toolSet->bshieldTool[i].position, this->toolSet->hb_blueShield.hitbox_r))
 			{
+				this->record->toolsPicked[2]++;
 				this->toolSet->bshieldTool[i].position = sf::Vector2f(0, -700);
 				this->toolSet->bshieldTool[i].velocity = sf::Vector2f(0, 0);
 				this->player->addShield(80);
@@ -1125,6 +1140,7 @@ void Model::checkHit()
 			if (coll.RectangleCircleCollision(sf::Vector2f(this->player->position + this->player->hb.hitbox_tl), sf::Vector2f(this->player->position + this->player->hb.hitbox_br),
 				this->toolSet->yshieldTool[i].position, this->toolSet->hb_blueShield.hitbox_r))
 			{
+				this->record->toolsPicked[1]++;
 				this->toolSet->yshieldTool[i].position = sf::Vector2f(0, -700);
 				this->toolSet->yshieldTool[i].velocity = sf::Vector2f(0, 0);
 				this->radShield->addShield(50);
@@ -1140,6 +1156,7 @@ void Model::checkHit()
 			if (coll.RectangleCircleCollision(sf::Vector2f(this->player->position + this->player->hb.hitbox_tl), sf::Vector2f(this->player->position + this->player->hb.hitbox_br),
 				this->toolSet->healthpack[i].position, this->toolSet->hb_healthPack.hitbox_r))
 			{
+				this->record->toolsPicked[3]++;
 				this->toolSet->healthpack[i].position = sf::Vector2f(0, -700);
 				this->toolSet->healthpack[i].velocity = sf::Vector2f(0, 0);
 				this->player->hp += 50;
@@ -1156,6 +1173,7 @@ void Model::checkHit()
 			if (coll.RectangleCircleCollision(sf::Vector2f(this->player->position + this->player->hb.hitbox_tl), sf::Vector2f(this->player->position + this->player->hb.hitbox_br),
 				this->toolSet->imumium[i].position, this->toolSet->hb_imumium.hitbox_r))
 			{
+				this->record->toolsPicked[4]++;
 				this->toolSet->imumium[i].position = sf::Vector2f(0, -700);
 				this->toolSet->imumium[i].velocity = sf::Vector2f(0, 0);
 				this->player->holdbuff += 10000;
@@ -1172,6 +1190,7 @@ void Model::checkHit()
 			if (coll.RectangleCircleCollision(sf::Vector2f(this->player->position + this->player->hb.hitbox_tl), sf::Vector2f(this->player->position + this->player->hb.hitbox_br),
 				this->toolSet->stoneTool[i].position, this->toolSet->hb_stone.hitbox_r))
 			{
+				this->record->toolsPicked[5]++;
 				this->toolSet->stoneTool[i].position = sf::Vector2f(0, -700);
 				this->toolSet->stoneTool[i].velocity = sf::Vector2f(0, 0);
 				this->player->onLuck += 15000;

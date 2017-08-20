@@ -5,6 +5,8 @@ Record::Record(Player* player)
 	this->player = player;
 	numStory = 0;
 	numChaos = 0;
+
+	readFile();
 }
 
 Record::~Record() {}
@@ -13,6 +15,12 @@ void Record::init()
 {
 	for (int i = 0; i < 6; i++)
 		toolsPicked[i] = 0;
+
+	if (temp != 0)
+	{
+		delete[] temp;
+		temp = 0;
+	}
 }
 
 void Record::setup()
@@ -30,6 +38,7 @@ void Record::setup()
 	recordText.setStyle(sf::Text::Bold);
 
 	currentRank = -1;
+	currentType = -1;
 }
 
 void Record::readFile()
@@ -59,16 +68,23 @@ void Record::readFile()
 	fileHndl.close();
 }
 
+void Record::writeFile()
+{
+
+}
+
 void Record::addRecord(int type, std::string name)
 {
 	//name, score, recordgshield, bshield, yshield, healthpack, imumium, stone, bullet1, 2, 3, 4, 5
 	std::string* currentRecord = new std::string[13];
 	currentRecord[0] = name;
-	currentRecord[1] = player->score;
+	currentRecord[1] = std::to_string(player->score);
 	for (int i = 0; i < 6; i++)
-		currentRecord[i + 2] = toolsPicked[i];
-	for (int i = 0; i > 5; i++)
-		currentRecord[i + 8] = player->shoot_type[i];
+		currentRecord[i + 2] = std::to_string(toolsPicked[i]);
+	for (int i = 0; i < 5; i++)
+		currentRecord[i + 8] = std::to_string(player->shoot_type[i]);
+
+	currentType = type;
 
 	switch (type)
 	{
@@ -76,7 +92,7 @@ void Record::addRecord(int type, std::string name)
 	case 1:
 		numStory++;
 		temp = new std::string*[numStory];
-		currentRank = numStory-1;
+		currentRank = numStory - 1;
 		for (int i = 0; i < numStory - 1; i++)
 		{
 			if (player->score > atoi(storyRecord[i][1].c_str()))
@@ -92,6 +108,7 @@ void Record::addRecord(int type, std::string name)
 		}
 		for (int i = currentRank; i < numStory - 1; i++)
 			temp[i + 1] = storyRecord[i];
+
 		if (currentRank == numStory - 1)
 			temp[numStory - 1] = currentRecord;
 
@@ -106,7 +123,7 @@ void Record::addRecord(int type, std::string name)
 		currentRank = numChaos - 1;
 		for (int i = 0; i < numChaos - 1; i++)
 		{
-			if (player->score > atoi(storyRecord[i][1].c_str()))
+			if (player->score > atoi(chaosRecord[i][1].c_str()))
 			{
 				currentRank = i;
 				temp[i] = currentRecord;
@@ -114,11 +131,12 @@ void Record::addRecord(int type, std::string name)
 			}
 			else
 			{
-				temp[i] = storyRecord[i];
+				temp[i] = chaosRecord[i];
 			}
 		}
 		for (int i = currentRank; i < numChaos - 1; i++)
 			temp[i + 1] = chaosRecord[i];
+
 		if (currentRank == numChaos - 1)
 			temp[numChaos - 1] = currentRecord;
 
@@ -130,13 +148,14 @@ void Record::addRecord(int type, std::string name)
 
 void Record::render(int type, sf::RenderWindow& window)
 {
+	shouldRender = 10;
 	switch (type)
 	{
 	case 1:
-		render("STORY MODE", numStory, storyRecord, window);
+		render("STORY MODE", 1, storyRecord, window);
 		break;
 	case 2:
-		render("CHAOS MODE", numChaos, chaosRecord, window);
+		render("CHAOS MODE", 2, chaosRecord, window);
 		break;
 	}
 }
@@ -146,10 +165,34 @@ void Record::render(std::string title, int num, std::string** recordInfo, sf::Re
 	window.draw(scoreBoard);
 
 	titleText.setString(title);
+	titleText.setPosition(SCREEN_WIDTH / 2 - titleText.getLocalBounds().width / 2, titleText.getPosition().y);
 	window.draw(titleText);
 
-	if (shouldRender > numStory)
-		shouldRender = numStory;
+	switch (num)
+	{
+	case 1:
+		if (shouldRender > numStory)
+		{
+			shouldRender = numStory; 
+		}
+		break;
+	case 2:
+		if (shouldRender > numChaos)
+		{
+			shouldRender = numChaos;
+		}
+		break;
+	}
+
+	currentx = 35;
+	currenty = 150;
+	renderString(currentx, currenty, "NO.", window);
+	currentx = 100;
+	renderString(currentx, currenty, "NAME", window);
+	currentx = 225;
+	renderString(currentx, currenty, "SCORE", window);
+	currentx = 565;
+	renderString(currentx, currenty, "BULLET TYPE", window);
 
 	currenty = 200;
 	for (int i = 0; i < shouldRender; i++)
@@ -158,62 +201,69 @@ void Record::render(std::string title, int num, std::string** recordInfo, sf::Re
 		renderString(currentx, currenty, std::to_string(i + 1), window);
 		currentx = 100;
 		renderString(currentx, currenty, recordInfo[i][0], window);
-		currentx = 190;
+		currentx = 225;
 		renderString(currentx, currenty, recordInfo[i][1], window);
-		currentx = 330;
+		currentx = 340;
 		renderString(currentx, currenty, recordInfo[i][2], window);
-		currentx = 365;
+		currentx = 375;
 		renderString(currentx, currenty, recordInfo[i][3], window);
-		currentx = 400;
+		currentx = 410;
 		renderString(currentx, currenty, recordInfo[i][4], window);
-		currentx = 435;
+		currentx = 445;
 		renderString(currentx, currenty, recordInfo[i][5], window);
-		currentx = 470;
+		currentx = 485;
 		renderString(currentx, currenty, recordInfo[i][6], window);
-		currentx = 515;
+		currentx = 525;
 		renderString(currentx, currenty, recordInfo[i][7], window);
 		
-		currentx = 565;
+		currentx = 570;
+		currenty -= 20;
 		for (int j = 0; j < 5; j++)
 		{
 			if (atoi(recordInfo[i][j + 8].c_str()) != 0)
 			{
 				bullet_sprite[atoi(recordInfo[i][j + 8].c_str()) - 1].setPosition(currentx, currenty);
 				window.draw(bullet_sprite[atoi(recordInfo[i][j + 8].c_str()) - 1]);
-				currentx += 40;
 			}
+			currentx += 35;
+			currenty += 4;
 		}
-		currenty += 70;
+		currenty += 50;
 	}
 
-	if (currentRank != -1)
+	if (currentRank != -1 && currentType == num)
 	{
 		currentx = 35; currenty = 915;
 		renderString(currentx, currenty, std::to_string(currentRank + 1), window);
 		currentx = 100;
-		renderString(currentx, currenty, "CURRENT RECORD", window);
-		currentx = 190;
+		renderString(currentx, currenty, "CURRENT", window);
+		currentx = 225;
 		renderString(currentx, currenty, std::to_string(player->score), window);
-		currentx = 330;
+		currentx = 340;
 		renderString(currentx, currenty, std::to_string(toolsPicked[0]), window);
-		currentx = 365;
+		currentx = 375;
 		renderString(currentx, currenty, std::to_string(toolsPicked[1]), window);
-		currentx = 400;
+		currentx = 410;
 		renderString(currentx, currenty, std::to_string(toolsPicked[2]), window);
-		currentx = 435;
+		currentx = 445;
 		renderString(currentx, currenty, std::to_string(toolsPicked[3]), window);
-		currentx = 470;
+		currentx = 485;
 		renderString(currentx, currenty, std::to_string(toolsPicked[4]), window);
-		currentx = 515;
+		currentx = 525;
 		renderString(currentx, currenty, std::to_string(toolsPicked[5]), window);
-		currentx = 565;
+		
+		currentx = 570;
+		currenty -= 20;
 		for (int i = 0; i < 5; i++)
+		{
 			if (player->shoot_type[i] != 0)
 			{
 				bullet_sprite[player->shoot_type[i] - 1].setPosition(currentx, currenty);
 				window.draw(bullet_sprite[player->shoot_type[i] - 1]);
-				currentx += 40;
 			}
+			currentx += 35;
+			currenty += 4;
+		}
 	}
 }
 

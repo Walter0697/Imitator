@@ -18,6 +18,7 @@ public:
 	void init();
 	void setup();
 	void readFile();
+	void writeFile();
 
 	void addRecord(int, std::string);
 	void render(int, sf::RenderWindow&);
@@ -26,6 +27,7 @@ public:
 	int currentStory;
 	int toolsPicked[6];
 	int currentRank = -1;
+	int currentType = 0;
 
 	int currentx, currenty;
 	int shouldRender = 10;

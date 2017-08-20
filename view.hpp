@@ -39,7 +39,10 @@ public:
 
 	void renderStory();
 	void renderMenu();
+	void renderScore();
 	void render();
+
+	int scoreboard = 1;
 
 	bool viewHitBox = false;
 };

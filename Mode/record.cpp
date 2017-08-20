@@ -15,6 +15,23 @@ void Record::init()
 		toolsPicked[i] = 0;
 }
 
+void Record::setup()
+{
+	titleText.setFont(font);
+	titleText.setCharacterSize(40);
+	titleText.setPosition(230, 30);
+	titleText.setColor(sf::Color::White);
+	titleText.setStyle(sf::Style::Default);
+	titleText.setString("STORY MODE");
+
+	recordText = titleText;
+	recordText.setColor(sf::Color::Black);
+	recordText.setCharacterSize(20);
+	recordText.setStyle(sf::Text::Bold);
+
+	currentRank = -1;
+}
+
 void Record::readFile()
 {
 	std::ifstream fileHndl;
@@ -59,12 +76,12 @@ void Record::addRecord(int type, std::string name)
 	case 1:
 		numStory++;
 		temp = new std::string*[numStory];
-		int input = numStory-1;
+		currentRank = numStory-1;
 		for (int i = 0; i < numStory - 1; i++)
 		{
 			if (player->score > atoi(storyRecord[i][1].c_str()))
 			{
-				input = i;
+				currentRank = i;
 				temp[i] = currentRecord;
 				break;
 			}
@@ -73,9 +90,9 @@ void Record::addRecord(int type, std::string name)
 				temp[i] = storyRecord[i];
 			}
 		}
-		for (int i = input; i < numStory - 1; i++)
+		for (int i = currentRank; i < numStory - 1; i++)
 			temp[i + 1] = storyRecord[i];
-		if (input == numStory - 1)
+		if (currentRank == numStory - 1)
 			temp[numStory - 1] = currentRecord;
 
 		delete[] storyRecord;
@@ -86,12 +103,12 @@ void Record::addRecord(int type, std::string name)
 	case 2:
 		numChaos++;
 		temp = new std::string*[numChaos];
-		int input = numChaos - 1;
+		currentRank = numChaos - 1;
 		for (int i = 0; i < numChaos - 1; i++)
 		{
 			if (player->score > atoi(storyRecord[i][1].c_str()))
 			{
-				input = i;
+				currentRank = i;
 				temp[i] = currentRecord;
 				break;
 			}
@@ -100,9 +117,9 @@ void Record::addRecord(int type, std::string name)
 				temp[i] = storyRecord[i];
 			}
 		}
-		for (int i = input; i < numChaos - 1; i++)
+		for (int i = currentRank; i < numChaos - 1; i++)
 			temp[i + 1] = chaosRecord[i];
-		if (input == numChaos - 1)
+		if (currentRank == numChaos - 1)
 			temp[numChaos - 1] = currentRecord;
 
 		delete[] chaosRecord;
@@ -116,10 +133,93 @@ void Record::render(int type, sf::RenderWindow& window)
 	switch (type)
 	{
 	case 1:
-		render("STORY MODE", storyRecord, window);
+		render("STORY MODE", numStory, storyRecord, window);
 		break;
 	case 2:
-		render("CHAOS MODE", chaosRecord, window);
+		render("CHAOS MODE", numChaos, chaosRecord, window);
 		break;
 	}
+}
+
+void Record::render(std::string title, int num, std::string** recordInfo, sf::RenderWindow& window)
+{
+	window.draw(scoreBoard);
+
+	titleText.setString(title);
+	window.draw(titleText);
+
+	if (shouldRender > numStory)
+		shouldRender = numStory;
+
+	currenty = 200;
+	for (int i = 0; i < shouldRender; i++)
+	{
+		currentx = 35;
+		renderString(currentx, currenty, std::to_string(i + 1), window);
+		currentx = 100;
+		renderString(currentx, currenty, recordInfo[i][0], window);
+		currentx = 190;
+		renderString(currentx, currenty, recordInfo[i][1], window);
+		currentx = 330;
+		renderString(currentx, currenty, recordInfo[i][2], window);
+		currentx = 365;
+		renderString(currentx, currenty, recordInfo[i][3], window);
+		currentx = 400;
+		renderString(currentx, currenty, recordInfo[i][4], window);
+		currentx = 435;
+		renderString(currentx, currenty, recordInfo[i][5], window);
+		currentx = 470;
+		renderString(currentx, currenty, recordInfo[i][6], window);
+		currentx = 515;
+		renderString(currentx, currenty, recordInfo[i][7], window);
+		
+		currentx = 565;
+		for (int j = 0; j < 5; j++)
+		{
+			if (atoi(recordInfo[i][j + 8].c_str()) != 0)
+			{
+				bullet_sprite[atoi(recordInfo[i][j + 8].c_str()) - 1].setPosition(currentx, currenty);
+				window.draw(bullet_sprite[atoi(recordInfo[i][j + 8].c_str()) - 1]);
+				currentx += 40;
+			}
+		}
+		currenty += 70;
+	}
+
+	if (currentRank != -1)
+	{
+		currentx = 35; currenty = 915;
+		renderString(currentx, currenty, std::to_string(currentRank + 1), window);
+		currentx = 100;
+		renderString(currentx, currenty, "CURRENT RECORD", window);
+		currentx = 190;
+		renderString(currentx, currenty, std::to_string(player->score), window);
+		currentx = 330;
+		renderString(currentx, currenty, std::to_string(toolsPicked[0]), window);
+		currentx = 365;
+		renderString(currentx, currenty, std::to_string(toolsPicked[1]), window);
+		currentx = 400;
+		renderString(currentx, currenty, std::to_string(toolsPicked[2]), window);
+		currentx = 435;
+		renderString(currentx, currenty, std::to_string(toolsPicked[3]), window);
+		currentx = 470;
+		renderString(currentx, currenty, std::to_string(toolsPicked[4]), window);
+		currentx = 515;
+		renderString(currentx, currenty, std::to_string(toolsPicked[5]), window);
+		currentx = 565;
+		for (int i = 0; i < 5; i++)
+			if (player->shoot_type[i] != 0)
+			{
+				bullet_sprite[player->shoot_type[i] - 1].setPosition(currentx, currenty);
+				window.draw(bullet_sprite[player->shoot_type[i] - 1]);
+				currentx += 40;
+			}
+	}
+}
+
+void Record::renderString(int positionx, int positiony, std::string text, sf::RenderWindow& window)
+{
+	recordText.setString(text);
+	recordText.setPosition(positionx, positiony);
+	window.draw(recordText);
 }

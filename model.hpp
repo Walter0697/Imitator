@@ -10,6 +10,7 @@
 #include "Tools/radShield.hpp"
 #include "Mode/story.hpp"
 #include "Mode/dropRate.hpp"
+#include "Mode/record.hpp"
 
 #include "collision.hpp"
 
@@ -38,6 +39,7 @@ public:
 
 	Collision coll;
 	DropRate* droprate;
+	Record* record;
 
 	Story* story;
 

@@ -183,6 +183,26 @@ void Controller::menuinput(sf::Time delta_time, sf::RenderWindow& window)
 
 }
 
+void Controller::scoreinput()
+{
+	if (event.type == sf::Event::KeyReleased && ((event.key.code == sf::Keyboard::Left || event.key.code == sf::Keyboard::Right) && keyboardClick == false))
+	{
+		if (this->view->scoreboard = 1) this->view->scoreboard = 2;
+		else this->view->scoreboard = 1;
+		keyboardClick = true;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		keyboardClick = false;
+
+	if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Space && keyboardClick == false)
+	{
+		this->model->gamemode = MODE_MENU_SCREEN;
+		keyboardClick = true;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+		keyboardClick = false;
+}
+
 void Controller::enter()
 {
 	this->model->initAll();
@@ -210,8 +230,9 @@ void Controller::enter()
 			break;
 			//case 4:
 			//setting
-			//case 5:
-			//scoreboard
+		case 5:
+			this->model->gamemode = MODE_SCORE_BOARD;
+			break;
 		case 6:
 			this->view->window.close();
 			break;
@@ -247,8 +268,9 @@ void Controller::enter()
 			break;
 			//case 2:
 			//setting
-			//case 3:
-			//scoreboard
+		case 3:
+			this->model->gamemode = MODE_SCORE_BOARD;
+			break;
 		case 4:
 			this->view->window.close();
 			break;

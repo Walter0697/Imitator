@@ -16,14 +16,19 @@ public:
 	~Record();
 
 	void init();
+	void setup();
 	void readFile();
 
 	void addRecord(int, std::string);
 	void render(int, sf::RenderWindow&);
-	void render(std::string, std::string**, sf::RenderWindow&);
+	void render(std::string, int, std::string**, sf::RenderWindow&);
 
 	int currentStory;
 	int toolsPicked[6];
+	int currentRank = -1;
+
+	int currentx, currenty;
+	int shouldRender = 10;
 
 	int numStory;
 	std::string** storyRecord;
@@ -32,9 +37,12 @@ public:
 	std::string** temp;
 
 	sf::Font font;
-	sf::Text storyText;
-	sf::Text chaosText;
+	sf::Text titleText;
 	sf::Text recordText;
 
 	sf::Sprite scoreBoard;
+	sf::Sprite bullet_sprite[NUM_OF_BULLET];
+
+private:
+	void renderString(int, int, std::string, sf::RenderWindow&);
 };

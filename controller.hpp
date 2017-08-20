@@ -23,6 +23,7 @@ public:
 
 	void storyinput(sf::Time);
 	void menuinput(sf::Time, sf::RenderWindow&);
+	void scoreinput();
 	void testerinputs(sf::Time);
 	void inputs(sf::Time);
 

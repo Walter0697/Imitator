@@ -34,6 +34,8 @@
 #define MAX_STONE 8
 
 #define NUM_OF_TOOLS 6
+#define NUM_OF_BULLET 12
+#define NUM_OF_STATUS 3
 
 #define SHOT_GUN_NUMBERS 20
 #define BLAST_SHOT_NUMBERS 11

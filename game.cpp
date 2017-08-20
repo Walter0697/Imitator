@@ -69,6 +69,11 @@ void Game::loop()
 			this->view->renderStory();
 			break;
 
+		case MODE_SCORE_BOARD:
+			this->controller->scoreinput();
+			this->view->renderScore();
+			break;
+
 		case MODE_MENU_SCREEN:
 			this->controller->menuinput(delta_time, this->view->window);
 			this->view->renderMenu();

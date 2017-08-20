@@ -27,7 +27,7 @@ public:
 	sf::Text text;
 
 	//bullet type
-	sf::Sprite bullet_sprite[12];
+	sf::Sprite bullet_sprite[NUM_OF_BULLET];
 	//status type
-	sf::Sprite status_sprite[3];
+	sf::Sprite status_sprite[NUM_OF_STATUS];
 };

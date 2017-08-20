@@ -65,19 +65,39 @@ View::View(Model* model)
 	this->model->story->sprite[4].setTexture(manager.get_texture("Assets/stoneUnlock.png", sf::Color::White), true);
 	this->model->story->sprite[4].setPosition(99999, 99999);
 
+	//setting up the record in hud
+	if (!this->model->record->font.loadFromFile("Assets/hemi head bd it.ttf")) cout << "failed to load font hemi head bd it.ttf" << endl;
+	this->model->record->scoreBoard.setTexture(manager.get_texture("Assets/scorePanel.png", sf::Color::White), true);
+	this->model->record->scoreBoard.setPosition(0, 0);
+	this->model->record->bullet_sprite[0].setTexture(manager.get_texture("Assets/default.png", sf::Color::White), true);
+	this->model->record->bullet_sprite[1].setTexture(manager.get_texture("Assets/two-way.png", sf::Color::White), true);
+	this->model->record->bullet_sprite[2].setTexture(manager.get_texture("Assets/long-shot.png", sf::Color::White), true);
+	this->model->record->bullet_sprite[3].setTexture(manager.get_texture("Assets/shot-gun.png", sf::Color::White), true);
+	this->model->record->bullet_sprite[4].setTexture(manager.get_texture("Assets/light-ball.png", sf::Color::White), true);
+	this->model->record->bullet_sprite[5].setTexture(manager.get_texture("Assets/random-shot.png", sf::Color::White), true);
+	this->model->record->bullet_sprite[6].setTexture(manager.get_texture("Assets/grenade-type.png", sf::Color::White), true);
+	this->model->record->bullet_sprite[7].setTexture(manager.get_texture("Assets/fireshot.png", sf::Color::White), true);
+	this->model->record->bullet_sprite[8].setTexture(manager.get_texture("Assets/lazer.png", sf::Color::White), true);
+	this->model->record->bullet_sprite[9].setTexture(manager.get_texture("Assets/blast.png", sf::Color::White), true);
+	this->model->record->bullet_sprite[10].setTexture(manager.get_texture("Assets/homing.png", sf::Color::White), true);
+	this->model->record->bullet_sprite[11].setTexture(manager.get_texture("Assets/lazer_beam.png", sf::Color::White), true);
+	for (int i = 0; i < NUM_OF_BULLET; i++)
+		this->model->record->bullet_sprite[i].setScale(sf::Vector2f(0.8f, 0.8f));
+	this->model->record->setup();
+	
 	//setting up the bullet_type in hud
-	this->hud->bullet_sprite[0].setTexture(manager.get_texture("Assets/default.png", sf::Color::White), true);
-	this->hud->bullet_sprite[1].setTexture(manager.get_texture("Assets/two-way.png", sf::Color::White), true);
-	this->hud->bullet_sprite[2].setTexture(manager.get_texture("Assets/long-shot.png", sf::Color::White), true);
-	this->hud->bullet_sprite[3].setTexture(manager.get_texture("Assets/shot-gun.png", sf::Color::White), true);
-	this->hud->bullet_sprite[4].setTexture(manager.get_texture("Assets/light-ball.png", sf::Color::White), true);
-	this->hud->bullet_sprite[5].setTexture(manager.get_texture("Assets/random-shot.png", sf::Color::White), true);
-	this->hud->bullet_sprite[6].setTexture(manager.get_texture("Assets/grenade-type.png", sf::Color::White), true);
-	this->hud->bullet_sprite[7].setTexture(manager.get_texture("Assets/fireshot.png", sf::Color::White), true);
-	this->hud->bullet_sprite[8].setTexture(manager.get_texture("Assets/lazer.png", sf::Color::White), true);
-	this->hud->bullet_sprite[9].setTexture(manager.get_texture("Assets/blast.png", sf::Color::White), true);
-	this->hud->bullet_sprite[10].setTexture(manager.get_texture("Assets/homing.png", sf::Color::White), true);
-	this->hud->bullet_sprite[11].setTexture(manager.get_texture("Assets/lazer_beam.png", sf::Color::White), true);
+	this->hud->bullet_sprite[0].setTexture(manager.get_texture("Assets/default.png"), true);
+	this->hud->bullet_sprite[1].setTexture(manager.get_texture("Assets/two-way.png"), true);
+	this->hud->bullet_sprite[2].setTexture(manager.get_texture("Assets/long-shot.png"), true);
+	this->hud->bullet_sprite[3].setTexture(manager.get_texture("Assets/shot-gun.png"), true);
+	this->hud->bullet_sprite[4].setTexture(manager.get_texture("Assets/light-ball.png"), true);
+	this->hud->bullet_sprite[5].setTexture(manager.get_texture("Assets/random-shot.png"), true);
+	this->hud->bullet_sprite[6].setTexture(manager.get_texture("Assets/grenade-type.png"), true);
+	this->hud->bullet_sprite[7].setTexture(manager.get_texture("Assets/fireshot.png"), true);
+	this->hud->bullet_sprite[8].setTexture(manager.get_texture("Assets/lazer.png"), true);
+	this->hud->bullet_sprite[9].setTexture(manager.get_texture("Assets/blast.png"), true);
+	this->hud->bullet_sprite[10].setTexture(manager.get_texture("Assets/homing.png"), true);
+	this->hud->bullet_sprite[11].setTexture(manager.get_texture("Assets/lazer_beam.png"), true);
 	
 	//setting up the status_type in hud
 	this->hud->status_sprite[0].setTexture(manager.get_texture("Assets/onFire.png", sf::Color(165, 165, 165)), true);
@@ -178,6 +198,11 @@ View::~View() {}
 void View::renderStory()
 {
 	this->model->story->render(window);
+}
+
+void View::renderScore()
+{
+	this->model->record->render(scoreboard, window);
 }
 
 void View::renderMenu()

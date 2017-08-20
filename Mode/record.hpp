@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../player.hpp"
+#include "story.hpp"
 
 #include "../defs.h"
 #include <fstream>
@@ -12,7 +13,8 @@ class Record
 public:
 
 	Player* player;
-	Record(Player* player);
+	Story* story;
+	Record(Player* player, Story* story);
 	~Record();
 
 	void init();

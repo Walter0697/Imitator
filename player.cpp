@@ -17,72 +17,35 @@ Player::~Player() {}
 //8-10 will be homing shoot
 void Player::addBullet(int type, int rate)
 {
-	int empty = -1;
-	for (int i = 0; i < CURRENT_HOLD_BULLET; i++)
+	for (int i = MAX_HOLD_BULLET - 1; i > 0; i--)
 	{
-		if (shoot_type[i] == 0)
-		{
-			empty = i;
-			break;
-		}
+		shoot_type[i] = shoot_type[i - 1];
+		shoot_count[i] = shoot_count[i - 1];
+		shoot_rate[i] = shoot_rate[i - 1];
+		shoot_type_s[i] = shoot_type_s[i - 1];
 	}
 
-	if (empty != -1)
+	shoot_type[0] = type;
+	shoot_count[0] = 0;
+	if (rate == -1)
 	{
-		shoot_type[empty] = type;
-		shoot_count[empty] = 0;
-		if (rate == -1)
-		{
-			shoot_rate[empty] = rand() % 600 + 200;
-			shoot_type_s[empty] = -1;
-		}
-		else if (rate == 7)
-		{
-			shoot_rate[empty] = 4000 * 0.7;
-			shoot_type_s[empty] = 7;
-		}
-		else if (rate == 10)
-		{
-			shoot_rate[empty] = 1000 * 0.7;
-			shoot_type_s[empty] = 10;
-		}
-		else
-		{
-			shoot_rate[empty] = rate * 0.7;
-			shoot_type_s[empty] = 0;
-		}
+		shoot_rate[0] = rand() % 600 + 200;
+		shoot_type_s[0] = -1;
+	}
+	else if (rate == 7)
+	{
+		shoot_rate[0] = 4000 * 0.7;
+		shoot_type_s[0] = 7;
+	}
+	else if (rate == 10)
+	{
+		shoot_rate[0] = 1000 * 0.7;
+		shoot_type_s[0] = 10;
 	}
 	else
 	{
-		for (int i = 0; i < CURRENT_HOLD_BULLET - 1; i++)
-		{
-			shoot_type[i] = shoot_type[i + 1];
-			shoot_count[i] = shoot_count[i + 1];
-			shoot_rate[i] = shoot_rate[i + 1];
-			shoot_type_s[i] = shoot_type_s[i + 1];
-		}
-		shoot_type[CURRENT_HOLD_BULLET - 1] = type;
-		shoot_count[CURRENT_HOLD_BULLET - 1] = 0;
-		if (rate == -1)
-		{
-			shoot_rate[CURRENT_HOLD_BULLET - 1] = rand() % 600 + 200;
-			shoot_type_s[CURRENT_HOLD_BULLET - 1] = -1;
-		}
-		else if (rate == 7)
-		{
-			shoot_rate[CURRENT_HOLD_BULLET - 1] = 4000 * 0.7;
-			shoot_type_s[CURRENT_HOLD_BULLET - 1] = 7;
-		}
-		else if (rate == 10)
-		{
-			shoot_rate[CURRENT_HOLD_BULLET - 1] = 1000 * 0.7;
-			shoot_type_s[CURRENT_HOLD_BULLET - 1] = 10;
-		}
-		else
-		{
-			shoot_rate[CURRENT_HOLD_BULLET - 1] = rate * 0.7;
-			shoot_type_s[CURRENT_HOLD_BULLET - 1] = 0;
-		}
+		shoot_rate[0] = rate * 0.7;
+		shoot_type_s[0] = 0;
 	}
 }
 

@@ -12,6 +12,11 @@ Game::Game()
 
 	std::srand(std::time(0));
 
+	//delete that later
+	this->view->menu->unlock();
+	for (int i = 1; i < NUM_OF_TOOLS + 1; i++)
+		this->model->droprate->unlock(i);
+
 	//adding the updateable objects to the list
 	this->model->updateables.push_back(this->model->player);
 	this->model->updateables.push_back(this->model->playerSet);

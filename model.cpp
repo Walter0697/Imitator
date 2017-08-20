@@ -15,7 +15,7 @@ Model::Model()
 
 	this->droprate = new DropRate();
 	this->story = new Story(this->enemySet, this->toolSet, this->droprate, this->player);
-	this->record = new Record(this->player);
+	this->record = new Record(this->player, this->story);
 	
 	this->gamemode = MODE_MENU_SCREEN;
 }
@@ -1042,6 +1042,7 @@ void Model::checkHit()
 	//fire bullet vs player
 	for (int i = 0; i < MAX_FIRE_BALL; i++)
 		if (!this->enemyBulletSet->checkOutOfBound(this->enemyBulletSet->firebullets[i]))
+		{
 			if (playerDamage(this->enemyBulletSet->firebullets[i], this->enemyBulletSet->hb_fireshot) == 1)
 			{
 				if (rand() % 100 > 70)
@@ -1050,6 +1051,7 @@ void Model::checkHit()
 			}
 			else if (playerDamage(this->enemyBulletSet->firebullets[i], this->enemyBulletSet->hb_fireshot) == 2)
 				bulletDisappear(this->enemyBulletSet->firebullets[i]);
+		}
 				
 	//grenade vs player
 	for (int i = 0; i < MAX_GRENADESHOT; i++)

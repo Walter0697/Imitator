@@ -1,8 +1,9 @@
 #include "record.hpp"
 
-Record::Record(Player* player)
+Record::Record(Player* player, Story* story)
 {
 	this->player = player;
+	this->story = story;
 	numStory = 0;
 	numChaos = 0;
 
@@ -70,7 +71,30 @@ void Record::readFile()
 
 void Record::writeFile()
 {
+	std::ofstream fileWriter;
+	fileWriter.open("Assets/story/saveRecord.txt");
+	fileWriter << story->currentStory << "\n";
 
+	fileWriter << numStory << "\n";
+	for (int i = 0; i < numStory; i++)
+	{
+		for (int j = 0; j < 13; j++)
+		{
+			fileWriter << storyRecord[i][j] << " ";
+		}
+		fileWriter << "\n";
+	}
+
+	fileWriter << numChaos << "\n";
+	for (int i = 0; i < numChaos; i++)
+	{
+		for (int j = 0; j < 13; j++)
+		{
+			fileWriter << chaosRecord[i][j] << " ";
+		}
+		fileWriter << "\n";
+	}
+	fileWriter.close();
 }
 
 void Record::addRecord(int type, std::string name)
@@ -144,6 +168,7 @@ void Record::addRecord(int type, std::string name)
 		chaosRecord = temp;
 		break;
 	}
+	writeFile();
 }
 
 void Record::render(int type, sf::RenderWindow& window)

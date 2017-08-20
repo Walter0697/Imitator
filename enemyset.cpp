@@ -257,12 +257,12 @@ void EnemySet::spawn(int type, int x_position)
 			if (rand() % 2 == 1)
 			{
 				glitchyenemies[avaliableEnemy(type)].velocity.x = glitchyenemies[0].speed;
-				glitchyenemies[avaliableEnemy(type)].position = sf::Vector2f(-80, x_position * 1.5);
+				glitchyenemies[avaliableEnemy(type)].position = sf::Vector2f(-80, x_position * 1.2f);
 			}
 			else
 			{
 				glitchyenemies[avaliableEnemy(type)].velocity.x = -glitchyenemies[0].speed;
-				glitchyenemies[avaliableEnemy(type)].position = sf::Vector2f(SCREEN_WIDTH + 80, x_position * 1.5);
+				glitchyenemies[avaliableEnemy(type)].position = sf::Vector2f(SCREEN_WIDTH + 80, x_position * 1.2f);
 			}
 		}
 		break;

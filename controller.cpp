@@ -210,8 +210,13 @@ void Controller::scoreinput()
 				else this->view->scoreboard = 1;
 			}
 
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || sf::Keyboard::isKeyPressed(sf::Keyboard::F1))
+			{
+				this->view->menu->storyClicked = false;
+				this->selecting = 1;
+				this->view->menu->changeSelect(1);
 				this->model->gamemode = MODE_MENU_SCREEN;
+			}
 
 			break;
 		}

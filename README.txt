@@ -29,6 +29,7 @@
 	   mouse cursor added
 	   adding new type of tool -- lucky stone
 19/8 : setting up scoreboard
+       minor bug fixed
 
 assets:
 	ship:

@@ -204,7 +204,7 @@ void Story::update(sf::Time& delta_time)
 			textCutScene.setColor(textColor);
 		}
 		//rendering victory
-		else if ((mapData[processing][0] == "OBJECTIVE" && mapData[processing][1] == "VICTORY") || mapData[processing][0] == "VICTORY")
+		else if (mapData[processing][0] == "VICTORY")
 		{
 			while (countdown <= 0 && line == 1)
 			{
@@ -333,26 +333,14 @@ void Story::update(sf::Time& delta_time)
 			if (enemySet->checkOutOfBound(*enemyInfo) && enemyInfo != 0)
 			{
 				enemyInfo = 0;
-				if (mapData[processing][1] == "DIALOG")
-					processing++;
-				else if (mapData[processing][1] == "TOOL")
-				{
-					dropTool(atoi(mapData[processing][2].c_str()), atoi(mapData[processing][3].c_str()), atoi(mapData[processing][4].c_str()));
-					processing++;
-				}
-				else if (mapData[processing][1] == "VICTORY")
-				{
-					textMission.setPosition(textMission.getPosition().x, -100);
-					textComplete.setPosition(textComplete.getPosition().x, -100);
-					textScore.setString("CURRENT SCORE:" + std::to_string(player->score));
-					textScore.setPosition(SCREEN_WIDTH / 2 - textScore.getLocalBounds().width / 2, -100);
-
-					isStory = true;
-					canContin = false;
-					countdown = 0;
-					line = 1;
-				}
+				processing++;
 			}
+		}
+		//dropping tools
+		else if (mapData[processing][0] == "TOOL")
+		{
+			dropTool(atoi(mapData[processing][1].c_str()), atoi(mapData[processing][2].c_str()), atoi(mapData[processing][3].c_str()));
+			processing++;
 		}
 		//to unlock a tool
 		else if (mapData[processing][0] == "UNLOCK")
@@ -445,7 +433,7 @@ void Story::render(sf::RenderWindow& window)
 			window.draw(textDialog);
 			window.draw(textDialog2);
 		}
-		else if (mapData[processing][0] == "OBJECTIVE" && mapData[processing][1] == "VICTORY")
+		else if (mapData[processing][0] == "VICTORY" && isStory)
 		{
 			window.draw(textMission);
 			window.draw(textComplete);

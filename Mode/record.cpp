@@ -62,8 +62,6 @@ void Record::setup()
 	currentType = -1;
 }
 
-#include <iostream>
-using namespace std;
 void Record::readFile()
 {
 	std::ifstream fileHndl;
@@ -86,25 +84,6 @@ void Record::readFile()
 		chaosRecord[i] = new std::string[13];
 		for (int j = 0; j < 13; j++)
 			fileHndl >> chaosRecord[i][j];
-	}
-
-	cout << "story" << endl;
-	for (int i = 0; i < numStory; i++)
-	{
-		for (int j = 0; j < 13; j++)
-		{
-			cout << storyRecord[i][j] << ",";
-		}
-		cout << endl;
-	}
-	cout << "chaos" << endl;
-	for (int i = 0; i < numChaos; i++)
-	{
-		for (int j = 0; j < 13; j++)
-		{
-			cout << chaosRecord[i][j] << ",";
-		}
-		cout << endl;
 	}
 
 	fileHndl.close();
@@ -359,7 +338,7 @@ void Record::render(std::string title, int num, std::string** recordInfo, sf::Re
 
 		if (currentRank >= startPosition && currentRank < startPosition + 10)
 		{
-			recBox.setPosition(recBox.getPosition().x, 190 + (currentRank - startPosition) * 70);
+			recBox.setPosition(recBox.getPosition().x, 180 + (currentRank - startPosition) * 70);
 			window.draw(recBox);
 		}
 	}
@@ -400,7 +379,7 @@ void Record::render(std::string title, int num, std::string** recordInfo, sf::Re
 
 		if (previousStory >= startPosition && previousStory < startPosition + 10)
 		{
-			recBox.setPosition(recBox.getPosition().x, 190 + (previousStory - startPosition) * 70);
+			recBox.setPosition(recBox.getPosition().x, 180 + (previousStory - startPosition) * 70);
 			window.draw(recBox);
 		}
 	}
@@ -441,7 +420,7 @@ void Record::render(std::string title, int num, std::string** recordInfo, sf::Re
 
 		if (previousChaos >= startPosition && previousChaos < startPosition + 10)
 		{
-			recBox.setPosition(recBox.getPosition().x, 185 + (previousChaos - startPosition) * 70);
+			recBox.setPosition(recBox.getPosition().x, 180 + (previousChaos - startPosition) * 70);
 			window.draw(recBox);
 		}
 	}

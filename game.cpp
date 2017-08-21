@@ -84,6 +84,10 @@ void Game::loop()
 			this->view->renderMenu();
 			break;
 
+		case MODE_REWARDS_MODE:
+			this->view->renderMenu();
+			break;
+
 		case MODE_CHAOS_MODE:
 			this->controller->inputs(delta_time);
 			if (!this->model->pause)

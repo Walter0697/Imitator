@@ -368,12 +368,10 @@ void BulletSet::shoot(int type, sf::Vector2f position, int direction)
 	case 10:
 		for (int i = 2; i < BLAST_SHOT_NUMBERS; i++)
 		{
-			blastbullets[avaliableBullet(type)].velocity.y = direction * blastbullets[0].speed * sin((i * 15) * 3.14f / 180.f);
-			blastbullets[avaliableBullet(type)].velocity.x = direction * blastbullets[0].speed * cos((i * 15) * 3.14f / 180.f);
+			blastbullets[avaliableBullet(type)].velocity.y = direction * blastbullets[0].speed * sin((i * 7.5f) * 3.14f / 180.f);
+			blastbullets[avaliableBullet(type)].velocity.x = direction * blastbullets[0].speed * cos((i * 7.5f) * 3.14f / 180.f);
 			if (direction == -1)
 				blastbullets[avaliableBullet(type)].position = sf::Vector2f(position.x + 36, position.y + 6);
-			//else
-				//blastbullets[avaliableBullet(type)]
 		}
 		break;
 	case 11:

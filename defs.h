@@ -38,7 +38,7 @@
 #define NUM_OF_STATUS 3
 
 #define SHOT_GUN_NUMBERS 20
-#define BLAST_SHOT_NUMBERS 11
+#define BLAST_SHOT_NUMBERS 22
 #define FIRE_HIT 0.5
 
 //define the game mode
@@ -49,6 +49,7 @@
 #define MODE_GAME_OVER 95
 #define MODE_SETTING 94
 #define MODE_SCORE_BOARD 93
+#define MODE_REWARDS_MODE 92
 
 #define MENU_OPTION 6
 #define LAST_STORY 2

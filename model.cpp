@@ -1262,7 +1262,7 @@ void Model::enemyDie(Enemy& enemy, Bullet& bullet, int bullet_type, int score_ad
 		this->toolSet->drop(enemy, 1);
 	else if (rand() % 100 < droprate->getToolChance(2))
 		this->toolSet->drop(enemy, 2);
-	else if (rand() % 100 < droprate->getToolChance(3))
+	else  if (rand() % 100 < droprate->getToolChance(3))
 		this->toolSet->drop(enemy, 3);
 	else if (rand() % 100 < droprate->getToolChance(4))
 		this->toolSet->drop(enemy, 4);
@@ -1270,6 +1270,7 @@ void Model::enemyDie(Enemy& enemy, Bullet& bullet, int bullet_type, int score_ad
 		this->toolSet->drop(enemy, 5);
 	else if (rand() % 100 < droprate->getToolChance(6))
 		this->toolSet->drop(enemy, 6);
+
 
 	//enemy reset
 	Boss* isBoss = dynamic_cast<Boss*>(&enemy);

@@ -30,6 +30,8 @@
 	   adding new type of tool -- lucky stone
 19/8 : setting up scoreboard
        minor bug fixed
+20/8 : balance a bit for the shield
+       modify a bit for the scoreboard
 
 assets:
 	ship:

@@ -28,12 +28,15 @@ public:
 
 	int currentStory;
 	int toolsPicked[6];
-	int currentRank = -1;
-	int currentType = 0;
 	int startPosition = 0;
 
 	int currentx, currenty;
 	int shouldRender = 10;
+
+	int currentRank = -1;
+	int currentType = 0;
+	int previousStory = -1;
+	int previousChaos = -1;
 
 	int numStory;
 	std::string** storyRecord;

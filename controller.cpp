@@ -232,6 +232,7 @@ void Controller::scoreinput()
 
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 			{
+				this->model->record->startPosition = 0;
 				if (this->view->scoreboard == 1) this->view->scoreboard = 2;
 				else this->view->scoreboard = 1;
 			}

@@ -6,6 +6,8 @@ Record::Record(Player* player, Story* story)
 	this->story = story;
 	numStory = 0;
 	numChaos = 0;
+	previousStory = -1;
+	previousChaos = -1;
 
 	readFile();
 }
@@ -16,6 +18,18 @@ void Record::init()
 {
 	for (int i = 0; i < 6; i++)
 		toolsPicked[i] = 0;
+	
+	switch (currentType)
+	{
+	case 1:
+		previousStory = currentRank;
+		break;
+	case 2:
+		previousChaos = currentRank;
+		break;
+	}
+	currentType = 0;
+	currentRank = -1;
 
 	if (temp != 0)
 	{
@@ -38,7 +52,7 @@ void Record::setup()
 	recordText.setCharacterSize(20);
 	recordText.setStyle(sf::Text::Bold);
 
-	recBox.setSize(sf::Vector2f(730, 60));
+	recBox.setSize(sf::Vector2f(730, 66));
 	recBox.setPosition(30, 0);
 	recBox.setFillColor(sf::Color(255, 0, 0, 100));
 	recBox.setOutlineColor(sf::Color(255, 0, 0));
@@ -48,6 +62,8 @@ void Record::setup()
 	currentType = -1;
 }
 
+#include <iostream>
+using namespace std;
 void Record::readFile()
 {
 	std::ifstream fileHndl;
@@ -70,6 +86,25 @@ void Record::readFile()
 		chaosRecord[i] = new std::string[13];
 		for (int j = 0; j < 13; j++)
 			fileHndl >> chaosRecord[i][j];
+	}
+
+	cout << "story" << endl;
+	for (int i = 0; i < numStory; i++)
+	{
+		for (int j = 0; j < 13; j++)
+		{
+			cout << storyRecord[i][j] << ",";
+		}
+		cout << endl;
+	}
+	cout << "chaos" << endl;
+	for (int i = 0; i < numChaos; i++)
+	{
+		for (int j = 0; j < 13; j++)
+		{
+			cout << chaosRecord[i][j] << ",";
+		}
+		cout << endl;
 	}
 
 	fileHndl.close();
@@ -123,24 +158,36 @@ void Record::addRecord(int type, std::string name)
 		numStory++;
 		temp = new std::string*[numStory];
 		currentRank = numStory - 1;
-		for (int i = 0; i < numStory - 1; i++)
+		if (player->score > atoi(storyRecord[0][1].c_str()))
 		{
-			if (player->score > atoi(storyRecord[i][1].c_str()))
+			currentRank = 0;
+			for (int i = 0; i < numStory - 1; i++)
 			{
-				currentRank = i;
-				temp[i] = currentRecord;
-				break;
+				temp[i + 1] = storyRecord[i];
 			}
-			else
-			{
-				temp[i] = storyRecord[i];
-			}
+			temp[0] = currentRecord;
 		}
-		for (int i = currentRank; i < numStory - 1; i++)
-			temp[i + 1] = storyRecord[i];
+		else
+		{
+			for (int i = 0; i < numStory - 1; i++)
+			{
+				if (player->score > atoi(storyRecord[i][1].c_str()))
+				{
+					currentRank = i;
+					temp[i] = currentRecord;
+					break;
+				}
+				else
+				{
+					temp[i] = storyRecord[i];
+				}
+			}
+			for (int i = currentRank; i < numStory - 1; i++)
+				temp[i + 1] = storyRecord[i];
 
-		if (currentRank == numStory - 1)
-			temp[numStory - 1] = currentRecord;
+			if (currentRank == numStory - 1)
+				temp[numStory - 1] = currentRecord;
+		}
 
 		delete[] storyRecord;
 		storyRecord = temp;
@@ -151,30 +198,43 @@ void Record::addRecord(int type, std::string name)
 		numChaos++;
 		temp = new std::string*[numChaos];
 		currentRank = numChaos - 1;
-		for (int i = 0; i < numChaos - 1; i++)
+		if (player->score > atoi(chaosRecord[0][1].c_str()))
 		{
-			if (player->score > atoi(chaosRecord[i][1].c_str()))
+			currentRank = 0;
+			for (int i = 0; i < numChaos - 1; i++)
 			{
-				currentRank = i;
-				temp[i] = currentRecord;
-				break;
+				temp[i + 1] = chaosRecord[i];
 			}
-			else
-			{
-				temp[i] = chaosRecord[i];
-			}
+			temp[0] = currentRecord;
 		}
-		for (int i = currentRank; i < numChaos - 1; i++)
-			temp[i + 1] = chaosRecord[i];
+		else
+		{
+			for (int i = 0; i < numChaos - 1; i++)
+			{
+				if (player->score > atoi(chaosRecord[i][1].c_str()))
+				{
+					currentRank = i;
+					temp[i] = currentRecord;
+					break;
+				}
+				else
+				{
+					temp[i] = chaosRecord[i];
+				}
+			}
+			for (int i = currentRank; i < numChaos - 1; i++)
+				temp[i + 1] = chaosRecord[i];
 
-		if (currentRank == numChaos - 1)
-			temp[numChaos - 1] = currentRecord;
+			if (currentRank == numChaos - 1)
+				temp[numChaos - 1] = currentRecord;
+		}
 
 		delete[] chaosRecord;
 		chaosRecord = temp;
 		break;
 	}
 	writeFile();
+	readFile();
 }
 
 void Record::render(int type, sf::RenderWindow& window)
@@ -262,6 +322,7 @@ void Record::render(std::string title, int num, std::string** recordInfo, sf::Re
 		currenty += 70;
 	}
 
+	//the current one
 	if (currentRank != -1 && currentType == num)
 	{
 		currentx = 35; currenty = 915;
@@ -295,9 +356,95 @@ void Record::render(std::string title, int num, std::string** recordInfo, sf::Re
 			currentx += 35;
 			currenty += 4;
 		}
-	}
 
-	window.draw(recBox);
+		if (currentRank >= startPosition && currentRank < startPosition + 10)
+		{
+			recBox.setPosition(recBox.getPosition().x, 190 + (currentRank - startPosition) * 70);
+			window.draw(recBox);
+		}
+	}
+	//the story previous
+	if (currentType != 1 && previousStory != -1 && num == 1)
+	{
+		currentx = 35; currenty = 915;
+		renderString(currentx, currenty, std::to_string(previousStory + 1), window);
+		currentx = 100;
+		renderString(currentx, currenty, "PREVIOUS", window);
+		currentx = 225;
+		renderString(currentx, currenty, storyRecord[previousStory][1], window);
+		currentx = 340;
+		renderString(currentx, currenty, storyRecord[previousStory][2], window);
+		currentx = 375;
+		renderString(currentx, currenty, storyRecord[previousStory][3], window);
+		currentx = 410;
+		renderString(currentx, currenty, storyRecord[previousStory][4], window);
+		currentx = 445;
+		renderString(currentx, currenty, storyRecord[previousStory][5], window);
+		currentx = 485;
+		renderString(currentx, currenty, storyRecord[previousStory][6], window);
+		currentx = 525;
+		renderString(currentx, currenty, storyRecord[previousStory][7], window);
+
+		currentx = 570;
+		currenty -= 20;
+		for (int i = 0; i < 5; i++)
+		{
+			if (player->shoot_type[i] != 0)
+			{
+				bullet_sprite[player->shoot_type[i] - 1].setPosition(currentx, currenty);
+				window.draw(bullet_sprite[atoi(storyRecord[previousStory][i+8].c_str()) - 1]);
+			}
+			currentx += 35;
+			currenty += 4;
+		}
+
+		if (previousStory >= startPosition && previousStory < startPosition + 10)
+		{
+			recBox.setPosition(recBox.getPosition().x, 190 + (previousStory - startPosition) * 70);
+			window.draw(recBox);
+		}
+	}
+	//the chaos previous
+	if (currentType != 2 && previousChaos != -1 && num == 2)
+	{
+		currentx = 35; currenty = 915;
+		renderString(currentx, currenty, std::to_string(previousChaos + 1), window);
+		currentx = 100;
+		renderString(currentx, currenty, "PREVIOUS", window);
+		currentx = 225;
+		renderString(currentx, currenty, chaosRecord[previousChaos][1], window);
+		currentx = 340;
+		renderString(currentx, currenty, chaosRecord[previousChaos][2], window);
+		currentx = 375;
+		renderString(currentx, currenty, chaosRecord[previousChaos][3], window);
+		currentx = 410;
+		renderString(currentx, currenty, chaosRecord[previousChaos][4], window);
+		currentx = 445;
+		renderString(currentx, currenty, chaosRecord[previousChaos][5], window);
+		currentx = 485;
+		renderString(currentx, currenty, chaosRecord[previousChaos][6], window);
+		currentx = 525;
+		renderString(currentx, currenty, chaosRecord[previousChaos][7], window);
+
+		currentx = 570;
+		currenty -= 20;
+		for (int i = 0; i < 5; i++)
+		{
+			if (player->shoot_type[i] != 0)
+			{
+				bullet_sprite[player->shoot_type[i] - 1].setPosition(currentx, currenty);
+				window.draw(bullet_sprite[atoi(chaosRecord[previousChaos][i + 8].c_str()) - 1]);
+			}
+			currentx += 35;
+			currenty += 4;
+		}
+
+		if (previousChaos >= startPosition && previousChaos < startPosition + 10)
+		{
+			recBox.setPosition(recBox.getPosition().x, 185 + (previousChaos - startPosition) * 70);
+			window.draw(recBox);
+		}
+	}
 }
 
 void Record::renderString(int positionx, int positiony, std::string text, sf::RenderWindow& window)

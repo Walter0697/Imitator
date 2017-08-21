@@ -78,9 +78,11 @@ void Model::updateGame(sf::Time& delta_time)
 			switch (this->gamemode)
 			{
 			case MODE_STORY_MODE:
+				record->startPosition = 0;
 				record->addRecord(1, "NONAME");
 				break;
 			case MODE_CHAOS_MODE:
+				record->startPosition = 0;
 				record->addRecord(2, "NONAME");
 				break;
 			}

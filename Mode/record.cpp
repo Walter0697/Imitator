@@ -67,7 +67,8 @@ void Record::readFile()
 	std::ifstream fileHndl;
 	fileHndl.open("Assets/story/saveRecord.txt");
 
-	fileHndl >> currentStory;
+	fileHndl >> story->currentStory;
+	fileHndl >> story->toolUnlock;
 	fileHndl >> numStory;
 	storyRecord = new std::string*[numStory];
 	for (int i = 0; i < numStory; i++)
@@ -93,7 +94,7 @@ void Record::writeFile()
 {
 	std::ofstream fileWriter;
 	fileWriter.open("Assets/story/saveRecord.txt");
-	fileWriter << story->currentStory << "\n";
+	fileWriter << story->currentStory << " " << story->toolUnlock;
 
 	fileWriter << numStory << "\n";
 	for (int i = 0; i < numStory; i++)

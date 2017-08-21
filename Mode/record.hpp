@@ -26,7 +26,6 @@ public:
 	void render(int, sf::RenderWindow&);
 	void render(std::string, int, std::string**, sf::RenderWindow&);
 
-	int currentStory;
 	int toolsPicked[6];
 	int startPosition = 0;
 

@@ -16,6 +16,8 @@ Model::Model()
 	this->droprate = new DropRate();
 	this->story = new Story(this->enemySet, this->toolSet, this->droprate, this->player);
 	this->record = new Record(this->player, this->story);
+	for (int i = 0; i < story->toolUnlock; i++)
+		this->droprate->unlock(i + 1);
 	
 	this->gamemode = MODE_MENU_SCREEN;
 }

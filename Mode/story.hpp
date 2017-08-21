@@ -29,6 +29,8 @@ public:
 
 	//mode related
 	int currentStory = 1;
+	int toolUnlock = 0;
+
 	int processing = 0;
 	bool isStory = false;
 	bool canContin = false;

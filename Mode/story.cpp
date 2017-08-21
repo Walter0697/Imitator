@@ -345,7 +345,7 @@ void Story::update(sf::Time& delta_time)
 		//to unlock a tool
 		else if (mapData[processing][0] == "UNLOCK")
 		{
-			this->droprate->unlock(atoi(mapData[processing][1].c_str()));
+			this->droprate->unlock(++toolUnlock);
 			processing++;
 		}
 		//show picture

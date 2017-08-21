@@ -242,10 +242,27 @@ void Controller::scoreinput()
 				this->view->menu->changeSelect(1);
 				this->model->gamemode = MODE_MENU_SCREEN;
 			}
-
 			break;
 		}
 	}
+	if (event.type == sf::Event::MouseMoved)
+		this->view->mouse_position = sf::Vector2f(event.mouseMove.x, event.mouseMove.y);
+		
+
+	if (event.type == sf::Event::MouseButtonReleased && isClick == false)
+		if ((event.mouseButton.x >= 0 && event.mouseButton.x <= 130 &&
+			event.mouseButton.y >= 0 && event.mouseButton.y <= 120) ||
+			event.mouseButton.x >= SCREEN_WIDTH - 130 && event.mouseButton.x <= SCREEN_WIDTH &&
+			event.mouseButton.y >= 0 && event.mouseButton.y <= 120)
+			if (event.mouseButton.button == sf::Mouse::Left)
+			{
+				this->model->record->startPosition = 0;
+				if (this->view->scoreboard == 1) this->view->scoreboard = 2;
+				else this->view->scoreboard = 1;
+				isClick = true;
+			}
+	if (event.type == sf::Event::MouseButtonPressed)
+		isClick = false;
 }
 
 void Controller::enter()

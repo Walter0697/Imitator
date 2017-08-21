@@ -205,14 +205,18 @@ void View::renderScore()
 	this->model->record->render(scoreboard, window);
 }
 
+void View::renderMouse()
+{
+	sprite_mouse.setPosition(mouse_position);
+	window.draw(sprite_mouse);
+}
+
 void View::renderMenu()
 {
 	if (this->model->gamemode == MODE_MENU_SCREEN)
 		menu->render(this->window);
 	else if (this->model->gamemode == MODE_GAME_OVER)
 		menu->renderGameOver(this->window);
-	sprite_mouse.setPosition(mouse_position);
-	window.draw(sprite_mouse);
 }
 
 void View::render()

@@ -37,6 +37,7 @@ public:
 	std::vector<Renderable *> renderables;
 	std::vector<Renderable *> foreground;
 
+	void renderMouse();
 	void renderStory();
 	void renderMenu();
 	void renderScore();

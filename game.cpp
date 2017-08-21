@@ -77,11 +77,13 @@ void Game::loop()
 		case MODE_SCORE_BOARD:
 			this->controller->scoreinput();
 			this->view->renderScore();
+			this->view->renderMouse();
 			break;
 
 		case MODE_MENU_SCREEN:
 			this->controller->menuinput(delta_time, this->view->window);
 			this->view->renderMenu();
+			this->view->renderMouse();
 			break;
 
 		case MODE_REWARDS_MODE:

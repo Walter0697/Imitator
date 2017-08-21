@@ -94,7 +94,7 @@ void Record::writeFile()
 {
 	std::ofstream fileWriter;
 	fileWriter.open("Assets/story/saveRecord.txt");
-	fileWriter << story->currentStory << " " << story->toolUnlock;
+	fileWriter << story->currentStory << " " << story->toolUnlock << "\n";
 
 	fileWriter << numStory << "\n";
 	for (int i = 0; i < numStory; i++)

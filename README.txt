@@ -40,6 +40,7 @@ assets:
 		https://opengameart.org/content/side-blaster-gfx-m484-games
 		https://opengameart.org/content/explosives-and-medic-stuff-from-pixeltime
 		https://opengameart.org/content/high-res-fire-ball
+		https://opengameart.org/content/bullet-collection-1-m484
 	hud:
 		https://opengameart.org/content/scroll-themed-hud-bars
 		https://fontmeme.com/salsa-tequila-font/

@@ -59,6 +59,7 @@ public:
 
 	void initAll();
 
+	void specialBulletCheck();
 	void checkHit();
 	void enemyShootCount();
 	void bossShootCount();

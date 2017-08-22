@@ -503,6 +503,8 @@ void Controller::testerinputs(sf::Time delta_time)
 					this->model->player->addBullet(11, 10);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
 					this->model->player->addBullet(12, 5000);
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::I))
+					this->model->player->addBullet(13, 2000);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::V))
 					this->model->player->hp = this->model->player->maxhp;
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::B))

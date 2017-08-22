@@ -10,13 +10,14 @@
 #include "Bullet/lightball.hpp"
 #include "Bullet/randomshot.hpp"
 #include "Bullet/grenadeLauncher.hpp"
+#include "Bullet/explosion.hpp"
 #include "Bullet/fireShot.hpp"
 #include "Bullet/lazer.hpp"
 #include "Bullet/blastshot.hpp"
 #include "Bullet/homingbullet.hpp"
 #include "Bullet/lazerBeam.hpp"
-
-#include "Bullet/explosion.hpp"
+#include "Bullet/fireworkRoot.hpp"
+#include "Bullet/firework.hpp"
 
 #include "hitbox.hpp"
 
@@ -52,14 +53,15 @@ public:
 	LightBall lightbullets[MAX_LIGHTBALL];
 	RandomShot randombullets[MAX_RANDOMSHOT];
 	GrenadeLauncher grenadebullets[MAX_GRENADESHOT];
+	Explosion explosions[MAX_EXPLOSION];
 	FireShot firebullets[MAX_FIRE_BALL];
 	Lazer lazerbullets[MAX_LAZER];
 	BlastShot blastbullets[MAX_BLASTSHOT];
 	HomingBullet homingbullets[MAX_HOMING];
 	LazerBeam lazerbeambullets[MAX_LAZER_BEAM];
+	FireworkRoot firerootbullets[MAX_FIRE_ROOT];
+	Firework fireworkbullets[MAX_FIRE_WORK];
 	
-	Explosion explosions[MAX_EXPLOSION];
-
 	Hitbox hb_dbullet;
 	Hitbox hb_twbullet;
 	Hitbox hb_longbullet;
@@ -73,6 +75,7 @@ public:
 	Hitbox hb_blastshot;
 	Hitbox hb_homingshot;
 	Hitbox hb_lazerbeam;
+	Hitbox hb_firework;
 
 	sf::Sprite sprite_dbullet;
 	sf::Sprite sprite_twbullet_left;
@@ -88,4 +91,6 @@ public:
 	sf::Sprite sprite_blastshot;
 	sf::Sprite sprite_homingshot;
 	sf::Sprite sprite_lazerbeam;
+	sf::Sprite sprite_fireroot;
+	sf::Sprite sprite_firework;
 };

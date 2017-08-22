@@ -5,7 +5,7 @@ RandomShot::RandomShot()
 	//setting of the random shot
 	velocity.x = 0;
 	velocity.y = 0;
-	damage = 10;
+	damage = 20;
 	speed = 650;
 	shoot_rate = 150;
 }

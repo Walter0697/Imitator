@@ -70,6 +70,9 @@ BulletSet::BulletSet(int isPlayer) {
 	hb_lazerbeam.hitbox_br = sf::Vector2f(134 - 60, 0);
 	hb_lazerbeam.generateHitboxRec();
 
+	hb_firework.hitbox_r = 4.f;
+	hb_firework.generateHitboxCir();
+
 	initBullet();
 }
 
@@ -107,6 +110,10 @@ void BulletSet::update(sf::Time delta_time)
 			homingbullets[i].update(delta_time);
 	for (int i = 0; i < MAX_LAZER_BEAM; i++)
 		lazerbeambullets[i].update(delta_time);
+	for (int i = 0; i < MAX_FIRE_ROOT; i++)
+		firerootbullets[i].update(delta_time);
+	for (int i = 0; i < MAX_FIRE_WORK; i++)
+		fireworkbullets[i].update(delta_time);
 }
 
 void BulletSet::render(sf::RenderWindow& window)
@@ -165,6 +172,14 @@ void BulletSet::render(sf::RenderWindow& window)
 	for (int i = 0; i < MAX_LAZER_BEAM; i++)
 		if (!(checkOutOfBound(lazerbeambullets[i])))
 			lazerbeambullets[i].render(window, sprite_lazerbeam);
+
+	for (int i = 0; i < MAX_FIRE_ROOT; i++)
+		if (!(checkOutOfBound(firerootbullets[i])))
+			firerootbullets[i].render(window, sprite_fireroot);
+
+	for (int i = 0; i < MAX_FIRE_WORK; i++)
+		if (!(checkOutOfBound(fireworkbullets[i])))
+			fireworkbullets[i].render(window, sprite_firework);
 }
 
 void BulletSet::renderHitBox(sf::RenderWindow& window)
@@ -282,6 +297,14 @@ void BulletSet::renderHitBox(sf::RenderWindow& window)
 			window.draw(hb_lazerbeam.rec);
 		}
 	}
+	for (int i = 0; i < MAX_FIRE_WORK; i++)
+	{
+		if (!(checkOutOfBound(fireworkbullets[i])))
+		{
+			hb_firework.cir.setPosition(fireworkbullets[i].position);
+			window.draw(hb_firework.cir);
+		}
+	}
 }
 
 void BulletSet::shoot(int type, sf::Vector2f position, int direction)
@@ -395,10 +418,16 @@ void BulletSet::shoot(int type, sf::Vector2f position, int direction)
 		//else
 			//lazerbeambullets[avaliableBullet(type)]
 		break;
+	case 13:
+		firerootbullets[avaliableBullet(type)].velocity = sf::Vector2f(0, direction * firerootbullets[0].speed);
+		if (direction == -1)
+			firerootbullets[avaliableBullet(type)].position = sf::Vector2f(position.x + 36, position.y + 6);
+		break;
 	}
 }
 
 //99 -> twbullet right
+//for boss shooting only
 void BulletSet::shoot(int type, sf::Vector2f position)
 {
 	switch (type)
@@ -481,6 +510,12 @@ void BulletSet::initBullet()
 
 	for (int i = 0; i < MAX_LAZER_BEAM; i++)
 		lazerbeambullets[i].position = sf::Vector2f(-3000, 0);
+
+	for (int i = 0; i < MAX_FIRE_ROOT; i++)
+		firerootbullets[i].position = sf::Vector2f(-1800, 0);
+
+	for (int i = 0; i < MAX_FIRE_WORK; i++)
+		fireworkbullets[i].position = sf::Vector2f(-1800, 0);
 }
 
 bool BulletSet::checkOutOfBound(Bullet& b)
@@ -494,6 +529,7 @@ bool BulletSet::checkOutOfBound(Bullet& b)
 
 //number 99 -> twoway bullet right
 //number 98 -> explosion
+//number 97 -> firework
 int BulletSet::avaliableBullet(int type)
 {
 	switch (type)
@@ -566,6 +602,16 @@ int BulletSet::avaliableBullet(int type)
 	case 12:
 		for (int i = 0; i < MAX_LAZER_BEAM; i++)
 			if (checkOutOfBound(lazerbeambullets[i]))
+				return i;
+		return 0;
+	case 13:
+		for (int i = 0; i < MAX_FIRE_ROOT; i++)
+			if (checkOutOfBound(firerootbullets[i]))
+				return i;
+		return 0;
+	case 97:
+		for (int i = 0; i < MAX_FIRE_WORK; i++)
+			if (checkOutOfBound(fireworkbullets[i]))
 				return i;
 		return 0;
 	}

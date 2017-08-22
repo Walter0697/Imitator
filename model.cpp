@@ -35,35 +35,80 @@ void Model::update(sf::Time& delta_time)
 
 		//update onLuck
 		if (this->player->onLuck > 0)
+		{
 			this->player->onLuck -= delta_time.asMilliseconds();
-		else
-			this->droprate->multiplier = 1;
-		
-		//special type of bullet >> lazer
-		for (int i = 0; i < MAX_LAZER; i++)
-			if (this->playerSet->lazerbullets[i].lifespan > 0)
-				this->playerSet->lazerbullets[i].updatePosition(sf::Vector2f(player->position.x + 36, player->position.y + 26));
-			
-		for (int i = 0; i < MAX_LAZER_BEAM; i++)
-			if (this->playerSet->lazerbeambullets[i].lifespan > 0)
-				this->playerSet->lazerbeambullets[i].updatePosition(sf::Vector2f(player->position.x + 36, player->position.y + 6));
-			
-		//spectial type of bullet >> homing
-		for (int i = 0; i < MAX_HOMING; i++)
-			if (!this->playerSet->checkOutOfBound(this->playerSet->homingbullets[i]))
-				this->playerSet->homingbullets[i].setTarget(findTarget(this->playerSet->homingbullets[i].position));
-		//homing bullet against player
-		for (int i = 0; i < MAX_HOMING; i++)
-			if (!this->enemyBulletSet->checkOutOfBound(this->enemyBulletSet->homingbullets[i]))
-			{
-				if (pow(enemyBulletSet->homingbullets[i].position.x - this->player->position.x, 2) + pow(enemyBulletSet->homingbullets[i].position.y - this->player->position.y, 2) < 40000)
-					this->enemyBulletSet->homingbullets[i].setTarget(player->position);
-				else
-					this->enemyBulletSet->homingbullets[i].setTarget(sf::Vector2f(-1, -1));
-			}
+			if (this->player->onLuck <= 0)
+				this->droprate->multiplier = 1;
+		}
 
+		specialBulletCheck();
 		enemyShootCount();
 		bossShootCount();
+	}
+}
+
+void Model::specialBulletCheck()
+{
+	//special type of bullet >> lazer
+	for (int i = 0; i < MAX_LAZER; i++)
+		if (this->playerSet->lazerbullets[i].lifespan > 0)
+			this->playerSet->lazerbullets[i].updatePosition(sf::Vector2f(player->position.x + 36, player->position.y + 26));
+
+	for (int i = 0; i < MAX_LAZER_BEAM; i++)
+		if (this->playerSet->lazerbeambullets[i].lifespan > 0)
+			this->playerSet->lazerbeambullets[i].updatePosition(sf::Vector2f(player->position.x + 36, player->position.y + 6));
+
+	//spectial type of bullet >> homing
+	for (int i = 0; i < MAX_HOMING; i++)
+		if (!this->playerSet->checkOutOfBound(this->playerSet->homingbullets[i]))
+			this->playerSet->homingbullets[i].setTarget(findTarget(this->playerSet->homingbullets[i].position));
+	//homing bullet against player
+	for (int i = 0; i < MAX_HOMING; i++)
+		if (!this->enemyBulletSet->checkOutOfBound(this->enemyBulletSet->homingbullets[i]))
+		{
+			if (pow(enemyBulletSet->homingbullets[i].position.x - this->player->position.x, 2) + pow(enemyBulletSet->homingbullets[i].position.y - this->player->position.y, 2) < 40000)
+				this->enemyBulletSet->homingbullets[i].setTarget(player->position);
+			else
+				this->enemyBulletSet->homingbullets[i].setTarget(sf::Vector2f(-1, -1));
+		}
+
+	//firework bullet
+	for (int i = 0; i < MAX_FIRE_ROOT; i++)
+	{
+		if (!this->playerSet->checkOutOfBound(this->playerSet->firerootbullets[i]))
+		{
+			if (this->playerSet->firerootbullets[i].velocity.y == 0)
+			{
+				float angle = rand() % 5;
+				while (angle <= 360)
+				{
+					this->playerSet->fireworkbullets[this->playerSet->avaliableBullet(97)].velocity.y = this->playerSet->fireworkbullets[0].speed * sin(angle * 3.14f / 180.f);
+					this->playerSet->fireworkbullets[this->playerSet->avaliableBullet(97)].velocity.x = this->playerSet->fireworkbullets[0].speed * cos(angle * 3.14f / 180.f);
+					this->playerSet->fireworkbullets[this->playerSet->avaliableBullet(97)].position = this->playerSet->firerootbullets[i].position;
+					angle += rand() % 5 + 5;
+				}
+				this->playerSet->firerootbullets[i].position = sf::Vector2f(-1800, 0);
+			}
+		}
+	}
+	//enemy firework bullet
+	for (int i = 0; i < MAX_FIRE_ROOT; i++)
+	{
+		if (!this->enemyBulletSet->checkOutOfBound(this->enemyBulletSet->firerootbullets[i]))
+		{
+			if (this->enemyBulletSet->firerootbullets[i].velocity.y == 0)
+			{
+				float angle = rand() % 5;
+				while (angle <= 360)
+				{
+					this->enemyBulletSet->fireworkbullets[this->enemyBulletSet->avaliableBullet(97)].velocity.y = this->enemyBulletSet->fireworkbullets[0].speed * sin(angle * 3.14f / 180.f);
+					this->enemyBulletSet->fireworkbullets[this->enemyBulletSet->avaliableBullet(97)].velocity.x = this->enemyBulletSet->fireworkbullets[0].speed * cos(angle * 3.14f / 180.f);
+					this->enemyBulletSet->fireworkbullets[this->enemyBulletSet->avaliableBullet(97)].position = this->enemyBulletSet->firerootbullets[i].position;
+					angle += rand() % 5 + 5;
+				}
+				this->enemyBulletSet->firerootbullets[i].position = sf::Vector2f(-1800, 0);
+			}
+		}
 	}
 }
 

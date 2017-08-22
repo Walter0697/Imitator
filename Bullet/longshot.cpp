@@ -7,7 +7,7 @@ LongShot::LongShot()
 	velocity.y = 0;
 	damage = 60;
 	speed = 400;
-	shoot_rate = 2000;
+	shoot_rate = 1800;
 }
 
 LongShot::~LongShot() {}

@@ -1,16 +1,17 @@
 class     type     damage    speed     shoot_rate        position     enemy position
 Default      1         20      650           1000        (36, 6)      (31, 61)
 Two-way      2         25      700            600        (36, 6)      (10, 47), (39, 47)
-Long Shot    3         60      400           2000        (30, 6)      (10, 33)
+Long Shot    3         60      400           1800        (30, 6)      (10, 33)
 Shot Gun     4       8x20      700           1500        (36, 10)     (36, 20)                lifespan = rand()
 Light Ball   5          5      500	         1500        (19, 10)     (16, 47)
-Random       6         10      650            150        (36, 6)      (32, 32)
+Random       6         20      650            150        (36, 6)      (32, 32)
 Grenade      7       0(3)      700           2000        (36, 8)      (56, 44)
 Fireball     8    20(0.5)      650           1200        (36, 6)      (20, 0)
 Lazer        9         25        0     rand()%600 + 200  (36, 8)                              shoot_rate_s = -1
 Blast       10         20      600        3500(80/7)     (36, 6)
 Homing      11         20      200        1000(100/3)    (36, 6)      (34, 60)
 LazerBeam   12         20        0           5000        (36, 6)
+firework    13         10    300->500        2000        (36, 6)
 
 
 enemy

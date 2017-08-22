@@ -457,6 +457,14 @@ void BulletSet::shoot(int type, sf::Vector2f position)
 		twbullets_right[avaliableBullet(type)].velocity = sf::Vector2f(400, twbullets_right[0].speed);
 		twbullets_right[avaliableBullet(type)].position = position;
 		break;
+	case 7:
+		grenadebullets[avaliableBullet(type)].velocity.y = grenadebullets[0].speed;
+		grenadebullets[avaliableBullet(type)].position = position;
+		break;
+	case 8:
+		firebullets[avaliableBullet(type)].velocity.y = firebullets[0].speed;
+		firebullets[avaliableBullet(type)].position = position;
+		break;
 	case 10:
 		for (int i = 2; i < BLAST_SHOT_NUMBERS; i++)
 		{
@@ -464,6 +472,10 @@ void BulletSet::shoot(int type, sf::Vector2f position)
 			blastbullets[avaliableBullet(type)].velocity.x = blastbullets[0].speed * cos((i * 15) * 3.14f / 180.f);
 			blastbullets[avaliableBullet(type)].position = position;
 		}
+		break;
+	case 13:
+		firerootbullets[avaliableBullet(type)].velocity.y = firerootbullets[0].speed;
+		firerootbullets[avaliableBullet(type)].position = position;
 		break;
 	}
 }

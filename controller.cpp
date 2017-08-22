@@ -510,7 +510,8 @@ void Controller::testerinputs(sf::Time delta_time)
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::B))
 					this->model->shield->addShield(1);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::G))
-					this->model->enemySet->spawn(rand() % 2 + 1);
+					//this->model->enemySet->spawn(rand() % 2 + 1);
+					this->model->enemySet->spawn(3);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F2))
 					this->model->pause = !this->model->pause;
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))

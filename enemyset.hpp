@@ -16,6 +16,7 @@
 
 #include "Boss/devPlane.hpp"
 #include "Boss/modifier.hpp"
+#include "Boss/firethrower.hpp"
 
 #include "hitbox.hpp"
 
@@ -86,4 +87,7 @@ public:
 	Modifier boss_modifier;
 	Hitbox hb_boss_modifier;
 	sf::Sprite sprite_modifier;
+	FireThrower boss_firethrower;
+	Hitbox hb_boss_firethrower;
+	sf::Sprite sprite_firethrower;
 };

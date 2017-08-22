@@ -31,6 +31,8 @@ float EnemyHud::getHealth()
 		return enemySet->boss_devplane.hp;
 	case 2:
 		return enemySet->boss_modifier.hp;
+	case 3:
+		return enemySet->boss_firethrower.hp;
 	}
 	return 0;
 }
@@ -43,6 +45,8 @@ float EnemyHud::getMaxHealth()
 		return enemySet->boss_devplane.maxhp;
 	case 2:
 		return enemySet->boss_modifier.maxhp;
+	case 3:
+		return enemySet->boss_firethrower.maxhp;
 	}
 	return 0;
 }

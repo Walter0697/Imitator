@@ -52,6 +52,10 @@ EnemySet::EnemySet()
 	hb_boss_modifier.hitbox_br = sf::Vector2f(576, 339);
 	hb_boss_modifier.generateHitboxRec();
 
+	hb_boss_firethrower.hitbox_tl = sf::Vector2f(0, 65);
+	hb_boss_firethrower.hitbox_br = sf::Vector2f(548, 245);
+	hb_boss_firethrower.generateHitboxRec();
+
 	initEnemy();
 }
 
@@ -79,6 +83,8 @@ void EnemySet::update(sf::Time delta_time)
 		boss_devplane.update(delta_time);
 	if (!checkOutOfBound(boss_modifier))
 		boss_modifier.update(delta_time);
+	if (!checkOutOfBound(boss_firethrower))
+		boss_firethrower.update(delta_time);
 
 	pushBack(delta_time);
 }
@@ -117,6 +123,8 @@ void EnemySet::render(sf::RenderWindow& window)
 			boss_devplane.render(window, sprite_devplane);
 	if (!(checkOutOfBound(boss_modifier)))
 		boss_modifier.render(window, sprite_modifier);
+	if (!(checkOutOfBound(boss_firethrower)))
+		boss_firethrower.render(window, sprite_firethrower);
 }
 
 void EnemySet::renderHitBox(sf::RenderWindow& window)
@@ -185,6 +193,11 @@ void EnemySet::renderHitBox(sf::RenderWindow& window)
 	{
 		hb_boss_modifier.rec.setPosition(boss_modifier.position + hb_boss_modifier.hitbox_tl);
 		window.draw(hb_boss_modifier.rec);
+	}
+	if (!(checkOutOfBound(boss_firethrower)))
+	{
+		hb_boss_firethrower.rec.setPosition(boss_firethrower.position + hb_boss_firethrower.hitbox_tl);
+		window.draw(hb_boss_firethrower.rec);
 	}
 }
 
@@ -298,6 +311,10 @@ void EnemySet::spawn(int type)
 		boss_modifier.initSetup();
 		current_boss = 2;
 		break;
+	case 3:
+		boss_firethrower.initSetup();
+		current_boss = 3;
+		break;
 	}
 }
 
@@ -333,6 +350,9 @@ void EnemySet::initEnemy()
 	boss_modifier.position.x = 0;
 	boss_modifier.position.y = 100000;
 	boss_modifier.mode = 0;
+	boss_firethrower.position.x = 0;
+	boss_firethrower.position.y = 100000;
+	boss_firethrower.mode = 0;
 
 	current_boss = 0;
 }
@@ -483,6 +503,7 @@ void EnemySet::pushBack(sf::Time delta_time)
 	}
 
 	//boss movement
+	//devplane
 	if (boss_devplane.mode <= 3)
 	{
 		if (boss_devplane.position.x + hb_boss_devplane.hitbox_tl.x + hb_boss_devplane.hitbox_br.x > SCREEN_WIDTH - 20)
@@ -496,6 +517,7 @@ void EnemySet::pushBack(sf::Time delta_time)
 			boss_devplane.velocity.x = boss_devplane.speed;
 		}
 	}
+	//modifier
 	if (boss_modifier.mode == 2 || boss_modifier.mode == 3)
 	{
 		if (boss_modifier.position.x < 40)
@@ -534,6 +556,20 @@ void EnemySet::pushBack(sf::Time delta_time)
 		{
 			boss_modifier.position.x = 40 + boss_modifier.speed * delta_time.asSeconds();
 			boss_modifier.velocity.x = boss_modifier.speed * 2;
+		}
+	}
+	//firethrower
+	if (boss_firethrower.mode <= 3)
+	{
+		if (boss_firethrower.position.x + hb_boss_firethrower.hitbox_tl.x + hb_boss_firethrower.hitbox_br.x > SCREEN_WIDTH - 20)
+		{
+			boss_firethrower.position.x = SCREEN_WIDTH - 20 - boss_firethrower.speed * delta_time.asSeconds() - hb_boss_firethrower.hitbox_tl.x - hb_boss_firethrower.hitbox_br.x;
+			boss_firethrower.velocity.x = -boss_firethrower.speed;
+		}
+		else if (boss_firethrower.position.x < 20)
+		{
+			boss_firethrower.position.x = 20 + boss_firethrower.speed * delta_time.asSeconds();
+			boss_firethrower.velocity.x = boss_firethrower.speed;
 		}
 	}
 }

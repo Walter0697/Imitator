@@ -5,7 +5,7 @@ FireThrower::FireThrower() {
 	velocity.y = 0;
 
 	speed = 150;
-	maxhp = 10000;
+	maxhp = 8000;
 	hp = maxhp;
 
 	mode = 0;

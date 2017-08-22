@@ -98,13 +98,13 @@ void Model::specialBulletCheck()
 		{
 			if (this->enemyBulletSet->firerootbullets[i].velocity.y == 0)
 			{
-				float angle = rand() % 5;
+				float angle = rand() % 10;
 				while (angle <= 360)
 				{
 					this->enemyBulletSet->fireworkbullets[this->enemyBulletSet->avaliableBullet(97)].velocity.y = this->enemyBulletSet->fireworkbullets[0].speed * sin(angle * 3.14f / 180.f);
 					this->enemyBulletSet->fireworkbullets[this->enemyBulletSet->avaliableBullet(97)].velocity.x = this->enemyBulletSet->fireworkbullets[0].speed * cos(angle * 3.14f / 180.f);
 					this->enemyBulletSet->fireworkbullets[this->enemyBulletSet->avaliableBullet(97)].position = this->enemyBulletSet->firerootbullets[i].position;
-					angle += rand() % 5 + 5;
+					angle += rand() % 20 + 10;
 				}
 				this->enemyBulletSet->firerootbullets[i].position = sf::Vector2f(-1800, 0);
 			}
@@ -910,13 +910,41 @@ void Model::checkHit()
 					enemyDamage(this->enemySet->lazzyenemies[i], this->playerSet->lazerbeambullets[j].damage, 10);
 			}
 		}
+
+		//firework vs default + douddy + longgy + shotty + gangster + thug + unknown + glitchy + advanced + lazzy enemy
+		for (int j = 0; j < MAX_FIRE_WORK; j++)
+		{
+			if (!this->playerSet->checkOutOfBound(this->playerSet->fireworkbullets[j]))
+			{
+				if (coll.EnemyBulletCollision(this->enemySet->denemies[i], this->enemySet->hb_denemy, this->playerSet->fireworkbullets[j], this->playerSet->hb_firework))
+					enemyDamage(this->playerSet->fireworkbullets[j], this->enemySet->denemies[i], 1);
+				else if (coll.EnemyBulletCollision(this->enemySet->douenemies[i], this->enemySet->hb_douenemy, this->playerSet->fireworkbullets[j], this->playerSet->hb_firework))
+					enemyDamage(this->playerSet->fireworkbullets[j], this->enemySet->douenemies[i], 2);
+				else if (coll.EnemyBulletCollision(this->enemySet->lonenemies[i], this->enemySet->hb_longenemy, this->playerSet->fireworkbullets[j], this->playerSet->hb_firework))
+					enemyDamage(this->playerSet->fireworkbullets[j], this->enemySet->lonenemies[i], 3);
+				else if (coll.EnemyBulletCollision(this->enemySet->shotenemies[i], this->enemySet->hb_shotenemy, this->playerSet->fireworkbullets[j], this->playerSet->hb_firework))
+					enemyDamage(this->playerSet->fireworkbullets[j], this->enemySet->shotenemies[i], 4);
+				else if (coll.EnemyBulletCollision(this->enemySet->gangenemies[i], this->enemySet->hb_gangenemy, this->playerSet->fireworkbullets[j], this->playerSet->hb_firework))
+					enemyDamage(this->playerSet->fireworkbullets[j], this->enemySet->gangenemies[i], 5);
+				else if (coll.EnemyBulletCollision(this->enemySet->thugenemies[i], this->enemySet->hb_thugenemy, this->playerSet->fireworkbullets[j], this->playerSet->hb_firework))
+					enemyDamage(this->playerSet->fireworkbullets[j], this->enemySet->thugenemies[i], 6);
+				else if (coll.EnemyBulletCollision(this->enemySet->unknownenemies[i], this->enemySet->hb_unknownenemy, this->playerSet->fireworkbullets[j], this->playerSet->hb_firework))
+					enemyDamage(this->playerSet->fireworkbullets[j], this->enemySet->unknownenemies[i], 7);
+				else if (coll.EnemyBulletCollision(this->enemySet->glitchyenemies[i], this->enemySet->hb_glitchyenemy, this->playerSet->fireworkbullets[j], this->playerSet->hb_firework))
+					enemyDamage(this->playerSet->fireworkbullets[j], this->enemySet->glitchyenemies[i], 8);
+				else if (coll.EnemyBulletCollision(this->enemySet->advancedenemies[i], this->enemySet->hb_advancedenemy, this->playerSet->fireworkbullets[j], this->playerSet->hb_firework))
+					enemyDamage(this->playerSet->fireworkbullets[j], this->enemySet->advancedenemies[i], 9);
+				else if (coll.EnemyBulletCollision(this->enemySet->lazzyenemies[i], this->enemySet->hb_lazzyenemy, this->playerSet->fireworkbullets[j], this->playerSet->hb_firework))
+					enemyDamage(this->playerSet->fireworkbullets[j], this->enemySet->lazzyenemies[i], 10);
+			}
+		}
 	}
 	
 	///////////////////////////////////////////////////////
 	/////////////////////BULLET VS BOSS////////////////////
 	///////////////////////////////////////////////////////
 	//bullet vs devplane
-	if (enemySet->boss_devplane.mode >= 2)
+	if (enemySet->boss_devplane.mode >= 2 && enemySet->boss_devplane.mode != 10)
 	{
 		for (int i = 0; i < MAX_DBULLET; i++)
 			if (!this->playerSet->checkOutOfBound(this->playerSet->dbullets[i]))
@@ -983,9 +1011,13 @@ void Model::checkHit()
 			if (!this->playerSet->checkOutOfBound(this->playerSet->lazerbeambullets[i]))
 				if (coll.EnemyBulletCollision(this->enemySet->boss_devplane, this->enemySet->hb_boss_devplane, this->playerSet->lazerbeambullets[i], this->playerSet->hb_lazerbeam))
 					enemyDamage(this->enemySet->boss_devplane, this->playerSet->lazerbeambullets[i].damage, 91);
+		for (int i = 0; i < MAX_FIRE_WORK; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->fireworkbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_devplane, this->enemySet->hb_boss_devplane, this->playerSet->fireworkbullets[i], this->playerSet->hb_firework))
+					enemyDamage(this->enemySet->boss_devplane, this->playerSet->fireworkbullets[i].damage, 91);
 	}
 	//bullet vs modifier
-	if (enemySet->boss_modifier.mode >= 2)
+	if (enemySet->boss_modifier.mode >= 2 && enemySet->boss_modifier.mode != 10)
 	{
 		for (int i = 0; i < MAX_DBULLET; i++)
 			if (!this->playerSet->checkOutOfBound(this->playerSet->dbullets[i]))
@@ -1052,6 +1084,10 @@ void Model::checkHit()
 			if (!this->playerSet->checkOutOfBound(this->playerSet->lazerbeambullets[i]))
 				if (coll.EnemyBulletCollision(this->enemySet->boss_modifier, this->enemySet->hb_boss_modifier, this->playerSet->lazerbeambullets[i], this->playerSet->hb_lazerbeam))
 					enemyDamage(this->enemySet->boss_modifier, this->playerSet->lazerbeambullets[i].damage, 92);
+		for (int i = 0; i < MAX_FIRE_WORK; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->fireworkbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_modifier, this->enemySet->hb_boss_modifier, this->playerSet->fireworkbullets[i], this->playerSet->hb_firework))
+					enemyDamage(this->enemySet->boss_modifier, this->playerSet->fireworkbullets[i].damage, 92);
 
 	}
 	

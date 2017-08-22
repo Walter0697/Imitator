@@ -32,6 +32,8 @@
        minor bug fixed
 20/8 : balance a bit for the shield
        modify a bit for the scoreboard
+22/8 : adding new type of bullet -- firework
+	   adding new type of boss -- firethrower
 
 assets:
 	ship:

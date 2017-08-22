@@ -5,7 +5,7 @@ Firework::Firework()
 	//setting of the default bullet
 	velocity.x = 0;
 	velocity.y = 0;
-	damage = 10;
+	damage = 5;
 	speed = 500;
 	shoot_rate = 0;
 }

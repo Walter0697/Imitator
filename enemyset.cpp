@@ -56,6 +56,10 @@ EnemySet::EnemySet()
 	hb_boss_firethrower.hitbox_br = sf::Vector2f(548, 245);
 	hb_boss_firethrower.generateHitboxRec();
 
+	hb_boss_alien.hitbox_tl = sf::Vector2f(12, 62);
+	hb_boss_alien.hitbox_br = sf::Vector2f(546, 271);
+	hb_boss_alien.generateHitboxRec();
+
 	initEnemy();
 }
 
@@ -85,6 +89,8 @@ void EnemySet::update(sf::Time delta_time)
 		boss_modifier.update(delta_time);
 	if (!checkOutOfBound(boss_firethrower))
 		boss_firethrower.update(delta_time);
+	if (!checkOutOfBound(boss_alien))
+		boss_alien.update(delta_time);
 
 	pushBack(delta_time);
 }
@@ -125,6 +131,8 @@ void EnemySet::render(sf::RenderWindow& window)
 		boss_modifier.render(window, sprite_modifier);
 	if (!(checkOutOfBound(boss_firethrower)))
 		boss_firethrower.render(window, sprite_firethrower);
+	if (!(checkOutOfBound(boss_alien)))
+		boss_alien.render(window, sprite_alien);
 }
 
 void EnemySet::renderHitBox(sf::RenderWindow& window)
@@ -198,6 +206,11 @@ void EnemySet::renderHitBox(sf::RenderWindow& window)
 	{
 		hb_boss_firethrower.rec.setPosition(boss_firethrower.position + hb_boss_firethrower.hitbox_tl);
 		window.draw(hb_boss_firethrower.rec);
+	}
+	if (!(checkOutOfBound(boss_alien)))
+	{
+		hb_boss_alien.rec.setPosition(boss_alien.position + hb_boss_alien.hitbox_tl);
+		window.draw(hb_boss_alien.rec);
 	}
 }
 
@@ -315,6 +328,10 @@ void EnemySet::spawn(int type)
 		boss_firethrower.initSetup();
 		current_boss = 3;
 		break;
+	case 4:
+		boss_alien.initSetup();
+		current_boss = 4;
+		break;
 	}
 }
 
@@ -353,6 +370,9 @@ void EnemySet::initEnemy()
 	boss_firethrower.position.x = 0;
 	boss_firethrower.position.y = 100000;
 	boss_firethrower.mode = 0;
+	boss_alien.position.x = 0;
+	boss_alien.position.y = 100000;
+	boss_alien.mode = 0;
 
 	current_boss = 0;
 }
@@ -570,6 +590,20 @@ void EnemySet::pushBack(sf::Time delta_time)
 		{
 			boss_firethrower.position.x = 20 + boss_firethrower.speed * delta_time.asSeconds();
 			boss_firethrower.velocity.x = boss_firethrower.speed;
+		}
+	}
+	//ailenShip
+	if (boss_alien.mode <= 3)
+	{
+		if (boss_alien.position.x + hb_boss_alien.hitbox_tl.x + hb_boss_alien.hitbox_br.x > SCREEN_WIDTH - 20)
+		{
+			boss_alien.position.x = SCREEN_WIDTH - 20 - boss_alien.speed * delta_time.asSeconds() - hb_boss_alien.hitbox_tl.x - hb_boss_alien.hitbox_br.x;
+			boss_alien.velocity.x = -boss_alien.speed;
+		}
+		else if (boss_alien.position.x < 20)
+		{
+			boss_alien.position.x = 20 + boss_alien.speed * delta_time.asSeconds();
+			boss_alien.velocity.x = boss_alien.speed;
 		}
 	}
 }

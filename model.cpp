@@ -402,6 +402,54 @@ void Model::bossShootCount()
 			}
 		}
 	}
+	//alienShip
+	else if (this->enemySet->current_boss == 4)
+	{
+		if (this->enemySet->boss_alien.mode == 2)
+		{
+			if (this->enemySet->boss_alien.shoot_count > 700)
+			{
+				this->enemySet->boss_alien.shoot_count -= 700;
+				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.primary_shoot);
+				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.six_shoot);
+			}
+			if (this->enemySet->boss_alien.shoot_count_two > 700)
+			{
+				this->enemySet->boss_alien.shoot_count_two -= 700;
+				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.secondary_shoot);
+				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.five_shoot);
+			}
+			if (this->enemySet->boss_alien.shoot_count_three > 700)
+			{
+				this->enemySet->boss_alien.shoot_count_three -= 700;
+				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.third_shoot);
+				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.four_shoot);
+			}
+		}
+		else if (this->enemySet->boss_alien.mode == 3)
+		{
+			if (this->enemySet->boss_alien.shoot_count > 500)
+			{
+				this->enemySet->boss_alien.shoot_count -= 500;
+				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.primary_shoot);
+				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.six_shoot);
+			}
+			if (this->enemySet->boss_alien.shoot_count_two > 1000)
+			{
+				this->enemySet->boss_alien.shoot_count_two -= 1000;
+				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.third_shoot);
+				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.four_shoot);
+			}
+		}
+		else if (this->enemySet->boss_alien.mode == 5)
+		{
+			if (this->enemySet->boss_alien.shoot_count > 500)
+			{
+				this->enemySet->boss_alien.shoot_count -= 500;
+				this->enemyBulletSet->shoot(10, this->enemySet->boss_alien.position + this->enemySet->boss_alien.center_shoot);
+			}
+		}
+	}
 }
 
 void Model::shoot()
@@ -527,6 +575,12 @@ void Model::elementHit(sf::Time delta_time)
 		{
 			this->enemySet->boss_firethrower.onFire -= delta_time.asSeconds();
 			enemyDamage(this->enemySet->boss_firethrower, FIRE_HIT, 93);
+		}
+	if (this->enemySet->checkOutOfBound(this->enemySet->boss_alien))
+		if (this->enemySet->boss_alien.onFire > 0)
+		{
+			this->enemySet->boss_alien.onFire -= delta_time.asSeconds();
+			enemyDamage(this->enemySet->boss_alien, FIRE_HIT, 94);
 		}
 
 	//player element hit
@@ -1219,7 +1273,79 @@ void Model::checkHit()
 			if (!this->playerSet->checkOutOfBound(this->playerSet->fireworkbullets[i]))
 				if (coll.EnemyBulletCollision(this->enemySet->boss_firethrower, this->enemySet->hb_boss_firethrower, this->playerSet->fireworkbullets[i], this->playerSet->hb_firework))
 					enemyDamage(this->enemySet->boss_firethrower, this->playerSet->fireworkbullets[i].damage, 93);
-
+	}
+	//bullet vs alienship
+	if (enemySet->boss_alien.mode >= 2 && enemySet->boss_alien.mode != 10)
+	{
+		for (int i = 0; i < MAX_DBULLET; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->dbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_alien, this->enemySet->hb_boss_alien, this->playerSet->dbullets[i], this->playerSet->hb_dbullet))
+					enemyDamage(this->playerSet->dbullets[i], this->enemySet->boss_alien, 94);
+		for (int i = 0; i < MAX_TWOWAYB; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->twbullets_left[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_alien, this->enemySet->hb_boss_alien, this->playerSet->twbullets_left[i], this->playerSet->hb_twbullet))
+					enemyDamage(this->playerSet->twbullets_left[i], this->enemySet->boss_alien, 94);
+		for (int i = 0; i < MAX_TWOWAYB; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->twbullets_right[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_alien, this->enemySet->hb_boss_alien, this->playerSet->twbullets_right[i], this->playerSet->hb_twbullet))
+					enemyDamage(this->playerSet->twbullets_right[i], this->enemySet->boss_alien, 94);
+		for (int i = 0; i < MAX_LONGSHOT; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->longbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_alien, this->enemySet->hb_boss_alien, this->playerSet->longbullets[i], this->playerSet->hb_longbullet))
+					enemyDamage(this->playerSet->longbullets[i], this->enemySet->boss_alien, 94);
+		for (int i = 0; i < MAX_SHOTGUN; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->shotbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_alien, this->enemySet->hb_boss_alien, this->playerSet->shotbullets[i], this->playerSet->hb_shotgun))
+					enemyDamage(this->playerSet->shotbullets[i], this->enemySet->boss_alien, 94);
+		for (int i = 0; i < MAX_LIGHTBALL; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->lightbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_alien, this->enemySet->hb_boss_alien, this->playerSet->lightbullets[i], this->playerSet->hb_lightball))
+					enemyDamage(this->enemySet->boss_alien, this->playerSet->lightbullets[i].damage, 94);
+		for (int i = 0; i < MAX_RANDOMSHOT; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->randombullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_alien, this->enemySet->hb_boss_alien, this->playerSet->randombullets[i], this->playerSet->hb_randombullet))
+					enemyDamage(this->playerSet->randombullets[i], this->enemySet->boss_alien, 94);
+		for (int i = 0; i < MAX_GRENADESHOT; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->grenadebullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_alien, this->enemySet->hb_boss_alien, this->playerSet->grenadebullets[i], this->playerSet->hb_grenade))
+				{
+					this->playerSet->explosions[playerSet->avaliableBullet(98)].lifespan = 0.5;
+					this->playerSet->explosions[playerSet->avaliableBullet(98)].position = this->playerSet->grenadebullets[i].position;
+					this->playerSet->grenadebullets[i].position = sf::Vector2f(-1800, 0);
+					this->playerSet->grenadebullets[i].velocity = sf::Vector2f(0, 0);
+				}
+		for (int i = 0; i < MAX_EXPLOSION; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->explosions[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_alien, this->enemySet->hb_boss_alien, this->playerSet->explosions[i], this->playerSet->hb_explosion))
+					enemyDamage(this->enemySet->boss_alien, this->playerSet->explosions[i].damage, 94);
+		for (int i = 0; i < MAX_FIRE_BALL; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->firebullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_alien, this->enemySet->hb_boss_alien, this->playerSet->firebullets[i], this->playerSet->hb_fireshot))
+				{
+					if (rand() % 100 > 70)
+						this->enemySet->boss_alien.onFire = rand() % 5;
+					enemyDamage(this->playerSet->firebullets[i], this->enemySet->boss_alien, 94);
+				}
+		for (int i = 0; i < MAX_LAZER; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->lazerbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_alien, this->enemySet->hb_boss_alien, this->playerSet->lazerbullets[i], this->playerSet->hb_lazer))
+					enemyDamage(this->enemySet->boss_alien, this->playerSet->lazerbullets[i].damage, 94);
+		for (int i = 0; i < MAX_BLASTSHOT; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->blastbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_alien, this->enemySet->hb_boss_alien, this->playerSet->blastbullets[i], this->playerSet->hb_blastshot))
+					enemyDamage(this->playerSet->blastbullets[i], this->enemySet->boss_alien, 94);
+		for (int i = 0; i < MAX_HOMING; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->homingbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_alien, this->enemySet->hb_boss_alien, this->playerSet->homingbullets[i], this->playerSet->hb_homingshot))
+					enemyDamage(this->playerSet->homingbullets[i], this->enemySet->boss_alien, 94);
+		for (int i = 0; i < MAX_LAZER_BEAM; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->lazerbeambullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_alien, this->enemySet->hb_boss_alien, this->playerSet->lazerbeambullets[i], this->playerSet->hb_lazerbeam))
+					enemyDamage(this->enemySet->boss_alien, this->playerSet->lazerbeambullets[i].damage, 94);
+		for (int i = 0; i < MAX_FIRE_WORK; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->fireworkbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_alien, this->enemySet->hb_boss_alien, this->playerSet->fireworkbullets[i], this->playerSet->hb_firework))
+					enemyDamage(this->enemySet->boss_alien, this->playerSet->fireworkbullets[i].damage, 94);
 	}
 	
 
@@ -1472,6 +1598,10 @@ void Model::checkDie(Enemy& enemy, int type)
 			break;
 		case 93:
 			enemyDie(enemy, this->enemyBulletSet->firerootbullets[0], 13, 3000, 100);
+			enemySet->current_boss = 0;
+			break;
+		case 94:
+			enemyDie(enemy, this->enemyBulletSet->blastbullets[0], 10, 3000, 100);
 			enemySet->current_boss = 0;
 			break;
 		}

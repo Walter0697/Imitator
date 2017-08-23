@@ -33,6 +33,8 @@ float EnemyHud::getHealth()
 		return enemySet->boss_modifier.hp;
 	case 3:
 		return enemySet->boss_firethrower.hp;
+	case 4:
+		return enemySet->boss_alien.hp;
 	}
 	return 0;
 }
@@ -47,6 +49,8 @@ float EnemyHud::getMaxHealth()
 		return enemySet->boss_modifier.maxhp;
 	case 3:
 		return enemySet->boss_firethrower.maxhp;
+	case 4:
+		return enemySet->boss_alien.maxhp;
 	}
 	return 0;
 }

@@ -430,6 +430,7 @@ void BulletSet::shoot(int type, sf::Vector2f position, int direction)
 //for boss shooting only
 void BulletSet::shoot(int type, sf::Vector2f position)
 {
+	float angle = rand() % 360;
 	switch (type)
 	{
 	case 1:
@@ -453,6 +454,15 @@ void BulletSet::shoot(int type, sf::Vector2f position)
 			shotbullets[avaliableBullet(type)].position = position;
 		}
 		break;
+	case 5:
+		lightbullets[avaliableBullet(type)].velocity.y = lightbullets[0].speed;
+		lightbullets[avaliableBullet(type)].position = position;
+		break;
+	case 6:
+		randombullets[avaliableBullet(type)].velocity.y = randombullets[0].speed * sin(angle);
+		randombullets[avaliableBullet(type)].velocity.x = randombullets[0].speed * cos(angle);
+		randombullets[avaliableBullet(type)].position = position;
+		break;
 	case 99:
 		twbullets_right[avaliableBullet(type)].velocity = sf::Vector2f(400, twbullets_right[0].speed);
 		twbullets_right[avaliableBullet(type)].position = position;
@@ -472,6 +482,11 @@ void BulletSet::shoot(int type, sf::Vector2f position)
 			blastbullets[avaliableBullet(type)].velocity.x = blastbullets[0].speed * cos((i * 15) * 3.14f / 180.f);
 			blastbullets[avaliableBullet(type)].position = position;
 		}
+		break;
+	case 11:
+		homingbullets[avaliableBullet(type)].angle = -200;
+		homingbullets[avaliableBullet(type)].velocity.y = homingbullets[0].speed;
+		homingbullets[avaliableBullet(type)].position = position;
 		break;
 	case 13:
 		firerootbullets[avaliableBullet(type)].velocity.y = firerootbullets[0].speed;

@@ -17,6 +17,7 @@
 #include "Boss/devPlane.hpp"
 #include "Boss/modifier.hpp"
 #include "Boss/firethrower.hpp"
+#include "Boss/alienShip.hpp"
 
 #include "hitbox.hpp"
 
@@ -90,4 +91,7 @@ public:
 	FireThrower boss_firethrower;
 	Hitbox hb_boss_firethrower;
 	sf::Sprite sprite_firethrower;
+	AlienShip boss_alien;
+	Hitbox hb_boss_alien;
+	sf::Sprite sprite_alien;
 };

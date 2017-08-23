@@ -18,6 +18,8 @@
 #include "Boss/modifier.hpp"
 #include "Boss/firethrower.hpp"
 #include "Boss/alienShip.hpp"
+#include "Boss/labPlane.hpp"
+#include "Boss/finalBoss.hpp"
 
 #include "hitbox.hpp"
 
@@ -94,4 +96,10 @@ public:
 	AlienShip boss_alien;
 	Hitbox hb_boss_alien;
 	sf::Sprite sprite_alien;
+	LabPlane boss_labplane;
+	Hitbox hb_boss_labplane;
+	sf::Sprite sprite_labplane;
+	FinalBoss boss_final;
+	Hitbox hb_boss_final;
+	sf::Sprite sprite_final;
 };

@@ -130,6 +130,8 @@ View::View(Model* model)
 	this->model->enemySet->sprite_modifier.setTexture(manager.get_texture("Assets/modifier.png", sf::Color(0, 128, 192)), true);
 	this->model->enemySet->sprite_firethrower.setTexture(manager.get_texture("Assets/fireThrower.png", sf::Color(0, 128, 192)), true);
 	this->model->enemySet->sprite_alien.setTexture(manager.get_texture("Assets/unknownboss.png", sf::Color::White), true);
+	this->model->enemySet->sprite_labplane.setTexture(manager.get_texture("Assets/labShip.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_final.setTexture(manager.get_texture("Assets/finalBoss.png", sf::Color(0, 128, 192)), true);
 
 	//player bullet texture
 	this->model->playerSet->sprite_dbullet.setTexture(manager.get_texture("Assets/pbullet.png", sf::Color(0, 0, 0)), true);

@@ -1,35 +1,33 @@
-#include "alienShip.hpp"
+#include "finalBoss.hpp"
 
-AlienShip::AlienShip() {
+FinalBoss::FinalBoss() {
 	velocity.x = 0;
 	velocity.y = 0;
 
 	speed = 80;
-	maxhp = 8000;
+	maxhp = 10000;
 	hp = maxhp;
 
 	mode = 0;
 
-	primary_shoot = sf::Vector2f(57, 231);     
-	secondary_shoot = sf::Vector2f(82, 257);   
-	third_shoot = sf::Vector2f(110, 250);       
-	four_shoot = sf::Vector2f(458, 250);         
-	five_shoot = sf::Vector2f(485, 257);
-	six_shoot = sf::Vector2f(511, 231);
-	center_shoot = sf::Vector2f(285, 191);
+	//not set yet
+	primary_shoot = sf::Vector2f(140, 310);      
+	secondary_shoot = sf::Vector2f(415, 310);  
+	third_shoot = sf::Vector2f(280, 360);        
+	four_shoot = sf::Vector2f(280, 110);         
 }
 
-AlienShip::~AlienShip() {}
+FinalBoss::~FinalBoss() {}
 
-void AlienShip::initSetup()
+void FinalBoss::initSetup()
 {
 	hp = maxhp;
-	position.y = -325;
+	position.y = -470;
 	position.x = SCREEN_WIDTH / 2 - 280;
-	  
-	shoot_count = 0;         //out shoot
-	shoot_count_two = 100;     //middle shoot
-	shoot_count_three = 200;   //inside shoot
+
+	shoot_count = 0;   
+	shoot_count_two = 0;  
+	shoot_count_three = 0;   
 
 	y_target = -100;
 
@@ -38,13 +36,14 @@ void AlienShip::initSetup()
 	chance = 2;
 }
 
-void AlienShip::render(sf::RenderWindow& window, sf::Sprite& sprite)
+void FinalBoss::render(sf::RenderWindow& window, sf::Sprite& sprite)
 {
 	sprite.setPosition(position);
 	window.draw(sprite);
 }
 
-void AlienShip::update(sf::Time delta_time)
+//not done yet
+void FinalBoss::update(sf::Time delta_time)
 {
 	//entering the screen
 	if (mode == 1)
@@ -69,8 +68,8 @@ void AlienShip::update(sf::Time delta_time)
 			if (rand() % 10 > chance)
 			{
 				shoot_count = 0;
-				shoot_count_two = 100;
-				shoot_count_three = 200;
+				shoot_count_two = 0;
+				shoot_count_three = 0;
 				chance++;
 
 				if (mode == 2) mode = 3;
@@ -80,7 +79,7 @@ void AlienShip::update(sf::Time delta_time)
 				mode = 4;
 		}
 	}
-	
+	//moving to shoot lazer
 	else if (mode == 4)
 	{
 		if (this->position.x > 50)
@@ -88,19 +87,26 @@ void AlienShip::update(sf::Time delta_time)
 		else
 			mode = 5;
 	}
-	//shooting blast
+	//shooting lazer
 	else if (mode == 5)
 	{
-		if (this->position.x < SCREEN_WIDTH - 400)
-		{
+		if (this->position.x < SCREEN_WIDTH - 550)
 			this->position.x += this->speed * 0.8 * delta_time.asSeconds();
-			shoot_count += delta_time.asMilliseconds();
-		}
 		else
 		{
 			chance = 2;
 			shoot_count = 0;
 			shoot_count_two = 0;
+			mode = 6;
+		}
+	}
+	//back to center
+	else if (mode == 6)
+	{
+		if (this->position.x + four_shoot.x > SCREEN_WIDTH / 2)
+			this->position.x -= this->speed * 1.2 * delta_time.asSeconds();
+		else
+		{
 			if (rand() % 2 == 1)
 				mode = 2;
 			else

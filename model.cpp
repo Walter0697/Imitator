@@ -450,6 +450,18 @@ void Model::bossShootCount()
 			}
 		}
 	}
+	//labplane
+	//not done yet, obviously
+	else if (this->enemySet->current_boss == 5)
+	{
+		
+	}
+	//final boss
+	//not done yet too
+	else if (this->enemySet->current_boss == 6)
+	{
+	
+	}
 }
 
 void Model::shoot()
@@ -581,6 +593,18 @@ void Model::elementHit(sf::Time delta_time)
 		{
 			this->enemySet->boss_alien.onFire -= delta_time.asSeconds();
 			enemyDamage(this->enemySet->boss_alien, FIRE_HIT, 94);
+		}
+	if (this->enemySet->checkOutOfBound(this->enemySet->boss_labplane))
+		if (this->enemySet->boss_labplane.onFire > 0)
+		{
+			this->enemySet->boss_labplane.onFire -= delta_time.asSeconds();
+			enemyDamage(this->enemySet->boss_labplane, FIRE_HIT, 95);
+		}
+	if (this->enemySet->checkOutOfBound(this->enemySet->boss_final))
+		if (this->enemySet->boss_final.onFire > 0)
+		{
+			this->enemySet->boss_final.onFire -= delta_time.asSeconds();
+			enemyDamage(this->enemySet->boss_final, FIRE_HIT, 96);
 		}
 
 	//player element hit
@@ -1129,7 +1153,7 @@ void Model::checkHit()
 					enemyDamage(this->enemySet->boss_devplane, this->playerSet->fireworkbullets[i].damage, 91);
 	}
 	//bullet vs modifier
-	if (enemySet->boss_modifier.mode >= 2 && enemySet->boss_modifier.mode != 10)
+	else if (enemySet->boss_modifier.mode >= 2 && enemySet->boss_modifier.mode != 10)
 	{
 		for (int i = 0; i < MAX_DBULLET; i++)
 			if (!this->playerSet->checkOutOfBound(this->playerSet->dbullets[i]))
@@ -1202,7 +1226,7 @@ void Model::checkHit()
 					enemyDamage(this->enemySet->boss_modifier, this->playerSet->fireworkbullets[i].damage, 92);
 	}
 	//bullet vs firethrower
-	if (enemySet->boss_firethrower.mode >= 2 && enemySet->boss_firethrower.mode != 10)
+	else if (enemySet->boss_firethrower.mode >= 2 && enemySet->boss_firethrower.mode != 10)
 	{
 		for (int i = 0; i < MAX_DBULLET; i++)
 			if (!this->playerSet->checkOutOfBound(this->playerSet->dbullets[i]))
@@ -1275,7 +1299,7 @@ void Model::checkHit()
 					enemyDamage(this->enemySet->boss_firethrower, this->playerSet->fireworkbullets[i].damage, 93);
 	}
 	//bullet vs alienship
-	if (enemySet->boss_alien.mode >= 2 && enemySet->boss_alien.mode != 10)
+	else if (enemySet->boss_alien.mode >= 2 && enemySet->boss_alien.mode != 10)
 	{
 		for (int i = 0; i < MAX_DBULLET; i++)
 			if (!this->playerSet->checkOutOfBound(this->playerSet->dbullets[i]))
@@ -1347,7 +1371,152 @@ void Model::checkHit()
 				if (coll.EnemyBulletCollision(this->enemySet->boss_alien, this->enemySet->hb_boss_alien, this->playerSet->fireworkbullets[i], this->playerSet->hb_firework))
 					enemyDamage(this->enemySet->boss_alien, this->playerSet->fireworkbullets[i].damage, 94);
 	}
-	
+	//bullet vs labplane
+	else if (enemySet->boss_labplane.mode >= 2 && enemySet->boss_labplane.mode != 10)
+	{
+		for (int i = 0; i < MAX_DBULLET; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->dbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_labplane, this->enemySet->hb_boss_labplane, this->playerSet->dbullets[i], this->playerSet->hb_dbullet))
+					enemyDamage(this->playerSet->dbullets[i], this->enemySet->boss_labplane, 95);
+		for (int i = 0; i < MAX_TWOWAYB; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->twbullets_left[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_labplane, this->enemySet->hb_boss_labplane, this->playerSet->twbullets_left[i], this->playerSet->hb_twbullet))
+					enemyDamage(this->playerSet->twbullets_left[i], this->enemySet->boss_labplane, 95);
+		for (int i = 0; i < MAX_TWOWAYB; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->twbullets_right[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_labplane, this->enemySet->hb_boss_labplane, this->playerSet->twbullets_right[i], this->playerSet->hb_twbullet))
+					enemyDamage(this->playerSet->twbullets_right[i], this->enemySet->boss_labplane, 95);
+		for (int i = 0; i < MAX_LONGSHOT; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->longbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_labplane, this->enemySet->hb_boss_labplane, this->playerSet->longbullets[i], this->playerSet->hb_longbullet))
+					enemyDamage(this->playerSet->longbullets[i], this->enemySet->boss_labplane, 95);
+		for (int i = 0; i < MAX_SHOTGUN; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->shotbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_labplane, this->enemySet->hb_boss_labplane, this->playerSet->shotbullets[i], this->playerSet->hb_shotgun))
+					enemyDamage(this->playerSet->shotbullets[i], this->enemySet->boss_labplane, 95);
+		for (int i = 0; i < MAX_LIGHTBALL; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->lightbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_labplane, this->enemySet->hb_boss_labplane, this->playerSet->lightbullets[i], this->playerSet->hb_lightball))
+					enemyDamage(this->enemySet->boss_labplane, this->playerSet->lightbullets[i].damage, 95);
+		for (int i = 0; i < MAX_RANDOMSHOT; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->randombullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_labplane, this->enemySet->hb_boss_labplane, this->playerSet->randombullets[i], this->playerSet->hb_randombullet))
+					enemyDamage(this->playerSet->randombullets[i], this->enemySet->boss_labplane, 95);
+		for (int i = 0; i < MAX_GRENADESHOT; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->grenadebullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_labplane, this->enemySet->hb_boss_labplane, this->playerSet->grenadebullets[i], this->playerSet->hb_grenade))
+				{
+					this->playerSet->explosions[playerSet->avaliableBullet(98)].lifespan = 0.5;
+					this->playerSet->explosions[playerSet->avaliableBullet(98)].position = this->playerSet->grenadebullets[i].position;
+					this->playerSet->grenadebullets[i].position = sf::Vector2f(-1800, 0);
+					this->playerSet->grenadebullets[i].velocity = sf::Vector2f(0, 0);
+				}
+		for (int i = 0; i < MAX_EXPLOSION; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->explosions[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_labplane, this->enemySet->hb_boss_labplane, this->playerSet->explosions[i], this->playerSet->hb_explosion))
+					enemyDamage(this->enemySet->boss_labplane, this->playerSet->explosions[i].damage, 95);
+		for (int i = 0; i < MAX_FIRE_BALL; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->firebullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_labplane, this->enemySet->hb_boss_labplane, this->playerSet->firebullets[i], this->playerSet->hb_fireshot))
+				{
+					if (rand() % 100 > 70)
+						this->enemySet->boss_labplane.onFire = rand() % 5;
+					enemyDamage(this->playerSet->firebullets[i], this->enemySet->boss_labplane, 95);
+				}
+		for (int i = 0; i < MAX_LAZER; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->lazerbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_labplane, this->enemySet->hb_boss_labplane, this->playerSet->lazerbullets[i], this->playerSet->hb_lazer))
+					enemyDamage(this->enemySet->boss_labplane, this->playerSet->lazerbullets[i].damage, 95);
+		for (int i = 0; i < MAX_BLASTSHOT; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->blastbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_labplane, this->enemySet->hb_boss_labplane, this->playerSet->blastbullets[i], this->playerSet->hb_blastshot))
+					enemyDamage(this->playerSet->blastbullets[i], this->enemySet->boss_labplane, 95);
+		for (int i = 0; i < MAX_HOMING; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->homingbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_labplane, this->enemySet->hb_boss_labplane, this->playerSet->homingbullets[i], this->playerSet->hb_homingshot))
+					enemyDamage(this->playerSet->homingbullets[i], this->enemySet->boss_labplane, 95);
+		for (int i = 0; i < MAX_LAZER_BEAM; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->lazerbeambullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_labplane, this->enemySet->hb_boss_labplane, this->playerSet->lazerbeambullets[i], this->playerSet->hb_lazerbeam))
+					enemyDamage(this->enemySet->boss_labplane, this->playerSet->lazerbeambullets[i].damage, 95);
+		for (int i = 0; i < MAX_FIRE_WORK; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->fireworkbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_labplane, this->enemySet->hb_boss_labplane, this->playerSet->fireworkbullets[i], this->playerSet->hb_firework))
+					enemyDamage(this->enemySet->boss_labplane, this->playerSet->fireworkbullets[i].damage, 95);
+	}
+	//bullet vs finalboss
+	else if (enemySet->boss_final.mode >= 2 && enemySet->boss_final.mode != 10)
+	{
+		for (int i = 0; i < MAX_DBULLET; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->dbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_final, this->enemySet->hb_boss_final, this->playerSet->dbullets[i], this->playerSet->hb_dbullet))
+					enemyDamage(this->playerSet->dbullets[i], this->enemySet->boss_final, 95);
+		for (int i = 0; i < MAX_TWOWAYB; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->twbullets_left[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_final, this->enemySet->hb_boss_final, this->playerSet->twbullets_left[i], this->playerSet->hb_twbullet))
+					enemyDamage(this->playerSet->twbullets_left[i], this->enemySet->boss_final, 95);
+		for (int i = 0; i < MAX_TWOWAYB; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->twbullets_right[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_final, this->enemySet->hb_boss_final, this->playerSet->twbullets_right[i], this->playerSet->hb_twbullet))
+					enemyDamage(this->playerSet->twbullets_right[i], this->enemySet->boss_final, 95);
+		for (int i = 0; i < MAX_LONGSHOT; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->longbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_final, this->enemySet->hb_boss_final, this->playerSet->longbullets[i], this->playerSet->hb_longbullet))
+					enemyDamage(this->playerSet->longbullets[i], this->enemySet->boss_final, 95);
+		for (int i = 0; i < MAX_SHOTGUN; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->shotbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_final, this->enemySet->hb_boss_final, this->playerSet->shotbullets[i], this->playerSet->hb_shotgun))
+					enemyDamage(this->playerSet->shotbullets[i], this->enemySet->boss_final, 95);
+		for (int i = 0; i < MAX_LIGHTBALL; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->lightbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_final, this->enemySet->hb_boss_final, this->playerSet->lightbullets[i], this->playerSet->hb_lightball))
+					enemyDamage(this->enemySet->boss_final, this->playerSet->lightbullets[i].damage, 95);
+		for (int i = 0; i < MAX_RANDOMSHOT; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->randombullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_final, this->enemySet->hb_boss_final, this->playerSet->randombullets[i], this->playerSet->hb_randombullet))
+					enemyDamage(this->playerSet->randombullets[i], this->enemySet->boss_final, 95);
+		for (int i = 0; i < MAX_GRENADESHOT; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->grenadebullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_final, this->enemySet->hb_boss_final, this->playerSet->grenadebullets[i], this->playerSet->hb_grenade))
+				{
+					this->playerSet->explosions[playerSet->avaliableBullet(98)].lifespan = 0.5;
+					this->playerSet->explosions[playerSet->avaliableBullet(98)].position = this->playerSet->grenadebullets[i].position;
+					this->playerSet->grenadebullets[i].position = sf::Vector2f(-1800, 0);
+					this->playerSet->grenadebullets[i].velocity = sf::Vector2f(0, 0);
+				}
+		for (int i = 0; i < MAX_EXPLOSION; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->explosions[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_final, this->enemySet->hb_boss_final, this->playerSet->explosions[i], this->playerSet->hb_explosion))
+					enemyDamage(this->enemySet->boss_final, this->playerSet->explosions[i].damage, 95);
+		for (int i = 0; i < MAX_FIRE_BALL; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->firebullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_final, this->enemySet->hb_boss_final, this->playerSet->firebullets[i], this->playerSet->hb_fireshot))
+				{
+					if (rand() % 100 > 70)
+						this->enemySet->boss_final.onFire = rand() % 5;
+					enemyDamage(this->playerSet->firebullets[i], this->enemySet->boss_final, 95);
+				}
+		for (int i = 0; i < MAX_LAZER; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->lazerbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_final, this->enemySet->hb_boss_final, this->playerSet->lazerbullets[i], this->playerSet->hb_lazer))
+					enemyDamage(this->enemySet->boss_final, this->playerSet->lazerbullets[i].damage, 95);
+		for (int i = 0; i < MAX_BLASTSHOT; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->blastbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_final, this->enemySet->hb_boss_final, this->playerSet->blastbullets[i], this->playerSet->hb_blastshot))
+					enemyDamage(this->playerSet->blastbullets[i], this->enemySet->boss_final, 95);
+		for (int i = 0; i < MAX_HOMING; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->homingbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_final, this->enemySet->hb_boss_final, this->playerSet->homingbullets[i], this->playerSet->hb_homingshot))
+					enemyDamage(this->playerSet->homingbullets[i], this->enemySet->boss_final, 95);
+		for (int i = 0; i < MAX_LAZER_BEAM; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->lazerbeambullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_final, this->enemySet->hb_boss_final, this->playerSet->lazerbeambullets[i], this->playerSet->hb_lazerbeam))
+					enemyDamage(this->enemySet->boss_final, this->playerSet->lazerbeambullets[i].damage, 95);
+		for (int i = 0; i < MAX_FIRE_WORK; i++)
+			if (!this->playerSet->checkOutOfBound(this->playerSet->fireworkbullets[i]))
+				if (coll.EnemyBulletCollision(this->enemySet->boss_final, this->enemySet->hb_boss_final, this->playerSet->fireworkbullets[i], this->playerSet->hb_firework))
+					enemyDamage(this->enemySet->boss_final, this->playerSet->fireworkbullets[i].damage, 95);
+	}
 
 	///////////////////////////////////////////////////////
 	////////////////////BULLET VS PLAYER///////////////////
@@ -1602,6 +1771,14 @@ void Model::checkDie(Enemy& enemy, int type)
 			break;
 		case 94:
 			enemyDie(enemy, this->enemyBulletSet->blastbullets[0], 10, 3000, 100);
+			enemySet->current_boss = 0;
+			break;
+		case 95:
+			enemyDie(enemy, this->enemyBulletSet->lazerbeambullets[0], 12, 4000, 100);
+			enemySet->current_boss = 0;
+			break;
+		case 96:
+			enemyDie(enemy, this->enemyBulletSet->lazerbeambullets[0], 12, 5000, 100);
 			enemySet->current_boss = 0;
 			break;
 		}

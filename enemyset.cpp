@@ -60,6 +60,14 @@ EnemySet::EnemySet()
 	hb_boss_alien.hitbox_br = sf::Vector2f(546, 271);
 	hb_boss_alien.generateHitboxRec();
 
+	hb_boss_labplane.hitbox_tl = sf::Vector2f(92, 8);
+	hb_boss_labplane.hitbox_br = sf::Vector2f(467, 381);
+	hb_boss_labplane.generateHitboxRec();
+
+	hb_boss_final.hitbox_tl = sf::Vector2f(105, 194);
+	hb_boss_final.hitbox_br = sf::Vector2f(467, 380);
+	hb_boss_final.generateHitboxRec();
+
 	initEnemy();
 }
 
@@ -91,6 +99,10 @@ void EnemySet::update(sf::Time delta_time)
 		boss_firethrower.update(delta_time);
 	if (!checkOutOfBound(boss_alien))
 		boss_alien.update(delta_time);
+	if (!checkOutOfBound(boss_labplane))
+		boss_labplane.update(delta_time);
+	if (!checkOutOfBound(boss_final))
+		boss_final.update(delta_time);
 
 	pushBack(delta_time);
 }
@@ -133,6 +145,10 @@ void EnemySet::render(sf::RenderWindow& window)
 		boss_firethrower.render(window, sprite_firethrower);
 	if (!(checkOutOfBound(boss_alien)))
 		boss_alien.render(window, sprite_alien);
+	if (!(checkOutOfBound(boss_labplane)))
+		boss_labplane.render(window, sprite_labplane);
+	if (!(checkOutOfBound(boss_final)))
+		boss_final.render(window, sprite_final);
 }
 
 void EnemySet::renderHitBox(sf::RenderWindow& window)
@@ -211,6 +227,16 @@ void EnemySet::renderHitBox(sf::RenderWindow& window)
 	{
 		hb_boss_alien.rec.setPosition(boss_alien.position + hb_boss_alien.hitbox_tl);
 		window.draw(hb_boss_alien.rec);
+	}
+	if (!(checkOutOfBound(boss_labplane)))
+	{
+		hb_boss_labplane.rec.setPosition(boss_labplane.position + hb_boss_labplane.hitbox_tl);
+		window.draw(hb_boss_labplane.rec);
+	}
+	if (!(checkOutOfBound(boss_final)))
+	{
+		hb_boss_final.rec.setPosition(boss_final.position + hb_boss_final.hitbox_tl);
+		window.draw(hb_boss_final.rec);
 	}
 }
 
@@ -332,6 +358,14 @@ void EnemySet::spawn(int type)
 		boss_alien.initSetup();
 		current_boss = 4;
 		break;
+		//case 5:
+		//boss_labplane.initSetup();
+		//current_boss = 5;
+		//break;
+		//case 6:
+		//boss_final.initSetup();
+		//current_boss = 6;
+		//break;
 	}
 }
 
@@ -373,6 +407,12 @@ void EnemySet::initEnemy()
 	boss_alien.position.x = 0;
 	boss_alien.position.y = 100000;
 	boss_alien.mode = 0;
+	boss_labplane.position.x = 0;
+	boss_labplane.position.y = 0;
+	boss_labplane.mode = 0;
+	boss_final.position.x = 0;
+	boss_final.position.y = 100000;
+	boss_final.mode = 0;
 
 	current_boss = 0;
 }
@@ -604,6 +644,34 @@ void EnemySet::pushBack(sf::Time delta_time)
 		{
 			boss_alien.position.x = 20 + boss_alien.speed * delta_time.asSeconds();
 			boss_alien.velocity.x = boss_alien.speed;
+		}
+	}
+	//labplane
+	if (boss_labplane.mode <= 3)
+	{
+		if (boss_labplane.position.x + hb_boss_labplane.hitbox_tl.x + hb_boss_labplane.hitbox_br.x > SCREEN_WIDTH - 20)
+		{
+			boss_labplane.position.x = SCREEN_WIDTH - 20 - boss_labplane.speed * delta_time.asSeconds() - hb_boss_labplane.hitbox_tl.x - hb_boss_labplane.hitbox_br.x;
+			boss_labplane.velocity.x = -boss_labplane.speed;
+		}
+		else if (boss_labplane.position.x < 20)
+		{
+			boss_labplane.position.x = 20 + boss_labplane.speed * delta_time.asSeconds();
+			boss_labplane.velocity.x = boss_labplane.speed;
+		}
+	}
+	//final boss
+	if (boss_final.mode <= 3)
+	{
+		if (boss_final.position.x + hb_boss_final.hitbox_tl.x + hb_boss_final.hitbox_br.x > SCREEN_WIDTH - 20)
+		{
+			boss_final.position.x = SCREEN_WIDTH - 20 - boss_final.speed * delta_time.asSeconds() - hb_boss_final.hitbox_tl.x - hb_boss_final.hitbox_br.x;
+			boss_final.velocity.x = -boss_final.speed;
+		}
+		else if (boss_final.position.x < 20)
+		{
+			boss_final.position.x = 20 + boss_final.speed * delta_time.asSeconds();
+			boss_final.velocity.x = boss_final.speed;
 		}
 	}
 }

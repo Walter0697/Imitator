@@ -500,7 +500,10 @@ void BulletSet::initBullet()
 		lightbullets[i].position = sf::Vector2f(-1800, 0);
 
 	for (int i = 0; i < MAX_RANDOMSHOT; i++)
+	{
 		randombullets[i].position = sf::Vector2f(-1800, 0);
+		randombullets[i].velocity = sf::Vector2f(0, 0);
+	}
 
 	for (int i = 0; i < MAX_GRENADESHOT; i++)
 		grenadebullets[i].position = sf::Vector2f(-1800, 0);
@@ -527,7 +530,10 @@ void BulletSet::initBullet()
 		firerootbullets[i].position = sf::Vector2f(-1800, 0);
 
 	for (int i = 0; i < MAX_FIRE_WORK; i++)
+	{
 		fireworkbullets[i].position = sf::Vector2f(-1800, 0);
+		fireworkbullets[i].velocity = sf::Vector2f(0, 0);
+	}
 }
 
 bool BulletSet::checkOutOfBound(Bullet& b)

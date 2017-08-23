@@ -79,13 +79,13 @@ void Model::specialBulletCheck()
 		{
 			if (this->playerSet->firerootbullets[i].velocity.y == 0)
 			{
-				float angle = rand() % 5;
+				float angle = rand() % 8;
 				while (angle <= 360)
 				{
 					this->playerSet->fireworkbullets[this->playerSet->avaliableBullet(97)].velocity.y = this->playerSet->fireworkbullets[0].speed * sin(angle * 3.14f / 180.f);
 					this->playerSet->fireworkbullets[this->playerSet->avaliableBullet(97)].velocity.x = this->playerSet->fireworkbullets[0].speed * cos(angle * 3.14f / 180.f);
 					this->playerSet->fireworkbullets[this->playerSet->avaliableBullet(97)].position = this->playerSet->firerootbullets[i].position;
-					angle += rand() % 5 + 5;
+					angle += rand() % 8 + 1;
 				}
 				this->playerSet->firerootbullets[i].position = sf::Vector2f(-1800, 0);
 			}

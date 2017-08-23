@@ -34,6 +34,7 @@
        modify a bit for the scoreboard
 22/8 : adding new type of bullet -- firework
 	   adding new type of boss -- firethrower
+	   editing text box
 
 assets:
 	ship:
@@ -50,6 +51,7 @@ assets:
 		https://opengameart.org/content/fireflame
 		https://opengameart.org/content/simple-shooter-icons
 		https://opengameart.org/content/rpg-frame
+		https://opengameart.org/content/keyboard-keys
 		
 	tool:
 		https://opengameart.org/content/32x32-fantasy-tileset

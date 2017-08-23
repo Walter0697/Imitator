@@ -64,6 +64,7 @@ View::View(Model* model)
 	this->model->story->sprite[3].setPosition(99999, 99999);
 	this->model->story->sprite[4].setTexture(manager.get_texture("Assets/stoneUnlock.png", sf::Color::White), true);
 	this->model->story->sprite[4].setPosition(99999, 99999);
+	this->model->story->sprite_enter.setTexture(manager.get_texture("Assets/enter_key.png", sf::Color(51, 51, 51)), true);
 
 	//setting up the record in hud
 	if (!this->model->record->font.loadFromFile("Assets/hemi head bd it.ttf")) cout << "failed to load font hemi head bd it.ttf" << endl;

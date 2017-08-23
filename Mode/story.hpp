@@ -101,5 +101,5 @@ public:
 	int line;
 
 	//sprite related
-	sf::Sprite arrow;
+	sf::Sprite sprite_enter;
 };

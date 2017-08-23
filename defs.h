@@ -18,7 +18,7 @@
 #define MAX_HOMING 100
 #define MAX_LAZER_BEAM 10
 #define MAX_FIRE_ROOT 30
-#define MAX_FIRE_WORK 300
+#define MAX_FIRE_WORK 500
 
 //define enemies information
 #define MAX_DENEMY 30

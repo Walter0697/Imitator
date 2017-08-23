@@ -62,6 +62,8 @@ void Story::setup()
 	textScore.setCharacterSize(30);
 	textScore.setString("SCORE:");
 	textScore.setPosition(-300, SCREEN_HEIGHT / 2);	
+
+	sprite_enter.setPosition(SCREEN_WIDTH - 97, SCREEN_HEIGHT - 114);
 }
 
 void Story::readFile(std::string filename)
@@ -164,12 +166,20 @@ void Story::update(sf::Time& delta_time)
 					textNum = dialog2.length();
 					line = 2;
 				}
-				else
-					canContin = true;
+				else if (line == 2)
+				{
+					countdown += 150;
+					textNow = 0;
+					textNum = 100;
+					line = 3;
+				}
 			}
+			if (line == 3)
+				canContin = true;
+
 			if (line == 1)
 				textDialog.setString(dialog.substr(0, textNow));
-			else
+			else if (line == 2)
 				textDialog2.setString(dialog2.substr(0, textNow));
 		}
 		//rendering cutscene
@@ -432,6 +442,8 @@ void Story::render(sf::RenderWindow& window)
 			window.draw(textName);
 			window.draw(textDialog);
 			window.draw(textDialog2);
+			if (canContin)
+				window.draw(sprite_enter);
 		}
 		else if (mapData[processing][0] == "VICTORY" && isStory)
 		{

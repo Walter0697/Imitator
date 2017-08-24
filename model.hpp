@@ -49,6 +49,7 @@ public:
 	float timer;
 	int reward_type = 0;
 
+	int tool_type = 0;
 	float choas_timer;
 	float choas_max;
 	int boss_chance;

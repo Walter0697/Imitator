@@ -89,11 +89,11 @@ void FinalBoss::update(sf::Time delta_time)
 		else
 			mode = 7;
 	}
-	//shooting lazer
+	//shooting lazerbeam
 	else if (mode == 7)
 	{
 		if (this->position.x < SCREEN_WIDTH - 500)
-			this->position.x += this->speed * 0.6 * delta_time.asSeconds();
+			this->position.x += this->speed * 2 * delta_time.asSeconds();
 		else
 		{
 			chance = 2;

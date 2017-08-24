@@ -408,7 +408,7 @@ void EnemySet::initEnemy()
 	boss_alien.position.y = 100000;
 	boss_alien.mode = 0;
 	boss_labplane.position.x = 0;
-	boss_labplane.position.y = 0;
+	boss_labplane.position.y = 100000;
 	boss_labplane.mode = 0;
 	boss_final.position.x = 0;
 	boss_final.position.y = 100000;

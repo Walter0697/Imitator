@@ -59,6 +59,7 @@ void Controller::storyinput(sf::Time delta_time)
 	if (this->model->story->currentStory == LAST_STORY)
 	{
 		this->view->menu->unlock();
+		this->model->story->currentStory = 1;
 		this->model->gamemode = MODE_MENU_SCREEN;
 		this->selecting = 1;
 	}

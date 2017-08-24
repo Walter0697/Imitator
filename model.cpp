@@ -133,7 +133,7 @@ void Model::updateGame(sf::Time& delta_time)
 				{
 					if (player->score >= IMUMIUM_UNLOCK)
 					{
-						timer = 1000;
+						timer = 2500;
 						reward_type = 1;
 						story->toolUnlock = 5;
 						droprate->unlock(5);
@@ -143,7 +143,7 @@ void Model::updateGame(sf::Time& delta_time)
 				{
 					if (player->score >= STONE_UNLOCK)
 					{
-						timer = 1000;
+						timer = 2500;
 						reward_type = 2;
 						story->toolUnlock = 6;
 						droprate->unlock(6);

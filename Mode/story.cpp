@@ -467,10 +467,28 @@ void Story::setFont(int num)
 		textCutScene.setFont(fontFriend);
 		break;
 	case 2:
+		textDialog.setFont(fontFriend2);
+		textDialog2.setFont(fontFriend2);
+		textName.setFont(fontFriend2);
+		textCutScene.setFont(fontFriend2);
+		break;
+	case 3:
 		textDialog.setFont(fontEnemy);
 		textDialog2.setFont(fontEnemy);
 		textName.setFont(fontEnemy);
 		textCutScene.setFont(fontEnemy);
+		break;
+	case 4:
+		textDialog.setFont(fontEnemy2);
+		textDialog2.setFont(fontEnemy2);
+		textName.setFont(fontEnemy2);
+		textCutScene.setFont(fontEnemy2);
+		break;
+	case 5:
+		textDialog.setFont(fontUnknown);
+		textDialog2.setFont(fontUnknown);
+		textName.setFont(fontUnknown);
+		textCutScene.setFont(fontUnknown);
 		break;
 	}
 }

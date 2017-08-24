@@ -79,7 +79,10 @@ public:
 	//font related
 	sf::Font fontVictory;
 	sf::Font fontFriend;
+	sf::Font fontFriend2;
 	sf::Font fontEnemy;
+	sf::Font fontEnemy2;
+	sf::Font fontUnknown;
 
 	//text related
 	sf::Text textName;

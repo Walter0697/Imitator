@@ -19,8 +19,11 @@ View::View(Model* model)
 
 	//loading story font
 	if (!this->model->story->fontFriend.loadFromFile("Assets/huxtable.ttf")) cout << "failed to load font huxtable.ttf" << endl;
-	if (!this->model->story->fontEnemy.loadFromFile("Assets/Quikhand.ttf")) cout << "failed to load Quickhand.ttf" << endl;
+	if (!this->model->story->fontEnemy.loadFromFile("Assets/Somerset Barnyard.otf")) cout << "failed to load Somerset Barnyard.otf" << endl;
 	if (!this->model->story->fontVictory.loadFromFile("Assets/neuropolitical rg.ttf")) cout << "failed to load font neuropolitical rg.ttf" << endl;
+	if (!this->model->story->fontEnemy2.loadFromFile("Assets/Dog Rough.otf")) cout << "failed to load Dog Rough.otf" << endl;
+	if (!this->model->story->fontFriend2.loadFromFile("Assets/Alpha Beta - Demo.ttf")) cout << "failed to load font Alpha Beta - Demo.ttf" << endl;
+	if (!this->model->story->fontUnknown.loadFromFile("Assets/WINGDNG3.TTF")) cout << "failed to load font WINGDNG3.TTF" << endl;
 	this->model->story->setup();
 
 	//loading hud

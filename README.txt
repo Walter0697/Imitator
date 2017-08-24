@@ -41,6 +41,7 @@
 assets:
 	ship:
 		https://opengameart.org/content/modular-ships
+		https://opengameart.org/content/novus-vessel-02
 	bullets:
 		https://opengameart.org/content/side-blaster-gfx-m484-games
 		https://opengameart.org/content/explosives-and-medic-stuff-from-pixeltime
@@ -50,17 +51,19 @@ assets:
 	hud:
 		https://opengameart.org/content/scroll-themed-hud-bars
 		https://fontmeme.com/salsa-tequila-font/
-		http://www.1001fonts.com/text-fonts.html
 		https://opengameart.org/content/fireflame
 		https://opengameart.org/content/simple-shooter-icons
 		https://opengameart.org/content/rpg-frame
 		https://opengameart.org/content/keyboard-keys
 		
+	fonts:
+		http://www.1001fonts.com/text-fonts.html
+		http://www.dafont.com/dog-rough.font
+		http://www.dafont.com/somerset-barnyard.font
+		
 	tool:
 		https://opengameart.org/content/32x32-fantasy-tileset
-		
-		https://opengameart.org/content/novus-vessel-02
-
+	
 	boss:
 		https://opengameart.org/content/retro-shmup-boss-2
 		https://opengameart.org/content/retro-shmup-boss-1
@@ -68,5 +71,3 @@ assets:
 	Others:
 		http://www.rw-designer.com/cursor-set/hand-cursors
 		http://www.rw-designer.com/cursor-set/team-fortress-2-cursors
-	Used:
-		https://processing.org/examples/flocking.html

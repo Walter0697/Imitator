@@ -362,10 +362,10 @@ void EnemySet::spawn(int type)
 		boss_labplane.initSetup();
 		current_boss = 5;
 		break;
-		//case 6:
-		//boss_final.initSetup();
-		//current_boss = 6;
-		//break;
+	case 6:
+		boss_final.initSetup();
+		current_boss = 6;
+		break;
 	}
 }
 
@@ -661,7 +661,7 @@ void EnemySet::pushBack(sf::Time delta_time)
 		}
 	}
 	//final boss
-	if (boss_final.mode <= 3)
+	if (boss_final.mode <= 5)
 	{
 		if (boss_final.position.x + hb_boss_final.hitbox_tl.x + hb_boss_final.hitbox_br.x > SCREEN_WIDTH - 20)
 		{

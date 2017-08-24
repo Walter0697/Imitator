@@ -10,11 +10,11 @@ FinalBoss::FinalBoss() {
 
 	mode = 0;
 
-	//not set yet
-	primary_shoot = sf::Vector2f(140, 310);      
-	secondary_shoot = sf::Vector2f(415, 310);  
-	third_shoot = sf::Vector2f(280, 360);        
-	four_shoot = sf::Vector2f(280, 110);         
+	primary_shoot = sf::Vector2f(284, 437);      //lazer beam
+	secondary_shoot = sf::Vector2f(147, 349);    
+	third_shoot = sf::Vector2f(421, 349);        //two sides
+	four_shoot = sf::Vector2f(224, 402);
+	five_shoot = sf::Vector2f(347, 402);         //closer two sides
 }
 
 FinalBoss::~FinalBoss() {}
@@ -54,13 +54,16 @@ void FinalBoss::update(sf::Time delta_time)
 			mode = 2;
 	}
 	//shooting normally
-	else if (mode == 2 || mode == 3)
+	else if (mode >= 2 && mode <= 5)
 	{
 		mode_change -= delta_time.asMilliseconds();
 
 		shoot_count += delta_time.asMilliseconds();
 		shoot_count_two += delta_time.asMilliseconds();
-		this->position.x += this->velocity.x * delta_time.asSeconds();
+		if (mode == 5)
+			this->position.x += this->velocity.x * 2 * delta_time.asSeconds();
+		else
+			this->position.x += this->velocity.x * delta_time.asSeconds();
 
 		if (mode_change < 0)
 		{
@@ -72,45 +75,42 @@ void FinalBoss::update(sf::Time delta_time)
 				shoot_count_three = 0;
 				chance++;
 
-				if (mode == 2) mode = 3;
-				else mode = 2;
+				mode = rand() % 4 + 2;
 			}
 			else
-				mode = 4;
+				mode = 6;
 		}
 	}
-	//moving to shoot lazer
-	else if (mode == 4)
+	//moving to shoot lazerbeam
+	else if (mode == 6)
 	{
-		if (this->position.x > 50)
+		if (this->position.x > -200)
 			this->position.x -= this->speed * 1.2 * delta_time.asSeconds();
 		else
-			mode = 5;
+			mode = 7;
 	}
 	//shooting lazer
-	else if (mode == 5)
+	else if (mode == 7)
 	{
-		if (this->position.x < SCREEN_WIDTH - 550)
-			this->position.x += this->speed * 0.8 * delta_time.asSeconds();
+		if (this->position.x < SCREEN_WIDTH - 500)
+			this->position.x += this->speed * 0.6 * delta_time.asSeconds();
 		else
 		{
 			chance = 2;
 			shoot_count = 0;
 			shoot_count_two = 0;
-			mode = 6;
+			shoot_count_three = 0;
+			mode = 8;
 		}
 	}
 	//back to center
-	else if (mode == 6)
+	else if (mode == 8)
 	{
-		if (this->position.x + four_shoot.x > SCREEN_WIDTH / 2)
+		if (this->position.x + primary_shoot.x > SCREEN_WIDTH / 2)
 			this->position.x -= this->speed * 1.2 * delta_time.asSeconds();
 		else
 		{
-			if (rand() % 2 == 1)
-				mode = 2;
-			else
-				mode = 3;
+			mode = rand() % 4 + 2;
 		}
 	}
 	//ending screen

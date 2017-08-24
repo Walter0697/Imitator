@@ -78,6 +78,11 @@ BulletSet::BulletSet(int isPlayer) {
 		hb_lazerbeam.hitbox_br = sf::Vector2f(134 - 60, SCREEN_HEIGHT);
 	}
 	hb_lazerbeam.generateHitboxRec();
+	for (int i = 0; i < MAX_LAZER_BEAM; i++)
+		if (isPlayer == 1)
+			lazerbeambullets[i].isPlayer = true;
+		else
+			lazerbeambullets[i].isPlayer = false;
 
 	hb_firework.hitbox_r = 4.f;
 	hb_firework.generateHitboxCir();
@@ -312,7 +317,10 @@ void BulletSet::renderHitBox(sf::RenderWindow& window)
 	{
 		if (!(checkOutOfBound(lazerbeambullets[i])))
 		{
-			hb_lazerbeam.rec.setPosition(lazerbeambullets[i].position.x - 60, lazerbeambullets[i].position.y - SCREEN_HEIGHT);
+			if (isPlayer == 1)
+				hb_lazerbeam.rec.setPosition(lazerbeambullets[i].position.x - 60, lazerbeambullets[i].position.y - SCREEN_HEIGHT);
+			else
+				hb_lazerbeam.rec.setPosition(lazerbeambullets[i].position.x - 60, lazerbeambullets[i].position.y);
 			window.draw(hb_lazerbeam.rec);
 		}
 	}

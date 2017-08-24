@@ -29,7 +29,7 @@ void LabPlane::initSetup()
 	shoot_count_two = 400;
 	shoot_count_three = 0;   
 
-	y_target = -200;
+	y_target = -50;
 
 	mode_change = 5000;
 	mode = 1;

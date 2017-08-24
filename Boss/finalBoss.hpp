@@ -10,6 +10,7 @@ public:
 	~FinalBoss();
 
 	sf::Vector2f four_shoot;
+	sf::Vector2f five_shoot;
 
 	void initSetup();
 	void render(sf::RenderWindow&, sf::Sprite&);

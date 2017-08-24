@@ -163,6 +163,21 @@ void Model::updateChoas(sf::Time& delta_time)
 	}
 }
 
+void Model::modeAdjust(int current_mode)
+{
+	switch (current_mode)
+	{
+	case MODE_CHAOS_MODE:
+		this->enemySet->boss_final.maxhp = 20000;
+		this->enemySet->boss_labplane.maxhp = 10000;
+		break;
+	case MODE_STORY_MODE:
+		this->enemySet->boss_final.maxhp = 10000;
+		this->enemySet->boss_labplane.maxhp = 15000;
+		break;
+	}
+}
+
 void Model::initAll()
 {
 	player->initialize();
@@ -179,6 +194,7 @@ void Model::initAll()
 	choas_timer = 5000;
 	choas_max = 5000;
 	pause = false;
+	modeAdjust(gamemode);
 }
 
 void Model::enemyShootCount()
@@ -457,7 +473,6 @@ void Model::bossShootCount()
 		}
 	}
 	//labplane
-	//not done yet, obviously
 	else if (this->enemySet->current_boss == 5)
 	{
 		if (this->enemySet->boss_labplane.mode == 2 || this->enemySet->boss_labplane.mode == 3)
@@ -525,10 +540,76 @@ void Model::bossShootCount()
 		}
 	}
 	//final boss
-	//not done yet too
 	else if (this->enemySet->current_boss == 6)
 	{
-	
+		if (this->enemySet->boss_final.mode == 2)
+		{
+			if (this->enemySet->boss_final.shoot_count > 400)
+			{
+				this->enemySet->boss_final.shoot_count -= 400;
+				this->enemyBulletSet->shoot(1, this->enemySet->boss_final.position + this->enemySet->boss_final.secondary_shoot);
+				this->enemyBulletSet->shoot(1, this->enemySet->boss_final.position + this->enemySet->boss_final.third_shoot);
+			}
+			if (this->enemySet->boss_final.shoot_count_two > 300)
+			{
+				this->enemySet->boss_final.shoot_count_two -= 300;
+				this->enemyBulletSet->shoot(2, this->enemySet->boss_final.position + this->enemySet->boss_final.four_shoot);
+				this->enemyBulletSet->shoot(99, this->enemySet->boss_final.position + this->enemySet->boss_final.four_shoot);
+				this->enemyBulletSet->shoot(2, this->enemySet->boss_final.position + this->enemySet->boss_final.five_shoot);
+				this->enemyBulletSet->shoot(99, this->enemySet->boss_final.position + this->enemySet->boss_final.five_shoot);
+			}
+		}
+		else if (this->enemySet->boss_final.mode == 3)
+		{
+			if (this->enemySet->boss_final.shoot_count > 600)
+			{
+				this->enemySet->boss_final.shoot_count -= 600;
+				this->enemyBulletSet->shoot(7, this->enemySet->boss_final.position + this->enemySet->boss_final.secondary_shoot);
+				this->enemyBulletSet->shoot(7, this->enemySet->boss_final.position + this->enemySet->boss_final.third_shoot);
+			}
+			if (this->enemySet->boss_final.shoot_count_two > 100)
+			{
+				this->enemySet->boss_final.shoot_count_two -= 100;
+				this->enemyBulletSet->shoot(6, this->enemySet->boss_final.position + this->enemySet->boss_final.four_shoot);
+				this->enemyBulletSet->shoot(6, this->enemySet->boss_final.position + this->enemySet->boss_final.five_shoot);
+			}
+		}
+		else if (this->enemySet->boss_final.mode == 4)
+		{
+			if (this->enemySet->boss_final.shoot_count > 600)
+			{
+				this->enemySet->boss_final.shoot_count -= 600;
+				this->enemyBulletSet->shoot(8, this->enemySet->boss_final.position + this->enemySet->boss_final.secondary_shoot);
+				this->enemyBulletSet->shoot(8, this->enemySet->boss_final.position + this->enemySet->boss_final.third_shoot);
+			}
+			if (this->enemySet->boss_final.shoot_count_two > 1000)
+			{
+				this->enemySet->boss_final.shoot_count_two -= 1000;
+				this->enemyBulletSet->shoot(13, this->enemySet->boss_final.position + this->enemySet->boss_final.four_shoot);
+				this->enemyBulletSet->shoot(13, this->enemySet->boss_final.position + this->enemySet->boss_final.five_shoot);
+			}
+		}
+		else if (this->enemySet->boss_final.mode == 5)
+		{
+			if (this->enemySet->boss_final.shoot_count > 300)
+			{
+				this->enemySet->boss_final.shoot_count -= 300;
+				this->enemyBulletSet->shoot(10, this->enemySet->boss_final.position + this->enemySet->boss_final.four_shoot);
+				this->enemyBulletSet->shoot(10, this->enemySet->boss_final.position + this->enemySet->boss_final.five_shoot);
+			}
+		}
+		else if (this->enemySet->boss_final.mode == 7)
+		{
+			this->enemyBulletSet->lazerbeambullets[MAX_LAZER_BEAM - 1].position = this->enemySet->boss_final.position + this->enemySet->boss_final.primary_shoot;
+		}
+		else if (this->enemySet->boss_final.mode == 8)
+		{
+			this->enemyBulletSet->lazerbeambullets[MAX_LAZER_BEAM - 1].position = sf::Vector2f(-3000, 0);
+		}
+		else if (this->enemySet->boss_final.mode == 10)
+		{
+			this->enemyBulletSet->lazerbeambullets[MAX_LAZER_BEAM - 1].position = sf::Vector2f(-3000, 0);
+		}
 	}
 }
 
@@ -1752,16 +1833,21 @@ void Model::checkHit()
 	//blast vs player
 	for (int i = 0; i < MAX_BLASTSHOT; i++)
 		if (!this->enemyBulletSet->checkOutOfBound(this->enemyBulletSet->blastbullets[i]))
-			playerDamage(this->enemyBulletSet->blastbullets[i], this->enemyBulletSet->hb_blastshot);
+			if (playerDamage(this->enemyBulletSet->blastbullets[i], this->enemyBulletSet->hb_blastshot) != 0)
+				bulletDisappear(this->enemyBulletSet->blastbullets[i]);
 
 	//lazer beam vs player
+	for (int i = 0; i < MAX_LAZER_BEAM; i++)
+		if (!this->enemyBulletSet->checkOutOfBound(this->enemyBulletSet->lazerbeambullets[i]))
+			playerDamage(this->enemyBulletSet->lazerbeambullets[i], this->enemyBulletSet->hb_lazerbeam);
 
 	//firework vs player
 	for (int i = 0; i < MAX_FIRE_WORK; i++)
 		if (!this->enemyBulletSet->checkOutOfBound(this->enemyBulletSet->fireworkbullets[i]))
-			playerDamage(this->enemyBulletSet->fireworkbullets[i], this->enemyBulletSet->hb_firework);
+			if (playerDamage(this->enemyBulletSet->fireworkbullets[i], this->enemyBulletSet->hb_firework) != 0)
+				bulletDisappear(this->enemyBulletSet->fireworkbullets[i]);
 
-	//grenade vs player
+	//rocket vs player
 	for (int i = 0; i < MAX_ROCKET; i++)
 		if (!this->enemyBulletSet->checkOutOfBound(this->enemyBulletSet->rocketbullets[i]))
 			if (playerDamage(this->enemyBulletSet->rocketbullets[i], this->enemyBulletSet->hb_rocket) != 0)
@@ -1913,9 +1999,6 @@ void Model::checkDie(Enemy& enemy, int type)
 			enemyDie(enemy, this->enemyBulletSet->lazerbullets[0], 9, 50, 30);
 			break;
 		case 91:
-			enemyBulletSet->lazerbullets[MAX_LAZER - 1].position = sf::Vector2f(-3000, 0);
-			enemyBulletSet->lazerbullets[MAX_LAZER - 2].position = sf::Vector2f(-3000, 0);
-			enemyBulletSet->lazerbullets[MAX_LAZER - 3].position = sf::Vector2f(-3000, 0);
 			enemyDie(enemy, this->enemyBulletSet->lazerbeambullets[0], 12, 1000, 100);
 			enemySet->current_boss = 0;
 			break;

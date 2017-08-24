@@ -54,6 +54,7 @@ public:
 	void updateChoas(sf::Time&);
 	void updateGame(sf::Time&);
 	void update(sf::Time&);
+	void modeAdjust(int);
 
 	void shoot();
 

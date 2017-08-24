@@ -16,7 +16,10 @@ LazerBeam::~LazerBeam() {}
 
 void LazerBeam::render(sf::RenderWindow& window, sf::Sprite& sprite)
 {
-	sprite.setPosition(position.x - 75, position.y - SCREEN_HEIGHT);
+	if (isPlayer)
+		sprite.setPosition(position.x - 75, position.y - SCREEN_HEIGHT);
+	else
+		sprite.setPosition(position.x - 75, position.y);
 	window.draw(sprite);
 }
 

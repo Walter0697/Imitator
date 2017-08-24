@@ -283,13 +283,13 @@ void Controller::enter()
 			this->view->menu->changeSelect(this->selecting);
 			break;
 		case 2:
-			this->model->initAll();
 			this->model->gamemode = MODE_CHAOS_MODE;
+			this->model->initAll();
 			break;
 		case 3:
-			this->model->initAll();
 			test = 0;
 			this->model->gamemode = MODE_CUSTOM_MODE;
+			this->model->initAll();
 			break;
 		case 4:
 			this->model->record->startPosition = 0;
@@ -302,15 +302,15 @@ void Controller::enter()
 			this->view->window.close();
 			break;
 		case 7:
-			this->model->initAll();
 			this->model->story->setup(this->model->story->currentStory);
 			this->model->gamemode = MODE_STORY_MODE;
+			this->model->initAll();
 			break;
 		case 8:
-			this->model->initAll();
 			this->model->story->currentStory = 1;
 			this->model->story->setup(this->model->story->currentStory);
 			this->model->gamemode = MODE_STORY_MODE;
+			this->model->initAll();
 			break;
 		case 9:
 			this->view->menu->storyClicked = false;
@@ -344,15 +344,15 @@ void Controller::enter()
 			this->view->window.close();
 			break;
 		case 7:
-			this->model->initAll();
 			this->model->story->setup(this->model->story->currentStory);
 			this->model->gamemode = MODE_STORY_MODE;
+			this->model->initAll();
 			break;
 		case 8:
-			this->model->initAll();
 			this->model->story->currentStory = 1;
 			this->model->story->setup(this->model->story->currentStory);
 			this->model->gamemode = MODE_STORY_MODE;
+			this->model->initAll();
 			break;
 		case 9:
 			this->view->menu->storyClicked = false;
@@ -512,8 +512,8 @@ void Controller::testerinputs(sf::Time delta_time)
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::B))
 					this->model->shield->addShield(1);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::G))
-					//this->model->enemySet->spawn(rand() % 2 + 1);
-					this->model->enemySet->spawn(5);
+					//this->model->enemySet->spawn(rand() % 6 + 1);
+					this->model->enemySet->spawn(6);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F1))
 					this->model->gamemode = MODE_MENU_SCREEN;
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F2))

@@ -15,5 +15,7 @@ public:
 	void update(sf::Time);
 	void updatePosition(sf::Vector2f&);
 
+	bool isPlayer = true;
+
 	float lifespan;
 };

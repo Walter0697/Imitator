@@ -5,14 +5,14 @@ LabPlane::LabPlane() {
 	velocity.y = 0;
 
 	speed = 80;
-	maxhp = 12000;
+	maxhp = 15000;
 	hp = maxhp;
 
 	mode = 0;
 
 	primary_shoot = sf::Vector2f(14, 153);      
-	secondary_shoot = sf::Vector2f(107, 24);    
-	third_shoot = sf::Vector2f(451, 24);       
+	secondary_shoot = sf::Vector2f(213, 283);    
+	third_shoot = sf::Vector2f(356, 283);       
 	four_shoot = sf::Vector2f(557, 153);         
 	five_shoot = sf::Vector2f(285, 352);
 }
@@ -26,10 +26,10 @@ void LabPlane::initSetup()
 	position.x = SCREEN_WIDTH / 2 - 280;
 
 	shoot_count = 0;   
-	shoot_count_two = 0;   
+	shoot_count_two = 400;
 	shoot_count_three = 0;   
 
-	y_target = -100;
+	y_target = -200;
 
 	mode_change = 5000;
 	mode = 1;
@@ -60,6 +60,7 @@ void LabPlane::update(sf::Time delta_time)
 
 		shoot_count += delta_time.asMilliseconds();
 		shoot_count_two += delta_time.asMilliseconds();
+		shoot_count_three += delta_time.asMilliseconds();
 		this->position.x += this->velocity.x * delta_time.asSeconds();
 
 		if (mode_change < 0)
@@ -68,7 +69,7 @@ void LabPlane::update(sf::Time delta_time)
 			if (rand() % 10 > chance)
 			{
 				shoot_count = 0;
-				shoot_count_two = 0;
+				shoot_count_two = 400;
 				shoot_count_three = 0;
 				chance++;
 
@@ -79,32 +80,39 @@ void LabPlane::update(sf::Time delta_time)
 				mode = 4;
 		}
 	}
-	//moving to shoot lazer
+	//moving to shoot rocket
 	else if (mode == 4)
 	{
-		if (this->position.x > 50)
-			this->position.x -= this->speed * 1.2 * delta_time.asSeconds();
+		if (this->position.x > -280)
+			this->position.x -= this->speed * 2.1 * delta_time.asSeconds();
 		else
+		{
+			shoot_count_three = 0;
 			mode = 5;
+		}
 	}
-	//shooting lazer
+	//shooting rocket
 	else if (mode == 5)
 	{
-		if (this->position.x < SCREEN_WIDTH - 550)
-			this->position.x += this->speed * 0.8 * delta_time.asSeconds();
+		if (this->position.x < 520)
+		{
+			this->position.x += this->speed * 1.8 * delta_time.asSeconds();
+			shoot_count_three += delta_time.asMilliseconds();
+		}
 		else
 		{
 			chance = 2;
 			shoot_count = 0;
-			shoot_count_two = 0;
+			shoot_count_two = 400;
+			shoot_count_three = 0;
 			mode = 6;
 		}
 	}
 	//back to center
 	else if (mode == 6)
 	{
-		if (this->position.x + four_shoot.x > SCREEN_WIDTH / 2)
-			this->position.x -= this->speed * 1.2 * delta_time.asSeconds();
+		if (this->position.x + 280 > SCREEN_WIDTH / 2)
+			this->position.x -= this->speed * 2.1 * delta_time.asSeconds();
 		else
 		{
 			if (rand() % 2 == 1)

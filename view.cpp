@@ -83,6 +83,7 @@ View::View(Model* model)
 	this->model->record->bullet_sprite[10].setTexture(manager.get_texture("Assets/homing.png", sf::Color::White), true);
 	this->model->record->bullet_sprite[11].setTexture(manager.get_texture("Assets/lazer_beam.png", sf::Color::White), true);
 	this->model->record->bullet_sprite[12].setTexture(manager.get_texture("Assets/fire-work.png", sf::Color::White), true);
+	this->model->record->bullet_sprite[13].setTexture(manager.get_texture("Assets/rocket-bullet.png", sf::Color::White), true);
 	for (int i = 0; i < NUM_OF_BULLET; i++)
 		this->model->record->bullet_sprite[i].setScale(sf::Vector2f(0.8f, 0.8f));
 	this->model->record->setup();
@@ -101,6 +102,7 @@ View::View(Model* model)
 	this->hud->bullet_sprite[10].setTexture(manager.get_texture("Assets/homing.png"), true);
 	this->hud->bullet_sprite[11].setTexture(manager.get_texture("Assets/lazer_beam.png"), true);
 	this->hud->bullet_sprite[12].setTexture(manager.get_texture("Assets/fire-work.png"), true);
+	this->hud->bullet_sprite[13].setTexture(manager.get_texture("Assets/rocket-bullet.png"), true);
 	
 	//setting up the status_type in hud
 	this->hud->status_sprite[0].setTexture(manager.get_texture("Assets/onFire.png", sf::Color(165, 165, 165)), true);
@@ -162,6 +164,7 @@ View::View(Model* model)
 	this->model->playerSet->sprite_fireroot.setOrigin(sf::Vector2f(manager.get_texture("Assets/fireworkRoot.png").getSize()) / 2.f);
 	this->model->playerSet->sprite_firework.setTexture(manager.get_texture("Assets/firework.png", sf::Color::Black), true);
 	this->model->playerSet->sprite_firework.setOrigin(sf::Vector2f(manager.get_texture("Assets/firework.png").getSize()) / 2.f);
+	this->model->playerSet->sprite_rocket.setTexture(manager.get_texture("Assets/rocket.png", sf::Color::White), true);
 	//enemy bullet texture
 	this->model->enemyBulletSet->sprite_dbullet.setTexture(manager.get_texture("Assets/ebullet.png", sf::Color(0, 0, 0)), true);
 	this->model->enemyBulletSet->sprite_dbullet.setOrigin(sf::Vector2f(manager.get_texture("Assets/ebullet.png").getSize()) / 2.f);
@@ -191,6 +194,7 @@ View::View(Model* model)
 	this->model->enemyBulletSet->sprite_fireroot.setOrigin(sf::Vector2f(manager.get_texture("Assets/fireworkRoot.png").getSize()) / 2.f);
 	this->model->enemyBulletSet->sprite_firework.setTexture(manager.get_texture("Assets/firework.png", sf::Color::Black), true);
 	this->model->enemyBulletSet->sprite_firework.setOrigin(sf::Vector2f(manager.get_texture("Assets/firework.png").getSize()) / 2.f);
+	this->model->enemyBulletSet->sprite_rocket.setTexture(manager.get_texture("Assets/e-rocket.png", sf::Color::White), true);
 
 	//tool texture
 	this->model->toolSet->sprite_greenShield.setTexture(manager.get_texture("Assets/greenShield.png", sf::Color::White), true);

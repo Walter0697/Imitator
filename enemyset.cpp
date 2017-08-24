@@ -358,10 +358,10 @@ void EnemySet::spawn(int type)
 		boss_alien.initSetup();
 		current_boss = 4;
 		break;
-		//case 5:
-		//boss_labplane.initSetup();
-		//current_boss = 5;
-		//break;
+	case 5:
+		boss_labplane.initSetup();
+		current_boss = 5;
+		break;
 		//case 6:
 		//boss_final.initSetup();
 		//current_boss = 6;

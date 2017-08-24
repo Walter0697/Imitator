@@ -66,12 +66,25 @@ BulletSet::BulletSet(int isPlayer) {
 	hb_homingshot.hitbox_r = 4.f;
 	hb_homingshot.generateHitboxCir();
 
-	hb_lazerbeam.hitbox_tl = sf::Vector2f(15 - 60, -SCREEN_HEIGHT);
-	hb_lazerbeam.hitbox_br = sf::Vector2f(134 - 60, 0);
+	//lazerbeam
+	if (isPlayer == 1)
+	{
+		hb_lazerbeam.hitbox_tl = sf::Vector2f(15 - 60, -SCREEN_HEIGHT);
+		hb_lazerbeam.hitbox_br = sf::Vector2f(134 - 60, 0);
+	}
+	else
+	{
+		hb_lazerbeam.hitbox_tl = sf::Vector2f(15 - 60, 0);
+		hb_lazerbeam.hitbox_br = sf::Vector2f(134 - 60, SCREEN_HEIGHT);
+	}
 	hb_lazerbeam.generateHitboxRec();
 
 	hb_firework.hitbox_r = 4.f;
 	hb_firework.generateHitboxCir();
+
+	hb_rocket.hitbox_tl = sf::Vector2f(1, 1);
+	hb_rocket.hitbox_br = sf::Vector2f(11, 19);
+	hb_rocket.generateHitboxRec();
 
 	initBullet();
 }
@@ -114,6 +127,8 @@ void BulletSet::update(sf::Time delta_time)
 		firerootbullets[i].update(delta_time);
 	for (int i = 0; i < MAX_FIRE_WORK; i++)
 		fireworkbullets[i].update(delta_time);
+	for (int i = 0; i < MAX_ROCKET; i++)
+		rocketbullets[i].update(delta_time);
 }
 
 void BulletSet::render(sf::RenderWindow& window)
@@ -180,6 +195,10 @@ void BulletSet::render(sf::RenderWindow& window)
 	for (int i = 0; i < MAX_FIRE_WORK; i++)
 		if (!(checkOutOfBound(fireworkbullets[i])))
 			fireworkbullets[i].render(window, sprite_firework);
+
+	for (int i = 0; i < MAX_ROCKET; i++)
+		if (!(checkOutOfBound(rocketbullets[i])))
+			rocketbullets[i].render(window, sprite_rocket);
 }
 
 void BulletSet::renderHitBox(sf::RenderWindow& window)
@@ -209,7 +228,7 @@ void BulletSet::renderHitBox(sf::RenderWindow& window)
 	{
 		if (!(checkOutOfBound(longbullets[i])))
 		{
-			hb_longbullet.rec.setPosition(sf::Vector2f(longbullets[i].position.x + hb_longbullet.hitbox_tl.x, longbullets[i].position.y + hb_longbullet.hitbox_tl.y));
+			hb_longbullet.rec.setPosition(longbullets[i].position + hb_longbullet.hitbox_tl);
 			window.draw(hb_longbullet.rec);
 		}
 	}
@@ -258,7 +277,7 @@ void BulletSet::renderHitBox(sf::RenderWindow& window)
 	{
 		if (!(checkOutOfBound(firebullets[i])))
 		{
-			hb_fireshot.rec.setPosition(sf::Vector2f(firebullets[i].position.x + hb_fireshot.hitbox_tl.x, firebullets[i].position.y + hb_fireshot.hitbox_tl.y));
+			hb_fireshot.rec.setPosition(firebullets[i].position + hb_fireshot.hitbox_tl);
 			window.draw(hb_fireshot.rec);
 		}
 	}
@@ -303,6 +322,14 @@ void BulletSet::renderHitBox(sf::RenderWindow& window)
 		{
 			hb_firework.cir.setPosition(fireworkbullets[i].position);
 			window.draw(hb_firework.cir);
+		}
+	}
+	for (int i = 0; i < MAX_ROCKET; i++)
+	{
+		if (!(checkOutOfBound(rocketbullets[i])))
+		{
+			hb_rocket.rec.setPosition(rocketbullets[i].position + hb_rocket.hitbox_tl);
+			window.draw(hb_rocket.rec);
 		}
 	}
 }
@@ -423,6 +450,11 @@ void BulletSet::shoot(int type, sf::Vector2f position, int direction)
 		if (direction == -1)
 			firerootbullets[avaliableBullet(type)].position = sf::Vector2f(position.x + 36, position.y + 6);
 		break;
+	case 14:
+		rocketbullets[avaliableBullet(type)].velocity = sf::Vector2f(0, direction * rocketbullets[0].speed);
+		if (direction == -1)
+			rocketbullets[avaliableBullet(type)].position = sf::Vector2f(position.x + 31, position.y - 4);
+		break;
 	}
 }
 
@@ -492,6 +524,10 @@ void BulletSet::shoot(int type, sf::Vector2f position)
 		firerootbullets[avaliableBullet(type)].velocity.y = firerootbullets[0].speed;
 		firerootbullets[avaliableBullet(type)].position = position;
 		break;
+	case 14:
+		rocketbullets[avaliableBullet(type)].velocity.y = rocketbullets[0].speed;
+		rocketbullets[avaliableBullet(type)].position = position;
+		break;
 	}
 }
 
@@ -549,6 +585,9 @@ void BulletSet::initBullet()
 		fireworkbullets[i].position = sf::Vector2f(-1800, 0);
 		fireworkbullets[i].velocity = sf::Vector2f(0, 0);
 	}
+	
+	for (int i = 0; i < MAX_ROCKET; i++)
+		rocketbullets[i].position = sf::Vector2f(-1800, 0);
 }
 
 bool BulletSet::checkOutOfBound(Bullet& b)
@@ -645,6 +684,11 @@ int BulletSet::avaliableBullet(int type)
 	case 97:
 		for (int i = 0; i < MAX_FIRE_WORK; i++)
 			if (checkOutOfBound(fireworkbullets[i]))
+				return i;
+		return 0;
+	case 14:
+		for (int i = 0; i < MAX_ROCKET; i++)
+			if (checkOutOfBound(rocketbullets[i]))
 				return i;
 		return 0;
 	}

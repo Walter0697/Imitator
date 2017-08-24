@@ -19,6 +19,7 @@
 #define MAX_LAZER_BEAM 10
 #define MAX_FIRE_ROOT 30
 #define MAX_FIRE_WORK 500
+#define MAX_ROCKET 20
 
 //define enemies information
 #define MAX_DENEMY 30
@@ -36,7 +37,7 @@
 #define MAX_STONE 8
 
 #define NUM_OF_TOOLS 6
-#define NUM_OF_BULLET 13
+#define NUM_OF_BULLET 14
 #define NUM_OF_STATUS 3
 
 #define SHOT_GUN_NUMBERS 20

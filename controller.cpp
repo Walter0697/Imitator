@@ -505,13 +505,17 @@ void Controller::testerinputs(sf::Time delta_time)
 					this->model->player->addBullet(12, 5000);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::I))
 					this->model->player->addBullet(13, 2000);
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::U))
+					this->model->player->addBullet(14, 2000);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::V))
 					this->model->player->hp = this->model->player->maxhp;
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::B))
 					this->model->shield->addShield(1);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::G))
 					//this->model->enemySet->spawn(rand() % 2 + 1);
-					this->model->enemySet->spawn(4);
+					this->model->enemySet->spawn(5);
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F1))
+					this->model->gamemode = MODE_MENU_SCREEN;
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F2))
 					this->model->pause = !this->model->pause;
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))

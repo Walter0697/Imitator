@@ -101,6 +101,17 @@ void AlienShip::update(sf::Time delta_time)
 			chance = 2;
 			shoot_count = 0;
 			shoot_count_two = 0;
+			mode = 6;
+		}
+	}
+
+	//back to center
+	else if (mode == 6)
+	{
+		if (this->position.x + 280 > SCREEN_WIDTH / 2)
+			this->position.x -= this->speed * 1.2 * delta_time.asSeconds();
+		else
+		{
 			if (rand() % 2 == 1)
 				mode = 2;
 			else

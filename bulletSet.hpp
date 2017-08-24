@@ -18,6 +18,7 @@
 #include "Bullet/lazerBeam.hpp"
 #include "Bullet/fireworkRoot.hpp"
 #include "Bullet/firework.hpp"
+#include "Bullet/rocket.hpp"
 
 #include "hitbox.hpp"
 
@@ -61,6 +62,7 @@ public:
 	LazerBeam lazerbeambullets[MAX_LAZER_BEAM];
 	FireworkRoot firerootbullets[MAX_FIRE_ROOT];
 	Firework fireworkbullets[MAX_FIRE_WORK];
+	Rocket rocketbullets[MAX_ROCKET];
 	
 	Hitbox hb_dbullet;
 	Hitbox hb_twbullet;
@@ -76,6 +78,7 @@ public:
 	Hitbox hb_homingshot;
 	Hitbox hb_lazerbeam;
 	Hitbox hb_firework;
+	Hitbox hb_rocket;
 
 	sf::Sprite sprite_dbullet;
 	sf::Sprite sprite_twbullet_left;
@@ -93,4 +96,5 @@ public:
 	sf::Sprite sprite_lazerbeam;
 	sf::Sprite sprite_fireroot;
 	sf::Sprite sprite_firework;
+	sf::Sprite sprite_rocket;
 };

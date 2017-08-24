@@ -35,7 +35,9 @@
 22/8 : adding new type of bullet -- firework
 	   adding new type of boss -- firethrower
 	   editing text box
-
+24/8 : adding new type of bullet -- rocket (still need improvement)
+	   setting up the rest of the boss
+	   
 assets:
 	ship:
 		https://opengameart.org/content/modular-ships
@@ -44,6 +46,7 @@ assets:
 		https://opengameart.org/content/explosives-and-medic-stuff-from-pixeltime
 		https://opengameart.org/content/high-res-fire-ball
 		https://opengameart.org/content/bullet-collection-1-m484
+		https://opengameart.org/content/various-inventory-24-pixel-icon-set
 	hud:
 		https://opengameart.org/content/scroll-themed-hud-bars
 		https://fontmeme.com/salsa-tequila-font/

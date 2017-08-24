@@ -14,7 +14,7 @@ Game::Game()
 
 	//delete that later
 	this->view->menu->unlock();
-	for (int i = 1; i < NUM_OF_TOOLS + 1; i++)
+	for (int i = 1; i < NUM_OF_TOOLS - 1; i++)
 		this->model->droprate->unlock(i);
 
 	//adding the updateable objects to the list
@@ -87,7 +87,9 @@ void Game::loop()
 			break;
 
 		case MODE_REWARDS_MODE:
-			this->view->renderMenu();
+			this->controller->rewardinput();
+			this->model->updateRewards(delta_time);
+			this->view->renderReward();
 			break;
 
 		case MODE_CHAOS_MODE:

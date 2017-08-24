@@ -129,6 +129,26 @@ void Model::updateGame(sf::Time& delta_time)
 				record->addRecord(1, "NONAME");
 				break;
 			case MODE_CHAOS_MODE:
+				if (this->story->toolUnlock == 4)
+				{
+					if (player->score >= IMUMIUM_UNLOCK)
+					{
+						timer = 1000;
+						reward_type = 1;
+						story->toolUnlock = 5;
+						droprate->unlock(5);
+					}
+				}
+				else if (this->story->toolUnlock == 5)
+				{
+					if (player->score >= STONE_UNLOCK)
+					{
+						timer = 1000;
+						reward_type = 2;
+						story->toolUnlock = 6;
+						droprate->unlock(6);
+					}
+				}
 				record->startPosition = 0;
 				record->addRecord(2, "NONAME");
 				break;
@@ -136,6 +156,11 @@ void Model::updateGame(sf::Time& delta_time)
 			this->gamemode = MODE_GAME_OVER;
 		}
 	}
+}
+
+void Model::updateRewards(sf::Time& delta_time)
+{
+	if (timer > 0) timer -= delta_time.asMilliseconds();
 }
 
 void Model::updateStory(sf::Time& delta_time)

@@ -192,6 +192,29 @@ void Controller::menuinput(sf::Time delta_time, sf::RenderWindow& window)
 
 }
 
+void Controller::rewardinput()
+{
+	while (this->view->window.pollEvent(event))
+	{
+		switch (event.type)
+		{
+		case sf::Event::Closed:
+			this->view->window.close();
+			break;
+		case sf::Event::KeyPressed:
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+			{
+				if (model->timer <= 0)
+				{
+					model->reward_type = 0;
+					model->gamemode = MODE_MENU_SCREEN;
+				}
+			}
+			break;
+		}
+	}
+}
+
 void Controller::scoreinput()
 {
 	while (this->view->window.pollEvent(event))
@@ -240,7 +263,10 @@ void Controller::scoreinput()
 				this->view->menu->storyClicked = false;
 				this->selecting = 1;
 				this->view->menu->changeSelect(1);
-				this->model->gamemode = MODE_MENU_SCREEN;
+				if (model->reward_type == 0)
+					this->model->gamemode = MODE_MENU_SCREEN;
+				else
+					this->model->gamemode = MODE_REWARDS_MODE;
 			}
 			break;
 		}
@@ -287,7 +313,6 @@ void Controller::enter()
 			this->model->initAll();
 			break;
 		case 3:
-			test = 0;
 			this->model->gamemode = MODE_CUSTOM_MODE;
 			this->model->initAll();
 			break;
@@ -477,8 +502,6 @@ void Controller::testerinputs(sf::Time delta_time)
 					this->model->enemySet->spawn(rand() % 11, rand() % SCREEN_WIDTH);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
 					this->view->viewHitBox = !this->view->viewHitBox;
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
-					this->model->radShield->addShield(5);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
 					this->model->player->addBullet(1, 1000);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
@@ -511,6 +534,8 @@ void Controller::testerinputs(sf::Time delta_time)
 					this->model->player->hp = this->model->player->maxhp;
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::B))
 					this->model->shield->addShield(1);
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::N))
+					this->model->radShield->addShield(5);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::G))
 					//this->model->enemySet->spawn(rand() % 6 + 1);
 					this->model->enemySet->spawn(6);
@@ -530,9 +555,6 @@ void Controller::testerinputs(sf::Time delta_time)
 						this->model->player->CURRENT_HOLD_BULLET--;
 						this->model->player->holdbuff = HOLD_FOREVER;
 					}
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F8))
-					this->model->droprate->unlock(test++); 
-
 				break;
 		}
 	}

@@ -6,8 +6,9 @@ TOTALLINE
 2   WAIT          delta_time   
 4   PICTURE       type         x_position     y_position 
 2   PICTUREEND    type
-1   UNLOCK       
+1   UNLOCK        num
 1   OBJECTIVE
 4   TOOL          type       x_position     y_position
 1   VICTORY
  
+ 168       -30   << unlock picture position

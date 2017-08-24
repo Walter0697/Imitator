@@ -61,9 +61,9 @@ View::View(Model* model)
 	this->model->story->sprite[2].setTexture(manager.get_texture("Assets/healthUnlock.png", sf::Color::White), true);
 	this->model->story->sprite[2].setPosition(99999, 99999);
 	this->model->story->sprite[3].setTexture(manager.get_texture("Assets/imumiumUnlock.png", sf::Color::White), true);
-	this->model->story->sprite[3].setPosition(99999, 99999);
+	this->model->story->sprite[3].setPosition(168, -30);
 	this->model->story->sprite[4].setTexture(manager.get_texture("Assets/stoneUnlock.png", sf::Color::White), true);
-	this->model->story->sprite[4].setPosition(99999, 99999);
+	this->model->story->sprite[4].setPosition(168, -30);
 	this->model->story->sprite_enter.setTexture(manager.get_texture("Assets/enter_key.png", sf::Color(51, 51, 51)), true);
 
 	//setting up the record in hud
@@ -212,6 +212,25 @@ View::View(Model* model)
 }
 
 View::~View() {}
+
+void View::renderReward()
+{
+	menu->render(this->window);
+	model->story->sprite_enter.setPosition(522, 684);
+	switch (model->reward_type)
+	{
+	case 1:
+		window.draw(model->story->sprite[3]);
+		break;
+	case 2:
+		window.draw(model->story->sprite[4]);
+		break;
+	}
+	if (model->timer <= 0)
+	{
+		window.draw(model->story->sprite_enter);
+	}
+}
 
 void View::renderStory()
 {

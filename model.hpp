@@ -46,10 +46,14 @@ public:
 	int gamemode;
 	bool pause = false;
 
+	float timer;
+	int reward_type = 0;
+
 	float choas_timer;
 	float choas_max;
 	int boss_chance;
 
+	void updateRewards(sf::Time&);
 	void updateStory(sf::Time&);
 	void updateChoas(sf::Time&);
 	void updateGame(sf::Time&);

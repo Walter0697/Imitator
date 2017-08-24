@@ -56,3 +56,7 @@
 
 #define MENU_OPTION 6
 #define LAST_STORY 2
+
+//score to unlock new tool
+#define IMUMIUM_UNLOCK 10000
+#define STONE_UNLOCK 25000

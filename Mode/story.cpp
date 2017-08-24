@@ -62,8 +62,6 @@ void Story::setup()
 	textScore.setCharacterSize(30);
 	textScore.setString("SCORE:");
 	textScore.setPosition(-300, SCREEN_HEIGHT / 2);	
-
-	sprite_enter.setPosition(SCREEN_WIDTH - 97, SCREEN_HEIGHT - 114);
 }
 
 void Story::readFile(std::string filename)
@@ -175,7 +173,10 @@ void Story::update(sf::Time& delta_time)
 				}
 			}
 			if (line == 3)
+			{
 				canContin = true;
+				sprite_enter.setPosition(SCREEN_WIDTH - 97, SCREEN_HEIGHT - 114);
+			}
 
 			if (line == 1)
 				textDialog.setString(dialog.substr(0, textNow));
@@ -355,7 +356,8 @@ void Story::update(sf::Time& delta_time)
 		//to unlock a tool
 		else if (mapData[processing][0] == "UNLOCK")
 		{
-			this->droprate->unlock(++toolUnlock);
+			toolUnlock = atoi(mapData[processing][1].c_str());
+			this->droprate->unlock(toolUnlock);
 			processing++;
 		}
 		//show picture

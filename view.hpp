@@ -38,6 +38,7 @@ public:
 	std::vector<Renderable *> foreground;
 
 	void renderMouse();
+	void renderReward();
 	void renderStory();
 	void renderMenu();
 	void renderScore();

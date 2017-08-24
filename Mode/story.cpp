@@ -280,8 +280,13 @@ void Story::update(sf::Time& delta_time)
 			dialog = mapData[processing][1];
 			replace(dialog.begin(), dialog.end(), '_', ' ');
 
-			dialog2 = mapData[processing][2];
-			replace(dialog2.begin(), dialog2.end(), '_', ' ');
+			if (mapData[processing][2] != "NONE")
+			{
+				dialog2 = mapData[processing][2];
+				replace(dialog2.begin(), dialog2.end(), '_', ' ');
+			}
+			else
+				dialog2 = "";
 
 			name = mapData[processing][3];
 			replace(name.begin(), name.end(), '_', ' ');
@@ -427,7 +432,7 @@ void Story::dropTool(int type, int positionx, int positiony)
 
 void Story::render(sf::RenderWindow& window)
 {
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 3; i++)
 		window.draw(sprite[i]);
 
 	if (processing < dataCols)

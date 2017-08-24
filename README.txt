@@ -36,7 +36,9 @@
 	   adding new type of boss -- firethrower
 	   editing text box
 24/8 : adding new type of bullet -- rocket (still need improvement)
-	   setting up the rest of the boss
+	   adding new type of boss -- labPlane, finalBoss
+	   adding rewards screen
+	   minor bug fixed
 	   
 assets:
 	ship:
@@ -60,6 +62,7 @@ assets:
 		http://www.1001fonts.com/text-fonts.html
 		http://www.dafont.com/dog-rough.font
 		http://www.dafont.com/somerset-barnyard.font
+		http://www.dafont.com/alpha-beta-2.font
 		
 	tool:
 		https://opengameart.org/content/32x32-fantasy-tileset

@@ -1,4 +1,10 @@
 11
+9        CUTSCENE    2122,_after_a_revolution  1   0   0   0   255   255   255
+9        CUTSCENE    people_in_the_world_started_to_own_weapon  1  0  0  0  255  255 255
+9        CUTSCENE    in_order_to_protect_temselves    1  0  0  0  255  255 255
+9        CUTSCENE    However,_some_people   1  0  0  0  255  255  255
+9        CUTSCENE    have_more_dangerous_weapon_on_their_hand  1  0  0  0  255  255  255
+11       DIALOG      Welcome_here,_soldier!   I_am_sergeant_Jackson  ???   1   255  255  255  255  255  255
 11       DIALOG      This_is_just_a_testing    sounds_cool_right?    Aname    1      255     255    255   255   255   255
 3        SPAWN       1         4
 2        WAIT        10000

@@ -537,13 +537,22 @@ void Controller::testerinputs(sf::Time delta_time)
 					this->model->shield->addShield(1);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::N))
 					this->model->radShield->addShield(5);
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::G))
-					//this->model->enemySet->spawn(rand() % 6 + 1);
-					this->model->enemySet->spawn(6);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F1))
 					this->model->gamemode = MODE_MENU_SCREEN;
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F2))
 					this->model->pause = !this->model->pause;
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F5))
+					this->model->enemySet->spawn(1);
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F6))
+					this->model->enemySet->spawn(2);
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F7))
+					this->model->enemySet->spawn(3);
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F8))
+					this->model->enemySet->spawn(4);
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F9))
+					this->model->enemySet->spawn(5);
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F10))
+					this->model->enemySet->spawn(6);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 					if (this->model->player->CURRENT_HOLD_BULLET + 1 != MAX_HOLD_BULLET)
 					{

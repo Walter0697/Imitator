@@ -398,38 +398,38 @@ void Model::bossShootCount()
 	{
 		if (this->enemySet->boss_firethrower.mode == 2)
 		{
-			if (this->enemySet->boss_firethrower.shoot_count > 600)
+			if (this->enemySet->boss_firethrower.shoot_count > 700)
 			{
-				this->enemySet->boss_firethrower.shoot_count -= 600;
+				this->enemySet->boss_firethrower.shoot_count -= 700;
 				this->enemyBulletSet->shoot(8, this->enemySet->boss_firethrower.position + this->enemySet->boss_firethrower.primary_shoot);
 			}
-			if (this->enemySet->boss_firethrower.shoot_count_two > 600)
+			if (this->enemySet->boss_firethrower.shoot_count_two > 700)
 			{
-				this->enemySet->boss_firethrower.shoot_count_two -= 600;
+				this->enemySet->boss_firethrower.shoot_count_two -= 700;
 				this->enemyBulletSet->shoot(8, this->enemySet->boss_firethrower.position + this->enemySet->boss_firethrower.secondary_shoot);
 			}
-			if (this->enemySet->boss_firethrower.shoot_count_three > 400)
+			if (this->enemySet->boss_firethrower.shoot_count_three > 500)
 			{
-				this->enemySet->boss_firethrower.shoot_count_three -= 400;
+				this->enemySet->boss_firethrower.shoot_count_three -= 500;
 				this->enemyBulletSet->shoot(7, this->enemySet->boss_firethrower.position + this->enemySet->boss_firethrower.third_shoot);
 				this->enemyBulletSet->shoot(7, this->enemySet->boss_firethrower.position + this->enemySet->boss_firethrower.four_shoot);
 			}
 		}
 		else if (this->enemySet->boss_firethrower.mode == 3)
 		{
-			if (this->enemySet->boss_firethrower.shoot_count > 600)
+			if (this->enemySet->boss_firethrower.shoot_count > 700)
 			{
-				this->enemySet->boss_firethrower.shoot_count -= 600;
+				this->enemySet->boss_firethrower.shoot_count -= 700;
 				this->enemyBulletSet->shoot(7, this->enemySet->boss_firethrower.position + this->enemySet->boss_firethrower.primary_shoot);
 			}
-			if (this->enemySet->boss_firethrower.shoot_count_two > 600)
+			if (this->enemySet->boss_firethrower.shoot_count_two > 700)
 			{
-				this->enemySet->boss_firethrower.shoot_count_two -= 600;
+				this->enemySet->boss_firethrower.shoot_count_two -= 700;
 				this->enemyBulletSet->shoot(7, this->enemySet->boss_firethrower.position + this->enemySet->boss_firethrower.secondary_shoot);
 			}
-			if (this->enemySet->boss_firethrower.shoot_count_three > 400)
+			if (this->enemySet->boss_firethrower.shoot_count_three > 500)
 			{
-				this->enemySet->boss_firethrower.shoot_count_three -= 400;
+				this->enemySet->boss_firethrower.shoot_count_three -= 500;
 				this->enemyBulletSet->shoot(8, this->enemySet->boss_firethrower.position + this->enemySet->boss_firethrower.third_shoot);
 				this->enemyBulletSet->shoot(8, this->enemySet->boss_firethrower.position + this->enemySet->boss_firethrower.four_shoot);
 			}
@@ -448,36 +448,36 @@ void Model::bossShootCount()
 	{
 		if (this->enemySet->boss_alien.mode == 2)
 		{
-			if (this->enemySet->boss_alien.shoot_count > 700)
+			if (this->enemySet->boss_alien.shoot_count > 1000)
 			{
-				this->enemySet->boss_alien.shoot_count -= 700;
-				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.primary_shoot);
-				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.six_shoot);
-			}
-			if (this->enemySet->boss_alien.shoot_count_two > 700)
-			{
-				this->enemySet->boss_alien.shoot_count_two -= 700;
-				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.secondary_shoot);
-				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.five_shoot);
-			}
-			if (this->enemySet->boss_alien.shoot_count_three > 700)
-			{
-				this->enemySet->boss_alien.shoot_count_three -= 700;
-				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.third_shoot);
-				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.four_shoot);
-			}
-		}
-		else if (this->enemySet->boss_alien.mode == 3)
-		{
-			if (this->enemySet->boss_alien.shoot_count > 500)
-			{
-				this->enemySet->boss_alien.shoot_count -= 500;
+				this->enemySet->boss_alien.shoot_count -= 1000;
 				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.primary_shoot);
 				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.six_shoot);
 			}
 			if (this->enemySet->boss_alien.shoot_count_two > 1000)
 			{
 				this->enemySet->boss_alien.shoot_count_two -= 1000;
+				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.secondary_shoot);
+				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.five_shoot);
+			}
+			if (this->enemySet->boss_alien.shoot_count_three > 1000)
+			{
+				this->enemySet->boss_alien.shoot_count_three -= 1000;
+				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.third_shoot);
+				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.four_shoot);
+			}
+		}
+		else if (this->enemySet->boss_alien.mode == 3)
+		{
+			if (this->enemySet->boss_alien.shoot_count > 800)
+			{
+				this->enemySet->boss_alien.shoot_count -= 800;
+				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.primary_shoot);
+				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.six_shoot);
+			}
+			if (this->enemySet->boss_alien.shoot_count_two > 1600)
+			{
+				this->enemySet->boss_alien.shoot_count_two -= 1600;
 				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.third_shoot);
 				this->enemyBulletSet->shoot(11, this->enemySet->boss_alien.position + this->enemySet->boss_alien.four_shoot);
 			}
@@ -581,33 +581,33 @@ void Model::bossShootCount()
 				this->enemyBulletSet->shoot(7, this->enemySet->boss_final.position + this->enemySet->boss_final.secondary_shoot);
 				this->enemyBulletSet->shoot(7, this->enemySet->boss_final.position + this->enemySet->boss_final.third_shoot);
 			}
-			if (this->enemySet->boss_final.shoot_count_two > 100)
+			if (this->enemySet->boss_final.shoot_count_two > 200)
 			{
-				this->enemySet->boss_final.shoot_count_two -= 100;
+				this->enemySet->boss_final.shoot_count_two -= 200;
 				this->enemyBulletSet->shoot(6, this->enemySet->boss_final.position + this->enemySet->boss_final.four_shoot);
 				this->enemyBulletSet->shoot(6, this->enemySet->boss_final.position + this->enemySet->boss_final.five_shoot);
 			}
 		}
 		else if (this->enemySet->boss_final.mode == 4)
 		{
-			if (this->enemySet->boss_final.shoot_count > 600)
+			if (this->enemySet->boss_final.shoot_count > 700)
 			{
-				this->enemySet->boss_final.shoot_count -= 600;
+				this->enemySet->boss_final.shoot_count -= 700;
 				this->enemyBulletSet->shoot(8, this->enemySet->boss_final.position + this->enemySet->boss_final.secondary_shoot);
 				this->enemyBulletSet->shoot(8, this->enemySet->boss_final.position + this->enemySet->boss_final.third_shoot);
 			}
-			if (this->enemySet->boss_final.shoot_count_two > 1500)
+			if (this->enemySet->boss_final.shoot_count_two > 2000)
 			{
-				this->enemySet->boss_final.shoot_count_two -= 1500;
+				this->enemySet->boss_final.shoot_count_two -= 2000;
 				this->enemyBulletSet->shoot(13, this->enemySet->boss_final.position + this->enemySet->boss_final.four_shoot);
 				this->enemyBulletSet->shoot(13, this->enemySet->boss_final.position + this->enemySet->boss_final.five_shoot);
 			}
 		}
 		else if (this->enemySet->boss_final.mode == 5)
 		{
-			if (this->enemySet->boss_final.shoot_count > 500)
+			if (this->enemySet->boss_final.shoot_count > 800)
 			{
-				this->enemySet->boss_final.shoot_count -= 500;
+				this->enemySet->boss_final.shoot_count -= 800;
 				this->enemyBulletSet->shoot(10, this->enemySet->boss_final.position + this->enemySet->boss_final.four_shoot);
 				this->enemyBulletSet->shoot(10, this->enemySet->boss_final.position + this->enemySet->boss_final.five_shoot);
 			}

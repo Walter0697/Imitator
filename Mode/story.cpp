@@ -139,7 +139,7 @@ void Story::update(sf::Time& delta_time)
 		countdown -= delta_time.asMilliseconds();
 	
 	//stop target enemy
-	if (enemyInfo != 0)
+	if (enemyInfo != 0 && target.x != -1)
 	{
 		if (enemyInfo->position.y >= target.y)
 			enemyInfo->velocity = sf::Vector2f(0, 0);
@@ -164,7 +164,7 @@ void Story::update(sf::Time& delta_time)
 					textNum = dialog2.length();
 					line = 2;
 				}
-				else if (line == 2)
+				else if (line == 2 || dialog2 == "NULL")
 				{
 					countdown += 150;
 					textNow = 0;
@@ -280,13 +280,8 @@ void Story::update(sf::Time& delta_time)
 			dialog = mapData[processing][1];
 			replace(dialog.begin(), dialog.end(), '_', ' ');
 
-			if (mapData[processing][2] != "NONE")
-			{
-				dialog2 = mapData[processing][2];
-				replace(dialog2.begin(), dialog2.end(), '_', ' ');
-			}
-			else
-				dialog2 = "";
+			dialog2 = mapData[processing][2];
+			replace(dialog2.begin(), dialog2.end(), '_', ' ');
 
 			name = mapData[processing][3];
 			replace(name.begin(), name.end(), '_', ' ');
@@ -323,8 +318,17 @@ void Story::update(sf::Time& delta_time)
 		//spawning a specific enemy with objective
 		else if (mapData[processing][0] == "ENEMY")
 		{
-			target = sf::Vector2f(atoi(mapData[processing][2].c_str()), atoi(mapData[processing][3].c_str()));
-			targetEnemy(atoi(mapData[processing][1].c_str()), atoi(mapData[processing][2].c_str()));
+			if (atoi(mapData[processing][1].c_str()) < 90)
+			{
+				target = sf::Vector2f(atoi(mapData[processing][2].c_str()), atoi(mapData[processing][3].c_str()));
+				targetEnemy(atoi(mapData[processing][1].c_str()), atoi(mapData[processing][2].c_str()));
+			}
+			else
+			{
+				target = sf::Vector2f(-1, -1);
+				targetEnemy(atoi(mapData[processing][1].c_str()), -1);
+			}
+
 			processing++;
 		}
 		//spawning a group of enemies
@@ -432,9 +436,6 @@ void Story::dropTool(int type, int positionx, int positiony)
 
 void Story::render(sf::RenderWindow& window)
 {
-	for (int i = 0; i < 3; i++)
-		window.draw(sprite[i]);
-
 	if (processing < dataCols)
 	{
 		if (mapData[processing][0] == "CUTSCENE" && isStory)
@@ -459,6 +460,8 @@ void Story::render(sf::RenderWindow& window)
 			window.draw(textScore);
 		}
 	}
+	for (int i = 0; i < 3; i++)
+		window.draw(sprite[i]);
 }
 
 void Story::setFont(int num)
@@ -532,10 +535,37 @@ void Story::targetEnemy(int type, int x_position)
 	case 10:
 		enemyInfo = &enemySet->lazzyenemies[enemySet->avaliableEnemy(10)];
 		break;
+	case 91:
+		enemyInfo = &enemySet->boss_devplane;
+		enemySet->spawn(1);
+		break;
+	case 92:
+		enemyInfo = &enemySet->boss_modifier;
+		enemySet->spawn(2);
+		break;
+	case 93:
+		enemyInfo = &enemySet->boss_firethrower;
+		enemySet->spawn(3);
+		break;
+	case 94:
+		enemyInfo = &enemySet->boss_alien;
+		enemySet->spawn(4);
+		break;
+	case 95:
+		enemyInfo = &enemySet->boss_labplane;
+		enemySet->spawn(5);
+		break;
+	case 96:
+		enemyInfo = &enemySet->boss_final;
+		enemySet->spawn(6);
+		break;
 	}
-	enemyInfo->position = sf::Vector2f(x_position, -80);
-	enemyInfo->velocity.y = enemyInfo->speed;
-	enemyInfo->shoot_count = 0;
+	if (x_position != -1)
+	{
+		enemyInfo->position = sf::Vector2f(x_position, -80);
+		enemyInfo->velocity.y = enemyInfo->speed;
+		enemyInfo->shoot_count = 0;
+	}
 }
 
 void Story::clearFile()

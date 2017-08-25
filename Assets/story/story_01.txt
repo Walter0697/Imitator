@@ -1,4 +1,4 @@
-57
+85
 9        CUTSCENE    2122,_after_a_revolution  1   0   0   0   255   255   255
 9        CUTSCENE    people_in_the_world_started_to_own_weapon  1  0  0  0  255  255 255
 9        CUTSCENE    in_order_to_protect_temselves    1  0  0  0  255  255 255
@@ -14,7 +14,7 @@
 2        WAIT        2000
 11       DIALOG      Try_to_shoot_this_enemy_by_clicking_[spacebar]  NULL   Jackson    1     211 207 167   255   255   255
 1        OBJECTIVE
-4        PICTURE     1         750      950     
+4        PICTURE     1         720      950     
 11       DIALOG      Great_job!  take_a_look_at_the_bottom_right_corner  Jackson   1   211 207 167  255  255  255
 11       DIALOG      This_is_the_current_bullet_type_you_have   NULL  Jackson   1   211 207 167  255  255  255
 11       DIALOG      Each_enemy_that_you_eliminate   the_imitator_will_imitate_the_bullet_of_theirs  Jackson   1   211 207 167  255  255  2553      
@@ -39,14 +39,15 @@
 4        ENEMY       2         400      400
 1        OBJECTIVE
 11       DIALOG      Easy_right?    NULL    Jackson   1   211 207 167  255  255  255
-11       DIALOG      Remember_to_analysis_your_situation,_eliminate_the_suitable_enemy   it_will_be_easier_to_finish_the_mission    Jackson   1   211 207 167  255  255  255
+11       DIALOG      Remember_to_analysis_your_situation,  eliminate_the_suitable_enemy    Jackson   1   211 207 167  255  255  255
+11       DIALOG      It_will_be_easier_to_finish_the_mission  NULL    Jackson   1   211 207 167  255  255  255
 11       DIALOG      Try_practice_more,_soldier!  NULL    Jackson   1   211 207 167  255  255  255
 4        ENEMY       2         200      400
 1        OBJECTIVE
 11       DIALOG      We_have_a_problem_here,_Captain_Jackson!    NULL   ???   2   153   0   40  247  126  162
 11       DIALOG      Alicia?_What_happen?   NULL    Jackson   1   211 207 167  255  255  255
-11       DIALOG      Project_ABLD-02_had_been_stolen_by_someone   I_believe_they_are_still_inside_our_campus    Alicia   2   153   0   40  247  126  162
-11       DIALOG      What?_How_is_that_even_possible?   We_suppose_to_have_the_strongest_security_in_the_world!    Jackson   1   211 207 167  255  255  255
+11       DIALOG      Project_ABLD-OZ_had_been_stolen_by_someone   I_believe_they_are_still_inside_our_campus    Alicia   2   153   0   40  247  126  162
+11       DIALOG      What?_How_is_that_even_possible?   We_suppose_to_have_the_strongest_security_in_the_field!    Jackson   1   211 207 167  255  255  255
 11       DIALOG      Sorry_about_that,_soldier.    That's_my_partner,_Alicia    Jackson   1   211 207 167  255  255  255
 11       DIALOG      Well,_there_is_no_time_for_introduction_now,_I_guess  Soldier,_it_might_be_a_little_hurry    Jackson   1   211 207 167  255  255  255
 11       DIALOG      But_I_need_you_to_catch_the_theif_of_our_company   NULL    Jackson   1   211 207 167  255  255  255
@@ -55,7 +56,6 @@
 11       DIALOG      What_happen_now?   NULL    Jackson   1   211 207 167  255  255  255
 11       DIALOG      They_also_stole_our_trainning_plane,   it_is_heading_towards_you_guys_now!    Alicia   2   153   0   40  247  126  162
 9        CUTSCENE    ____    1   0   0   0   255   255   255
-1        VICTORY
 3        SPAWN       1       4
 2        WAIT        2000
 3        SPAWN       1       5

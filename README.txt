@@ -63,6 +63,7 @@ assets:
 		http://www.dafont.com/dog-rough.font
 		http://www.dafont.com/somerset-barnyard.font
 		http://www.dafont.com/alpha-beta-2.font
+		http://www.fontspace.com/herofonts/blackthorns-demo
 		
 	tool:
 		https://opengameart.org/content/32x32-fantasy-tileset

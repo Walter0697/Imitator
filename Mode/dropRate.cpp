@@ -18,5 +18,5 @@ int DropRate::getToolChance(int type)
 
 void DropRate::unlock(int type)
 {
-	tools_chance[type-1] = 60;
+	tools_chance[type-1] = 70;
 }

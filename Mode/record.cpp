@@ -138,36 +138,44 @@ void Record::addRecord(int type, std::string name)
 		numStory++;
 		temp = new std::string*[numStory];
 		currentRank = numStory - 1;
-		if (player->score > atoi(storyRecord[0][1].c_str()))
+		if (numStory == 1)
 		{
-			currentRank = 0;
-			for (int i = 0; i < numStory - 1; i++)
-			{
-				temp[i + 1] = storyRecord[i];
-			}
 			temp[0] = currentRecord;
 		}
 		else
 		{
-			for (int i = 0; i < numStory - 1; i++)
+			if (player->score > atoi(storyRecord[0][1].c_str()))
 			{
-				if (player->score > atoi(storyRecord[i][1].c_str()))
+				currentRank = 0;
+				for (int i = 0; i < numStory - 1; i++)
 				{
-					currentRank = i;
-					temp[i] = currentRecord;
-					break;
+					temp[i + 1] = storyRecord[i];
 				}
-				else
-				{
-					temp[i] = storyRecord[i];
-				}
+				temp[0] = currentRecord;
 			}
-			for (int i = currentRank; i < numStory - 1; i++)
-				temp[i + 1] = storyRecord[i];
+			else
+			{
+				for (int i = 0; i < numStory - 1; i++)
+				{
+					if (player->score > atoi(storyRecord[i][1].c_str()))
+					{
+						currentRank = i;
+						temp[i] = currentRecord;
+						break;
+					}
+					else
+					{
+						temp[i] = storyRecord[i];
+					}
+				}
+				for (int i = currentRank; i < numStory - 1; i++)
+					temp[i + 1] = storyRecord[i];
 
-			if (currentRank == numStory - 1)
-				temp[numStory - 1] = currentRecord;
+				if (currentRank == numStory - 1)
+					temp[numStory - 1] = currentRecord;
+			}
 		}
+		
 
 		delete[] storyRecord;
 		storyRecord = temp;
@@ -178,35 +186,42 @@ void Record::addRecord(int type, std::string name)
 		numChaos++;
 		temp = new std::string*[numChaos];
 		currentRank = numChaos - 1;
-		if (player->score > atoi(chaosRecord[0][1].c_str()))
+		if (numChaos == 1)
 		{
-			currentRank = 0;
-			for (int i = 0; i < numChaos - 1; i++)
-			{
-				temp[i + 1] = chaosRecord[i];
-			}
 			temp[0] = currentRecord;
 		}
 		else
 		{
-			for (int i = 0; i < numChaos - 1; i++)
+			if (player->score > atoi(chaosRecord[0][1].c_str()))
 			{
-				if (player->score > atoi(chaosRecord[i][1].c_str()))
+				currentRank = 0;
+				for (int i = 0; i < numChaos - 1; i++)
 				{
-					currentRank = i;
-					temp[i] = currentRecord;
-					break;
+					temp[i + 1] = chaosRecord[i];
 				}
-				else
-				{
-					temp[i] = chaosRecord[i];
-				}
+				temp[0] = currentRecord;
 			}
-			for (int i = currentRank; i < numChaos - 1; i++)
-				temp[i + 1] = chaosRecord[i];
+			else
+			{
+				for (int i = 0; i < numChaos - 1; i++)
+				{
+					if (player->score > atoi(chaosRecord[i][1].c_str()))
+					{
+						currentRank = i;
+						temp[i] = currentRecord;
+						break;
+					}
+					else
+					{
+						temp[i] = chaosRecord[i];
+					}
+				}
+				for (int i = currentRank; i < numChaos - 1; i++)
+					temp[i + 1] = chaosRecord[i];
 
-			if (currentRank == numChaos - 1)
-				temp[numChaos - 1] = currentRecord;
+				if (currentRank == numChaos - 1)
+					temp[numChaos - 1] = currentRecord;
+			}
 		}
 
 		delete[] chaosRecord;

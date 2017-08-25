@@ -596,18 +596,18 @@ void Model::bossShootCount()
 				this->enemyBulletSet->shoot(8, this->enemySet->boss_final.position + this->enemySet->boss_final.secondary_shoot);
 				this->enemyBulletSet->shoot(8, this->enemySet->boss_final.position + this->enemySet->boss_final.third_shoot);
 			}
-			if (this->enemySet->boss_final.shoot_count_two > 1000)
+			if (this->enemySet->boss_final.shoot_count_two > 1500)
 			{
-				this->enemySet->boss_final.shoot_count_two -= 1000;
+				this->enemySet->boss_final.shoot_count_two -= 1500;
 				this->enemyBulletSet->shoot(13, this->enemySet->boss_final.position + this->enemySet->boss_final.four_shoot);
 				this->enemyBulletSet->shoot(13, this->enemySet->boss_final.position + this->enemySet->boss_final.five_shoot);
 			}
 		}
 		else if (this->enemySet->boss_final.mode == 5)
 		{
-			if (this->enemySet->boss_final.shoot_count > 300)
+			if (this->enemySet->boss_final.shoot_count > 500)
 			{
-				this->enemySet->boss_final.shoot_count -= 300;
+				this->enemySet->boss_final.shoot_count -= 500;
 				this->enemyBulletSet->shoot(10, this->enemySet->boss_final.position + this->enemySet->boss_final.four_shoot);
 				this->enemyBulletSet->shoot(10, this->enemySet->boss_final.position + this->enemySet->boss_final.five_shoot);
 			}

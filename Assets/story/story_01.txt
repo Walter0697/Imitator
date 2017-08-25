@@ -4,23 +4,23 @@
 9        CUTSCENE    in_order_to_protect_temselves    1  0  0  0  255  255 255
 9        CUTSCENE    However,_some_people   1  0  0  0  255  255  255
 9        CUTSCENE    have_more_dangerous_weapon_on_their_hand  1  0  0  0  255  255  255
-11       DIALOG      Hi_there,_soldier!   I_am_Captain_Jackson  ???   1   255  255  255  255  255  255
-11       DIALOG      Welcome_to_the_new_training_program IPWP-004  Jackson   1      255     255    255   255   255   255
-11       DIALOG      You_are_chosen_to_be_a_trainee_in_this_program Having_this_honour_to_try_this_new_technology  Jackson   1      255     255    255   255   255   255
-11       DIALOG      Our_company,_Armstrong_Tech,_found_this_new_element, which_can_imitate_the_elements_nearby Jackson   1      255     255    255   255   255   255
-11       DIALOG      After_some_improvements, we_successfully_apply_this_element_into_our_technology  Jackson   1      255     255    255   255   255   255
-11       DIALOG      Try_this_out,  you_will_know_what_I_mean.  Jackson   1      255     255    255   255   255   255
+11       DIALOG      Hi_there,_soldier!   I_am_Captain_Jackson  ???   1   211 207 167  255  255  255
+11       DIALOG      Welcome_to_the_new_training_program IPWP-004  Jackson   1    211 207 167   255   255   255
+11       DIALOG      You_are_chosen_to_be_a_trainee_in_this_program Having_this_honour_to_try_this_new_technology  Jackson   1      211 207 167  255   255   255
+11       DIALOG      Our_company,_Armstrong_Tech,_found_this_new_element, which_can_imitate_the_elements_nearby Jackson   1     211 207 167   255   255   255
+11       DIALOG      After_some_improvements, we_successfully_apply_this_element_into_our_technology  Jackson   1     211 207 167   255   255   255
+11       DIALOG      Try_this_out,  you_will_know_what_I_mean.  Jackson   1    211 207 167  255   255   255
 4        ENEMY       1         400      400
 2        WAIT        2000
-11       DIALOG      Try_to_shoot_this_enemy_by_clicking_[spacebar]  NULL   Jackson    1      255     255    255   255   255   255
+11       DIALOG      Try_to_shoot_this_enemy_by_clicking_[spacebar]  NULL   Jackson    1     211 207 167   255   255   255
 1        OBJECTIVE
 4        PICTURE     1         750      950     
-11       DIALOG      Great_job!  take_a_look_at_the_bottom_right_corner  Jackson   1   255  255  255  255  255  255
-11       DIALOG      This_is_the_current_bullet_type_you_have   NULL  Jackson   1   255  255  255  255  255  255
-11       DIALOG      Each_enemy_that_you_eliminate   the_imitator_will_imitate_the_bullet_of_theirs  Jackson   1   255  255  255  255  255  2553      
+11       DIALOG      Great_job!  take_a_look_at_the_bottom_right_corner  Jackson   1   211 207 167  255  255  255
+11       DIALOG      This_is_the_current_bullet_type_you_have   NULL  Jackson   1   211 207 167  255  255  255
+11       DIALOG      Each_enemy_that_you_eliminate   the_imitator_will_imitate_the_bullet_of_theirs  Jackson   1   211 207 167  255  255  2553      
 2        PICTUREEND  1
-11       DIALOG      However,_duel_to_the_technical_problem,   you_can_only_store_up_to_5_bullet_types  Jackson   1   255  255  255  255  255  255
-11       DIALOG      Well,_now_you_understand_how_the_imitator_work   why_not_try_some_more_practices  Jackson   1   255  255  255  255  255  255
+11       DIALOG      However,_duel_to_the_technical_problem,   you_can_only_store_up_to_5_bullet_types  Jackson   1   211 207 167  255  255  255
+11       DIALOG      Well,_now_you_understand_how_the_imitator_work   why_not_try_some_more_practices  Jackson   1   211 207 167  255  255  255
 3        SPAWN       1         2
 2        WAIT        5000
 3        SPAWN       1         3
@@ -33,27 +33,27 @@
 2        WAIT        1000
 4        ENEMY       1         400      400
 1        OBJECTIVE
-11       DIALOG      You_are_doing_a_great_job,_soldier   Let_teach_you_something_new!  Jackson   1   255  255  255  255  255  255
-11       DIALOG      Sometimes_a_bullet_type_can_counter_the_others    You_will_understand_when_you_get_the_second_bullet_type  Jackson   1   255  255  255  255  255  255
-11       DIALOG      Now,_try_to_eliminate_this_enemy    NULL   Jackson   1   255  255  255  255  255  255
+11       DIALOG      You_are_doing_a_great_job,_soldier   Let_teach_you_something_new!  Jackson   1   211 207 167  255  255  255
+11       DIALOG      Sometimes_a_bullet_type_can_counter_the_others    You_will_understand_when_you_get_the_second_bullet_type  Jackson   1   211 207 167  255  255  255
+11       DIALOG      Now,_try_to_eliminate_this_enemy    NULL   Jackson   1   211 207 167  255  255  255
 4        ENEMY       2         400      400
 1        OBJECTIVE
-11       DIALOG      Easy_right?    NULL    Jackson   1   255  255  255  255  255  255
-11       DIALOG      Remember_to_analysis_your_situation,_eliminate_the_suitable_enemy   it_will_be_easier_to_finish_the_mission    Jackson   1   255  255  255  255  255  255
-11       DIALOG      Try_practice_more,_soldier!  NULL    Jackson   1   255  255  255  255  255  255
+11       DIALOG      Easy_right?    NULL    Jackson   1   211 207 167  255  255  255
+11       DIALOG      Remember_to_analysis_your_situation,_eliminate_the_suitable_enemy   it_will_be_easier_to_finish_the_mission    Jackson   1   211 207 167  255  255  255
+11       DIALOG      Try_practice_more,_soldier!  NULL    Jackson   1   211 207 167  255  255  255
 4        ENEMY       2         200      400
 1        OBJECTIVE
-11       DIALOG      We_have_a_problem_here,_Captain_Jackson!    NULL   ???   2   255  255  255  255  255  255
-11       DIALOG      Alicia?_What_happen?   NULL    Jackson   1   255  255  255  255  255  255
-11       DIALOG      Project_ABLD-02_had_been_stolen_by_someone   I_believe_they_are_still_inside_our_campus    Alicia   2   255  255  255  255  255  255
-11       DIALOG      What?_How_is_that_even_possible?   We_suppose_to_have_the_strongest_security_in_the_world!    Jackson   1   255  255  255  255  255  255
-11       DIALOG      Sorry_about_that,_soldier.    That's_my_partner,_Alicia    Jackson   1   255  255  255  255  255  255
-11       DIALOG      Well,_there_is_no_time_for_introduction_now,_I_guess  Soldier,_it_might_be_a_little_hurry    Jackson   1   255  255  255  255  255  255
-11       DIALOG      But_I_need_you_to_catch_the_theif_of_our_company   NULL    Jackson   1   255  255  255  255  255  255
-11       DIALOG      Be_careful,_that_project_is_a_plane    that_is_a_developing_plane_that_contain_a_powerful_weapon    Jackson   1   255  255  255  255  255  255
-11       DIALOG      Captain_Jackson!_Be_aware!  NULL    Alicia   2   255  255  255  255  255  255
-11       DIALOG      What_happen_now?   NULL    Jackson   1   255  255  255  255  255  255
-11       DIALOG      They_also_stole_our_trainning_plane,   it_is_heading_towards_you_guys_now!    Alicia   2   255  255  255  255  255  255
+11       DIALOG      We_have_a_problem_here,_Captain_Jackson!    NULL   ???   2   153   0   40  247  126  162
+11       DIALOG      Alicia?_What_happen?   NULL    Jackson   1   211 207 167  255  255  255
+11       DIALOG      Project_ABLD-02_had_been_stolen_by_someone   I_believe_they_are_still_inside_our_campus    Alicia   2   153   0   40  247  126  162
+11       DIALOG      What?_How_is_that_even_possible?   We_suppose_to_have_the_strongest_security_in_the_world!    Jackson   1   211 207 167  255  255  255
+11       DIALOG      Sorry_about_that,_soldier.    That's_my_partner,_Alicia    Jackson   1   211 207 167  255  255  255
+11       DIALOG      Well,_there_is_no_time_for_introduction_now,_I_guess  Soldier,_it_might_be_a_little_hurry    Jackson   1   211 207 167  255  255  255
+11       DIALOG      But_I_need_you_to_catch_the_theif_of_our_company   NULL    Jackson   1   211 207 167  255  255  255
+11       DIALOG      Be_careful,_that_project_is_a_plane    that_is_a_developing_plane_that_contain_a_powerful_weapon    Jackson   1   211 207 167  255  255  255
+11       DIALOG      Captain_Jackson!_Be_aware!  NULL    Alicia   2   153   0   40  247  126  162
+11       DIALOG      What_happen_now?   NULL    Jackson   1   211 207 167  255  255  255
+11       DIALOG      They_also_stole_our_trainning_plane,   it_is_heading_towards_you_guys_now!    Alicia   2   153   0   40  247  126  162
 9        CUTSCENE    ____    1   0   0   0   255   255   255
 1        VICTORY
 3        SPAWN       1       4
@@ -73,6 +73,15 @@
 3        SPAWN       2       2
 4        ENEMY       1       400    400
 1        OBJECTIVE
-11       DIALOG      Whasssup_here?_whasss_da_noise?   NULL    ???   3   255  255  255  255  255  255
-11       DIALOG      You?_I_remember_you!   You_are_the_well_known_theif:_ROBIN_THE_GHOST    Jackson  1   255  255  255  255  255  255
+11       DIALOG      Whasssup_here?_whasss_da_noise?   NULL    ???   3   247  255   28   255   0   0
+11       DIALOG      You?_I_remember_you!   You_are_the_well_known_theif:_ROBIN_THE_GHOST    Jackson  1   211 207 167  255  255  255
+11       DIALOG      Of_course_you're_here,_Captain_Jackson,   you_are_givin_me_the_weapon,_right?  Robin  3   247  255   28   255   0   0
+11       DIALOG      Never!_I_won't_hand_over_weapon_to_a_criminal   Soldier,_capture_this_guy!    Jackson  1   211 207 167  255  255  255
+11       DIALOG      Waaaaat?_Ohhh_Jacky,_I_see_what_ya_doin_here   Okay_hon,_you_wanna_fight_with_me_right?  Robin  3   247  255   28   255   0   0
+11       DIALOG      THEN_LET_START_THE_FIGHT!   NULL    Robin  3   247  255   28   255   0   0
+2        ENEMY       91
+1        OBJECTIVE
+11       DIALOG      AHHHHHHH!_This_stupid_machine!    Can't_believe_a_freaking_plane_from_this_company_is_that_uselessssss!    Robin  3   247  255   28   255   0   0
+11       DIALOG      BuuuuuuuuT!_That's_not_the_end_yet!     NULL    Robin  3   247  255   28   255   0   0
+11       DIALOG      Soldier!_Don't_let_him_get_away!        NULL    Jackson  1   211 207 167  255  255  255
 1        VICTORY     

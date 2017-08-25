@@ -55,4 +55,24 @@
 11       DIALOG      What_happen_now?   NULL    Jackson   1   255  255  255  255  255  255
 11       DIALOG      They_also_stole_our_trainning_plane,   it_is_heading_towards_you_guys_now!    Alicia   2   255  255  255  255  255  255
 9        CUTSCENE    ____    1   0   0   0   255   255   255
-1        VICTORY  
+1        VICTORY
+3        SPAWN       1       4
+2        WAIT        2000
+3        SPAWN       1       5
+2        WAIT        2000
+3        SPAWN       2       4
+2        WAIT        2000
+3        SPAWN       2       5
+2        WAIT        1000
+3        SPAWN       1       3
+3        SPAWN       2       2
+2        WAIT        3000
+3        SPAWN       2       3
+3        SPAWN       1       2
+2        WAIT        3000
+3        SPAWN       2       2
+4        ENEMY       1       400    400
+1        OBJECTIVE
+11       DIALOG      Whasssup_here?_whasss_da_noise?   NULL    ???   3   255  255  255  255  255  255
+11       DIALOG      You?_I_remember_you!   You_are_the_well_known_theif:_ROBIN_THE_GHOST    Jackson  1   255  255  255  255  255  255
+1        VICTORY     

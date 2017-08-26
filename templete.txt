@@ -10,6 +10,7 @@ TOTALLINE
 1   UNLOCK        num
 1   OBJECTIVE
 4   TOOL          type       x_position     y_position
+5   RSPAWN        type_num   up_until_type     count_down      max_time(-1 ->until objective done)
 1   VICTORY
  
  168       -30   << unlock picture position

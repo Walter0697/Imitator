@@ -45,8 +45,23 @@ void Controller::storyinput(sf::Time delta_time)
 						if (this->model->story->canContin)
 						{
 							this->model->story->currentStory++;
-							this->model->story->setup(this->model->story->currentStory);
+							if (this->model->story->currentStory != LAST_STORY)
+							{
+								this->model->story->readStory++;
+								this->model->story->setup(this->model->story->currentStory);
+							}
+							else
+							{
+								this->view->menu->unlock();
+								this->model->story->currentStory = 1;
+								this->model->gamemode = MODE_SCORE_BOARD;
+								this->selecting = 1;
+								model->record->startPosition = 0;
+								model->record->addRecord(1, "NONAME");
+							}
+							
 							//initialize bulles
+							this->model->enemySet->initEnemy();
 							this->model->playerSet->initBullet();
 							this->model->enemyBulletSet->initBullet();
 						}
@@ -55,13 +70,6 @@ void Controller::storyinput(sf::Time delta_time)
 				break;
 			}
 		}
-	}
-	if (this->model->story->currentStory == LAST_STORY)
-	{
-		this->view->menu->unlock();
-		this->model->story->currentStory = 1;
-		this->model->gamemode = MODE_MENU_SCREEN;
-		this->selecting = 1;
 	}
 }
 
@@ -119,9 +127,8 @@ void Controller::menuinput(sf::Time delta_time, sf::RenderWindow& window)
 					this->model->gamemode = MODE_SCORE_BOARD;
 				}
 				break;
-			case sf::Keyboard::F10:
-				this->view->menu->unlock();
-				selecting = 1;
+			case sf::Keyboard::M:
+				this->model->story->readStory = 0;
 				break;
 			}
 			this->view->menu->changeSelect(this->selecting);

@@ -12,8 +12,6 @@ Story::Story(EnemySet* enemySet, ToolSet* toolSet, DropRate* droprate, Player* p
 	//initialization
 	background = sf::Color(0, 0, 0, 50);
 	textColor = sf::Color(0, 0, 0, 255);
-
-	setup(1);
 }
 
 Story::~Story() {}
@@ -121,10 +119,16 @@ void Story::setup(int current)
 	switch (current)
 	{
 	case 1:
-		readFile("Assets/story/story_01.txt");
+		if (readStory >= 1)
+			readFile("Assets/story/story_01_finish.txt");
+		else
+			readFile("Assets/story/story_01.txt");
 		break;
 	case 2:
-		readFile("Assets/story/story_01.txt");
+		if (readStory >= 2)
+			readFile("Assets/story/story_02_finish.txt");
+		else
+			readFile("Assets/story/story_02.txt");
 		break;
 	default:
 		cout << "fail to read file" << endl;
@@ -137,7 +141,26 @@ void Story::update(sf::Time& delta_time)
 	//countdown
 	if (countdown > 0)
 		countdown -= delta_time.asMilliseconds();
-	
+
+	//just wait
+	if (isWait)
+	{
+		if (countdown <= 0)
+		{
+			isWait = false;
+			processing++;
+		}
+	}
+
+	if (enemyInfo != 0 && countdownEnd == -1)
+	{
+		if (countdown <= 0)
+		{
+			enemySet->spawn(rand() % spawntype + spawnend, rand() % SCREEN_WIDTH);
+			countdown += countdownMax;
+		}
+	}
+
 	//stop target enemy
 	if (enemyInfo != 0 && target.x != -1)
 	{
@@ -246,7 +269,7 @@ void Story::update(sf::Time& delta_time)
 	}
 
 	//read the data if haven't
-	else if (countdown <= 0 && !isStory && processing < dataCols)
+	else if (!isWait && !isStory && processing < dataCols)
 	{
 		//loading cutscene
 		if (mapData[processing][0] == "CUTSCENE")
@@ -345,13 +368,15 @@ void Story::update(sf::Time& delta_time)
 		else if (mapData[processing][0] == "WAIT")
 		{
 			countdown = atoi(mapData[processing][1].c_str());
-			processing++;
+			isWait = true;
 		}
 		//rewards after killing target
 		else if (mapData[processing][0] == "OBJECTIVE")
 		{
 			if (enemySet->checkOutOfBound(*enemyInfo) && enemyInfo != 0)
 			{
+				if (countdownEnd == -1)
+					countdownEnd = 0;
 				enemyInfo = 0;
 				processing++;
 			}
@@ -394,6 +419,37 @@ void Story::update(sf::Time& delta_time)
 			canContin = false;
 			countdown = 0;
 			line = 1;
+		}
+		//randomly spawn
+		else if (mapData[processing][0] == "RSPAWN")
+		{
+			if (countdownEnd == 0)
+			{
+				spawntype = atoi(mapData[processing][1].c_str());
+				spawnend = atoi(mapData[processing][2].c_str());
+				countdown = atoi(mapData[processing][3].c_str());
+				countdownMax = countdown;
+				countdownEnd = atoi(mapData[processing][4].c_str());
+			}
+			else if (countdownEnd == -1)
+			{
+				processing++;
+			}
+			else
+			{
+				countdownEnd -= delta_time.asMilliseconds();
+				if (countdown <= 0)
+				{
+					countdown += countdownMax;
+					enemySet->spawn(rand() % spawntype + spawnend, rand() % SCREEN_WIDTH);
+					if (countdownEnd <= 0)
+					{
+						countdownMax = 0;
+						countdownEnd = 0;
+						processing++;
+					}
+				}
+			}
 		}
 	}
 }

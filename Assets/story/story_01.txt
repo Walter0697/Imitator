@@ -1,5 +1,5 @@
-85
-9        CUTSCENE    2122,_after_a_revolution  1   0   0   0   255   255   255
+89
+9        CUTSCENE    In_2122,_after_a_revolution  1   0   0   0   255   255   255
 9        CUTSCENE    people_in_the_world_started_to_own_weapon  1  0  0  0  255  255 255
 9        CUTSCENE    in_order_to_protect_temselves    1  0  0  0  255  255 255
 9        CUTSCENE    However,_some_people   1  0  0  0  255  255  255
@@ -56,20 +56,20 @@
 11       DIALOG      What_happen_now?   NULL    Jackson   1   211 207 167  255  255  255
 11       DIALOG      They_also_stole_our_trainning_plane,   it_is_heading_towards_you_guys_now!    Alicia   2   153   0   40  247  126  162
 9        CUTSCENE    ____    1   0   0   0   255   255   255
-3        SPAWN       1       4
-2        WAIT        2000
-3        SPAWN       1       5
-2        WAIT        2000
+3        SPAWN       1       3
+2        WAIT        4000
+3        SPAWN       1       3
+2        WAIT        4000
 3        SPAWN       2       4
-2        WAIT        2000
-3        SPAWN       2       5
-2        WAIT        1000
+2        WAIT        4000
+3        SPAWN       1       5
+2        WAIT        4000
 3        SPAWN       1       3
 3        SPAWN       2       2
-2        WAIT        3000
+2        WAIT        4000
 3        SPAWN       2       3
 3        SPAWN       1       2
-2        WAIT        3000
+2        WAIT        4000
 3        SPAWN       2       2
 4        ENEMY       1       400    400
 1        OBJECTIVE
@@ -80,8 +80,11 @@
 11       DIALOG      Waaaaat?_Ohhh_Jacky,_I_see_what_ya_doin_here   Okay_hon,_you_wanna_fight_with_me_right?  Robin  3   247  255   28   255   0   0
 11       DIALOG      THEN_LET_START_THE_FIGHT!   NULL    Robin  3   247  255   28   255   0   0
 2        ENEMY       91
+5        RSPAWN      2       1      3000      -1
 1        OBJECTIVE
 11       DIALOG      AHHHHHHH!_This_stupid_machine!    Can't_believe_a_freaking_plane_from_this_company_is_that_uselessssss!    Robin  3   247  255   28   255   0   0
 11       DIALOG      BuuuuuuuuT!_That's_not_the_end_yet!     NULL    Robin  3   247  255   28   255   0   0
 11       DIALOG      Soldier!_Don't_let_him_get_away!        NULL    Jackson  1   211 207 167  255  255  255
+9        CUTSCENE    I_will_make_more_story_line   1   0   0   0   255   255   255
+9        CUTSCENE    just_stfu_for_now   1   0   0   0   255   255   255
 1        VICTORY     

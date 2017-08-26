@@ -22,7 +22,7 @@ View::View(Model* model)
 	if (!this->model->story->fontEnemy.loadFromFile("Assets/Somerset Barnyard.otf")) cout << "failed to load Somerset Barnyard.otf" << endl;
 	if (!this->model->story->fontVictory.loadFromFile("Assets/neuropolitical rg.ttf")) cout << "failed to load font neuropolitical rg.ttf" << endl;
 	if (!this->model->story->fontEnemy2.loadFromFile("Assets/Dog Rough.otf")) cout << "failed to load Dog Rough.otf" << endl;
-	if (!this->model->story->fontFriend2.loadFromFile("Assets/blackthorns-black.ttf")) cout << "failed to load font blackthorns-black.ttf" << endl;
+	if (!this->model->story->fontFriend2.loadFromFile("Assets/blackthorns-black.ttf")) cout << "failed to load font blackthorns-black .ttf" << endl;
 	if (!this->model->story->fontUnknown.loadFromFile("Assets/WINGDNG3.TTF")) cout << "failed to load font WINGDNG3.TTF" << endl;
 	this->model->story->setup();
 

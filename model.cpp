@@ -2074,6 +2074,7 @@ void Model::enemyDie(Enemy& enemy, Bullet& bullet, int bullet_type, int score_ad
 			this->player->addBullet(bullet_type, bullet.shoot_rate);
 			this->player->addShield(shield_add);
 			this->player->score += score_add;
+			this->record->bossDefeated++;
 		}
 		
 	}

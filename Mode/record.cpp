@@ -16,6 +16,7 @@ Record::~Record() {}
 
 void Record::init()
 {
+	bossDefeated = 0;
 	for (int i = 0; i < 6; i++)
 		toolsPicked[i] = 0;
 	
@@ -69,12 +70,13 @@ void Record::readFile()
 
 	fileHndl >> story->currentStory;
 	fileHndl >> story->toolUnlock;
+	fileHndl >> story->readStory;
 	fileHndl >> numStory;
 	storyRecord = new std::string*[numStory];
 	for (int i = 0; i < numStory; i++)
 	{
-		storyRecord[i] = new std::string[13];
-		for (int j = 0; j < 13; j++)
+		storyRecord[i] = new std::string[SAVE_DATA];
+		for (int j = 0; j < SAVE_DATA; j++)
 			fileHndl >> storyRecord[i][j];
 	}
 
@@ -82,8 +84,8 @@ void Record::readFile()
 	chaosRecord = new std::string*[numChaos];
 	for (int i = 0; i < numChaos; i++)
 	{
-		chaosRecord[i] = new std::string[13];
-		for (int j = 0; j < 13; j++)
+		chaosRecord[i] = new std::string[SAVE_DATA];
+		for (int j = 0; j < SAVE_DATA; j++)
 			fileHndl >> chaosRecord[i][j];
 	}
 
@@ -94,12 +96,12 @@ void Record::writeFile()
 {
 	std::ofstream fileWriter;
 	fileWriter.open("Assets/story/saveRecord.txt");
-	fileWriter << story->currentStory << " " << story->toolUnlock << "\n";
+	fileWriter << story->currentStory << " " << story->toolUnlock << " " << story->readStory << "\n";
 
 	fileWriter << numStory << "\n";
 	for (int i = 0; i < numStory; i++)
 	{
-		for (int j = 0; j < 13; j++)
+		for (int j = 0; j < SAVE_DATA; j++)
 		{
 			fileWriter << storyRecord[i][j] << " ";
 		}
@@ -109,7 +111,7 @@ void Record::writeFile()
 	fileWriter << numChaos << "\n";
 	for (int i = 0; i < numChaos; i++)
 	{
-		for (int j = 0; j < 13; j++)
+		for (int j = 0; j < SAVE_DATA; j++)
 		{
 			fileWriter << chaosRecord[i][j] << " ";
 		}
@@ -121,13 +123,14 @@ void Record::writeFile()
 void Record::addRecord(int type, std::string name)
 {
 	//name, score, recordgshield, bshield, yshield, healthpack, imumium, stone, bullet1, 2, 3, 4, 5
-	std::string* currentRecord = new std::string[13];
+	std::string* currentRecord = new std::string[SAVE_DATA];
 	currentRecord[0] = name;
 	currentRecord[1] = std::to_string(player->score);
 	for (int i = 0; i < 6; i++)
 		currentRecord[i + 2] = std::to_string(toolsPicked[i]);
 	for (int i = 0; i < 5; i++)
 		currentRecord[i + 8] = std::to_string(player->shoot_type[i]);
+	currentRecord[13] = std::to_string(bossDefeated);
 
 	currentType = type;
 

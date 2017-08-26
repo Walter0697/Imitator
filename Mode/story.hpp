@@ -29,10 +29,12 @@ public:
 
 	//mode related
 	int currentStory = 1;
+	int readStory = 0;
 	int toolUnlock = 0;
 
 	int processing = 0;
 	bool isStory = false;
+	bool isWait = false;
 	bool canContin = false;
 
 	void init();
@@ -53,6 +55,9 @@ public:
 
 	//countdown related
 	float countdown;
+	float countdownMax = 0;
+	float countdownEnd = 0;
+	int spawntype, spawnend;
 
 	//map information
 	int dataCols;

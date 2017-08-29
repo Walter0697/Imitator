@@ -130,6 +130,32 @@ void Story::setup(int current)
 		else
 			readFile("Assets/story/story_02.txt");
 		break;
+			/*
+	case 3:
+		if (readStory >= 3)
+			readFile("Assets/story/story_03_finish.txt");
+		else
+			readFile("Assets/story/story_03.txt");
+		break;
+	case 4:
+		if (readStory >= 4)
+			readFile("Assets/story/story_04_finish.txt");
+		else
+			readFile("Assets/story/story_04.txt");
+		break;
+	case 5:
+		if (readStory >= 5)
+			readFile("Assets/story/story_05_finish.txt");
+		else
+			readFile("Asssets/story/story_05.txt");
+		break;
+	case 6:
+		if (readStory >= 6)
+			readFile("Assets/story/story_06_finish.txt");
+		else
+			readFile("Assets/story/story_06.txt");
+		break;
+			*/
 	default:
 		cout << "fail to read file" << endl;
 		break;

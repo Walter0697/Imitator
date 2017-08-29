@@ -1,7 +1,7 @@
 89
 9        CUTSCENE    In_2122,_after_a_revolution  1   0   0   0   255   255   255
 9        CUTSCENE    people_in_the_world_started_to_own_weapon  1  0  0  0  255  255 255
-9        CUTSCENE    in_order_to_protect_temselves    1  0  0  0  255  255 255
+9        CUTSCENE    in_order_to_protect_themselves    1  0  0  0  255  255 255
 9        CUTSCENE    However,_some_people   1  0  0  0  255  255  255
 9        CUTSCENE    have_more_dangerous_weapon_on_their_hand  1  0  0  0  255  255  255
 11       DIALOG      Hi_there,_soldier!   I_am_Captain_Jackson  ???   1   211 207 167  255  255  255

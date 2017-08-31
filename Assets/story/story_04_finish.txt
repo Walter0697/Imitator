@@ -1,0 +1,6 @@
+5
+5        RSPAWN      1       6       1000        10000
+5        RSPAWN      1       6       800         15000
+2        ENEMY        94
+1        OBJECTIVE
+1        VICTORY

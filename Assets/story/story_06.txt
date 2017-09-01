@@ -1,0 +1,46 @@
+45
+11       DIALOG      Lazer~Lazer~LAZER!!!    It's_such_a_cool_thing_to_play_around!     Robin     3    247   255    28      255    0     0
+11       DIALOG      I_saw_your_litta_plane_have_lazer_before     Therefore_I_thought,_why_not_make_it_inside_the_litta_plane?    Robin   3   247    255    28    255    0    0
+5        RSPAWN      1       2       1000         3000
+5        RSPAWN      1       10      1200         8000
+11       DIALOG      Stop_it,_Robin,_there_is_no_way_you_will_defeat_us!     NULL   Jackson    1    211    207    167    255   255    255
+11       DIALOG      AHAHAHHA~_I_doubt_it!     NULL    Robin  3  247   255   28    255    0    0
+11       DIALOG      I_am_preparing_something_amazing!    Just_send_you_something_when_ya_waitin~    Robin   3     247     255   28    255    0     0
+5        RSPAWN      10      1       1000         10000
+2        WAIT     2000
+11       DIALOG      Robin,_thing_is_ready_to_go     NULL    Franky     4     250    250    250    250   250    250
+11       DIALOG      GOOOOOOD~    NULL     Robin    3    247   255  28    255     0     0
+11       DIALOG      You_know_wat,_Jacky?     Your_litta_plane_is_strong,_strong_A_F~!    Robin    3   247    255   28   255    0     0
+11       DIALOG       But_there_is_one_way_to_defeat_it~!      Let_see!     Robin    247    255    28     255     0     0
+5        ENEMY      1      400      400
+1        OBJECTIVE
+5        ENEMY      1      400      400
+1        OBJECTIVE
+5        ENEMY      1      400      400
+1        OBJECTIVE
+5        ENEMY      1      400      400
+1        OBJECTIVE
+5        ENEMY      1      400      400
+1        OBJECTIVE
+11       DIALOG       See_dat?_Ya_gonna_die_this_time!     NULL    Robin    3      247    255    28    255    0     0
+11       DIALOG       Damn,_all_our_bullet_became_the_weakest_bullets!    Don't_worry,_there_must_be_a_way_to_win_this!     Jackson     1     211     207    167     255     255     255
+11       DIALOG       Now!!!!!See_ya_can_beat_me_or_not~     NULL    Robin     3     247     255     28    255     0     0
+2        ENEMY        96
+11       DIALOG       Wait~_Why_did_you_tell_me_to_get_into_the_plane,_Captain_Jackson?     NULL      Alicia    2     153     0      40      247      126     162
+4        FSPAWN       10       10
+4        FSPAWN       10       50
+4        FSPAWN       10       110
+4        FSPAWN       710      10
+4        FSPAWN       710      50
+4        FSPAWN       710      110
+11       DIALOG       Soldier,_that's_the_only_way......     NULL     Jackson      1     211     207      167     255    255     255
+11       DIALOG       To_maximize_the_damage,_we_have_to_get_some_strong_bullets.      Which_means........     Jackson     1     211     207      167     255    255    255
+11       DIALOG       Shoot_our_own_planes,     then_you_can_get_some_strong_bullets.      Jackson     1     211     207      167      255     255     255
+11       DIALOG       .......     NULL      Alicia    2    153    0       40    247     126
+1        OBJECTIVE
+11       DIALOG       AAAAAAAAAAH~WHAT_THE_HELLLLLLL!      Our_final_weapon,_screeeeeew_ya_guys!!!!!      Robin    3    247    255     28    255    0    0
+11       DIALOG       With_this_ending,_you_did_a_great_job,_soldier!        You_are_a_hero_to_us       Jackson     1     211     207     167     255   255
+11       DIALOG       Hero?        You_such_a_funny_person,_Jacky       Robin      3     247     255     28     255    0      0
+11       DIALOG       Without_ya,_there_is_no_me!       Stop_pretending_like_a_hero!!!!     Robin    3    247    255    28    255     0     0
+11       DIALOG       You_already_loss,_Robin.      There_is_nothing_you_can_do_to_change_this.    Jackson      1     211     207     167     255    255        
+1        VICTORY

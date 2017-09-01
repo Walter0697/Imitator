@@ -1,0 +1,24 @@
+23
+5        RSPAWN      1       2       1000         3000
+5        RSPAWN      1       10      1200         8000
+5        RSPAWN      10      1       1000         10000
+2        WAIT     2000
+5        ENEMY      1      400      400
+1        OBJECTIVE
+5        ENEMY      1      400      400
+1        OBJECTIVE
+5        ENEMY      1      400      400
+1        OBJECTIVE
+5        ENEMY      1      400      400
+1        OBJECTIVE
+5        ENEMY      1      400      400
+1        OBJECTIVE
+2        ENEMY        96
+4        FSPAWN       10       10
+4        FSPAWN       10       50
+4        FSPAWN       10       110
+4        FSPAWN       710      10
+4        FSPAWN       710      50
+4        FSPAWN       710      110
+1        OBJECTIVE    
+1        VICTORY

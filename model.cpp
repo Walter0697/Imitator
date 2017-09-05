@@ -807,6 +807,8 @@ void Model::checkHit()
 					enemyDamage(this->playerSet->dbullets[j], this->enemySet->advancedenemies[i], 9);
 				else if (coll.EnemyBulletCollision(this->enemySet->lazzyenemies[i], this->enemySet->hb_lazzyenemy, this->playerSet->dbullets[j], this->playerSet->hb_dbullet))
 					enemyDamage(this->playerSet->dbullets[j], this->enemySet->lazzyenemies[i], 10);
+				else if (coll.EnemyBulletCollision(this->enemySet->friendShips[i], this->enemySet->hb_friend, this->playerSet->dbullets[j], this->playerSet->hb_dbullet))
+					enemyDamage(this->playerSet->dbullets[j], this->enemySet->friendShips[i], 11);
 			}
 		}
 
@@ -835,6 +837,8 @@ void Model::checkHit()
 					enemyDamage(this->playerSet->twbullets_left[j], this->enemySet->advancedenemies[i], 9);
 				else if (coll.EnemyBulletCollision(this->enemySet->lazzyenemies[i], this->enemySet->hb_lazzyenemy, this->playerSet->twbullets_left[j], this->playerSet->hb_twbullet))
 					enemyDamage(this->playerSet->twbullets_left[j], this->enemySet->lazzyenemies[i], 10);
+				else if (coll.EnemyBulletCollision(this->enemySet->friendShips[i], this->enemySet->hb_friend, this->playerSet->twbullets_left[j], this->playerSet->hb_twbullet))
+					enemyDamage(this->playerSet->twbullets_left[j], this->enemySet->friendShips[i], 11);
 			}
 
 			if (!this->playerSet->checkOutOfBound(this->playerSet->twbullets_right[j]))
@@ -859,6 +863,8 @@ void Model::checkHit()
 					enemyDamage(this->playerSet->twbullets_right[j], this->enemySet->advancedenemies[i], 9);
 				else if (coll.EnemyBulletCollision(this->enemySet->lazzyenemies[i], this->enemySet->hb_lazzyenemy, this->playerSet->twbullets_right[j], this->playerSet->hb_twbullet))
 					enemyDamage(this->playerSet->twbullets_right[j], this->enemySet->lazzyenemies[i], 10);
+				else if (coll.EnemyBulletCollision(this->enemySet->friendShips[i], this->enemySet->hb_friend, this->playerSet->twbullets_right[j], this->playerSet->hb_twbullet))
+					enemyDamage(this->playerSet->twbullets_right[j], this->enemySet->friendShips[i], 11);
 			}
 		}
 
@@ -887,6 +893,8 @@ void Model::checkHit()
 					enemyDamage(this->playerSet->longbullets[j], this->enemySet->advancedenemies[i], 9);
 				else if (coll.EnemyBulletCollision(this->enemySet->lazzyenemies[i], this->enemySet->hb_lazzyenemy, this->playerSet->longbullets[j], this->playerSet->hb_longbullet))
 					enemyDamage(this->playerSet->longbullets[j], this->enemySet->lazzyenemies[i], 10);
+				else if (coll.EnemyBulletCollision(this->enemySet->friendShips[i], this->enemySet->hb_friend, this->playerSet->longbullets[j], this->playerSet->hb_longbullet))
+					enemyDamage(this->playerSet->longbullets[j], this->enemySet->friendShips[i], 11);
 			}
 		}
 
@@ -915,6 +923,8 @@ void Model::checkHit()
 					enemyDamage(this->playerSet->shotbullets[j], this->enemySet->advancedenemies[i], 9);
 				else if (coll.EnemyBulletCollision(this->enemySet->lazzyenemies[i], this->enemySet->hb_lazzyenemy, this->playerSet->shotbullets[j], this->playerSet->hb_shotgun))
 					enemyDamage(this->playerSet->shotbullets[j], this->enemySet->lazzyenemies[i], 10);
+				else if (coll.EnemyBulletCollision(this->enemySet->friendShips[i], this->enemySet->hb_friend, this->playerSet->shotbullets[j], this->playerSet->hb_shotgun))
+					enemyDamage(this->playerSet->shotbullets[j], this->enemySet->friendShips[i], 11);
 			}
 		}
 
@@ -943,6 +953,8 @@ void Model::checkHit()
 					enemyDamage(this->enemySet->advancedenemies[i], this->playerSet->lightbullets[j].damage, 9);
 				if (coll.EnemyBulletCollision(this->enemySet->lazzyenemies[i], this->enemySet->hb_lazzyenemy, this->playerSet->lightbullets[j], this->playerSet->hb_lightball))
 					enemyDamage(this->enemySet->lazzyenemies[i], this->playerSet->lightbullets[j].damage, 10);
+				if (coll.EnemyBulletCollision(this->enemySet->friendShips[i], this->enemySet->hb_friend, this->playerSet->lightbullets[j], this->playerSet->hb_lightball))
+					enemyDamage(this->enemySet->friendShips[i], this->playerSet->lightbullets[j].damage, 11);
 			}
 		}
 
@@ -971,6 +983,8 @@ void Model::checkHit()
 					enemyDamage(this->playerSet->randombullets[j], this->enemySet->advancedenemies[i], 9);
 				else if (coll.EnemyBulletCollision(this->enemySet->lazzyenemies[i], this->enemySet->hb_lazzyenemy, this->playerSet->randombullets[j], this->playerSet->hb_randombullet))
 					enemyDamage(this->playerSet->randombullets[j], this->enemySet->lazzyenemies[i], 10);
+				else if (coll.EnemyBulletCollision(this->enemySet->friendShips[i], this->enemySet->hb_friend, this->playerSet->randombullets[j], this->playerSet->hb_randombullet))
+					enemyDamage(this->playerSet->randombullets[j], this->enemySet->friendShips[i], 11);
 			}
 		}
 
@@ -988,7 +1002,8 @@ void Model::checkHit()
 					coll.EnemyBulletCollision(this->enemySet->unknownenemies[i], this->enemySet->hb_unknownenemy, this->playerSet->grenadebullets[j], this->playerSet->hb_grenade) ||
 					coll.EnemyBulletCollision(this->enemySet->glitchyenemies[i], this->enemySet->hb_glitchyenemy, this->playerSet->grenadebullets[j], this->playerSet->hb_grenade) ||
 					coll.EnemyBulletCollision(this->enemySet->advancedenemies[i], this->enemySet->hb_advancedenemy, this->playerSet->grenadebullets[j], this->playerSet->hb_grenade) ||
-					coll.EnemyBulletCollision(this->enemySet->lazzyenemies[i], this->enemySet->hb_lazzyenemy, this->playerSet->grenadebullets[j], this->playerSet->hb_grenade))
+					coll.EnemyBulletCollision(this->enemySet->lazzyenemies[i], this->enemySet->hb_lazzyenemy, this->playerSet->grenadebullets[j], this->playerSet->hb_grenade) ||
+					coll.EnemyBulletCollision(this->enemySet->friendShips[i], this->enemySet->hb_friend, this->playerSet->grenadebullets[j], this->playerSet->hb_grenade))
 				{
 					this->playerSet->explosions[playerSet->avaliableBullet(98)].lifespan = 0.5;
 					this->playerSet->explosions[playerSet->avaliableBullet(98)].position = this->playerSet->grenadebullets[j].position;
@@ -1023,6 +1038,8 @@ void Model::checkHit()
 					enemyDamage(this->enemySet->advancedenemies[i], this->playerSet->explosions[j].damage, 9);
 				if (coll.EnemyBulletCollision(this->enemySet->lazzyenemies[i], this->enemySet->hb_lazzyenemy, this->playerSet->explosions[j], this->playerSet->hb_explosion))
 					enemyDamage(this->enemySet->lazzyenemies[i], this->playerSet->explosions[j].damage, 10);
+				if (coll.EnemyBulletCollision(this->enemySet->friendShips[i], this->enemySet->hb_friend, this->playerSet->explosions[j], this->playerSet->hb_explosion))
+					enemyDamage(this->enemySet->friendShips[i], this->playerSet->explosions[j].damage, 11);
 			}
 		}
 
@@ -1091,6 +1108,12 @@ void Model::checkHit()
 						this->enemySet->lazzyenemies[i].onFire = rand() % 5;
 					enemyDamage(this->playerSet->firebullets[j], this->enemySet->lazzyenemies[i], 10);
 				}
+				else if (coll.EnemyBulletCollision(this->enemySet->friendShips[i], this->enemySet->hb_friend, this->playerSet->firebullets[j], this->playerSet->hb_fireshot))
+				{
+					if (rand() % 100 > 70)
+						this->enemySet->friendShips[i].onFire = rand() % 5;
+					enemyDamage(this->playerSet->firebullets[j], this->enemySet->friendShips[i], 11);
+				}
 			}
 		}
 
@@ -1119,6 +1142,8 @@ void Model::checkHit()
 					enemyDamage(this->enemySet->advancedenemies[i], this->playerSet->lazerbullets[j].damage, 9);
 				if (coll.EnemyBulletCollision(this->enemySet->lazzyenemies[i], this->enemySet->hb_lazzyenemy, this->playerSet->lazerbullets[j], this->playerSet->hb_lazer))
 					enemyDamage(this->enemySet->lazzyenemies[i], this->playerSet->lazerbullets[j].damage, 10);
+				if (coll.EnemyBulletCollision(this->enemySet->friendShips[i], this->enemySet->hb_friend, this->playerSet->lazerbullets[j], this->playerSet->hb_lazer))
+					enemyDamage(this->enemySet->friendShips[i], this->playerSet->lazerbullets[j].damage, 11);
 			}
 		}
 
@@ -1147,6 +1172,8 @@ void Model::checkHit()
 					enemyDamage(this->playerSet->blastbullets[j], this->enemySet->advancedenemies[i], 9);
 				else if (coll.EnemyBulletCollision(this->enemySet->lazzyenemies[i], this->enemySet->hb_lazzyenemy, this->playerSet->blastbullets[j], this->playerSet->hb_blastshot))
 					enemyDamage(this->playerSet->blastbullets[j], this->enemySet->lazzyenemies[i], 10);
+				else if (coll.EnemyBulletCollision(this->enemySet->friendShips[i], this->enemySet->hb_friend, this->playerSet->blastbullets[j], this->playerSet->hb_blastshot))
+					enemyDamage(this->playerSet->blastbullets[j], this->enemySet->friendShips[i], 11);
 			}
 		}
 
@@ -1175,6 +1202,8 @@ void Model::checkHit()
 					enemyDamage(this->playerSet->homingbullets[j], this->enemySet->advancedenemies[i], 9);
 				else if (coll.EnemyBulletCollision(this->enemySet->lazzyenemies[i], this->enemySet->hb_lazzyenemy, this->playerSet->homingbullets[j], this->playerSet->hb_homingshot))
 					enemyDamage(this->playerSet->homingbullets[j], this->enemySet->lazzyenemies[i], 10);
+				else if (coll.EnemyBulletCollision(this->enemySet->friendShips[i], this->enemySet->hb_friend, this->playerSet->homingbullets[j], this->playerSet->hb_homingshot))
+					enemyDamage(this->playerSet->homingbullets[j], this->enemySet->friendShips[i], 11);
 			}
 		}
 
@@ -1203,6 +1232,8 @@ void Model::checkHit()
 					enemyDamage(this->enemySet->advancedenemies[i], this->playerSet->lazerbeambullets[j].damage, 9);
 				if (coll.EnemyBulletCollision(this->enemySet->lazzyenemies[i], this->enemySet->hb_lazzyenemy, this->playerSet->lazerbeambullets[j], this->playerSet->hb_lazerbeam))
 					enemyDamage(this->enemySet->lazzyenemies[i], this->playerSet->lazerbeambullets[j].damage, 10);
+				if (coll.EnemyBulletCollision(this->enemySet->friendShips[i], this->enemySet->hb_friend, this->playerSet->lazerbeambullets[j], this->playerSet->hb_lazerbeam))
+					enemyDamage(this->enemySet->friendShips[i], this->playerSet->lazerbeambullets[j].damage, 11);
 			}
 		}
 
@@ -1231,6 +1262,8 @@ void Model::checkHit()
 					enemyDamage(this->playerSet->fireworkbullets[j], this->enemySet->advancedenemies[i], 9);
 				else if (coll.EnemyBulletCollision(this->enemySet->lazzyenemies[i], this->enemySet->hb_lazzyenemy, this->playerSet->fireworkbullets[j], this->playerSet->hb_firework))
 					enemyDamage(this->playerSet->fireworkbullets[j], this->enemySet->lazzyenemies[i], 10);
+				else if (coll.EnemyBulletCollision(this->enemySet->friendShips[i], this->enemySet->hb_friend, this->playerSet->fireworkbullets[j], this->playerSet->hb_firework))
+					enemyDamage(this->playerSet->fireworkbullets[j], this->enemySet->friendShips[i], 11);
 			}
 		}
 
@@ -1248,7 +1281,8 @@ void Model::checkHit()
 					coll.EnemyBulletCollision(this->enemySet->unknownenemies[i], this->enemySet->hb_unknownenemy, this->playerSet->rocketbullets[j], this->playerSet->hb_rocket) ||
 					coll.EnemyBulletCollision(this->enemySet->glitchyenemies[i], this->enemySet->hb_glitchyenemy, this->playerSet->rocketbullets[j], this->playerSet->hb_rocket) ||
 					coll.EnemyBulletCollision(this->enemySet->advancedenemies[i], this->enemySet->hb_advancedenemy, this->playerSet->rocketbullets[j], this->playerSet->hb_rocket) ||
-					coll.EnemyBulletCollision(this->enemySet->lazzyenemies[i], this->enemySet->hb_lazzyenemy, this->playerSet->rocketbullets[j], this->playerSet->hb_rocket))
+					coll.EnemyBulletCollision(this->enemySet->lazzyenemies[i], this->enemySet->hb_lazzyenemy, this->playerSet->rocketbullets[j], this->playerSet->hb_rocket) ||
+					coll.EnemyBulletCollision(this->enemySet->friendShips[i], this->enemySet->hb_friend, this->playerSet->rocketbullets[j], this->playerSet->hb_rocket))
 				{
 					this->playerSet->explosions[playerSet->avaliableBullet(98)].lifespan = 0.3f;
 					this->playerSet->explosions[playerSet->avaliableBullet(98)].position = this->playerSet->rocketbullets[j].position;
@@ -2038,6 +2072,26 @@ void Model::checkDie(Enemy& enemy, int type)
 			enemyDie(enemy, this->enemyBulletSet->lazerbeambullets[0], 12, 5000, 100);
 			enemySet->current_boss = 0;
 			break;
+		case 11:
+			switch (rand() % 5)
+			{
+			case 0:
+				enemyDie(enemy, this->enemyBulletSet->lazerbullets[0], 9, 0, 0);
+				break;
+			case 1:
+				enemyDie(enemy, this->enemyBulletSet->blastbullets[0], 10, 0, 0);
+				break;
+			case 2:
+				enemyDie(enemy, this->enemyBulletSet->firerootbullets[0], 13, 0, 0);
+				break;
+			case 3:
+				enemyDie(enemy, this->enemyBulletSet->lightbullets[0], 5, 0, 0);
+				break;
+			case 4:
+				enemyDie(enemy, this->enemyBulletSet->grenadebullets[0], 7, 0, 0);
+				break;
+			}
+			break;
 		}
 	}
 }
@@ -2232,6 +2286,13 @@ sf::Vector2f Model::findTarget(sf::Vector2f& position)
 			minimum = i;
 			minid = distance;
 		}
+		distance = pow(enemySet->friendShips[i].position.x - position.x, 2) + pow(enemySet->friendShips[i].position.y - position.y, 2);
+		if (distance < minid)
+		{
+			minitype = 11;
+			minimum = i;
+			minid = distance;
+		}
 	}
 
 	if (minid <= 90000)
@@ -2257,6 +2318,8 @@ sf::Vector2f Model::findTarget(sf::Vector2f& position)
 			return enemySet->advancedenemies[minimum].position;
 		case 10:
 			return enemySet->lazzyenemies[minimum].position;
+		case 11:
+			return enemySet->friendShips[minimum].position;
 		}
 	return sf::Vector2f(-1, -1);
 }

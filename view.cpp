@@ -128,6 +128,7 @@ View::View(Model* model)
 	this->model->enemySet->sprite_glitchyenemy.setTexture(manager.get_texture("Assets/glitchy.png", sf::Color(0, 128, 192)), true);
 	this->model->enemySet->sprite_advancedenemy.setTexture(manager.get_texture("Assets/advanced.png", sf::Color(0, 128, 192)), true);
 	this->model->enemySet->sprite_lazzyenemy.setTexture(manager.get_texture("Assets/lazzy.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_friend.setTexture(manager.get_texture("Assets/friend.png", sf::Color(0, 128, 192)), true);
 
 	//boss texture
 	this->model->enemySet->sprite_devplane.setTexture(manager.get_texture("Assets/devPlane.png", sf::Color(0, 128, 192)), true);

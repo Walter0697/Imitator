@@ -13,6 +13,7 @@
 #include "Enemy/glitchy.hpp"
 #include "Enemy/advanced.hpp"
 #include "Enemy/lazzy.hpp"
+#include "Enemy/friendShip.hpp"
 
 #include "Boss/devPlane.hpp"
 #include "Boss/modifier.hpp"
@@ -59,6 +60,7 @@ public:
 	Glitchy glitchyenemies[MAX_DENEMY];	
 	Advanced advancedenemies[MAX_DENEMY];
 	Lazzy lazzyenemies[MAX_DENEMY];
+	FriendShip friendShips[MAX_DENEMY];
 
 	Hitbox hb_denemy;
 	Hitbox hb_douenemy;
@@ -70,6 +72,7 @@ public:
 	Hitbox hb_glitchyenemy;
 	Hitbox hb_advancedenemy;
 	Hitbox hb_lazzyenemy;
+	Hitbox hb_friend;
 
 	sf::Sprite sprite_denemy;
 	sf::Sprite sprite_douenemy;
@@ -81,6 +84,7 @@ public:
 	sf::Sprite sprite_glitchyenemy;
 	sf::Sprite sprite_advancedenemy;
 	sf::Sprite sprite_lazzyenemy;
+	sf::Sprite sprite_friend;
 
 	//boss
 	DevPlane boss_devplane;

@@ -43,6 +43,10 @@ EnemySet::EnemySet()
 	hb_lazzyenemy.hitbox_br = sf::Vector2f(35, 35);
 	hb_lazzyenemy.generateHitboxRec();
 
+	hb_friend.hitbox_tl = sf::Vector2f(0, 0);
+	hb_friend.hitbox_br = sf::Vector2f(40, 52);
+	hb_friend.generateHitboxRec();
+
 	//boss hitbox
 	hb_boss_devplane.hitbox_tl = sf::Vector2f(0, 90);
 	hb_boss_devplane.hitbox_br = sf::Vector2f(560, 292);
@@ -88,6 +92,7 @@ void EnemySet::update(sf::Time delta_time)
 		glitchyenemies[i].update(delta_time);
 		advancedenemies[i].update(delta_time);
 		lazzyenemies[i].update(delta_time);
+		friendShips[i].update(delta_time);
 	}
 
 	//updating boss
@@ -132,6 +137,8 @@ void EnemySet::render(sf::RenderWindow& window)
 			advancedenemies[i].render(window, sprite_advancedenemy);
 		if (!(checkOutOfBound(lazzyenemies[i])))
 			lazzyenemies[i].render(window, sprite_lazzyenemy);
+		if (!(checkOutOfBound(friendShips[i])))
+			friendShips[i].render(window, sprite_friend);
 	}
 	//boss render
 	if (!(checkOutOfBound(boss_devplane)))
@@ -205,6 +212,11 @@ void EnemySet::renderHitBox(sf::RenderWindow& window)
 		{
 			hb_lazzyenemy.rec.setPosition(sf::Vector2f(lazzyenemies[i].position.x + hb_lazzyenemy.hitbox_tl.x, lazzyenemies[i].position.y + hb_lazzyenemy.hitbox_tl.y));
 			window.draw(hb_lazzyenemy.rec);
+		}
+		if (!(checkOutOfBound(friendShips[i])))
+		{
+			hb_friend.rec.setPosition(sf::Vector2f(friendShips[i].position.x + hb_friend.hitbox_tl.x, friendShips[i].position.y + hb_friend.hitbox_tl.y));
+			window.draw(hb_friend.rec);
 		}
 	}
 	//boss hitbox render
@@ -393,6 +405,8 @@ void EnemySet::initEnemy()
 		advancedenemies[i].position.y = 100000;
 		lazzyenemies[i].position.x = 0;
 		lazzyenemies[i].position.y = 100000;
+		friendShips[i].position.x = 0;
+		friendShips[i].position.y = 100000;
 	}
 	//boss init
 	boss_devplane.position.x = 0;
@@ -479,6 +493,11 @@ int EnemySet::avaliableEnemy(int type)
 		case 10:
 			for (int i = 0; i < MAX_DENEMY; i++)
 				if (checkOutOfBound(lazzyenemies[i]))
+					return i;
+			return -1;
+		case 11:
+			for (int i = 0; i < MAX_DENEMY; i++)
+				if (checkOutOfBound(friendShips[i]))
 					return i;
 			return -1;
 	}

@@ -130,7 +130,6 @@ void Story::setup(int current)
 		else
 			readFile("Assets/story/story_02.txt");
 		break;
-			/*
 	case 3:
 		if (readStory >= 3)
 			readFile("Assets/story/story_03_finish.txt");
@@ -155,7 +154,6 @@ void Story::setup(int current)
 		else
 			readFile("Assets/story/story_06.txt");
 		break;
-			*/
 	default:
 		cout << "fail to read file" << endl;
 		break;
@@ -475,6 +473,19 @@ void Story::update(sf::Time& delta_time)
 						processing++;
 					}
 				}
+			}
+		}
+		//spawnning friend
+		else if (mapData[processing][0] == "FSPAWN")
+		{
+			if (enemySet->avaliableEnemy(11) != -1)
+			{
+				enemySet->friendShips[enemySet->avaliableEnemy(11)].target.x = atoi(mapData[processing][1].c_str());
+				enemySet->friendShips[enemySet->avaliableEnemy(11)].target.y = atoi(mapData[processing][2].c_str());
+				if (atoi(mapData[processing][1].c_str()) < SCREEN_WIDTH / 2)
+					enemySet->friendShips[enemySet->avaliableEnemy(11)].position = sf::Vector2f(-50, atoi(mapData[processing][2].c_str()));
+				else
+					enemySet->friendShips[enemySet->avaliableEnemy(11)].position = sf::Vector2f(SCREEN_WIDTH + 10, atoi(mapData[processing][2].c_str()));
 			}
 		}
 	}

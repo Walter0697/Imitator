@@ -96,7 +96,7 @@ void Controller::menuinput(sf::Time delta_time, sf::RenderWindow& window)
 				else if (!this->view->menu->newModeUnlock)
 				{
 					if (this->selecting == 0)
-						this->selecting = 4;
+						this->selecting = 5;
 				}
 				else if (this->selecting == 0)
 						this->selecting = MENU_OPTION;
@@ -115,7 +115,7 @@ void Controller::menuinput(sf::Time delta_time, sf::RenderWindow& window)
 				}
 				else
 				{
-					if (this->selecting == 5)
+					if (this->selecting == 6)
 						this->selecting = 1;
 				}
 				break;
@@ -166,7 +166,7 @@ void Controller::menuinput(sf::Time delta_time, sf::RenderWindow& window)
 						this->view->menu->changeSelect(this->selecting);
 					}
 				}
-				if (inOption(event.mouseMove.x, event.mouseMove.y) != -1 && inOption(event.mouseMove.x, event.mouseMove.y) < 5)
+				if (inOption(event.mouseMove.x, event.mouseMove.y) != -1 && inOption(event.mouseMove.x, event.mouseMove.y) < 6)
 				{
 					selecting = inOption(event.mouseMove.x, event.mouseMove.y);
 					this->view->menu->changeSelect(this->selecting);
@@ -367,13 +367,17 @@ void Controller::enter()
 			this->view->menu->changeSelect(this->selecting);
 			break;
 		case 2:
+			this->model->gamemode = MODE_CHAOS_MODE;
+			this->model->initAll();
+			break;
+		case 3:
 			this->model->record->startPosition = 0;
 			this->view->scoreboard = 1;
 			this->model->gamemode = MODE_SCORE_BOARD;
 			break;
-		//case 3:
+		//case 4:
 			//how to play
-		case 4:
+		case 5:
 			this->view->window.close();
 			break;
 		case 7:

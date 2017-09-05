@@ -25,10 +25,10 @@ void Menu::setup()
 	}
 
 	selectBar[0] = "STORY MODE";
-	selectBar[1] = "SCOREBOARD";
-	selectBar[2] = "CONTROL";
-	selectBar[3] = "EXIT";
-	selectBar[4] = " ";
+	selectBar[1] = "CHAOS MODE";
+	selectBar[2] = "SCOREBOARD";
+	selectBar[3] = "CONTROL";
+	selectBar[4] = "EXIT";
 	selectBar[5] = " ";
 
 	for (int i = 0; i < MENU_OPTION; i++)
@@ -147,7 +147,7 @@ void Menu::render(sf::RenderWindow& window)
 		for (int i = 0; i < MENU_OPTION; i++)
 			window.draw(unselectedText[i]);
 	else
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < 5; i++)
 			window.draw(unselectedText[i]);
 
 	if (storyClicked)

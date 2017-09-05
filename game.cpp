@@ -13,7 +13,7 @@ Game::Game()
 	std::srand(std::time(0));
 
 	//delete that later
-	this->view->menu->unlock();
+	//this->view->menu->unlock();
 	for (int i = 1; i < NUM_OF_TOOLS + 1; i++)
 		this->model->droprate->unlock(i);
 

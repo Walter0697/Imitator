@@ -1,4 +1,4 @@
-89
+87
 9        CUTSCENE    In_2122,_after_a_revolution  1   0   0   0   255   255   255
 9        CUTSCENE    people_in_the_world_started_to_own_weapon  1  0  0  0  255  255 255
 9        CUTSCENE    in_order_to_protect_themselves    1  0  0  0  255  255 255
@@ -85,6 +85,4 @@
 11       DIALOG      AHHHHHHH!_This_stupid_machine!    Can't_believe_a_freaking_plane_from_this_company_is_that_uselessssss!    Robin  3   247  255   28   255   0   0
 11       DIALOG      BuuuuuuuuT!_That's_not_the_end_yet!     NULL    Robin  3   247  255   28   255   0   0
 11       DIALOG      Soldier!_Don't_let_him_get_away!        NULL    Jackson  1   211 207 167  255  255  255
-9        CUTSCENE    I_will_make_more_story_line   1   0   0   0   255   255   255
-9        CUTSCENE    just_stfu_for_now   1   0   0   0   255   255   255
 1        VICTORY     

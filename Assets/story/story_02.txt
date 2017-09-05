@@ -1,0 +1,41 @@
+40
+4        PICTURE     1         720      950  
+11       DIALOG      Soldier,_take_a_lot_at_the_bullet_type     See_the_"L"_there?   Jackson    1    211   207   167   255   255   255
+11       DIALOG      That's_lazer_bullet   It_is_the_bullet_that_last_plane_used   Jackson    1    211   207   167   255   255   255
+11       DIALOG      Sounds_powerful,_right?   This_is_the_reason_why_we_need_to_invent_imitator    Jackson    1    211   207   167   255   255   255
+11       DIALOG      Robin_ran_away_to_zone_two,   and_we_have_different_trainning_plane_in_there  Alicia   2   153   0   40  247  126  162
+11       DIALOG      Well,_it_can_also_be_a_trainning_for_you   NULL  Jackson   1    211 207 167   255   255   255
+11       DIALOG      Before_you_get_in_there,   let_me_show_you_some_tools_to_help  Jackson   1    211 207 167   255   255   255
+4        TOOL        1         400         300
+4        PICTURE     1         400         300
+11       DIALOG      This_is_a_shield_that_can_protect_you_from_enemies'_bullet    Enemies_may_drop_it_when_they_are_being_destroyed  Jackson   1    211 207 167   255   255   255
+2        PICTUREEND  1
+11       DIALOG      Try_to_pick_them_up   NULL  Jackson   1    211 207 167   255   255   255
+2        WAIT        500
+4        PICTURE     2         168         -30
+2        UNLOCK      1
+2        UNLOCK      2
+2        UNLOCK      3
+2        WAIT        4000
+2        PICTUREEND  2
+11       DIALOG      Now,_get_in_to_the_fight!    NULL  Jackson   1    211 207 167   255   255   255
+9        CUTSCENE    ____  1   0   0   0   255   255   255
+2        WAIT        500
+3        SPAWN       3         3
+2        WAIT        2000
+3        SPAWN       4         2
+2        WAIT        2000
+5        RSPAWN      2         3            1000      8000
+11       DIALOG      Wait_for_a_secco,_isn't_that_my_lovely_jacky?    You_really_like_me_don'ya?    Robin   3   247  255   28   255   0   0
+11       DIALOG      Robin!_Stop_fighting_back_and_hand_in_your_weapon     NULL    Jackson   1    211 207 167   255   255   255
+11       DIALOG      OKOKOK~I_will_do_so,_just_dun_shoot_me!    ._._._......Just_Kiddinnnn,_are_you_freaking_dumb_or_wat?    Robin   3   247  255   28   255   0   0
+11       DIALOG      That_seems_like_a_good_plane!     Lemme_gotcha!   Robin   3   247  255   28   255   0   0
+5        RSPAWN      4         1            1000      8000
+4        ENEMY       3         400      400
+1        OBJECTIVE
+11       DIALOG      WellWellWell~~~You_are_kinda_strong_dun'ya?   NULL   Robin   3   247  255   28   255   0   0
+11       DIALOG      I_found_something_in_your_basement!      Dun'ya_wanna_try_it_out?   Robin   3   247  255   28   255   0   0
+2        ENEMY       92
+5        RSPAWN      2         3            3000      -1
+1        OBJECTIVE
+1        VICTORY  

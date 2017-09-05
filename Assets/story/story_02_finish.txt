@@ -1,0 +1,15 @@
+15
+4        TOOL        1         400         300
+2        WAIT        500
+3        SPAWN       3         3
+2        WAIT        2000
+3        SPAWN       4         2
+2        WAIT        2000
+5        RSPAWN      2         3         1000      8000
+5        RSPAWN      4         1         1000      8000
+4        ENEMY       3         400       400
+1        OBJECTIVE
+2        ENEMY       92
+5        RSPAWN      2         3         3000      -1
+1        OBJECTIVE
+1        VICTORY  

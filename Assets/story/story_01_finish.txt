@@ -1,4 +1,4 @@
-42
+40
 4        ENEMY       1         400      400
 2        WAIT        2000
 1        OBJECTIVE
@@ -38,6 +38,4 @@
 2        ENEMY       91
 5        RSPAWN      2       1      3000      -1
 1        OBJECTIVE
-9        CUTSCENE    I_will_make_more_story_line   1   0   0   0   255   255   255
-9        CUTSCENE    just_stfu_for_now   1   0   0   0   255   255   255
 1        VICTORY     

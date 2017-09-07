@@ -27,7 +27,7 @@
 11       DIALOG       I_got_my_friend_here_in_the_WasteLand.      Hey_there_Franky!      Robin      3       247      255     28     255     0      0
 11       DIALOG       Robin?_I_heard_you_need_me?     NULL      Franky     4      250       250      250     250      250      250
 11       DIALOG       Yeah!_My_buddy!        The_plane_that_I_sent_you,_Have_you_improved_it_yet?     Robin   3    247    255    28   255     0      0
-11       DIALOG       Yeah,_I_combined_parts_together.        Surprisingly_it_works_perfectly!     Franky    4   250    250     250     250      250
+11       DIALOG       Yeah,_I_combined_parts_together.        Surprisingly_it_works_perfectly!     Franky    4   250    250     250     250      250   250
 11       DIALOG       Why_not_test_some_of_them.       and_BURN_THEIR_ASS_ON!        Franky    4     250     250     250     250     250       250
 5        RSPAWN      2       5       1000        8000
 2        WAIT        2000

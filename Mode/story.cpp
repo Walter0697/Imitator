@@ -81,10 +81,13 @@ void Story::readFile(std::string filename)
 		for (int j = 0; j < dataRows[i]; j++)
 		{
 			fileHndl >> mapData[i][j];
+			cout << mapData[i][j] << " ";
 		}
+		cout << endl;
 	}
 	fileHndl.close();
 
+	/*
 	for (int i = 0; i < dataCols; i++)
 	{
 		for (int j = 0; j < dataRows[i]; j++)
@@ -93,6 +96,7 @@ void Story::readFile(std::string filename)
 		}
 		cout << endl;
 	}
+	*/
 
 	init();
 	enemySet->initEnemy();
@@ -146,7 +150,7 @@ void Story::setup(int current)
 		if (readStory >= 5)
 			readFile("Assets/story/story_05_finish.txt");
 		else
-			readFile("Asssets/story/story_05.txt");
+			readFile("Assets/story/story_05.txt");
 		break;
 	case 6:
 		if (readStory >= 6)
@@ -487,6 +491,7 @@ void Story::update(sf::Time& delta_time)
 				else
 					enemySet->friendShips[enemySet->avaliableEnemy(11)].position = sf::Vector2f(SCREEN_WIDTH + 10, atoi(mapData[processing][2].c_str()));
 			}
+			processing++;
 		}
 	}
 }

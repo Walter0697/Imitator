@@ -39,6 +39,8 @@
 	   adding new type of boss -- labPlane, finalBoss
 	   adding rewards screen
 	   minor bug fixed
+06/9 : adding friendship
+       fixing minor bug in storyline
 	   
 assets:
 	ship:

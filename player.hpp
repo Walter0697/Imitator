@@ -43,4 +43,5 @@ public:
 
 	sf::Vector2u size;
 	sf::Sprite sprite;
+	sf::Sprite sprite_onFire;
 };

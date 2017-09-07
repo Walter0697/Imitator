@@ -59,7 +59,9 @@ assets:
 		https://opengameart.org/content/simple-shooter-icons
 		https://opengameart.org/content/rpg-frame
 		https://opengameart.org/content/keyboard-keys
-		
+	element:
+		https://opengameart.org/content/smoke-fire-animated-particle-16x16
+		https://opengameart.org/content/camp-fire-animation-for-rpgs-finished
 	fonts:
 		http://www.1001fonts.com/text-fonts.html
 		http://www.dafont.com/dog-rough.font

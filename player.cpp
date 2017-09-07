@@ -115,8 +115,16 @@ void Player::update(sf::Time deltaTime)
 
 void Player::render(sf::RenderWindow& window)
 {
-	this->sprite.setPosition(position);
-	window.draw(this->sprite);
+	if (this->onFire > 0)
+	{
+		this->sprite_onFire.setPosition(position);
+		window.draw(this->sprite_onFire);
+	}
+	else
+	{
+		this->sprite.setPosition(position);
+		window.draw(this->sprite);
+	}
 }
 
 void Player::renderHitbox(sf::RenderWindow& window)

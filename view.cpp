@@ -114,6 +114,7 @@ View::View(Model* model)
 
 	//player texture
 	this->model->player->sprite.setTexture(manager.get_texture("Assets/player.png", sf::Color(0, 128, 192)), true);
+	this->model->player->sprite_onFire.setTexture(manager.get_texture("Assets/playerFire.png", sf::Color(0, 128, 192)), true);
 	this->model->player->size = manager.get_texture("Assets/player.png").getSize();
 	this->model->player->sprite.setPosition(this->model->player->position);
 
@@ -130,6 +131,19 @@ View::View(Model* model)
 	this->model->enemySet->sprite_lazzyenemy.setTexture(manager.get_texture("Assets/lazzy.png", sf::Color(0, 128, 192)), true);
 	this->model->enemySet->sprite_friend.setTexture(manager.get_texture("Assets/friend.png", sf::Color(0, 128, 192)), true);
 
+	//enemy on Fire texture
+	this->model->enemySet->sprite_denemy_onFire.setTexture(manager.get_texture("Assets/enemyFire.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_douenemy_onFire.setTexture(manager.get_texture("Assets/douddyFire.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_longenemy_onFire.setTexture(manager.get_texture("Assets/longgyFire.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_shotenemy_onFire.setTexture(manager.get_texture("Assets/shottyFire.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_gangenemy_onFire.setTexture(manager.get_texture("Assets/gangsterFire.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_thugenemy_onFire.setTexture(manager.get_texture("Assets/thugFire.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_unknownenemy_onFire.setTexture(manager.get_texture("Assets/unknownFire.png", sf::Color::White), true);
+	this->model->enemySet->sprite_glitchyenemy_onFire.setTexture(manager.get_texture("Assets/glitchyFire.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_advancedenemy_onFire.setTexture(manager.get_texture("Assets/advancedFire.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_lazzyenemy_onFire.setTexture(manager.get_texture("Assets/lazzyFire.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_friend_onFire.setTexture(manager.get_texture("Assets/friendFire.png", sf::Color(0, 128, 192)), true);
+
 	//boss texture
 	this->model->enemySet->sprite_devplane.setTexture(manager.get_texture("Assets/devPlane.png", sf::Color(0, 128, 192)), true);
 	this->model->enemySet->sprite_devplane_ready.setTexture(manager.get_texture("Assets/devPlane-ready.png", sf::Color(0, 128, 192)), true);
@@ -138,6 +152,15 @@ View::View(Model* model)
 	this->model->enemySet->sprite_alien.setTexture(manager.get_texture("Assets/unknownboss.png", sf::Color::White), true);
 	this->model->enemySet->sprite_labplane.setTexture(manager.get_texture("Assets/labShip.png", sf::Color(0, 128, 192)), true);
 	this->model->enemySet->sprite_final.setTexture(manager.get_texture("Assets/finalBoss.png", sf::Color(0, 128, 192)), true);
+
+	//boss on Fire texture
+	this->model->enemySet->sprite_devplane_onFire.setTexture(manager.get_texture("Assets/devplaneFire.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_devplane_ready_onFire.setTexture(manager.get_texture("Assets/devplane-ready-Fire.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_modifier_onFire.setTexture(manager.get_texture("Assets/modifierFire.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_firethrower_onFire.setTexture(manager.get_texture("Assets/fireThrowerFire.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_alien_onFire.setTexture(manager.get_texture("Assets/unknownbossFire.png", sf::Color::White), true);
+	this->model->enemySet->sprite_labplane_onFire.setTexture(manager.get_texture("Assets/labShipFire.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_final_onFire.setTexture(manager.get_texture("Assets/finalBossFire.png", sf::Color(0, 128, 192)), true);
 
 	//player bullet texture
 	this->model->playerSet->sprite_dbullet.setTexture(manager.get_texture("Assets/pbullet.png", sf::Color(0, 0, 0)), true);

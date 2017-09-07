@@ -86,24 +86,54 @@ public:
 	sf::Sprite sprite_lazzyenemy;
 	sf::Sprite sprite_friend;
 
+	sf::Sprite sprite_denemy_onFire;
+	sf::Sprite sprite_douenemy_onFire;
+	sf::Sprite sprite_longenemy_onFire;
+	sf::Sprite sprite_shotenemy_onFire;
+	sf::Sprite sprite_gangenemy_onFire;
+	sf::Sprite sprite_thugenemy_onFire;
+	sf::Sprite sprite_unknownenemy_onFire;
+	sf::Sprite sprite_glitchyenemy_onFire;
+	sf::Sprite sprite_advancedenemy_onFire;
+	sf::Sprite sprite_lazzyenemy_onFire;
+	sf::Sprite sprite_friend_onFire;
+
 	//boss
 	DevPlane boss_devplane;
 	Hitbox hb_boss_devplane;
 	sf::Sprite sprite_devplane;
+	sf::Sprite sprite_devplane_onFire;
 	sf::Sprite sprite_devplane_ready;
+	sf::Sprite sprite_devplane_ready_onFire;
+	sf::Sprite sprite_devplane_end;
+
 	Modifier boss_modifier;
 	Hitbox hb_boss_modifier;
 	sf::Sprite sprite_modifier;
+	sf::Sprite sprite_modifier_onFire;
+	sf::Sprite sprite_modifier_end;
+
 	FireThrower boss_firethrower;
 	Hitbox hb_boss_firethrower;
 	sf::Sprite sprite_firethrower;
+	sf::Sprite sprite_firethrower_onFire;
+	sf::Sprite sprite_firethrower_end;
+
 	AlienShip boss_alien;
 	Hitbox hb_boss_alien;
 	sf::Sprite sprite_alien;
+	sf::Sprite sprite_alien_onFire;
+	sf::Sprite sprite_alien_end;
+
 	LabPlane boss_labplane;
 	Hitbox hb_boss_labplane;
 	sf::Sprite sprite_labplane;
+	sf::Sprite sprite_labplane_onFire;
+	sf::Sprite sprite_labplane_end;
+
 	FinalBoss boss_final;
 	Hitbox hb_boss_final;
 	sf::Sprite sprite_final;
+	sf::Sprite sprite_final_onFire;
+	sf::Sprite sprite_final_end;
 };

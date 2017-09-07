@@ -552,6 +552,7 @@ void Controller::testerinputs(sf::Time delta_time)
 					this->model->gamemode = MODE_MENU_SCREEN;
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F2))
 					this->model->pause = !this->model->pause;
+				//spawning boss
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F5))
 					this->model->enemySet->spawn(1);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F6))

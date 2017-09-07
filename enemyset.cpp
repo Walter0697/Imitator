@@ -118,44 +118,136 @@ void EnemySet::render(sf::RenderWindow& window)
 	{
 		//enemies render
 		if (!(checkOutOfBound(denemies[i])))
-			denemies[i].render(window, sprite_denemy);
+		{
+			if (denemies[i].onFire > 0)
+				denemies[i].render(window, sprite_denemy_onFire);
+			else
+				denemies[i].render(window, sprite_denemy);
+		}
 		if (!(checkOutOfBound(douenemies[i])))
-			douenemies[i].render(window, sprite_douenemy);
+		{
+			if (douenemies[i].onFire > 0)
+				douenemies[i].render(window, sprite_douenemy_onFire);
+			else
+				douenemies[i].render(window, sprite_douenemy);
+		}
 		if (!(checkOutOfBound(lonenemies[i])))
-			lonenemies[i].render(window, sprite_longenemy);
+		{
+			if (lonenemies[i].onFire > 0)
+				lonenemies[i].render(window, sprite_longenemy_onFire);
+			else
+				lonenemies[i].render(window, sprite_longenemy);
+		}
 		if (!(checkOutOfBound(shotenemies[i])))
-			shotenemies[i].render(window, sprite_shotenemy);
+		{
+			if (shotenemies[i].onFire > 0)
+				shotenemies[i].render(window, sprite_shotenemy_onFire);
+			else
+				shotenemies[i].render(window, sprite_shotenemy);
+		}
 		if (!(checkOutOfBound(gangenemies[i])))
-			gangenemies[i].render(window, sprite_gangenemy);
+		{
+			if (gangenemies[i].onFire > 0)
+				gangenemies[i].render(window, sprite_gangenemy_onFire);
+			else
+				gangenemies[i].render(window, sprite_gangenemy);
+		}
 		if (!(checkOutOfBound(thugenemies[i])))
-			thugenemies[i].render(window, sprite_thugenemy);
+		{
+			if (thugenemies[i].onFire > 0)
+				thugenemies[i].render(window, sprite_thugenemy_onFire);
+			else
+				thugenemies[i].render(window, sprite_thugenemy);
+		}
 		if (!(checkOutOfBound(unknownenemies[i])))
-			unknownenemies[i].render(window, sprite_unknownenemy);
+		{
+			if (unknownenemies[i].onFire > 0)
+				unknownenemies[i].render(window, sprite_unknownenemy_onFire);
+			else
+				unknownenemies[i].render(window, sprite_unknownenemy);
+		}
 		if (!(checkOutOfBound(glitchyenemies[i])))
-			glitchyenemies[i].render(window, sprite_glitchyenemy);
+		{
+			if (glitchyenemies[i].onFire > 0)
+				glitchyenemies[i].render(window, sprite_glitchyenemy_onFire);
+			else
+				glitchyenemies[i].render(window, sprite_glitchyenemy);
+		}
 		if (!(checkOutOfBound(advancedenemies[i])))
-			advancedenemies[i].render(window, sprite_advancedenemy);
+		{
+			if (advancedenemies[i].onFire > 0)
+				advancedenemies[i].render(window, sprite_advancedenemy_onFire);
+			else
+				advancedenemies[i].render(window, sprite_advancedenemy);
+		}
 		if (!(checkOutOfBound(lazzyenemies[i])))
-			lazzyenemies[i].render(window, sprite_lazzyenemy);
+		{
+			if (lazzyenemies[i].onFire > 0)
+				lazzyenemies[i].render(window, sprite_lazzyenemy_onFire);
+			else
+				lazzyenemies[i].render(window, sprite_lazzyenemy);
+		}
 		if (!(checkOutOfBound(friendShips[i])))
-			friendShips[i].render(window, sprite_friend);
+		{
+			if (friendShips[i].onFire > 0)
+				friendShips[i].render(window, sprite_friend_onFire);
+			else
+				friendShips[i].render(window, sprite_friend);
+		}
 	}
 	//boss render
 	if (!(checkOutOfBound(boss_devplane)))
+	{
 		if (boss_devplane.mode == 4)
-			boss_devplane.render(window, sprite_devplane_ready);
+		{
+			if (boss_devplane.onFire > 0)
+				boss_devplane.render(window, sprite_devplane_ready_onFire);
+			else
+				boss_devplane.render(window, sprite_devplane_ready);
+		}
 		else
-			boss_devplane.render(window, sprite_devplane);
+		{
+			if (boss_devplane.onFire > 0)
+				boss_devplane.render(window, sprite_devplane_onFire);
+			else
+				boss_devplane.render(window, sprite_devplane);
+		}
+	}
 	if (!(checkOutOfBound(boss_modifier)))
-		boss_modifier.render(window, sprite_modifier);
+	{
+		if (boss_modifier.onFire > 0)
+			boss_modifier.render(window, sprite_modifier_onFire);
+		else
+			boss_modifier.render(window, sprite_modifier);
+	}
 	if (!(checkOutOfBound(boss_firethrower)))
-		boss_firethrower.render(window, sprite_firethrower);
+	{
+		if (boss_firethrower.onFire > 0)
+			boss_firethrower.render(window, sprite_firethrower_onFire);
+		else
+			boss_firethrower.render(window, sprite_firethrower);
+	}
 	if (!(checkOutOfBound(boss_alien)))
-		boss_alien.render(window, sprite_alien);
+	{
+		if (boss_alien.onFire > 0)
+			boss_alien.render(window, sprite_alien_onFire);
+		else
+			boss_alien.render(window, sprite_alien);
+	}
 	if (!(checkOutOfBound(boss_labplane)))
-		boss_labplane.render(window, sprite_labplane);
+	{
+		if (boss_labplane.onFire > 0)
+			boss_labplane.render(window, sprite_labplane_onFire);
+		else
+			boss_labplane.render(window, sprite_labplane);
+	}
 	if (!(checkOutOfBound(boss_final)))
-		boss_final.render(window, sprite_final);
+	{
+		if (boss_final.onFire > 0)
+			boss_final.render(window, sprite_final_onFire);
+		else
+			boss_final.render(window, sprite_final);
+	}
 }
 
 void EnemySet::renderHitBox(sf::RenderWindow& window)
@@ -412,21 +504,27 @@ void EnemySet::initEnemy()
 	boss_devplane.position.x = 0;
 	boss_devplane.position.y = 100000;
 	boss_devplane.mode = 0;
+	boss_devplane.onFire = 0;
 	boss_modifier.position.x = 0;
 	boss_modifier.position.y = 100000;
 	boss_modifier.mode = 0;
+	boss_modifier.onFire = 0;
 	boss_firethrower.position.x = 0;
 	boss_firethrower.position.y = 100000;
 	boss_firethrower.mode = 0;
+	boss_firethrower.onFire = 0;
 	boss_alien.position.x = 0;
 	boss_alien.position.y = 100000;
 	boss_alien.mode = 0;
+	boss_alien.onFire = 0;
 	boss_labplane.position.x = 0;
 	boss_labplane.position.y = 100000;
 	boss_labplane.mode = 0;
+	boss_labplane.onFire = 0;
 	boss_final.position.x = 0;
 	boss_final.position.y = 100000;
 	boss_final.mode = 0;
+	boss_final.onFire = 0;
 
 	current_boss = 0;
 }

@@ -1297,7 +1297,7 @@ void Model::checkHit()
 	/////////////////////BULLET VS BOSS////////////////////
 	///////////////////////////////////////////////////////
 	//bullet vs devplane
-	if (enemySet->boss_devplane.mode >= 2 && enemySet->boss_devplane.mode != 10)
+	if (enemySet->boss_devplane.mode >= 2 && enemySet->boss_devplane.mode < 10)
 	{
 		for (int i = 0; i < MAX_DBULLET; i++)
 			if (!this->playerSet->checkOutOfBound(this->playerSet->dbullets[i]))
@@ -1379,7 +1379,7 @@ void Model::checkHit()
 				}
 	}
 	//bullet vs modifier
-	else if (enemySet->boss_modifier.mode >= 2 && enemySet->boss_modifier.mode != 10)
+	else if (enemySet->boss_modifier.mode >= 2 && enemySet->boss_modifier.mode < 10)
 	{
 		for (int i = 0; i < MAX_DBULLET; i++)
 			if (!this->playerSet->checkOutOfBound(this->playerSet->dbullets[i]))
@@ -1461,7 +1461,7 @@ void Model::checkHit()
 				}
 	}
 	//bullet vs firethrower
-	else if (enemySet->boss_firethrower.mode >= 2 && enemySet->boss_firethrower.mode != 10)
+	else if (enemySet->boss_firethrower.mode >= 2 && enemySet->boss_firethrower.mode < 10)
 	{
 		for (int i = 0; i < MAX_DBULLET; i++)
 			if (!this->playerSet->checkOutOfBound(this->playerSet->dbullets[i]))
@@ -1543,7 +1543,7 @@ void Model::checkHit()
 				}
 	}
 	//bullet vs alienship
-	else if (enemySet->boss_alien.mode >= 2 && enemySet->boss_alien.mode != 10)
+	else if (enemySet->boss_alien.mode >= 2 && enemySet->boss_alien.mode < 10)
 	{
 		for (int i = 0; i < MAX_DBULLET; i++)
 			if (!this->playerSet->checkOutOfBound(this->playerSet->dbullets[i]))
@@ -1625,7 +1625,7 @@ void Model::checkHit()
 				}
 	}
 	//bullet vs labplane
-	else if (enemySet->boss_labplane.mode >= 2 && enemySet->boss_labplane.mode != 10)
+	else if (enemySet->boss_labplane.mode >= 2 && enemySet->boss_labplane.mode < 10)
 	{
 		for (int i = 0; i < MAX_DBULLET; i++)
 			if (!this->playerSet->checkOutOfBound(this->playerSet->dbullets[i]))
@@ -1707,7 +1707,7 @@ void Model::checkHit()
 				}
 	}
 	//bullet vs finalboss
-	else if (enemySet->boss_final.mode >= 2 && enemySet->boss_final.mode != 10)
+	else if (enemySet->boss_final.mode >= 2 && enemySet->boss_final.mode < 10)
 	{
 		for (int i = 0; i < MAX_DBULLET; i++)
 			if (!this->playerSet->checkOutOfBound(this->playerSet->dbullets[i]))

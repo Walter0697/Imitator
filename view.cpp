@@ -162,6 +162,14 @@ View::View(Model* model)
 	this->model->enemySet->sprite_labplane_onFire.setTexture(manager.get_texture("Assets/labShipFire.png", sf::Color(0, 128, 192)), true);
 	this->model->enemySet->sprite_final_onFire.setTexture(manager.get_texture("Assets/finalBossFire.png", sf::Color(0, 128, 192)), true);
 
+	//boss end texture
+	this->model->enemySet->sprite_devplane_end.setTexture(manager.get_texture("Assets/devplaneEnd.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_modifier_end.setTexture(manager.get_texture("Assets/modifierEnd.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_firethrower_end.setTexture(manager.get_texture("Assets/fireThrowerEnd.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_alien_end.setTexture(manager.get_texture("Assets/unknownbossEnd.png", sf::Color::White), true);
+	this->model->enemySet->sprite_labplane_end.setTexture(manager.get_texture("Assets/labShipEnd.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_final_end.setTexture(manager.get_texture("Assets/finalBossEnd.png", sf::Color(0, 128, 192)), true);
+
 	//player bullet texture
 	this->model->playerSet->sprite_dbullet.setTexture(manager.get_texture("Assets/pbullet.png", sf::Color(0, 0, 0)), true);
 	this->model->playerSet->sprite_dbullet.setOrigin(sf::Vector2f(manager.get_texture("Assets/pbullet.png").getSize()) / 2.f);

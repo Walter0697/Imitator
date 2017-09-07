@@ -131,6 +131,13 @@ void Modifier::update(sf::Time delta_time)
 	//ending screen
 	else if (mode == 10)
 	{
+		if (position.y > -373)
+			position.y -= this->speed * delta_time.asSeconds();
+		else
+			mode = 11;
+	}
+	else if (mode == 11)
+	{
 		position = sf::Vector2f(0, 100000);
 		velocity = sf::Vector2f(0, 0);
 		mode = 0;

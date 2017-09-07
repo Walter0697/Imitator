@@ -198,7 +198,9 @@ void EnemySet::render(sf::RenderWindow& window)
 	//boss render
 	if (!(checkOutOfBound(boss_devplane)))
 	{
-		if (boss_devplane.mode == 4)
+		if (boss_devplane.mode == 10)
+			boss_devplane.render(window, sprite_devplane_end);
+		else if (boss_devplane.mode == 4)
 		{
 			if (boss_devplane.onFire > 0)
 				boss_devplane.render(window, sprite_devplane_ready_onFire);
@@ -215,35 +217,45 @@ void EnemySet::render(sf::RenderWindow& window)
 	}
 	if (!(checkOutOfBound(boss_modifier)))
 	{
-		if (boss_modifier.onFire > 0)
+		if (boss_modifier.mode == 10)
+			boss_modifier.render(window, sprite_modifier_end);
+		else if (boss_modifier.onFire > 0)
 			boss_modifier.render(window, sprite_modifier_onFire);
 		else
 			boss_modifier.render(window, sprite_modifier);
 	}
 	if (!(checkOutOfBound(boss_firethrower)))
 	{
-		if (boss_firethrower.onFire > 0)
+		if (boss_firethrower.mode == 10)
+			boss_firethrower.render(window, sprite_firethrower_end);
+		else if (boss_firethrower.onFire > 0)
 			boss_firethrower.render(window, sprite_firethrower_onFire);
 		else
 			boss_firethrower.render(window, sprite_firethrower);
 	}
 	if (!(checkOutOfBound(boss_alien)))
 	{
-		if (boss_alien.onFire > 0)
+		if (boss_alien.mode == 10)
+			boss_alien.render(window, sprite_alien_end);
+		else if (boss_alien.onFire > 0)
 			boss_alien.render(window, sprite_alien_onFire);
 		else
 			boss_alien.render(window, sprite_alien);
 	}
 	if (!(checkOutOfBound(boss_labplane)))
 	{
-		if (boss_labplane.onFire > 0)
+		if (boss_labplane.mode == 10)
+			boss_labplane.render(window, sprite_labplane_end);
+		else if (boss_labplane.onFire > 0)
 			boss_labplane.render(window, sprite_labplane_onFire);
 		else
 			boss_labplane.render(window, sprite_labplane);
 	}
 	if (!(checkOutOfBound(boss_final)))
 	{
-		if (boss_final.onFire > 0)
+		if (boss_final.mode == 10)
+			boss_final.render(window, sprite_final_end);
+		else if (boss_final.onFire > 0)
 			boss_final.render(window, sprite_final_onFire);
 		else
 			boss_final.render(window, sprite_final);

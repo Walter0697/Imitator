@@ -41,6 +41,7 @@
 	   minor bug fixed
 06/9 : adding friendship
        fixing minor bug in storyline
+07/9 : adding onFire effect and boss ending effect
 	   
 assets:
 	ship:

@@ -121,6 +121,13 @@ void AlienShip::update(sf::Time delta_time)
 	//ending screen
 	else if (mode == 10)
 	{
+		if (this->position.y > -325)
+			this->position.y -= this->speed * delta_time.asSeconds();
+		else
+			mode = 11;
+	}
+	else if (mode == 11)
+	{
 		position = sf::Vector2f(0, 100000);
 		velocity = sf::Vector2f(0, 0);
 		mode = 0;

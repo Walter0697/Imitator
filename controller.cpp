@@ -554,17 +554,23 @@ void Controller::testerinputs(sf::Time delta_time)
 					this->model->pause = !this->model->pause;
 				//spawning boss
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F5))
-					this->model->enemySet->spawn(1);
+					if (this->model->enemySet->current_boss == 0)
+						this->model->enemySet->spawn(1);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F6))
-					this->model->enemySet->spawn(2);
+					if (this->model->enemySet->current_boss == 0)
+						this->model->enemySet->spawn(2);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F7))
-					this->model->enemySet->spawn(3);
+					if (this->model->enemySet->current_boss == 0)
+						this->model->enemySet->spawn(3);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F8))
-					this->model->enemySet->spawn(4);
+					if (this->model->enemySet->current_boss == 0)
+						this->model->enemySet->spawn(4);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F9))
-					this->model->enemySet->spawn(5);
+					if (this->model->enemySet->current_boss == 0)
+						this->model->enemySet->spawn(5);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F10))
-					this->model->enemySet->spawn(6);
+					if (this->model->enemySet->current_boss == 0)
+						this->model->enemySet->spawn(6);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 					if (this->model->player->CURRENT_HOLD_BULLET + 1 != MAX_HOLD_BULLET)
 					{

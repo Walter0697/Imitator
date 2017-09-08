@@ -1,8 +1,8 @@
 8
-5        RSPAWN      1      8      1200         8000
-5        RSPAWN      1      8       1200         10000
+5        RSPAWN      1      8      2000         8000
+5        RSPAWN      1      8       2000         10000
 2        WAIT        2000
-5        RSPAWN      2      8      800       10000
+5        RSPAWN      2      8      2000      10000
 2        WAIT        1500
 2        ENEMY       95
 1        OBJECTIVE

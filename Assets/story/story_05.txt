@@ -2,14 +2,14 @@
 11       DIALOG      Captain_Jackson,_Robin_is_stealing_things_from_the_Merical_Lab!     NULL   Alicia    2    153    0    40    247    126    162
 11       DIALOG      Copy_that!       Soldier,_let_go_to_Merical_Lab!        Jackson   1     211     207    167    255     255      255
 9        CUTSCENE    Heading_to_Merical_Lab     1    0    0    0    255    255    255    
-5        RSPAWN      1       8      1200         8000
+5        RSPAWN      1       8      2000         8000
 11       DIALOG      Well_well_well,_let_get_that_stuff_and_get_away!     I_dun_wanna_stay_here_long.....     Robin   3    247    255    28   255     0      0
 11       DIALOG      It_is_not_that_easy,      not_just_steal_and_go     Franky    4    250     250    250    250    250   250
 11       DIALOG      Just......give_me_some_times,_Robin.     NULL     Franky    4    250    250    250   250    250    250
 11       DIALOG      Ahhhhhhhhh,_those_stuffs_are_so_haaaard_to_handle     Those_planes_start_to_shoot_randomly      Robin     3     247     255     28     255     0     0
 11       DIALOG      Robin!_Found_you!     Don't_even_think_about_escaping!    Jackson    1     211    207    167     255     255      255
 11       DIALOG      Booooooooring!_Those_glitchy_planes_seem_interesting_tho.     Let_send_them_to_attack!!!!     Robin    3    247    255    28    255     0     0
-5        RSPAWN      1       8      1200         10000
+5        RSPAWN      1       8      2000         10000
 2        WAIT        2000
 11       DIALOG      Yaaaahahaahhahahaha!_Those_rubbishes_exploded_in_the_air!!!!    NULL    Robin     3      247     255     28     255      0       0
 11       DIALOG      Robin......Those_are_our_planes.....     NULL     Franky    4     250    250     250     250      250     250
@@ -18,7 +18,7 @@
 11       DIALOG      So,_that's_it.     I_will_go_deeper_to_work_on_the_thing_you_told_me_to.    Franky   4    250     250     250      250     250     250
 11       DIALOG      See_ya~    So_now,_what_about_a_little_fight,_Jacky?    Robin    3     247   255   28    255      0     0
 11       DIALOG      Soldier,_let_show_him_what_you_got!   NULL    Jackson    1    21    207    167    255    255    255
-5        RSPAWN      2       8     800       10000
+5        RSPAWN      2       8     2000       10000
 2        WAIT        1500
 11       DIALOG      Good_job,_soldier._We_already_eliminated_most_of_them.     I_knew_you_can_do_it   Jackson   1    21   207    167    255     255     255
 11       DIALOG      Aha!!!!Do_ya_think_that's_the_end???      NAH!_Let_see_if_you_can_defeat_this!     Robin    3    247   255    28     255    0      0

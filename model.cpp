@@ -534,8 +534,7 @@ void Model::bossShootCount()
 				if (this->enemySet->boss_labplane.shoot_count_three > 2800)
 				{
 					this->enemySet->boss_labplane.shoot_count_three -= 2800;
-					for (int i = 0; i < 3; i++)
-						this->enemySet->spawn(8, ((i + 1.f) / 4.f) * SCREEN_WIDTH);
+					this->enemySet->spawn(8, rand() % SCREEN_WIDTH);
 				}
 			}
 		}

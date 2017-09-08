@@ -56,7 +56,7 @@
 #define MODE_CONTROL 91
 
 #define MENU_OPTION 6
-#define LAST_STORY 6
+#define LAST_STORY 7
 #define SAVE_DATA 14
 
 //score to unlock new tool

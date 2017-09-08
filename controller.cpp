@@ -47,15 +47,18 @@ void Controller::storyinput(sf::Time delta_time)
 							this->model->story->currentStory++;
 							if (this->model->story->currentStory != LAST_STORY)
 							{
-								this->model->story->readStory++;
+								this->model->player->hp = this->model->player->maxhp;
+								if (this->model->story->currentStory - 1 <= this->model->story->readStory) this->model->story->readStory++;
 								this->model->story->setup(this->model->story->currentStory);
 							}
 							else
 							{
 								this->view->menu->unlock();
+								this->model->story->readStory = 6;
 								this->model->story->currentStory = 1;
 								this->model->gamemode = MODE_SCORE_BOARD;
 								this->selecting = 1;
+								this->model->record->menuUnlock = 1;
 								model->record->startPosition = 0;
 								model->record->addRecord(1, "NONAME");
 							}

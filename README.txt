@@ -43,6 +43,7 @@
        fixing minor bug in storyline
 07/9 : adding onFire effect and boss ending effect
        adding control screen
+08/9 : editing storyline(not finished)
 	   
 assets:
 	ship:

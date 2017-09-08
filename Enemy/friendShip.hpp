@@ -9,8 +9,6 @@ public:
 	FriendShip();
 	~FriendShip();
 
-	sf::Vector2f target;
-
 	void render(sf::RenderWindow&, sf::Sprite&);
 	void update(sf::Time);
 };

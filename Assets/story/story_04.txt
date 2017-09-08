@@ -1,11 +1,11 @@
 11
 11       DIALOG      What......What_the_hell_is_this?    NULL   Jackson   1    211    207    167    255    255    255
 11       DIALOG      I_have_no_idea      But_it_seems_like_they_are_attacking_us!    Alicia    2    153    0    40    247    126    162
-5        RSPAWN      1       7       1000        10000
+5        RSPAWN      1       7       1500        10000
 11       DIALOG      It_doesn't_seem_like_creatures_from_our_world......     Would_it_be.....alien?    Alicia   2    153    0    40    247    126    162
 11       DIALOG      Soldier,_whatever_they_are.......     eliminate_them!     Jackson   1    211     207   167     255     255      255
-5        RSPAWN      1       7       800         15000
-11       DIALOG      2@#%@#%#$%^#$^    $^#$%^$#%&#^&^      ???     5      255     255     255      255      255
+5        RSPAWN      1       7       1500         15000
+11       DIALOG      2@#%@#%#$%^#$^    $^#$%^$#%&#^&^      ???     5      255     255     255      255      255     255
 11       DIALOG      What?_No_idea_what_they_are_talking_about!     But_watch_out!_They_have_a_bigger_plane!    Jackson     1     211     207    167    255     255      255
 2        ENEMY        94
 1        OBJECTIVE

@@ -250,6 +250,9 @@ View::View(Model* model)
 	this->model->toolSet->sprite_imumium.setOrigin(sf::Vector2f(12, 13));
 	this->model->toolSet->sprite_stone.setTexture(manager.get_texture("Assets/lucky.png", sf::Color::White), true);
 	this->model->toolSet->sprite_stone.setOrigin(sf::Vector2f(13, 13));
+
+	if (this->model->record->menuUnlock == 1)
+		this->menu->unlock();
 }
 
 View::~View() {}

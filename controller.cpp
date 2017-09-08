@@ -212,11 +212,19 @@ void Controller::rewardinput()
 		case sf::Event::KeyPressed:
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
 			{
-				if (model->timer <= 0)
+				if (model->gamemode == MODE_REWARDS_MODE)
 				{
-					model->reward_type = 0;
-					model->gamemode = MODE_MENU_SCREEN;
+					if (model->timer <= 0)
+					{
+						model->reward_type = 0;
+						model->gamemode = MODE_MENU_SCREEN;
+					}
 				}
+			}
+			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+			{
+				if (model->gamemode == MODE_CONTROL)
+					model->gamemode = MODE_MENU_SCREEN;
 			}
 			break;
 		}
@@ -329,8 +337,9 @@ void Controller::enter()
 			this->view->scoreboard = 1;
 			this->model->gamemode = MODE_SCORE_BOARD;
 			break;
-		//case 5:
-			//how to play
+		case 5:
+			this->model->gamemode = MODE_CONTROL;
+			break;
 		case 6:
 			this->view->window.close();
 			break;
@@ -375,8 +384,9 @@ void Controller::enter()
 			this->view->scoreboard = 1;
 			this->model->gamemode = MODE_SCORE_BOARD;
 			break;
-		//case 4:
-			//how to play
+		case 4:
+			this->model->gamemode = MODE_CONTROL;
+			break;
 		case 5:
 			this->view->window.close();
 			break;
@@ -542,11 +552,11 @@ void Controller::testerinputs(sf::Time delta_time)
 					this->model->player->addBullet(13, 2000);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::U))
 					this->model->player->addBullet(14, 2000);
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::V))
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
 					this->model->player->hp = this->model->player->maxhp;
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::B))
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::C))
 					this->model->shield->addShield(1);
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::N))
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::V))
 					this->model->radShield->addShield(5);
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::F1))
 					this->model->gamemode = MODE_MENU_SCREEN;

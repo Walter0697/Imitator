@@ -13,7 +13,7 @@ Game::Game()
 	std::srand(std::time(0));
 
 	//delete that later
-	this->view->menu->unlock();
+	//this->view->menu->unlock();
 	for (int i = 1; i < NUM_OF_TOOLS + 1; i++)
 		this->model->droprate->unlock(i);
 
@@ -89,6 +89,11 @@ void Game::loop()
 		case MODE_REWARDS_MODE:
 			this->controller->rewardinput();
 			this->model->updateRewards(delta_time);
+			this->view->renderReward();
+			break;
+
+		case MODE_CONTROL:
+			this->controller->rewardinput();
 			this->view->renderReward();
 			break;
 

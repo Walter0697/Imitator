@@ -53,6 +53,7 @@
 #define MODE_SETTING 94
 #define MODE_SCORE_BOARD 93
 #define MODE_REWARDS_MODE 92
+#define MODE_CONTROL 91
 
 #define MENU_OPTION 6
 #define LAST_STORY 6

@@ -32,6 +32,8 @@ public:
 	sf::Sprite sprite_mouse;
 	sf::Vector2f mouse_position;
 
+	sf::Sprite control_board[2];
+
 	Manager manager;
 	sf::RenderWindow window;
 	std::vector<Renderable *> renderables;

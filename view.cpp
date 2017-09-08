@@ -56,6 +56,12 @@ View::View(Model* model)
 	this->sprite_mouse.setTexture(manager.get_texture("Assets/cursor.png"), true);
 	this->sprite_mouse.setPosition(mouse_position);
 
+	//loading control sprite 
+	this->control_board[0].setTexture(manager.get_texture("Assets/control.png", sf::Color(237, 28, 36)), true);
+	this->control_board[0].setPosition(0, 0);
+	this->control_board[1].setTexture(manager.get_texture("Assets/controlUnlock.png", sf::Color(237, 28, 36)), true);
+	this->control_board[1].setPosition(0, 0);
+
 	//loading story sprite
 	this->model->story->sprite[0].setTexture(manager.get_texture("Assets/pointer.png", sf::Color(237, 28, 36)), true);
 	this->model->story->sprite[0].setPosition(99999, 99999);
@@ -251,19 +257,30 @@ View::~View() {}
 void View::renderReward()
 {
 	menu->render(this->window);
-	model->story->sprite_enter.setPosition(522, 684);
-	switch (model->reward_type)
+
+	if (this->model->gamemode == MODE_REWARDS_MODE)
 	{
-	case 1:
-		window.draw(model->story->sprite[3]);
-		break;
-	case 2:
-		window.draw(model->story->sprite[4]);
-		break;
+		model->story->sprite_enter.setPosition(522, 684);
+		switch (model->reward_type)
+		{
+		case 1:
+			window.draw(model->story->sprite[3]);
+			break;
+		case 2:
+			window.draw(model->story->sprite[4]);
+			break;
+		}
+		if (model->timer <= 0)
+		{
+			window.draw(model->story->sprite_enter);
+		}
 	}
-	if (model->timer <= 0)
+	else if (this->model->gamemode == MODE_CONTROL)
 	{
-		window.draw(model->story->sprite_enter);
+		if (this->menu->newModeUnlock)
+			window.draw(control_board[1]);
+		else
+			window.draw(control_board[0]);
 	}
 }
 

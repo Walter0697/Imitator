@@ -20,6 +20,9 @@ ToolSet::ToolSet()
 	this->hb_stone.hitbox_r = 8.f;
 	this->hb_stone.generateHitboxCir();
 
+	this->hb_clock.hitbox_r = 8.f;
+	this->hb_clock.generateHitboxCir();
+
 	initTool();
 }
 
@@ -50,6 +53,10 @@ void ToolSet::render(sf::RenderWindow& window)
 	for (int i = 0; i < MAX_STONE; i++)
 		if (!checkOutOfBound(stoneTool[i]))
 			stoneTool[i].render(window, sprite_stone);
+
+	for (int i = 0; i < MAX_CLOCK; i++)
+		if (!checkOutOfBound(clocksTool[i]))
+			clocksTool[i].render(window, sprite_clock);
 } 
 
 void ToolSet::renderHitBox(sf::RenderWindow& window)
@@ -102,6 +109,14 @@ void ToolSet::renderHitBox(sf::RenderWindow& window)
 			window.draw(hb_stone.cir);
 		}
 	}
+	for (int i = 0; i < MAX_CLOCK; i++)
+	{
+		if (!checkOutOfBound(clocksTool[i]))
+		{
+			hb_clock.cir.setPosition(clocksTool[i].position);
+			window.draw(hb_clock.cir);
+		}
+	}
 }
 
 void ToolSet::update(sf::Time delta_time)
@@ -123,6 +138,9 @@ void ToolSet::update(sf::Time delta_time)
 
 	for (int i = 0; i < MAX_STONE; i++)
 		stoneTool[i].update(delta_time);
+
+	for (int i = 0; i < MAX_CLOCK; i++)
+		clocksTool[i].update(delta_time);
 }
 
 int ToolSet::availableTool(int type)
@@ -159,6 +177,11 @@ int ToolSet::availableTool(int type)
 			if (checkOutOfBound(stoneTool[i]))
 				return i;
 		return 0;
+	case 7:
+		for (int i = 0; i < MAX_CLOCK; i++)
+			if (checkOutOfBound(clocksTool[i]))
+				return i;
+		return 0;
 	}
 	return 0;
 }
@@ -190,6 +213,10 @@ void ToolSet::drop(Enemy& enemy, int type)
 	case 6:
 		stoneTool[availableTool(type)].velocity = sf::Vector2f(0, stoneTool[0].speed);
 		stoneTool[availableTool(type)].position = enemy.position;
+		break;
+	case 7:
+		clocksTool[availableTool(type)].velocity = sf::Vector2f(0, clocksTool[0].speed);
+		clocksTool[availableTool(type)].position = enemy.position;
 		break;
 	}
 }
@@ -230,6 +257,12 @@ void ToolSet::initTool()
 	{
 		stoneTool[i].position = sf::Vector2f(0, -700);
 		stoneTool[i].velocity = sf::Vector2f(0, 0);
+	}
+
+	for (int i = 0; i < MAX_CLOCK; i++)
+	{
+		clocksTool[i].position = sf::Vector2f(0, -700);
+		clocksTool[i].velocity = sf::Vector2f(0, 0);
 	}
 }
 

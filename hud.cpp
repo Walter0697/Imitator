@@ -1,8 +1,9 @@
 #include "hud.hpp"
 
-Hud::Hud(Player* player)
+Hud::Hud(Player* player, EnemySet* enemySet)
 {
 	this->player = player;	
+	this->enemySet = enemySet;
 }
 
 Hud::~Hud() {}
@@ -55,6 +56,12 @@ void Hud::render(sf::RenderWindow& window)
 		status_sprite[2].setPosition(SCREEN_WIDTH - 30, current_position);
 		current_position -= 40;
 		window.draw(status_sprite[2]);
+	}
+	if (enemySet->isFreeze > 0)
+	{
+		status_sprite[3].setPosition(SCREEN_WIDTH - 30, current_position);
+		current_position -= 40;
+		window.draw(status_sprite[3]);
 	}
 
 	//bullet type

@@ -27,6 +27,7 @@ public:
 	void render(std::string, int, std::string**, sf::RenderWindow&);
 
 	int menuUnlock = 0;
+	int freezeUnlock = 0;
 
 	int bossDefeated;
 	int toolsPicked[6];

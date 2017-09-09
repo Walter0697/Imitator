@@ -35,10 +35,11 @@
 #define MAX_HEALTH_PACK 8
 #define MAX_IMUMIUM 8
 #define MAX_STONE 8
+#define MAX_CLOCK 8
 
-#define NUM_OF_TOOLS 6
+#define NUM_OF_TOOLS 7
 #define NUM_OF_BULLET 14
-#define NUM_OF_STATUS 3
+#define NUM_OF_STATUS 4
 
 #define SHOT_GUN_NUMBERS 20
 #define BLAST_SHOT_NUMBERS 22

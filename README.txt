@@ -44,6 +44,7 @@
 07/9 : adding onFire effect and boss ending effect
        adding control screen
 08/9 : editing storyline(not finished)
+       adding new tool   ----   clock
 	   
 	   
 cheatcode :
@@ -67,6 +68,7 @@ assets:
 		https://opengameart.org/content/simple-shooter-icons
 		https://opengameart.org/content/rpg-frame
 		https://opengameart.org/content/keyboard-keys
+		https://opengameart.org/content/clocks-watches-black-clock-seamless-texture-with-normalmap-basicblackclocknjpg
 	element:
 		https://opengameart.org/content/smoke-fire-animated-particle-16x16
 		https://opengameart.org/content/camp-fire-animation-for-rpgs-finished

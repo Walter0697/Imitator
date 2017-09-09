@@ -5,9 +5,9 @@ Rocket::Rocket()
 	//setting of the default bullet
 	velocity.x = 0;
 	velocity.y = 0;
-	damage = 200;
+	damage = 300;
 	speed = 750;
-	shoot_rate = 2000;
+	shoot_rate = 500;
 }
 
 Rocket::~Rocket() {}

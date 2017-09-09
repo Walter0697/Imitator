@@ -3,6 +3,7 @@
 #include "renderable.hpp"
 
 #include "player.hpp"
+#include "enemyset.hpp"
 
 #include "defs.h"
 
@@ -12,7 +13,8 @@ class Hud : public Renderable
 public:
 
 	Player* player;
-	Hud(Player* player);
+	EnemySet* enemySet;
+	Hud(Player* player, EnemySet* enemySet);
 	~Hud();
 
 	void setup();

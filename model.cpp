@@ -18,6 +18,8 @@ Model::Model()
 	this->record = new Record(this->player, this->story);
 	for (int i = 0; i < story->toolUnlock; i++)
 		this->droprate->unlock(i + 1);
+	if (record->freezeUnlock)
+		this->droprate->unlock(7);
 	
 	this->gamemode = MODE_MENU_SCREEN;
 }
@@ -2003,6 +2005,21 @@ void Model::checkHit()
 			}
 		}
 	}
+
+	//clock vs player
+	for (int i = 0; i < MAX_CLOCK; i++)
+	{
+		if (!this->toolSet->checkOutOfBound(this->toolSet->clocksTool[i]))
+		{
+			if (coll.RectangleCircleCollision(sf::Vector2f(this->player->position + this->player->hb.hitbox_tl), sf::Vector2f(this->player->position + this->player->hb.hitbox_br),
+				this->toolSet->clocksTool[i].position, this->toolSet->hb_clock.hitbox_r))
+			{
+				this->toolSet->clocksTool[i].position = sf::Vector2f(0, -700);
+				this->toolSet->clocksTool[i].velocity = sf::Vector2f(0, 0);
+				this->enemySet->isFreeze += 5000;
+			}
+		}
+	}
 }
 
 void Model::checkDie(Enemy& enemy, int type)
@@ -2098,7 +2115,7 @@ void Model::checkDie(Enemy& enemy, int type)
 void Model::enemyDie(Enemy& enemy, Bullet& bullet, int bullet_type, int score_add, int shield_add)
 {
 	//dropping 
-	tool_type = rand() % 6 + 1;
+	tool_type = rand() % NUM_OF_TOOLS + 1;
 	if (rand() % 100 < droprate->getToolChance(tool_type))
 		this->toolSet->drop(enemy, tool_type);
 	/*

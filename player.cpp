@@ -57,7 +57,7 @@ void Player::initialize()
 	this->velocity.y = 0;
 	this->speed = 500;
 
-	this->maxhp = 500;
+	this->maxhp = 1000;
 	this->hp = this->maxhp;
 	this->maxshield = 500;
 	this->shield = 0;

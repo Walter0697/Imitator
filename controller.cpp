@@ -47,8 +47,10 @@ void Controller::storyinput(sf::Time delta_time)
 							this->model->story->currentStory++;
 							if (this->model->story->currentStory != LAST_STORY)
 							{
-								this->model->player->hp = this->model->player->maxhp;
-								if (this->model->story->currentStory - 1 <= this->model->story->readStory) this->model->story->readStory++;
+								this->model->player->hp += 300;
+								if (this->model->player->hp > this->model->player->maxhp) this->model->player->hp = this->model->player->maxhp;
+
+								if (this->model->story->currentStory - 2 == this->model->story->readStory) this->model->story->readStory++;
 								this->model->story->setup(this->model->story->currentStory);
 							}
 							else
@@ -64,7 +66,8 @@ void Controller::storyinput(sf::Time delta_time)
 								}
 								if (lastUnlock)
 								{
-									//unlock some tools
+									this->model->droprate->unlock(7);
+									this->model->record->freezeUnlock = 1;
 								}
 								this->view->menu->unlock();
 								this->model->story->readStory = 6;

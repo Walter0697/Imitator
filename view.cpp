@@ -28,7 +28,7 @@ View::View(Model* model)
 
 	//loading hud
 	//player hud
-	this->hud = new Hud(this->model->player);
+	this->hud = new Hud(this->model->player, this->model->enemySet);
 	this->hud->healthBar.setTexture(manager.get_texture("Assets/EmptyBar.png", sf::Color(203, 112, 218)), true);
 	this->hud->healthSize = manager.get_texture("Assets/EmptyBar.png").getSize();
 	this->hud->setup();
@@ -117,6 +117,7 @@ View::View(Model* model)
 	this->hud->status_sprite[0].setTexture(manager.get_texture("Assets/onFire.png", sf::Color(165, 165, 165)), true);
 	this->hud->status_sprite[1].setTexture(manager.get_texture("Assets/onBuff.png", sf::Color::White), true);
 	this->hud->status_sprite[2].setTexture(manager.get_texture("Assets/onLuck.png", sf::Color::White), true);
+	this->hud->status_sprite[3].setTexture(manager.get_texture("Assets/onFreeze.png", sf::Color(255, 242, 0)), true);
 
 	//player texture
 	this->model->player->sprite.setTexture(manager.get_texture("Assets/player.png", sf::Color(0, 128, 192)), true);
@@ -150,6 +151,19 @@ View::View(Model* model)
 	this->model->enemySet->sprite_lazzyenemy_onFire.setTexture(manager.get_texture("Assets/lazzyFire.png", sf::Color(0, 128, 192)), true);
 	this->model->enemySet->sprite_friend_onFire.setTexture(manager.get_texture("Assets/friendFire.png", sf::Color(0, 128, 192)), true);
 
+	//enemy on Freeze texture
+	this->model->enemySet->sprite_denemy_stop.setTexture(manager.get_texture("Assets/enemyStop.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_douenemy_stop.setTexture(manager.get_texture("Assets/douddyStop.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_longenemy_stop.setTexture(manager.get_texture("Assets/longgyStop.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_shotenemy_stop.setTexture(manager.get_texture("Assets/shottyStop.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_gangenemy_stop.setTexture(manager.get_texture("Assets/gangsterStop.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_thugenemy_stop.setTexture(manager.get_texture("Assets/thugStop.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_unknownenemy_stop.setTexture(manager.get_texture("Assets/unknownStop.png", sf::Color::White), true);
+	this->model->enemySet->sprite_glitchyenemy_stop.setTexture(manager.get_texture("Assets/glitchyStop.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_advancedenemy_stop.setTexture(manager.get_texture("Assets/advancedStop.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_lazzyenemy_stop.setTexture(manager.get_texture("Assets/lazzyStop.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_friend_stop.setTexture(manager.get_texture("Assets/friendStop.png", sf::Color(0, 128, 192)), true);
+
 	//boss texture
 	this->model->enemySet->sprite_devplane.setTexture(manager.get_texture("Assets/devPlane.png", sf::Color(0, 128, 192)), true);
 	this->model->enemySet->sprite_devplane_ready.setTexture(manager.get_texture("Assets/devPlane-ready.png", sf::Color(0, 128, 192)), true);
@@ -167,6 +181,14 @@ View::View(Model* model)
 	this->model->enemySet->sprite_alien_onFire.setTexture(manager.get_texture("Assets/unknownbossFire.png", sf::Color::White), true);
 	this->model->enemySet->sprite_labplane_onFire.setTexture(manager.get_texture("Assets/labShipFire.png", sf::Color(0, 128, 192)), true);
 	this->model->enemySet->sprite_final_onFire.setTexture(manager.get_texture("Assets/finalBossFire.png", sf::Color(0, 128, 192)), true);
+
+	//boss on freeze texture
+	this->model->enemySet->sprite_devplane_stop.setTexture(manager.get_texture("Assets/devplaneStop.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_modifier_stop.setTexture(manager.get_texture("Assets/modifierStop.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_firethrower_stop.setTexture(manager.get_texture("Assets/firethrowerStop.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_alien_stop.setTexture(manager.get_texture("Assets/unknownbossStop.png", sf::Color::White), true);
+	this->model->enemySet->sprite_labplane_stop.setTexture(manager.get_texture("Assets/labShipStop.png", sf::Color(0, 128, 192)), true);
+	this->model->enemySet->sprite_final_stop.setTexture(manager.get_texture("Assets/finalBossStop.png", sf::Color(0, 128, 192)), true);
 
 	//boss end texture
 	this->model->enemySet->sprite_devplane_end.setTexture(manager.get_texture("Assets/devplaneEnd.png", sf::Color(0, 128, 192)), true);
@@ -250,6 +272,8 @@ View::View(Model* model)
 	this->model->toolSet->sprite_imumium.setOrigin(sf::Vector2f(12, 13));
 	this->model->toolSet->sprite_stone.setTexture(manager.get_texture("Assets/lucky.png", sf::Color::White), true);
 	this->model->toolSet->sprite_stone.setOrigin(sf::Vector2f(13, 13));
+	this->model->toolSet->sprite_clock.setTexture(manager.get_texture("Assets/timestop.png", sf::Color::White), true);
+	this->model->toolSet->sprite_clock.setOrigin(sf::Vector2f(13, 13));
 
 	if (this->model->record->menuUnlock == 1)
 		this->menu->unlock();

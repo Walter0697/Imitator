@@ -9,6 +9,7 @@
 #include "Tools/healthPack.hpp"
 #include "Tools/imumium.hpp"
 #include "Tools/ausStone.hpp"
+#include "Tools/clock.hpp"
 #include "Enemy/enemy.hpp"
 
 #include "hitbox.hpp"
@@ -37,6 +38,7 @@ public:
 	HealthPack healthpack[MAX_HEALTH_PACK];
 	Imumium imumium[MAX_IMUMIUM];
 	AusStone stoneTool[MAX_STONE];
+	Clock clocksTool[MAX_CLOCK];
 
 	Hitbox hb_greenShield;
 	Hitbox hb_blueShield;
@@ -44,6 +46,7 @@ public:
 	Hitbox hb_healthPack;
 	Hitbox hb_imumium;
 	Hitbox hb_stone;
+	Hitbox hb_clock;
 
 	sf::Sprite sprite_greenShield;
 	sf::Sprite sprite_blueShield;
@@ -51,4 +54,5 @@ public:
 	sf::Sprite sprite_healthPack;
 	sf::Sprite sprite_imumium;
 	sf::Sprite sprite_stone;
+	sf::Sprite sprite_clock;
 };

@@ -79,37 +79,45 @@ EnemySet::~EnemySet() {}
 
 void EnemySet::update(sf::Time delta_time)
 {
-	//updating enemies
-	for (int i = 0; i < MAX_DENEMY; i++)
+	if (isFreeze > 0)
 	{
-		denemies[i].update(delta_time);
-		douenemies[i].update(delta_time);
-		lonenemies[i].update(delta_time);
-		shotenemies[i].update(delta_time);
-		gangenemies[i].update(delta_time);
-		thugenemies[i].update(delta_time);
-		unknownenemies[i].update(delta_time);
-		glitchyenemies[i].update(delta_time);
-		advancedenemies[i].update(delta_time);
-		lazzyenemies[i].update(delta_time);
-		friendShips[i].update(delta_time);
+		isFreeze -= delta_time.asMilliseconds();
+		if (isFreeze < 0) isFreeze = 0;
 	}
+	else
+	{
+		//updating enemies
+		for (int i = 0; i < MAX_DENEMY; i++)
+		{
+			denemies[i].update(delta_time);
+			douenemies[i].update(delta_time);
+			lonenemies[i].update(delta_time);
+			shotenemies[i].update(delta_time);
+			gangenemies[i].update(delta_time);
+			thugenemies[i].update(delta_time);
+			unknownenemies[i].update(delta_time);
+			glitchyenemies[i].update(delta_time);
+			advancedenemies[i].update(delta_time);
+			lazzyenemies[i].update(delta_time);
+			friendShips[i].update(delta_time);
+		}
 
-	//updating boss
-	if (!checkOutOfBound(boss_devplane))
-		boss_devplane.update(delta_time);
-	if (!checkOutOfBound(boss_modifier))
-		boss_modifier.update(delta_time);
-	if (!checkOutOfBound(boss_firethrower))
-		boss_firethrower.update(delta_time);
-	if (!checkOutOfBound(boss_alien))
-		boss_alien.update(delta_time);
-	if (!checkOutOfBound(boss_labplane))
-		boss_labplane.update(delta_time);
-	if (!checkOutOfBound(boss_final))
-		boss_final.update(delta_time);
+		//updating boss
+		if (!checkOutOfBound(boss_devplane))
+			boss_devplane.update(delta_time);
+		if (!checkOutOfBound(boss_modifier))
+			boss_modifier.update(delta_time);
+		if (!checkOutOfBound(boss_firethrower))
+			boss_firethrower.update(delta_time);
+		if (!checkOutOfBound(boss_alien))
+			boss_alien.update(delta_time);
+		if (!checkOutOfBound(boss_labplane))
+			boss_labplane.update(delta_time);
+		if (!checkOutOfBound(boss_final))
+			boss_final.update(delta_time);
 
-	pushBack(delta_time);
+		pushBack(delta_time);
+	}
 }
 
 void EnemySet::render(sf::RenderWindow& window)
@@ -119,77 +127,99 @@ void EnemySet::render(sf::RenderWindow& window)
 		//enemies render
 		if (!(checkOutOfBound(denemies[i])))
 		{
-			if (denemies[i].onFire > 0)
+			if (isFreeze > 0)
+				denemies[i].render(window, sprite_denemy_stop);
+			else if (denemies[i].onFire > 0)
 				denemies[i].render(window, sprite_denemy_onFire);
 			else
 				denemies[i].render(window, sprite_denemy);
 		}
 		if (!(checkOutOfBound(douenemies[i])))
 		{
-			if (douenemies[i].onFire > 0)
+			if (isFreeze > 0)
+				douenemies[i].render(window, sprite_douenemy_stop);
+			else if (douenemies[i].onFire > 0)
 				douenemies[i].render(window, sprite_douenemy_onFire);
 			else
 				douenemies[i].render(window, sprite_douenemy);
 		}
 		if (!(checkOutOfBound(lonenemies[i])))
 		{
-			if (lonenemies[i].onFire > 0)
+			if (isFreeze > 0)
+				lonenemies[i].render(window, sprite_longenemy_stop);
+			else if (lonenemies[i].onFire > 0)
 				lonenemies[i].render(window, sprite_longenemy_onFire);
 			else
 				lonenemies[i].render(window, sprite_longenemy);
 		}
 		if (!(checkOutOfBound(shotenemies[i])))
 		{
-			if (shotenemies[i].onFire > 0)
+			if (isFreeze > 0)
+				shotenemies[i].render(window, sprite_shotenemy_stop);
+			else if (shotenemies[i].onFire > 0)
 				shotenemies[i].render(window, sprite_shotenemy_onFire);
 			else
 				shotenemies[i].render(window, sprite_shotenemy);
 		}
 		if (!(checkOutOfBound(gangenemies[i])))
 		{
-			if (gangenemies[i].onFire > 0)
+			if (isFreeze > 0)
+				gangenemies[i].render(window, sprite_gangenemy_stop);
+			else if (gangenemies[i].onFire > 0)
 				gangenemies[i].render(window, sprite_gangenemy_onFire);
 			else
 				gangenemies[i].render(window, sprite_gangenemy);
 		}
 		if (!(checkOutOfBound(thugenemies[i])))
 		{
-			if (thugenemies[i].onFire > 0)
+			if (isFreeze > 0)
+				thugenemies[i].render(window, sprite_thugenemy_stop);
+			else if (thugenemies[i].onFire > 0)
 				thugenemies[i].render(window, sprite_thugenemy_onFire);
 			else
 				thugenemies[i].render(window, sprite_thugenemy);
 		}
 		if (!(checkOutOfBound(unknownenemies[i])))
 		{
-			if (unknownenemies[i].onFire > 0)
+			if (isFreeze > 0)
+				unknownenemies[i].render(window, sprite_unknownenemy_stop);
+			else if (unknownenemies[i].onFire > 0)
 				unknownenemies[i].render(window, sprite_unknownenemy_onFire);
 			else
 				unknownenemies[i].render(window, sprite_unknownenemy);
 		}
 		if (!(checkOutOfBound(glitchyenemies[i])))
 		{
-			if (glitchyenemies[i].onFire > 0)
+			if (isFreeze > 0)
+				glitchyenemies[i].render(window, sprite_glitchyenemy_stop);
+			else if (glitchyenemies[i].onFire > 0)
 				glitchyenemies[i].render(window, sprite_glitchyenemy_onFire);
 			else
 				glitchyenemies[i].render(window, sprite_glitchyenemy);
 		}
 		if (!(checkOutOfBound(advancedenemies[i])))
 		{
-			if (advancedenemies[i].onFire > 0)
+			if (isFreeze > 0)
+				advancedenemies[i].render(window, sprite_advancedenemy_stop);
+			else if (advancedenemies[i].onFire > 0)
 				advancedenemies[i].render(window, sprite_advancedenemy_onFire);
 			else
 				advancedenemies[i].render(window, sprite_advancedenemy);
 		}
 		if (!(checkOutOfBound(lazzyenemies[i])))
 		{
-			if (lazzyenemies[i].onFire > 0)
+			if (isFreeze > 0)
+				lazzyenemies[i].render(window, sprite_lazzyenemy_stop);
+			else if (lazzyenemies[i].onFire > 0)
 				lazzyenemies[i].render(window, sprite_lazzyenemy_onFire);
 			else
 				lazzyenemies[i].render(window, sprite_lazzyenemy);
 		}
 		if (!(checkOutOfBound(friendShips[i])))
 		{
-			if (friendShips[i].onFire > 0)
+			if (isFreeze > 0)
+				friendShips[i].render(window, sprite_friend_stop);
+			else if (friendShips[i].onFire > 0)
 				friendShips[i].render(window, sprite_friend_onFire);
 			else
 				friendShips[i].render(window, sprite_friend);
@@ -198,7 +228,9 @@ void EnemySet::render(sf::RenderWindow& window)
 	//boss render
 	if (!(checkOutOfBound(boss_devplane)))
 	{
-		if (boss_devplane.mode == 10)
+		if (isFreeze > 0)
+			boss_devplane.render(window, sprite_devplane_stop);
+		else if (boss_devplane.mode == 10)
 			boss_devplane.render(window, sprite_devplane_end);
 		else if (boss_devplane.mode == 4)
 		{
@@ -217,7 +249,9 @@ void EnemySet::render(sf::RenderWindow& window)
 	}
 	if (!(checkOutOfBound(boss_modifier)))
 	{
-		if (boss_modifier.mode == 10)
+		if (isFreeze > 0)
+			boss_modifier.render(window, sprite_modifier_stop);
+		else if (boss_modifier.mode == 10)
 			boss_modifier.render(window, sprite_modifier_end);
 		else if (boss_modifier.onFire > 0)
 			boss_modifier.render(window, sprite_modifier_onFire);
@@ -226,7 +260,9 @@ void EnemySet::render(sf::RenderWindow& window)
 	}
 	if (!(checkOutOfBound(boss_firethrower)))
 	{
-		if (boss_firethrower.mode == 10)
+		if (isFreeze > 0)
+			boss_firethrower.render(window, sprite_firethrower_stop);
+		else if (boss_firethrower.mode == 10)
 			boss_firethrower.render(window, sprite_firethrower_end);
 		else if (boss_firethrower.onFire > 0)
 			boss_firethrower.render(window, sprite_firethrower_onFire);
@@ -235,7 +271,9 @@ void EnemySet::render(sf::RenderWindow& window)
 	}
 	if (!(checkOutOfBound(boss_alien)))
 	{
-		if (boss_alien.mode == 10)
+		if (isFreeze > 0)
+			boss_alien.render(window, sprite_alien_stop);
+		else if (boss_alien.mode == 10)
 			boss_alien.render(window, sprite_alien_end);
 		else if (boss_alien.onFire > 0)
 			boss_alien.render(window, sprite_alien_onFire);
@@ -244,7 +282,9 @@ void EnemySet::render(sf::RenderWindow& window)
 	}
 	if (!(checkOutOfBound(boss_labplane)))
 	{
-		if (boss_labplane.mode == 10)
+		if (isFreeze > 0)
+			boss_labplane.render(window, sprite_labplane_stop);
+		else if (boss_labplane.mode == 10)
 			boss_labplane.render(window, sprite_labplane_end);
 		else if (boss_labplane.onFire > 0)
 			boss_labplane.render(window, sprite_labplane_onFire);
@@ -253,7 +293,9 @@ void EnemySet::render(sf::RenderWindow& window)
 	}
 	if (!(checkOutOfBound(boss_final)))
 	{
-		if (boss_final.mode == 10)
+		if (isFreeze > 0)
+			boss_final.render(window, sprite_final_stop);
+		else if (boss_final.mode == 10)
 			boss_final.render(window, sprite_final_end);
 		else if (boss_final.onFire > 0)
 			boss_final.render(window, sprite_final_onFire);

@@ -47,6 +47,8 @@ public:
 	void spawn(int, int);
 	void spawn(int);
 
+	int isFreeze = 0;
+
 	int current_boss;
 
 	//enemy
@@ -98,6 +100,18 @@ public:
 	sf::Sprite sprite_lazzyenemy_onFire;
 	sf::Sprite sprite_friend_onFire;
 
+	sf::Sprite sprite_denemy_stop;
+	sf::Sprite sprite_douenemy_stop;
+	sf::Sprite sprite_longenemy_stop;
+	sf::Sprite sprite_shotenemy_stop;
+	sf::Sprite sprite_gangenemy_stop;
+	sf::Sprite sprite_thugenemy_stop;
+	sf::Sprite sprite_unknownenemy_stop;
+	sf::Sprite sprite_glitchyenemy_stop;
+	sf::Sprite sprite_advancedenemy_stop;
+	sf::Sprite sprite_lazzyenemy_stop;
+	sf::Sprite sprite_friend_stop;
+
 	//boss
 	DevPlane boss_devplane;
 	Hitbox hb_boss_devplane;
@@ -106,34 +120,40 @@ public:
 	sf::Sprite sprite_devplane_ready;
 	sf::Sprite sprite_devplane_ready_onFire;
 	sf::Sprite sprite_devplane_end;
+	sf::Sprite sprite_devplane_stop;
 
 	Modifier boss_modifier;
 	Hitbox hb_boss_modifier;
 	sf::Sprite sprite_modifier;
 	sf::Sprite sprite_modifier_onFire;
 	sf::Sprite sprite_modifier_end;
+	sf::Sprite sprite_modifier_stop;
 
 	FireThrower boss_firethrower;
 	Hitbox hb_boss_firethrower;
 	sf::Sprite sprite_firethrower;
 	sf::Sprite sprite_firethrower_onFire;
 	sf::Sprite sprite_firethrower_end;
+	sf::Sprite sprite_firethrower_stop;
 
 	AlienShip boss_alien;
 	Hitbox hb_boss_alien;
 	sf::Sprite sprite_alien;
 	sf::Sprite sprite_alien_onFire;
 	sf::Sprite sprite_alien_end;
+	sf::Sprite sprite_alien_stop;
 
 	LabPlane boss_labplane;
 	Hitbox hb_boss_labplane;
 	sf::Sprite sprite_labplane;
 	sf::Sprite sprite_labplane_onFire;
 	sf::Sprite sprite_labplane_end;
+	sf::Sprite sprite_labplane_stop;
 
 	FinalBoss boss_final;
 	Hitbox hb_boss_final;
 	sf::Sprite sprite_final;
 	sf::Sprite sprite_final_onFire;
 	sf::Sprite sprite_final_end;
+	sf::Sprite sprite_final_stop;
 };

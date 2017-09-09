@@ -17,14 +17,14 @@
 11       DIALOG      Errrrr......Whatever_those_lightball_weapon_that_we_stole,     I_found_out_a_way_to_combine_them_into_the_plane      Franky      4    250      250     250     250     250     250
 11       DIALOG      So,_that's_it.     I_will_go_deeper_to_work_on_the_thing_you_told_me_to.    Franky   4    250     250     250      250     250     250
 11       DIALOG      See_ya~    So_now,_what_about_a_little_fight,_Jacky?    Robin    3     247   255   28    255      0     0
-11       DIALOG      Soldier,_let_show_him_what_you_got!   NULL    Jackson    1    21    207    167    255    255    255
+11       DIALOG      Soldier,_let_show_him_what_you_got!   NULL    Jackson    1    211    207    167    255    255    255
 5        RSPAWN      2       8     2000       10000
 2        WAIT        1500
-11       DIALOG      Good_job,_soldier._We_already_eliminated_most_of_them.     I_knew_you_can_do_it   Jackson   1    21   207    167    255     255     255
+11       DIALOG      Good_job,_soldier._We_already_eliminated_most_of_them.     I_knew_you_can_do_it   Jackson   1    211   207    167    255     255     255
 11       DIALOG      Aha!!!!Do_ya_think_that's_the_end???      NAH!_Let_see_if_you_can_defeat_this!     Robin    3    247   255    28     255    0      0
 2        ENEMY       95
 1        OBJECTIVE
 11       DIALOG      Waaaaat~Our_lovely_plane!      Guess_I_underestimated_ya_honey!     Robin    3    247   255    28    255     0     0
 11       DIALOG      Nevermind~_We_are_not_done_here_yet~        Chase_me_if_ya_can!     Robin    3    247   255    28    255     0     0
-11       DIALOG      Stop_right_here!_Robin!      NULL      Jackson    1     21    207     167       255    255     255
+11       DIALOG      Stop_right_here!_Robin!      NULL      Jackson    1     211    207     167       255    255     255
 1        VICTORY

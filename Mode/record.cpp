@@ -72,8 +72,9 @@ void Record::readFile()
 	fileHndl >> story->toolUnlock;
 	fileHndl >> story->readStory;
 	fileHndl >> menuUnlock;
-	fileHndl >> numStory;
 	fileHndl >> freezeUnlock;
+
+	fileHndl >> numStory;
 	storyRecord = new std::string*[numStory];
 	for (int i = 0; i < numStory; i++)
 	{

@@ -2016,7 +2016,7 @@ void Model::checkHit()
 			{
 				this->toolSet->clocksTool[i].position = sf::Vector2f(0, -700);
 				this->toolSet->clocksTool[i].velocity = sf::Vector2f(0, 0);
-				this->enemySet->isFreeze += 5000;
+				this->enemySet->isFreeze += 2000;
 			}
 		}
 	}

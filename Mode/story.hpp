@@ -79,7 +79,7 @@ public:
 	sf::Vector2f target;
 
 	//Sprite information
-	sf::Sprite sprite[5];
+	sf::Sprite sprite[6];
 
 	//font related
 	sf::Font fontVictory;

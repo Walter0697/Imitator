@@ -581,6 +581,7 @@ void EnemySet::initEnemy()
 	boss_final.onFire = 0;
 
 	current_boss = 0;
+	isFreeze = 0;
 }
 
 bool EnemySet::checkOutOfBound(Enemy& e)

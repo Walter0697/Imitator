@@ -64,19 +64,23 @@ void Controller::storyinput(sf::Time delta_time)
 										break;
 									}
 								}
-								if (lastUnlock)
-								{
-									this->model->droprate->unlock(7);
-									this->model->record->freezeUnlock = 1;
-								}
+								
 								this->view->menu->unlock();
 								this->model->story->readStory = 6;
-								this->model->story->currentStory = 1;
-								this->model->gamemode = MODE_SCORE_BOARD;
+								this->model->story->currentStory = 6;
 								this->selecting = 1;
 								this->model->record->menuUnlock = 1;
 								model->record->startPosition = 0;
 								model->record->addRecord(1, "NONAME");
+								if (lastUnlock && this->model->record->freezeUnlock == 0)
+								{
+									this->model->droprate->unlock(7);
+									this->model->record->freezeUnlock = 1;
+									this->model->reward_type = 3;
+									this->model->gamemode = MODE_REWARDS_MODE;
+								}
+								else
+									this->model->gamemode = MODE_SCORE_BOARD;
 							}
 							
 							//initialize bulles

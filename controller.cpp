@@ -53,6 +53,19 @@ void Controller::storyinput(sf::Time delta_time)
 							}
 							else
 							{
+								lastUnlock = true;
+								for (int i = 0; i < 5; i++)
+								{
+									if (this->model->player->shoot_type[i] != 1)
+									{
+										lastUnlock = false;
+										break;
+									}
+								}
+								if (lastUnlock)
+								{
+									//unlock some tools
+								}
 								this->view->menu->unlock();
 								this->model->story->readStory = 6;
 								this->model->story->currentStory = 1;

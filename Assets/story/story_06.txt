@@ -29,10 +29,10 @@
 2        ENEMY        96
 11       DIALOG       Wait~_Why_did_you_tell_me_to_get_into_the_plane,_Captain_Jackson?     NULL      Alicia    2     153     0      40      247      126     162
 3        FSPAWN       10       10
-3        FSPAWN       10       50
+3        FSPAWN       10       60
 3        FSPAWN       10       110
 3        FSPAWN       710      10
-3        FSPAWN       710      50
+3        FSPAWN       710      60
 3        FSPAWN       710      110
 11       DIALOG       Soldier,_that's_the_only_way......     NULL     Jackson      1     211     207      167     255    255     255
 11       DIALOG       To_maximize_the_damage,_we_have_to_get_some_strong_bullets.      Which_means........     Jackson     1     211     207      167     255    255    255

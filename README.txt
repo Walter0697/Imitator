@@ -45,6 +45,11 @@
        adding control screen
 08/9 : editing storyline(not finished)
 	   
+	   
+cheatcode :
+M: Reset storyline
+
+
 assets:
 	ship:
 		https://opengameart.org/content/modular-ships

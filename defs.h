@@ -60,5 +60,5 @@
 #define SAVE_DATA 14
 
 //score to unlock new tool
-#define IMUMIUM_UNLOCK 10000
-#define STONE_UNLOCK 25000
+#define IMUMIUM_UNLOCK 5000
+#define STONE_UNLOCK 10000

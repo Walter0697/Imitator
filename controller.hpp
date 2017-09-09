@@ -15,6 +15,8 @@ public:
 	bool isClick = false;
 	bool keyboardClick = false;
 
+	bool lastUnlock = false;
+
 	int selecting;
 	Controller(Model* model, View* view);
 	~Controller();

@@ -56,7 +56,7 @@ void Controller::storyinput(sf::Time delta_time)
 							else
 							{
 								lastUnlock = true;
-								for (int i = 0; i < 5; i++)
+								for (int i = 0; i < 4; i++)
 								{
 									if (this->model->player->shoot_type[i] != 1)
 									{

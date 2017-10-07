@@ -98,11 +98,9 @@ assets: <br/>
 		http://www.fontspace.com/herofonts/blackthorns-demo <br/>
 	tool: <br/>
 		https://opengameart.org/content/32x32-fantasy-tileset <br/>
-	
 	boss: <br/>
 		https://opengameart.org/content/retro-shmup-boss-2 <br/>
 		https://opengameart.org/content/retro-shmup-boss-1 <br/>
-		
 	Others: <br/>
 		http://www.rw-designer.com/cursor-set/hand-cursors <br/>
 		http://www.rw-designer.com/cursor-set/team-fortress-2-cursors <br/>

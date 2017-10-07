@@ -1,3 +1,19 @@
+# Imitator
+
+#### Coded in second year
+
+
+Technology:
+- SFML
+- C++
+
+###### A game that player will imitate the bullets of the enemies
+###### Here is the introduction for the game :
+###### http://waltercheng.com/project-3
+
+There is still some errors in the story line, I will fix it when I am free
+
+
 23/7 : basic MVC and game can be opened
 25/7 : player can move the character and shoot
 26/7 : enemies can be spawned!

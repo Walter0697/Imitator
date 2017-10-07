@@ -13,6 +13,8 @@ Technology:
 
 There is still some errors in the story line, I will fix it when I am free
 
+###### Here is the dev log I have:
+
 
 23/7 : basic MVC and game can be opened
 25/7 : player can move the character and shoot

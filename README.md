@@ -96,7 +96,6 @@ assets: <br/>
 		http://www.dafont.com/somerset-barnyard.font <br/>
 		http://www.dafont.com/alpha-beta-2.font <br/>
 		http://www.fontspace.com/herofonts/blackthorns-demo <br/>
-		
 	tool: <br/>
 		https://opengameart.org/content/32x32-fantasy-tileset <br/>
 	

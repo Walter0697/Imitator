@@ -6,11 +6,11 @@ class Lazzy : public Enemy
 {
 
 public:
-	Lazzy();
-	~Lazzy();
+	Lazzy();										//constructor
+	~Lazzy();										//destructor
 
-	float current_shoot_rate;
+	float current_shoot_rate;						//current fire rate
 
-	void render(sf::RenderWindow&, sf::Sprite&);     
-	void update(sf::Time);
+	void render(sf::RenderWindow&, sf::Sprite&);	//render
+	void update(sf::Time);							//update
 };

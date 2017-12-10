@@ -6,11 +6,11 @@ class ShotGun : public Bullet
 {
 
 public:
-	ShotGun();
-	~ShotGun();
+	ShotGun();											//constructor
+	~ShotGun();											//destructor
 	
-	void render(sf::RenderWindow&, sf::Sprite&);
-	void update(sf::Time);
+	void render(sf::RenderWindow&, sf::Sprite&);		//render
+	void update(sf::Time);								//update
 
-	float lifespan;
+	float lifespan;										//lifespan
 };

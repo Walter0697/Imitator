@@ -6,9 +6,9 @@ class FriendShip : public Enemy
 {
 
 public:
-	FriendShip();
-	~FriendShip();
+	FriendShip();									//constructor
+	~FriendShip();									//destructor
 
-	void render(sf::RenderWindow&, sf::Sprite&);
-	void update(sf::Time);
+	void render(sf::RenderWindow&, sf::Sprite&);	//render
+	void update(sf::Time);							//update
 };

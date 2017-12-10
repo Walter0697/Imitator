@@ -6,9 +6,9 @@ class DefaultEnemy : public Enemy
 {
 
 public:
-	DefaultEnemy();
-	~DefaultEnemy();
+	DefaultEnemy();									//constructor
+	~DefaultEnemy();								//destrcutor
 
-	void render(sf::RenderWindow&, sf::Sprite&);
-	void update(sf::Time);
+	void render(sf::RenderWindow&, sf::Sprite&);	//render
+	void update(sf::Time);							//update
 };

@@ -2,13 +2,14 @@
 
 #include "enemy.hpp"
 
+//advanced ship enemy
 class Advanced : public Enemy
 {
 
 public:
-	Advanced();
-	~Advanced();
+	Advanced();										//Constructor
+	~Advanced();									//Destructor
 
-	void render(sf::RenderWindow&, sf::Sprite&);     
-	void update(sf::Time);
+	void render(sf::RenderWindow&, sf::Sprite&);	//rendering
+	void update(sf::Time);							//updating
 };

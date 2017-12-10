@@ -6,9 +6,9 @@ class TwoWay : public Bullet
 {
 
 public:
-	TwoWay();
-	~TwoWay();
+	TwoWay();										//constructor
+	~TwoWay();										//destructor
 	
-	void render(sf::RenderWindow&, sf::Sprite&);
-	void update(sf::Time);
+	void render(sf::RenderWindow&, sf::Sprite&);	//render
+	void update(sf::Time);							//update
 };

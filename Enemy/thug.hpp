@@ -6,9 +6,9 @@ class Thug : public Enemy
 {
 
 public:
-	Thug();
-	~Thug();
+	Thug();												//constructor
+	~Thug();											//destructor
 
-	void render(sf::RenderWindow&, sf::Sprite&);     
-	void update(sf::Time);
+	void render(sf::RenderWindow&, sf::Sprite&);		//render
+	void update(sf::Time);								//update
 };

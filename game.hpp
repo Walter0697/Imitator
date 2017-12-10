@@ -13,7 +13,7 @@ public:
 
 	Model* model;
 	View* view;
-	Controller* controller;
+	Controller* controller;					//fit in the MVC architecture
 
 	Game();
 	~Game();

@@ -6,11 +6,11 @@ class Tool : public Updateable
 {
 
 public:
-	Tool();
-	~Tool();
+	Tool();											//constructor
+	~Tool();										//destructor
+	
+	void render(sf::RenderWindow&, sf::Sprite&);    //render
+	void update(sf::Time);							//update
 
-	void render(sf::RenderWindow&, sf::Sprite&);     
-	void update(sf::Time);
-
-	float speed;
+	float speed;									//speed of the tool
 };

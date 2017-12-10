@@ -9,7 +9,7 @@ class Bullet : public Updateable
 
 public:
 	//information about the bullet
-	float damage;
-	float speed;
-	float shoot_rate;
+	float damage;						//damage for the bullet
+	float speed;						//speed for the bullet
+	float shoot_rate;					//fire rate for the bullet
 };

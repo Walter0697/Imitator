@@ -30,22 +30,27 @@ class BulletSet : public Updateable, public Renderable
 {
 
 public:
-	BulletSet(int);
-	~BulletSet();
+	//this class is for storing all the bullets within the main screen
+	BulletSet(int);							//construtor
+											//different hitbox between enemies' and player's bullet so there is an int input for the constructor
+											//deciding it is enemy or player constructor
+	~BulletSet();							//destructor
 
-	void render(sf::RenderWindow&);
-	void renderHitBox(sf::RenderWindow&);
-	void update(sf::Time);
+	void render(sf::RenderWindow&);			//rendering all the bullets
+	void renderHitBox(sf::RenderWindow&);	//rendering all the hitboxes of those bullets
+	void update(sf::Time);					//updating all bullets
 
-	void shoot(int, sf::Vector2f, int);
-	void shoot(int, sf::Vector2f);
+	void shoot(int, sf::Vector2f, int);		//shooting with direction
+	void shoot(int, sf::Vector2f);			//shooting without direction (for boss bullet)
 
-	void initBullet();
-	bool checkOutOfBound(Bullet&);
-	int avaliableBullet(int);
+	void initBullet();						//initialize all the bullets
+	bool checkOutOfBound(Bullet&);			//check if the bullets are out of bound so it is avaliable to use
+	int avaliableBullet(int);				//find an avaliable bullets to shoot
 
-	int isPlayer;
+	int isPlayer;							//check if the bullet set belong to the player
 
+	//set up all arrays for the bullets
+	//doing it in this way so that we can limit the amount of bullet that show up in the screen
 	DefaultBullet dbullets[MAX_DBULLET];
 	TwoWay twbullets_left[MAX_TWOWAYB];
 	TwoWay twbullets_right[MAX_TWOWAYB];
@@ -64,6 +69,7 @@ public:
 	Firework fireworkbullets[MAX_FIRE_WORK];
 	Rocket rocketbullets[MAX_ROCKET];
 	
+	//storing all the hitbox of the bullets
 	Hitbox hb_dbullet;
 	Hitbox hb_twbullet;
 	Hitbox hb_longbullet;
@@ -80,6 +86,8 @@ public:
 	Hitbox hb_firework;
 	Hitbox hb_rocket;
 
+	//storing all the sprite of the bullets
+	//in this way we don't need to store duplicate sprite
 	sf::Sprite sprite_dbullet;
 	sf::Sprite sprite_twbullet_left;
 	sf::Sprite sprite_twbullet_right;

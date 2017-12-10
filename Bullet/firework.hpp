@@ -6,9 +6,9 @@ class Firework : public Bullet
 {
 
 public:
-	Firework();
-	~Firework();
+	Firework();										//constructor
+	~Firework();									//destructor
 	
-	void render(sf::RenderWindow&, sf::Sprite&);
-	void update(sf::Time);
+	void render(sf::RenderWindow&, sf::Sprite&);	//render
+	void update(sf::Time);							//update
 };

@@ -6,9 +6,9 @@ class Rocket : public Bullet
 {
 
 public:
-	Rocket();
-	~Rocket();
+	Rocket();										//constructor
+	~Rocket();										//destructor
 	
-	void render(sf::RenderWindow&, sf::Sprite&);
-	void update(sf::Time);
+	void render(sf::RenderWindow&, sf::Sprite&);	//render
+	void update(sf::Time);							//update
 };

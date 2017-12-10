@@ -7,6 +7,6 @@ class AusStone : public Tool
 {
 
 public:
-	AusStone();
-	~AusStone();
+	AusStone();						//constructor
+	~AusStone();					//destructor
 };

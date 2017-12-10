@@ -6,14 +6,14 @@ class DevPlane : public Boss
 {
 
 public:
-	DevPlane();
-	~DevPlane();
+	DevPlane();										//constructor
+	~DevPlane();									//destructor
 
-	sf::Vector2f four_shoot;
+	sf::Vector2f four_shoot;						//setting the shooting position
 
-	void initSetup();
-	void render(sf::RenderWindow&, sf::Sprite&);
-	void update(sf::Time);
+	void initSetup();								//initial set up
+	void render(sf::RenderWindow&, sf::Sprite&);	//render
+	void update(sf::Time);							//update
 
-	int chance;
+	int chance;										//chance to change the mode
 };

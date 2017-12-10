@@ -19,27 +19,27 @@ class View {
 
 public:
 
-	Model* model;
-	View(Model* model);
-	~View();
+	Model* model;						//pointer of the model, MVC architecture
+	View(Model* model);					//constructor
+	~View();							//destructor
 
-	Hud* hud;
-	EnemyHud* enemyhud;
+	Hud* hud;							//hud of the game
+	EnemyHud* enemyhud;					//enemy hud of the game
+	
+	Menu* menu;							//menu of the game
+	sf::Sprite sprite_pause;			//sprite for pausing
 
-	Menu* menu;
-	sf::Sprite sprite_pause;
+	sf::Sprite sprite_mouse;			//sprite for the mouse
+	sf::Vector2f mouse_position;		//mouse position
 
-	sf::Sprite sprite_mouse;
-	sf::Vector2f mouse_position;
+	sf::Sprite control_board[2];		//control board
 
-	sf::Sprite control_board[2];
-
-	Manager manager;
-	sf::RenderWindow window;
-	std::vector<Renderable *> renderables;
+	Manager manager;					//image manager
+	sf::RenderWindow window;			//renderwindow
+	std::vector<Renderable *> renderables;	//renderable for foreground and background
 	std::vector<Renderable *> foreground;
-
-	void renderMouse();
+	
+	void renderMouse();					//render method for different screen
 	void renderReward();
 	void renderStory();
 	void renderMenu();

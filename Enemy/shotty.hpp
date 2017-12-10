@@ -6,9 +6,9 @@ class Shotty : public Enemy
 {
 
 public:
-	Shotty();
-	~Shotty();
+	Shotty();											//constructor
+	~Shotty();											//destructor
 
-	void render(sf::RenderWindow&, sf::Sprite&);     
-	void update(sf::Time);
+	void render(sf::RenderWindow&, sf::Sprite&);		//render
+	void update(sf::Time);								//update
 };

@@ -32,26 +32,27 @@ class EnemySet : public Updateable, public Renderable
 {
 
 public:
-	EnemySet();
-	~EnemySet();
+	//this is a class to store all the enemies
+	EnemySet();								//constructor
+	~EnemySet();							//destructor
 
-	void render(sf::RenderWindow&);
-	void renderHitBox(sf::RenderWindow&);
-	void update(sf::Time);
+	void render(sf::RenderWindow&);			//render all enemies
+	void renderHitBox(sf::RenderWindow&);	//render all hitboxes of those enemies
+	void update(sf::Time);					//update all enemies
 
-	void initEnemy();
-	bool checkOutOfBound(Enemy&);
-	void pushBack(sf::Time);
-	int avaliableEnemy(int);
+	void initEnemy();						//initialize enemies
+	bool checkOutOfBound(Enemy&);			//check if the enemy is avaliabe to use
+	void pushBack(sf::Time);				//push it back if the enemies are going out of bound
+	int avaliableEnemy(int);				//find an avaliable enmey to spawn
 
-	void spawn(int, int);
-	void spawn(int);
+	void spawn(int, int);					//spawn an enemy to the according position
+	void spawn(int);						//spawn a boss
 
-	int isFreeze = 0;
+	int isFreeze = 0;						//is the player using freeze tool
 
-	int current_boss;
+	int current_boss;						//current boss to fight
 
-	//enemy
+	//array to store the enemies
 	DefaultEnemy denemies[MAX_DENEMY];
 	Douddy douenemies[MAX_DENEMY];
 	Longgy lonenemies[MAX_DENEMY];
@@ -64,6 +65,7 @@ public:
 	Lazzy lazzyenemies[MAX_DENEMY];
 	FriendShip friendShips[MAX_DENEMY];
 
+	//hitbox of all enemies
 	Hitbox hb_denemy;
 	Hitbox hb_douenemy;
 	Hitbox hb_longenemy;
@@ -76,6 +78,7 @@ public:
 	Hitbox hb_lazzyenemy;
 	Hitbox hb_friend;
 
+	//sprite of the enemies
 	sf::Sprite sprite_denemy;
 	sf::Sprite sprite_douenemy;
 	sf::Sprite sprite_longenemy;
@@ -88,6 +91,7 @@ public:
 	sf::Sprite sprite_lazzyenemy;
 	sf::Sprite sprite_friend;
 
+	//sprite of the enemies when they are on fire
 	sf::Sprite sprite_denemy_onFire;
 	sf::Sprite sprite_douenemy_onFire;
 	sf::Sprite sprite_longenemy_onFire;
@@ -100,6 +104,7 @@ public:
 	sf::Sprite sprite_lazzyenemy_onFire;
 	sf::Sprite sprite_friend_onFire;
 
+	//sprite of the enemies when they are frozen
 	sf::Sprite sprite_denemy_stop;
 	sf::Sprite sprite_douenemy_stop;
 	sf::Sprite sprite_longenemy_stop;
@@ -112,7 +117,7 @@ public:
 	sf::Sprite sprite_lazzyenemy_stop;
 	sf::Sprite sprite_friend_stop;
 
-	//boss
+	//different boss sprite
 	DevPlane boss_devplane;
 	Hitbox hb_boss_devplane;
 	sf::Sprite sprite_devplane;

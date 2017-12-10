@@ -6,6 +6,6 @@ class Imumium : public Tool
 {
 
 public:
-	Imumium();
-	~Imumium();
+	Imumium();			//constructor
+	~Imumium();			//destructor
 };

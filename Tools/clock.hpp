@@ -6,6 +6,6 @@ class Clock : public Tool
 {
 
 public:
-	Clock();
-	~Clock();
+	Clock();					//constructor
+	~Clock();					//destructor
 };

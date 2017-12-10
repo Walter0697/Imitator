@@ -6,9 +6,9 @@ class LongShot : public Bullet
 {
 
 public:
-	LongShot();
-	~LongShot();
+	LongShot();										//constructor
+	~LongShot();									//destructor
 	
-	void render(sf::RenderWindow&, sf::Sprite&);
-	void update(sf::Time);
+	void render(sf::RenderWindow&, sf::Sprite&);	//render
+	void update(sf::Time);							//update
 };

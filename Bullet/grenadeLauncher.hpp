@@ -6,9 +6,9 @@ class GrenadeLauncher : public Bullet
 {
 
 public:
-	GrenadeLauncher();
-	~GrenadeLauncher();
+	GrenadeLauncher();								//constructor
+	~GrenadeLauncher();								//destructor
 	
-	void render(sf::RenderWindow&, sf::Sprite&);
-	void update(sf::Time);
+	void render(sf::RenderWindow&, sf::Sprite&);	//render
+	void update(sf::Time);							//update
 };

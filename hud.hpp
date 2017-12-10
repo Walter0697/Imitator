@@ -12,20 +12,20 @@ class Hud : public Renderable
 
 public:
 
-	Player* player;
+	Player* player;									//pointer to the player and enemy
 	EnemySet* enemySet;
-	Hud(Player* player, EnemySet* enemySet);
-	~Hud();
+	Hud(Player* player, EnemySet* enemySet);		//constructor
+	~Hud();											//destructor
 
-	void setup();
-	void render(sf::RenderWindow&);
+	void setup();									//set up for the hud
+	void render(sf::RenderWindow&);					//render
 
-	sf::Sprite healthBar;
-	sf::Vector2u healthSize;
-	sf::Sprite health;
-	sf::Sprite shield;
+	sf::Sprite healthBar;							//sprite for the health bar
+	sf::Vector2u healthSize;						//size of the health bar
+	sf::Sprite health;								//sprite that will resize according to the health
+	sf::Sprite shield;								//current shield
 
-	sf::Font font;
+	sf::Font font;									//text and font
 	sf::Text text;
 
 	//bullet type

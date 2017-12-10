@@ -6,6 +6,6 @@ class GreenShield : public Tool
 {
 
 public:
-	GreenShield();
-	~GreenShield();
+	GreenShield();				//constructor
+	~GreenShield();				//destructor
 };

@@ -11,21 +11,21 @@ class Player : public Updateable, public Renderable
 {
 
 public:
-	Player();
-	~Player();
+	Player();										//constructor
+	~Player();										//destructor
 
-	void update(sf::Time);
-	void render(sf::RenderWindow&);
-	void renderHitbox(sf::RenderWindow&);
+	void update(sf::Time);							//update 
+	void render(sf::RenderWindow&);					//render
+	void renderHitbox(sf::RenderWindow&);			//render the hitbox of the player
 
-	void initialize();
+	void initialize();								//initialize
 
-	void addBullet(int, int);
-	void addShield(int);
+	void addBullet(int, int);						//add the bullet to the player
+	void addShield(int);							//add the shield to the player
 
-	Hitbox hb;
+	Hitbox hb;										//hitbox of the player
 
-	float shoot_count[MAX_HOLD_BULLET];
+	float shoot_count[MAX_HOLD_BULLET];				//shooting information for the player
 	int shoot_type[MAX_HOLD_BULLET];
 	float shoot_rate[MAX_HOLD_BULLET];
 	int shoot_type_s[MAX_HOLD_BULLET];
@@ -41,6 +41,7 @@ public:
 	int CURRENT_HOLD_BULLET = 5;
 	float holdbuff = 0;
 
+	//sprite of the player
 	sf::Vector2u size;
 	sf::Sprite sprite;
 	sf::Sprite sprite_onFire;

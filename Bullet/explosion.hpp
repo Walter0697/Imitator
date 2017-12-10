@@ -6,12 +6,12 @@ class Explosion : public Bullet
 {
 
 public:
-	Explosion();
+	Explosion();									//constructor
 	Explosion(float, float);
-	~Explosion();
+	~Explosion();									//destructor
 	
-	void render(sf::RenderWindow&, sf::Sprite&);
-	void update(sf::Time);
+	void render(sf::RenderWindow&, sf::Sprite&);	//render
+	void update(sf::Time);							//update
 
-	float lifespan;
+	float lifespan;									//lifespan of the explosion
 };

@@ -6,9 +6,9 @@ class DefaultBullet : public Bullet
 {
 
 public:
-	DefaultBullet();
-	~DefaultBullet();
+	DefaultBullet();								//Constructor
+	~DefaultBullet();								//destructor
 	
-	void render(sf::RenderWindow&, sf::Sprite&);
-	void update(sf::Time);
+	void render(sf::RenderWindow&, sf::Sprite&);	//render
+	void update(sf::Time);							//update
 };

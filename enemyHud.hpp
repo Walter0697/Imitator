@@ -10,22 +10,23 @@ class EnemyHud : public Renderable
 {
 
 public:
-	EnemySet* enemySet;
-	EnemyHud(EnemySet* enemySet);
-	~EnemyHud();
+	//this is the enemyhud to render the boss health
+	EnemySet* enemySet;							//a pointer to the enemyset
+	EnemyHud(EnemySet* enemySet);				//constructor
+	~EnemyHud();								//destructor
 
-	void setup();
-	void render(sf::RenderWindow&);
+	void setup();								//set up 
+	void render(sf::RenderWindow&);				//render
 
-	sf::Sprite healthBar;
-	sf::Vector2u healthSize;
-	sf::Sprite health;
+	sf::Sprite healthBar;						//health bar sprite
+	sf::Vector2u healthSize;					//health bar size
+	sf::Sprite health;							//health sprite that will resize according to the health
 
-	sf::Font font;
+	sf::Font font;								//font and text
 	sf::Text text;
 
 private:
-	float getHealth();
-	float getMaxHealth();
+	float getHealth();							//get health from the enemy class
+	float getMaxHealth();						//get max health from the enemy class
 
 };

@@ -6,6 +6,6 @@ class HealthPack : public Tool
 {
 
 public:
-	HealthPack();
-	~HealthPack();
+	HealthPack();					//constructor
+	~HealthPack();					//destructor
 };

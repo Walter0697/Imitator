@@ -6,6 +6,6 @@ class BlueShield : public Tool
 {
 
 public:
-	BlueShield();
-	~BlueShield();
+	BlueShield();						//constructor
+	~BlueShield();						//destructor
 };

@@ -6,6 +6,6 @@ class YellowShield : public Tool
 {
 
 public:
-	YellowShield();
-	~YellowShield();
+	YellowShield();				//constructor
+	~YellowShield();			//destructor
 };

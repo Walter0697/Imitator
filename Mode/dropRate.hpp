@@ -7,14 +7,13 @@ class DropRate
 
 public:
 
-	DropRate();
-	~DropRate();
+	DropRate();							//constructor
+	~DropRate();						//destructor
 
-	int multiplier;
+	int multiplier;						//multiplier of the chances
 
-	//drop rate for toolSet
-	int tools_chance[NUM_OF_TOOLS];
+	int tools_chance[NUM_OF_TOOLS];		//drop rate for toolSet
 
-	int getToolChance(int);
-	void unlock(int);
+	int getToolChance(int);				//get the chance of the tool
+	void unlock(int);					//unlock a tool from the game
 };

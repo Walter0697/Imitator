@@ -20,28 +20,30 @@ class Story : public Renderable
 
 public:
 
-	EnemySet* enemySet;
-	ToolSet* toolSet;
-	DropRate* droprate;
-	Player* player;
-	Story(EnemySet* enemySet, ToolSet* toolSet, DropRate* droprate, Player* player);
-	~Story();
+	EnemySet* enemySet;																		//enemies set
+	ToolSet* toolSet;																		//tool set
+	DropRate* droprate;																		//drop rate
+	Player* player;																			//player
+	Story(EnemySet* enemySet, ToolSet* toolSet, DropRate* droprate, Player* player);		//constructor
+	~Story();																				//destructor
 
 	//mode related
 	int currentStory = 1;
 	int readStory = 0;
 	int toolUnlock = 0;
 
+	//if it is talking, waiting, or can continue
 	int processing = 0;
 	bool isStory = false;
 	bool isWait = false;
 	bool canContin = false;
 
+	//initialization and set up
 	void init();
 	void setup();
 	void setup(int);
-	void update(sf::Time&);
-	void render(sf::RenderWindow&);
+	void update(sf::Time&);				//update
+	void render(sf::RenderWindow&);		//render
 
 	//file related
 	void clearFile();

@@ -6,16 +6,16 @@ class FireThrower : public Boss
 {
 
 public:
-	FireThrower();
-	~FireThrower();
+	FireThrower();											//constructor
+	~FireThrower();											//destructor
 
-	sf::Vector2f four_shoot;
+	sf::Vector2f four_shoot;								//shooting position
 	sf::Vector2f five_shoot;
+	
+	void initSetup();										//initialize set up
+	void render(sf::RenderWindow&, sf::Sprite&);			//render
+	void update(sf::Time);									//update
 
-	void initSetup();
-	void render(sf::RenderWindow&, sf::Sprite&);
-	void update(sf::Time);
-
-	int chance;
-	int countdown;
+	int chance;												//chance to change mode
+	int countdown;											//countdown to change mode
 };

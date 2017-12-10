@@ -6,9 +6,9 @@ class Longgy : public Enemy
 {
 
 public:
-	Longgy();
-	~Longgy();
+	Longgy();										//constructor
+	~Longgy();										//destructor
 
-	void render(sf::RenderWindow&, sf::Sprite&);     
-	void update(sf::Time);
+	void render(sf::RenderWindow&, sf::Sprite&);	//render
+	void update(sf::Time);							//update
 };

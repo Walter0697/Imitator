@@ -6,9 +6,9 @@ class Douddy : public Enemy
 {
 
 public:
-	Douddy();
-	~Douddy();
+	Douddy();										//constructor
+	~Douddy();										//destructor
 
-	void render(sf::RenderWindow&, sf::Sprite&);     
-	void update(sf::Time);
+	void render(sf::RenderWindow&, sf::Sprite&);	//render
+	void update(sf::Time);							//update
 };

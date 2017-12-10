@@ -6,9 +6,9 @@ class Gangster : public Enemy
 {
 
 public:
-	Gangster();
-	~Gangster();
+	Gangster();										//constructor
+	~Gangster();									//destructor
 
-	void render(sf::RenderWindow&, sf::Sprite&);     
-	void update(sf::Time);
+	void render(sf::RenderWindow&, sf::Sprite&);	//render
+	void update(sf::Time);							//update
 };

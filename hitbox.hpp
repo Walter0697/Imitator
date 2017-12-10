@@ -6,16 +6,16 @@ class Hitbox
 {
 
 public:
-	Hitbox();
-	~Hitbox();
+	Hitbox();					//constructor
+	~Hitbox();					//destructor
 
-	sf::Vector2f hitbox_tl;
-	sf::Vector2f hitbox_br;
-	float hitbox_r;
+	sf::Vector2f hitbox_tl;		//top left position
+	sf::Vector2f hitbox_br;		//bottom right position
+	float hitbox_r;				//hitbox radius
 
-	sf::RectangleShape rec;
+	sf::RectangleShape rec;		//hitbox shape
 	sf::CircleShape cir;
 
-	void generateHitboxRec();
-	void generateHitboxCir();
+	void generateHitboxRec();	//generate a rectangle one if it is rectangle
+	void generateHitboxCir();	//generate a circle one if it is cirle
 };

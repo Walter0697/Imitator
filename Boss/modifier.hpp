@@ -6,15 +6,15 @@ class Modifier : public Boss
 {
 
 public:
-	Modifier();
-	~Modifier();
+	Modifier();										//constructor
+	~Modifier();									//destructor
 
-	sf::Vector2f four_shoot;
+	sf::Vector2f four_shoot;						//shooting position 
 	sf::Vector2f five_shoot;
 
-	void initSetup();
-	void render(sf::RenderWindow&, sf::Sprite&);
-	void update(sf::Time);
+	void initSetup();								//initialize set up
+	void render(sf::RenderWindow&, sf::Sprite&);	//render
+	void update(sf::Time);							//update
 
-	int chance;
+	int chance;										//chance to change mode
 };

@@ -9,14 +9,14 @@ class RadShield : public Renderable
 
 public:
 	Player* player;
-	RadShield(Player* player);
-	~RadShield();
+	RadShield(Player* player);				//constructor
+	~RadShield();							//destructor
 
-	int health;
-	Hitbox hitbox;
-	sf::CircleShape ShieldSprite;
+	int health;								//health of the shield
+	Hitbox hitbox;							//hitbox of the shield
+	sf::CircleShape ShieldSprite;			//sprite for the shield
 
-	void addShield(int);
-	void render(sf::RenderWindow&);
-	void renderHitBox(sf::RenderWindow&);
+	void addShield(int);					//add shield
+	void render(sf::RenderWindow&);			//render
+	void renderHitBox(sf::RenderWindow&);	//render the hitbox
 };

@@ -6,9 +6,9 @@ class Glitchy : public Enemy
 {
 
 public:
-	Glitchy();
-	~Glitchy();
+	Glitchy();										//constructor
+	~Glitchy();										//destructor
 
-	void render(sf::RenderWindow&, sf::Sprite&);     
-	void update(sf::Time);
+	void render(sf::RenderWindow&, sf::Sprite&);	//render
+	void update(sf::Time);							//update
 };

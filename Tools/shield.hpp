@@ -8,15 +8,15 @@ class Shield : public Renderable
 {
 
 public:
-	Player* player;
-	Shield(Player* player);
-	~Shield();
+	Player* player;									//pointer to the player
+	Shield(Player* player);							//constructor
+	~Shield();										//destructor
 
-	int level;
-	Hitbox hitbox;
-	sf::CircleShape ShieldSprite;
+	int level;										//level of the shield
+	Hitbox hitbox;									//hitbox of the shield
+	sf::CircleShape ShieldSprite;					//sprite of the shield
 
-	void addShield(int);
-	void render(sf::RenderWindow&);
-	void renderHitBox(sf::RenderWindow&);
+	void addShield(int);							//adding shield
+	void render(sf::RenderWindow&);					//render
+	void renderHitBox(sf::RenderWindow&);			//render the hitbox of the shield
 };

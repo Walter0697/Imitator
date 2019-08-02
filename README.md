@@ -2,6 +2,9 @@
 
 #### Coded in second year
 
+- ![](https://github.com/Walter0697/PersonalWebsite/blob/master/src/sprite/screenshot/it001.gif)
+- ![](https://github.com/Walter0697/PersonalWebsite/blob/master/src/sprite/screenshot/it003.gif)
+- ![](https://github.com/Walter0697/PersonalWebsite/blob/master/src/sprite/screenshot/it002.png)
 
 Technology:
 - SFML

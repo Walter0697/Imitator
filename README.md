@@ -12,9 +12,7 @@ Technology:
 
 ###### A game that player will imitate the bullets of the enemies
 ###### Here is the introduction for the game :
-###### http://waltercheng.com/project-3
-
-There is still some errors in the story line, I will fix it when I am free
+###### http://www.waltercheng.com:3000/project#imitator
 
 ###### Here is the dev log I have:
 
